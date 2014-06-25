@@ -12,9 +12,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
 
-A meme generator used to create social sharing images
+The meme generator Vox uses to create social sharing images
 
 ![screenshot](https://raw.githubusercontent.com/yurivictor/meme/master/source/images/screenshot.png)
+
+**examples**
+* https://twitter.com/voxdotcom/status/481671889094340608
+* https://twitter.com/voxdotcom/status/479228288221470721
+* https://twitter.com/voxdotcom/status/481619042545844225
 
 ## Install
 
