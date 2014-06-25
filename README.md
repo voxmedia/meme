@@ -14,6 +14,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 A meme generator used to create social sharing images
 
+## Install
+
+* `git clone https://github.com/yurivictor/meme.git`
+* `bundle install`
+* `bundle exec middleman`
+
+
 ## Design decisions
 
 Images are base64 and javascript is inline because of some strange canvas constructs which don't allow external data sources which can happen when using CDNs or other stuff.
@@ -30,4 +37,4 @@ Fonts are handled as data attributes in `source/partials/_editor.html.erb`
 
 ### Add watermark
 
-Convert an svg to base64 and add here
+Convert an svg to base64 and [add here](https://github.com/yurivictor/meme/blob/master/source/partials/_javascripts.html.erb#L158)
