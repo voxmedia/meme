@@ -14,6 +14,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 A meme generator used to create social sharing images
 
+![screenshot](https://raw.githubusercontent.com/yurivictor/meme/master/source/images/screenshot.png)
+
 ## Install
 
 * `git clone https://github.com/yurivictor/meme.git`
