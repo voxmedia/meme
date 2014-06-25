@@ -1,0 +1,63 @@
+$editor-width: 345px;
+
+.editor {
+  float: left;
+  padding-left: 2em;
+  width: $editor-width;
+  .image-upload {
+    margin-bottom: 1em;
+    @media ( max-width: 1100px ) {
+      width: 100%;
+    }
+  }
+  .dropzone {
+    border: 2px dashed #efefef;
+    color: #6a6a69;
+    display: table-cell;
+    font-size: 18px;
+    font-weight: 700;
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    width: $editor-width;
+    @media ( max-width: 1100px ) {
+      width: 100%;
+    }
+  }
+  #header {
+    margin-bottom: 0;
+  }
+  #fontsize {
+    width: 100%;
+  }
+  .overlay {
+    cursor: pointer;
+    float: left;
+    line-height: 12px;
+    margin: 2px 5px;
+    padding: 3px 5px 5px 5px;
+  }
+  .overlay-black {
+    background-color: #000;
+    color: #000;
+  }
+  .overlay-grey {
+    background-color: #999;
+    color: #999;
+  }
+  .overlay-blue {
+    background-color: rgb( 122, 184, 207 );
+    color: rgb( 122, 184, 207 );
+  }
+  .overlay-orange {
+    background-color: rgb( 255, 140, 0 );
+    color: rgb( 255, 140, 0 );
+  }
+  .overlay-active {
+    color: #fff;
+  }
+  @media ( max-width: 1100px ) {
+    padding: 1em;
+    width: 100%;
+  }
+}

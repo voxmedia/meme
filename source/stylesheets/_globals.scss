@@ -1,0 +1,40 @@
+// global declarations
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+body {
+  background-color: #fff;
+  color: $default-text-color;
+  display: table;
+  font-family: 'Helvetica';
+  font-size: percentage($default-font-size/16px);
+  height: 100%;
+  line-height: $default-line-height;
+  padding-bottom: 4em;
+  padding-top: 4em;
+  margin: 0;
+  width: 100%;
+}
+
+.content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.left { float: left; }
+.right { float: right; }
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    *zoom: 1;
+}

@@ -1,0 +1,38 @@
+<div class="editor">
+  <form>
+    <div class="cf image-upload">
+      <div class="dropzone" id="dropzone">drop new image here</div>
+    </div>
+    <label for="scale">Resize image</label>
+    <input id="scale" type="range" max="4" min=".01" step=".01" value="1">
+    <label for="headline">Headline</label>
+    <div class="cf">
+      <input id="headline" name="headline" type="text" value="I'm a headline. Yo. What's up?">
+      <select id="fontsize">
+        <option value="smaller" data-size="14pt Helvetica" data-height="26">smaller</option>
+        <option value="default" data-size="18pt Helvetica" data-height="30" selected>default size</option>
+        <option value="bigger" data-size="24pt Helvetica" data-height="38">bigger</option>
+        <option value="huge" data-size="36pt Helvetica" data-height="50">huge</option>
+      </select>
+    </div>
+    <label for="credit">Credit</label>
+    <input id="credit" name="credit" type="text" value="Source: ">
+    <fieldset>
+      <label class="left" for="overlay">Overlay: </label>
+      <div class="overlay overlay-black" data-color="black">x</div>
+      <div class="overlay overlay-orange" data-color="orange">x</div>
+      <div class="overlay overlay-blue overlay-active" data-color="blue">x</div>
+    </fieldset>
+    <fieldset>
+      <select id="alignment">
+        <option value="left"selected>left align</option>
+        <option value="center">center align</option>
+        <option value="right">right align</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <input id="shadow" name="shadow" type="checkbox">
+      <label for="shadow">Highlight text</label>
+    </fieldset>
+  </form>
+</div>

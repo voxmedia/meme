@@ -1,0 +1,23 @@
+// colors
+$default-text-color     : #4C4E4D;
+
+// breakpoints
+$break_xsmall         : 400px;
+$break_small          : 600px;
+$break_medium_small   : 728px;
+$break_medium         : 880px;
+$break_large_medium   : 950px;
+$break_large          : 1080px;
+$break_xlarge_large   : 1200px;
+$break_xlarge         : 1500px;
+$break_xxlarge        : 1600px;
+
+// layout
+$default-width          : 1080px;
+$gutter-vertical        : 15px;
+$gutter-horizontal      : 25px;
+$sidebar-width          : 325px;
+$sidebar-width-narrow   : 160px;
+
+$default-font-size    : 16px;
+$default-line-height  : (25px/$default-font-size);
