@@ -2,7 +2,7 @@
 
 Author: Yuri Victor
 
-Meme is a generator that Vox Media uses to create social sharing images. 
+Meme is a generator that Vox Media uses to create social sharing images.
 
 ![screenshot](https://raw.githubusercontent.com/yurivictor/meme/master/source/images/screenshot.png)
 
@@ -12,7 +12,7 @@ Meme is a generator that Vox Media uses to create social sharing images.
 * `bundle install`
 * `bundle exec middleman`
 
-## Examples 
+## Examples
 
 * https://twitter.com/voxdotcom/status/481671889094340608
 * https://twitter.com/voxdotcom/status/479228288221470721
@@ -35,6 +35,14 @@ Fonts are handled as data attributes in `source/partials/_editor.html.erb`
 ### Add watermark
 
 Convert an svg to base64 and [add here](https://github.com/yurivictor/meme/blob/master/source/partials/_javascripts.html.erb#L158)
+
+## Contributing
+
+1. Fork it ( https://github.com/voxmedia/meme/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
 
 ## License
 
