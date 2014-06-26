@@ -153,13 +153,16 @@ MEME.SVG = ( function ( $ ) {
    * Adds Vox svg watermark to each image
    */
   var addWatermark = function () {
+    // Create a new image
     var img = new Image();
+    // Place the image
     img.onload = function() {
       context.globalAlpha = 0.8;
       context.fillStyle = 'white';
       context.drawImage( img, 620, 290, 100, 50 );
       context.globalAlpha = 1; // reset transparency
     }
+    // Load the watermark
     img.src = "";
   }
 
@@ -213,12 +216,18 @@ MEME.SVG = ( function ( $ ) {
     context.fillText( text, 45, 322 );
   }
 
+  /**
+   * Change font size based on data attribute of option elements
+   */
   var handleFontSize = function () {
     fontSize = $( '#fontsize option:selected' ).data( 'size' );
     lineHeight = $( '#fontsize option:selected' ).data( 'height' );
     addCanvas();
   }
 
+  /**
+   * Change headline alignment (left, right, center)
+   */
   var handleAlignment = function () {
     alignment = $( '#alignment option:selected' ).val();
     addCanvas();
@@ -268,30 +277,32 @@ MEME.SVG = ( function ( $ ) {
   /**
    * Shows image as canvas
    * @param array file, the dropped file
-   * @needs better documentation
    */
   var showFile = function ( file ) {
+    // Create a file reader
     var reader = new FileReader();
     reader.onload = function( event ) {
+      // Draw image into canvas
       img.onload = function() {
+        // center image in canvas
         context.clearRect( 0, 0, canvas.width, canvas.height );
         document.getElementById( 'scale' ).value = 1;
         x = canvas.width / 2 - img.width / 2;
         y = canvas.height / 2 - img.height / 2;
+        // draw image in canvas
         context.drawImage( img, x, y );
       }
+      // Read the uploaded file as image
       img.src = reader.result;
-      // $( '#image-temp' ).src = reader.result;
     }
+    // Read uploaded image
     reader.readAsDataURL( file[0] );
   }
 
   /**
-   * Get this meme started
+   * Handle clicks and change events
    */
-  var init = function () {
-    setupCanvas();
-
+  var handleEvents = function () {
     var credit = document.getElementById( 'credit' );
     credit.addEventListener( 'keyup', addCanvas, false );
     credit.addEventListener( 'input', addCanvas, false );
@@ -317,6 +328,14 @@ MEME.SVG = ( function ( $ ) {
     $( '.overlay' ).on( 'click', handleOverlay );
     $( '#fontsize' ).on( 'change', handleFontSize );
     $( '#alignment' ).on( 'change', handleAlignment );
+  }
+
+  /**
+   * Get this meme started
+   */
+  var init = function () {
+    setupCanvas();
+    handleEvents();
   }
 
   window.onload = function() {
