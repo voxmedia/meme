@@ -103,10 +103,12 @@ MEME.SVG = ( function ( $ ) {
   }
 
   /**
-   *
+   * Handle overlay buttons
    */
   var handleOverlay = function () {
+    // Get overlay color
     var that = $( this ).attr( 'class' );
+    // Check if overlay is selected
     if ( that.indexOf( 'overlay-active' ) > -1 ) {
       $( this ).removeClass( 'overlay-active' );
       overlay = false;
@@ -134,12 +136,15 @@ MEME.SVG = ( function ( $ ) {
     } else if ( overlayColor == 'orange' ) {
       context.fillStyle = "rgba( 255, 140, 0, 0.6 );" // Orangish
     } else {
-      context.fillStyle = "rgba( 122, 184, 207, 0.6 )"; // Vox blue
+      context.fillStyle = "rgba( 52, 152, 219, 0.6 )"; // Vox blue
     }
     // Fill the canvas with the color yo
     context.fill();
   }
 
+  /**
+   * Get rid of overlays
+   */
   var removeOverlay = function () {
     $( this ).removeClass( 'overlay-active' );
   }

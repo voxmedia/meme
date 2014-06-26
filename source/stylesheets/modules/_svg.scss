@@ -9,7 +9,7 @@
     display: none;
   }
   .download {
-    background: #7ab8cf;
+    background: rgba( 41, 128, 185, 1 );
     border: none;
     color: #fff;
     cursor:pointer;
@@ -20,6 +20,9 @@
     text-decoration: none;
     width: 100%;
     @include transition (background-color ease-in-out 0.3s);
+    &:hover {
+      background: rgba( 41, 128, 185, .6 );
+    }
   }
   @media ( max-width: 1100px ) {
     float: none;
