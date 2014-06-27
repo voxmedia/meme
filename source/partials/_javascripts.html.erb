@@ -5,20 +5,30 @@ var MEME = MEME || {};
 
 MEME.SVG = ( function ( $ ) {
 
+  // Configure me if you want
+  var watermark       = '',
+      fontSizeSmall   = '14pt Helvetica',
+      fontSizeDefault = '18pt Helvetica',
+      fontSizeLarge   = '24pt Helvetica',
+      fontSizeHuge    = '36pt Helvetica';
+
+
+  // Variables
   var canvas       = document.getElementById( 'canvas' ),
       canvasHeight = 378,
       canvasWidth  = 755,
       deviceWidth  = window.innerWidth,
       context      = canvas.getContext( '2d' ),
       download     = document.getElementById( 'download' ),
+      fontSize     = fontSizeDefault,
       img          = document.getElementById( 'image-storage' ),
       overlay      = true,
       overlayColor = 'blue',
-      fontSize     = '18pt Helvetica',
       lineHeight   = 28,
       alignment    = 'left',
       x            = canvas.width / 2 - img.width / 2,
       y            = canvas.height / 2 - img.height / 2;
+
 
   /**
    * Sets up default canvas
@@ -163,7 +173,7 @@ MEME.SVG = ( function ( $ ) {
       context.globalAlpha = 1; // reset transparency
     }
     // Load the watermark
-    img.src = "";
+    img.src = watermark;
   }
 
 
@@ -220,7 +230,20 @@ MEME.SVG = ( function ( $ ) {
    * Change font size based on data attribute of option elements
    */
   var handleFontSize = function () {
-    fontSize = $( '#fontsize option:selected' ).data( 'size' );
+    var size = $( '#fontsize option:selected' ).val();
+    console.log( size )
+    switch( size ) {
+      case 'smaller':
+          fontSize = fontSizeSmall;
+          break;
+      case 'bigger':
+          fontSize = fontSizeLarge;
+          break;
+      case 'huge':
+          fontSize = fontSizeHuge;
+      default:
+          fontSize = fontSizeDefault;
+    }
     lineHeight = $( '#fontsize option:selected' ).data( 'height' );
     addCanvas();
   }

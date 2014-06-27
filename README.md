@@ -28,13 +28,13 @@ I chose middleman because there are great sensible defaults, but there's no reas
 
 ### Add fonts
 
-Add your fonts in `stylesheets/_fonts.scss`
+Include your own fonts in `stylesheets/_fonts.scss`
 
-Fonts are handled as data attributes in `source/partials/_editor.html.erb`
+Fonts are handled with sizes as variables in the javascript and can be [added here](https://github.com/voxmedia/meme/blob/master/source/partials/_javascripts.html.erb#L8)
 
 ### Add watermark
 
-Convert an svg to base64 and [add here](https://github.com/yurivictor/meme/blob/master/source/partials/_javascripts.html.erb#L158)
+Convert an svg to base64 and [add here](https://github.com/voxmedia/meme/blob/master/source/partials/_javascripts.html.erb#L8)
 
 ## Contributing
 
