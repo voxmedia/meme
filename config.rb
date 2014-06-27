@@ -41,8 +41,8 @@ activate :directory_indexes
 # Build-specific configuration
 configure :build do
   puts "local build"
-  set :url_prefix, "/a/meme"
-  set :absolute_prefix, "http://www.vox.com"
+  set :url_prefix, ""
+  set :absolute_prefix, ""
   activate :asset_hash
   activate :chorus
   activate :minify_javascript
