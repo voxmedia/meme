@@ -1,10 +1,3 @@
-###
-# Helpers
-###
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
 # Reload the browser automatically whenever files change
 activate :livereload
 
@@ -15,13 +8,6 @@ compass_config do |config|
   config.output_style = :compressed
 end
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
-
 ###
 # Helpers
 ###
@@ -31,12 +17,14 @@ helpers do
   end
 end
 
+###
+# Config
+###
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 set :url_prefix, '/'
 set :absolute_prefix, 'http://localhost:4567'
-activate :directory_indexes
 
 # Build-specific configuration
 configure :build do
@@ -44,7 +32,6 @@ configure :build do
   set :url_prefix, ""
   set :absolute_prefix, ""
   activate :asset_hash
-  activate :chorus
   activate :minify_javascript
   activate :minify_css
 end
