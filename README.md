@@ -12,6 +12,8 @@ Meme is a generator that Vox Media uses to create social sharing images.
 * `bundle install`
 * `bundle exec middleman`
 
+This will start a local web server running at: `http://localhost:4567/`
+
 ## Examples
 
 * https://twitter.com/voxdotcom/status/481671889094340608
