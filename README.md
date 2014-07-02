@@ -1,6 +1,6 @@
 # Meme
 
-Author: Yuri Victor
+Contributors: Yuri Victor, Joshua Benton
 
 Meme is a generator that Vox Media uses to create social sharing images.
 
