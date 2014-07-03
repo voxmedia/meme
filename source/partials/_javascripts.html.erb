@@ -7,10 +7,11 @@ MEME.SVG = ( function ( $ ) {
 
   // Configure me if you want
   var watermark       = '',
-      fontSizeSmall   = '14pt Helvetica',
-      fontSizeDefault = '18pt Helvetica',
-      fontSizeLarge   = '24pt Helvetica',
-      fontSizeHuge    = '36pt Helvetica';
+      fontSizeSmall   = '14pt',
+      fontSizeDefault = '18pt',
+      fontSizeLarge   = '24pt',
+      fontSizeHuge    = '36pt',
+      fontFamilyDefault = 'Helvetica';
 
 
   // Variables
@@ -21,6 +22,7 @@ MEME.SVG = ( function ( $ ) {
       context      = canvas.getContext( '2d' ),
       download     = document.getElementById( 'download' ),
       fontSize     = fontSizeDefault,
+      fontFamily   = fontFamilyDefault,
       img          = document.getElementById( 'image-storage' ),
       overlay      = true,
       overlayColor = 'blue',
@@ -39,7 +41,7 @@ MEME.SVG = ( function ( $ ) {
     canvas.height = canvasHeight;
     // Set up context defaults
     context.textBaseline = 'top';
-    context.font         = 'normal 18pt Helvetica';
+    context.font         = 'normal ' + fontSizeDefault + ' ' + fontFamilyDefault;
     context.fillStyle    = 'white';
     // Add canvas
     context.drawImage( img, 0, 0 );
@@ -186,7 +188,7 @@ MEME.SVG = ( function ( $ ) {
         maxWidth = 550,
         x = 45,
         y = 45;
-    context.font = fontSize
+    context.font = fontSize + ' ' + fontFamily;
     context.textAlign = 'left';
     context.fillStyle = 'white';
     // Adds text shadow
@@ -231,7 +233,6 @@ MEME.SVG = ( function ( $ ) {
    */
   var handleFontSize = function () {
     var size = $( '#fontsize option:selected' ).val();
-    console.log( size )
     switch( size ) {
       case 'smaller':
           fontSize = fontSizeSmall;
@@ -245,7 +246,26 @@ MEME.SVG = ( function ( $ ) {
       default:
           fontSize = fontSizeDefault;
     }
+    fontSize = fontSize;
     lineHeight = $( '#fontsize option:selected' ).data( 'height' );
+    addCanvas();
+  }
+
+  /**
+   * Change font size based on data attribute of option elements
+   */
+  var handleFontFamily = function () {
+    var family = $( this ).val();
+    if(this.id == 'fontfamily_freeform') {
+      if(family === '') {
+        family = $('#fontfamily option:selected').val();
+      } else {
+        $('#fontfamily').val('');
+      }
+    } else {
+      $('#fontfamily_freeform').val('');
+    }
+    fontFamily = family;
     addCanvas();
   }
 
@@ -351,6 +371,8 @@ MEME.SVG = ( function ( $ ) {
 
     $( '.overlay' ).on( 'click', handleOverlay );
     $( '#fontsize' ).on( 'change', handleFontSize );
+    $( '#fontfamily' ).on( 'change', handleFontFamily );
+    $( '#fontfamily_freeform' ).on( 'change', { test: 'test' }, handleFontFamily );
     $( '#alignment' ).on( 'change', handleAlignment );
   }
 
