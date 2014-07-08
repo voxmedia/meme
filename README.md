@@ -8,7 +8,7 @@ Meme is a generator that Vox Media uses to create social sharing images.
 
 ## Install
 
-* `git clone https://github.com/yurivictor/meme.git`
+* `git clone https://github.com/voxmedia/meme.git`
 * `bundle install`
 * `bundle exec middleman`
 
