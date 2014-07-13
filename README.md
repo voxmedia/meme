@@ -1,6 +1,6 @@
 # Meme
 
-Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong
+Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters
 
 Meme is a generator that Vox Media uses to create social sharing images.
 
