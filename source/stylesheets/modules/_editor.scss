@@ -36,22 +36,7 @@ $editor-width: 345px;
     line-height: 12px;
     margin: 2px 5px;
     padding: 3px 5px 5px 5px;
-  }
-  .overlay-black {
-    background-color: #000;
-    color: #000;
-  }
-  .overlay-grey {
-    background-color: #999;
-    color: #999;
-  }
-  .overlay-blue {
-    background-color: rgb( 52, 152, 219 );
-    color: rgb( 52, 152, 219 );
-  }
-  .overlay-orange {
-    background-color: rgb( 255, 140, 0 );
-    color: rgb( 255, 140, 0 );
+    color: transparent;
   }
   .overlay-active {
     color: #fff;

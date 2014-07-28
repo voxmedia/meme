@@ -115,6 +115,27 @@ MEME.SVG = ( function ( $ ) {
   }
 
   /**
+   * Convert 3 and 6 digit hex color codes to rgba with .6 opacity
+   */
+
+  var hexToRgba = function(hex) {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return 'rgba(' + parseInt(result[1], 16) + ', ' + parseInt(result[2], 16) + ', ' + parseInt(result[3], 16) + ', ' + .6 + ')';
+  }
+
+  var setOverlayButtonAppearance = function () {
+    $( '.overlay' ).each( function () {
+      var color = $( this ).data( 'color' );
+      $( this ).css( 'backgroundColor', color );
+    });
+  }
+
+  /**
    * Handle overlay buttons
    */
   var handleOverlay = function () {
@@ -131,7 +152,7 @@ MEME.SVG = ( function ( $ ) {
       $( this ).addClass( 'overlay-active' );
     }
     // Handle color variations
-    overlayColor = $( this ).data( 'color' );
+    overlayColor = hexToRgba($( this ).data( 'color' ));
     // Redraw canvas
     addCanvas();
   }
@@ -142,14 +163,8 @@ MEME.SVG = ( function ( $ ) {
   var addOverlay = function () {
     // Cover everything
     context.rect( 0, 0, canvasWidth, canvasHeight );
-    // Show user the color is active
-    if ( overlayColor == 'black' ) {
-      context.fillStyle = "rgba( 0, 0, 0, 0.6 )"; // Black
-    } else if ( overlayColor == 'orange' ) {
-      context.fillStyle = "rgba( 255, 140, 0, 0.6 );" // Orangish
-    } else {
-      context.fillStyle = "rgba( 52, 152, 219, 0.6 )"; // Vox blue
-    }
+    // Apply selected overlay
+    context.fillStyle = overlayColor;
     // Fill the canvas with the color yo
     context.fill();
   }
@@ -380,6 +395,7 @@ MEME.SVG = ( function ( $ ) {
    * Get this meme started
    */
   var init = function () {
+    setOverlayButtonAppearance();
     setupCanvas();
     handleEvents();
   }
