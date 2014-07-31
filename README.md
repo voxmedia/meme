@@ -1,6 +1,6 @@
 # Meme
 
-Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters
+Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart
 
 Meme is a generator that Vox Media uses to create social sharing images.
 
