@@ -1,4 +1,4 @@
-var watermark = document.host.replace(/.*?\.?(.+)\..*?/, '$1');
+var watermark = (location.host).replace(/.*?\.?(.+)\..*?/, '$1');
 watermark = 'bloodyelbow';
 
 var MEME_SETTINGS = {
@@ -24,9 +24,9 @@ var MEME_SETTINGS = {
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: ['left', 'center', 'right'],
   textShadow: true, // Text shadow.
-  textShadowEdit: true, // Toggles text shadow control within the editor.
-  watermarkAlpha: 0.75, // Opacity of watermark image.
-  watermarkMaxWidthRatio: 0.20, // Maximum allowed width of watermark, relative to canvas width.
+  textShadowEdit: false, // Toggles text shadow control within the editor.
+  watermarkAlpha: 1, // Opacity of watermark image.
+  watermarkMaxWidthRatio: 1, // Maximum allowed width of watermark, relative to canvas width.
   watermarkSrc: 'images/'+watermark+'.png', // Watermark image path. MUST reside on host domain, or use base64 data.
   width: 755 // Canvas rendering width.
 };
