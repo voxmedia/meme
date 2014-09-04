@@ -27,7 +27,7 @@ form {
     padding: 6px 5px;
 
     &:focus {
-      border: 1px solid lighten(#2980b9, 20);
+      border: 1px solid lighten($theme-color, 40);
     }
   }
 
