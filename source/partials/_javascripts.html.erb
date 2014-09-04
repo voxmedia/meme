@@ -182,6 +182,10 @@ MEME.SVG = ( function ( $ ) {
   var addWatermark = function () {
     // Create a new image
     var img = new Image();
+
+    // Hat Tip: http://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported
+    img.crossOrigin = "anonymous";
+
     // Place the image
     img.onload = function() {
       context.globalAlpha = 0.8;
