@@ -4,10 +4,11 @@
     <%= partial "partials/head" %>
   </head>
   <body class="<%= page_classes %>">
-    <div class="cf content">
-      <%= partial "partials/svg" %>
+    <div class="m-meme">
       <%= partial "partials/editor" %>
+      <%= partial "partials/canvas" %>
     </div>
-    <%= partial "partials/javascripts" %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'settings' %>
   </body>
 </html>

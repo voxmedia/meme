@@ -1,0 +1,101 @@
+$m: '.m-editor';
+
+#{$m} {
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 700px) {
+    @include box-sizing(border-box);
+    float: right;
+    padding-left: 20px;
+    width: 30%;
+  }
+
+  .dropzone {
+    background-color: #fcfcfc;
+    border: 2px dashed #cfcfcf;
+    border-radius: 10px;
+    color: #6a6a69;
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    height: 80px;
+    line-height: 80px;
+    margin-bottom: 1em;
+    text-align: center;
+    vertical-align: middle;
+
+    &.pulse {
+      -webkit-animation-name: pulsate;
+      -webkit-animation-duration: 0.3s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-direction: alternate;
+      -webkit-animation-timing-function: ease-in-out;
+    }
+  }
+
+  .text-align,
+  .font-size,
+  .font-family,
+  .text-shadow {
+    display: none;
+  }
+
+  #{$m}__overlay {
+    display: none;
+
+    // Mini-clearfix:
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      label {
+        display: block;
+        float: left;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  #{$m}__swatch {
+    @include appearance(none);
+    background-color: #000;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    margin: 0;
+    margin-left: 1em;
+    outline: none;
+    text-align: center;
+    width: 30px;
+
+    &:checked:before {
+      content: 'x';
+      color: white;
+      font-size: 18px;
+      vertical-align: center;
+    }
+  }
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    background-color: #fcfcfc;
+    border-color: #cfcfcf;
+  }
+  100% {
+    background-color: lighten(#2980b9, 40);
+    border-color: #2980b9;
+  }
+}

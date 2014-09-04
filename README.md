@@ -1,10 +1,14 @@
-# Meme
+# Meme v.2
 
+<<<<<<< HEAD
 Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart.
+=======
+Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart. Backbone refactor by Greg MacWilliam.
+>>>>>>> Complete refactor with model-view separation. Fixes several UI bugs.
 
 Meme is a generator that Vox Media uses to create social sharing images.
 
-![screenshot](https://raw.githubusercontent.com/yurivictor/meme/master/source/images/screenshot.png)
+![screenshot](readme.png)
 
 ## Install
 
@@ -14,18 +18,25 @@ Meme is a generator that Vox Media uses to create social sharing images.
 
 This will start a local web server running at: `http://localhost:4567/`
 
+## Customization
+
+Settings and controls can be customized via `source/javascripts/settings.js`. Most menu options can be configured directly through settings.
+
 ## Examples
 
 * https://twitter.com/voxdotcom/status/481671889094340608
 * https://twitter.com/voxdotcom/status/479228288221470721
 * https://twitter.com/voxdotcom/status/481619042545844225
 
+<<<<<<< HEAD
 ## Design decisions
 
 Images are base64 and javascript is inline. This is due to security restrictions of the HTML5 Canvas imaging object. Source images must be embedded within the page or located on the host domain to be allowed into the canvas security sandbox.
 
 I chose middleman because there are great sensible defaults, but there's no reason this couldn't be a single page html file.
 
+=======
+>>>>>>> Complete refactor with model-view separation. Fixes several UI bugs.
 ## Extras
 
 ### Add fonts
@@ -48,7 +59,7 @@ Convert an svg to base64 and [add here](https://github.com/voxmedia/meme/blob/ma
 
 ## License
 
-Copyright (c) 2014 Vox Media Inc., Yuri Victor
+Copyright (c) 2014 Vox Media Inc., Yuri Victor, Greg MacWilliam
 
 BSD license
 

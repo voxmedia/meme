@@ -1,0 +1,21 @@
+$m: '.m-meme';
+
+body {
+  margin: 0;
+  padding: 0 20px;
+}
+
+#{$m} {
+  margin: 50px auto;
+  max-width: 990px;
+
+  // Mini-clearfix:
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}

@@ -1,31 +1,32 @@
-.svg {
-  float: left;
-  width: 755px;
-  .canvas {
-    height: 378px;
-    width: 755px;
+$m: '.m-canvas';
+
+#{$m} {
+  @media screen and (min-width: 700px) {
+    width: 70%;
   }
-  img {
-    display: none;
+
+  #{$m}__canvas {
+    background: #fcfcfc;
+
+    canvas {
+      max-width: 100% !important;
+    }
   }
-  .download {
+
+  #{$m}__download a {
     background: rgba( 41, 128, 185, 1 );
     border: none;
+    border-radius: 5px;
     color: #fff;
-    cursor:pointer;
     display: block;
     font-weight: 700;
     line-height: 50px;
     text-align: center;
     text-decoration: none;
-    width: 100%;
     @include transition (background-color ease-in-out 0.3s);
+
     &:hover {
       background: rgba( 41, 128, 185, .6 );
     }
-  }
-  @media ( max-width: 1100px ) {
-    float: none;
-    padding: 0 1em;
   }
 }
