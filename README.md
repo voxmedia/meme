@@ -1,6 +1,6 @@
 # Meme
 
-Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart
+Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart.
 
 Meme is a generator that Vox Media uses to create social sharing images.
 
@@ -22,7 +22,7 @@ This will start a local web server running at: `http://localhost:4567/`
 
 ## Design decisions
 
-Images are base64 and javascript is inline because of some strange canvas constructs which don't allow external data sources which can happen when using CDNs or other stuff.
+Images are base64 and javascript is inline. This is due to security restrictions of the HTML5 Canvas imaging object. Source images must be embedded within the page or located on the host domain to be allowed into the canvas security sandbox.
 
 I chose middleman because there are great sensible defaults, but there's no reason this couldn't be a single page html file.
 
