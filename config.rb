@@ -1,5 +1,7 @@
 # Reload the browser automatically whenever files change
 activate :livereload
+activate :chorus
+activate :directory_indexes
 
 ###
 # Compass
