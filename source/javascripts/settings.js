@@ -1,5 +1,12 @@
 var watermark = (location.host).replace(/.*?\.?(.+)\..*?/, '$1');
-watermark = 'bloodyelbow';
+var watermarks = {
+  'mmamania': true,
+  'mmafighting': true,
+  'bloodyelbow': true
+};
+
+watermark = watermarks[watermark] ? watermark : '';
+
 
 var MEME_SETTINGS = {
   creditText: 'Source:', // Default "credits" text.
