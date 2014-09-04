@@ -1,0 +1,1 @@
+{ "id": 188, "build_type": "middleman", "slug": "meme", "namespace": "sbnation-meme-builder", "url_prefix": "/a/meme", "community": "sbnation.com", "s3_bucket": "chorus-editorial-apps", "cdn_host": "http://ea-cdn.voxmedia.com" }
