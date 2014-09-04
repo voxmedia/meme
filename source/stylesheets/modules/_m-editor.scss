@@ -95,7 +95,7 @@ $m: '.m-editor';
     border-color: #cfcfcf;
   }
   100% {
-    background-color: lighten(#2980b9, 40);
-    border-color: #2980b9;
+    background-color: lighten($theme-color, 40);
+    border-color: $theme-color;
   }
 }

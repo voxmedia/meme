@@ -14,7 +14,7 @@ $m: '.m-canvas';
   }
 
   #{$m}__download a {
-    background: rgba( 41, 128, 185, 1 );
+    background: $theme-color;
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -26,7 +26,7 @@ $m: '.m-canvas';
     @include transition (background-color ease-in-out 0.3s);
 
     &:hover {
-      background: rgba( 41, 128, 185, .6 );
+      background: lighten($theme-color, 25);
     }
   }
 }
