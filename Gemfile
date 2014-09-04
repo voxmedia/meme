@@ -12,3 +12,6 @@ gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]
 
 # Windows does not come with time zone data
 gem "tzinfo-data", platforms: [:mswin, :mingw]
+
+gem "middleman-chorus", :git => "git@github.com:voxmedia/middleman-chorus.git"
+gem "vox-google-drive", :git => "git@github.com:voxmedia/vox-google-drive.git"
