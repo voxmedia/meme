@@ -12,7 +12,7 @@ var MEME_SETTINGS = {
   creditText: 'Source:', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   fontColor: 'white', // Universal font color.
-  fontFamily: 'Helvetica', // Default font family selection.
+  fontFamily: '"Knockout 28 A","Knockout 28 B"', // Default font family selection.
   // Font family options: set to empty array to disable font selector.
   fontFamilyOpts: [],
   fontSize: 24, // Font size of main headline.
@@ -30,10 +30,10 @@ var MEME_SETTINGS = {
   textAlign: 'left', // Text alignment.
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: ['left', 'center', 'right'],
-  textShadow: true, // Text shadow.
+  textShadow: false, // Text shadow.
   textShadowEdit: false, // Toggles text shadow control within the editor.
   watermarkAlpha: 1, // Opacity of watermark image.
   watermarkMaxWidthRatio: 1, // Maximum allowed width of watermark, relative to canvas width.
-  watermarkSrc: watermark, // Watermark image path. MUST reside on host domain, or use base64 data.
+  watermarkSrc: 'images/sbnation.png', // Watermark image path. MUST reside on host domain, or use base64 data.
   width: 755 // Canvas rendering width.
 };
