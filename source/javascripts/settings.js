@@ -5,7 +5,7 @@ var watermarks = {
   'bloodyelbow': true
 };
 
-watermark = watermarks[watermark] ? watermark : '';
+watermark = watermarks[watermark] ? 'images/'+watermark+'.png' : '';
 
 
 var MEME_SETTINGS = {
@@ -34,6 +34,6 @@ var MEME_SETTINGS = {
   textShadowEdit: false, // Toggles text shadow control within the editor.
   watermarkAlpha: 1, // Opacity of watermark image.
   watermarkMaxWidthRatio: 1, // Maximum allowed width of watermark, relative to canvas width.
-  watermarkSrc: 'images/'+watermark+'.png', // Watermark image path. MUST reside on host domain, or use base64 data.
+  watermarkSrc: watermark, // Watermark image path. MUST reside on host domain, or use base64 data.
   width: 755 // Canvas rendering width.
 };
