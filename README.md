@@ -1,14 +1,6 @@
 # Meme v.2
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart.
-=======
-Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart. Backbone refactor by Greg MacWilliam.
->>>>>>> Complete refactor with model-view separation. Fixes several UI bugs.
-=======
-Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart. Version-2 refactor by Greg MacWilliam.
->>>>>>> Adding version 2.0 settings and docs.
+Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart, Greg MacWilliam.
 
 Meme is a generator that Vox Media uses to create social sharing images. See working version at [http://www.sbnation.com/a/meme](http://www.sbnation.com/a/meme).
 
@@ -33,34 +25,27 @@ This will start a local web server running at: `http://localhost:4567/`
 
 ## Customization
 
-### Setup
+### Configuration
 
-Settings and controls are customized through `source/javascripts/settings.js.erb`.
+Settings and controls are configured through `source/javascripts/settings.js.erb`. The settings file has ample comments to document configuration.
 
-<<<<<<< HEAD
-* https://twitter.com/voxdotcom/status/481671889094340608
-* https://twitter.com/voxdotcom/status/479228288221470721
-* https://twitter.com/voxdotcom/status/481619042545844225
-
-<<<<<<< HEAD
-## Design decisions
-
-Images are base64 and javascript is inline. This is due to security restrictions of the HTML5 Canvas imaging object. Source images must be embedded within the page or located on the host domain to be allowed into the canvas security sandbox.
-
-I chose middleman because there are great sensible defaults, but there's no reason this couldn't be a single page html file.
-
-=======
->>>>>>> Complete refactor with model-view separation. Fixes several UI bugs.
-## Extras
-=======
 ### Fonts
->>>>>>> Adding version 2.0 settings and docs.
 
-Include your own fonts in `stylesheets/_fonts.scss`. Then add your fonts as options into the settings file.
+Include your own fonts in `stylesheets/_fonts.scss`, then add your font options into the settings file.
 
 ### Editor theme
 
-Set the `$theme-color` variable in `source/stylesheets/_vars.scss`.
+Set the `$theme-color` variable in `source/stylesheets/_vars.scss`. That one color will be tinted across all editor controls.
+
+## Cross-Origin Resources (CORS)
+
+This is an HTML5 Canvas-based application, and thus comes with some security restrictions when loading graphics across domains (ex: a canvas element on *http://tatooine.com* cannot export with an image hosted on *http://dagobah.com*).
+
+If you're hosting this application on the same domain that serves your images, then congratulations! You have no problems. However, if you're going through a CDN, then you'll probably encounter some cross-domain security issues; at which time you have two options:
+
+1. Follow this [excellent MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image) about configuring "Access-Control-Allow-Origin" headers. You'll need to enable these headers on your CDN, at which time the Meme app should be able to request images from it.
+
+2. Embed all of your watermark images as base64 data URIs within the `settings.js.erb` file. The asset pipeline's `asset_data_uri` helper method makes this very easy, and effectively embeds all image data within your JavaScript. The downside here is that your JavaScript will become a very large payload as you include more images. In the long term, getting CORS headers configured will be a better option.
 
 ## Examples
 
@@ -76,4 +61,3 @@ Set the `$theme-color` variable in `source/stylesheets/_vars.scss`.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
