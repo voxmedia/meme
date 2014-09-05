@@ -5,3 +5,4 @@
 //= require "models/meme"
 //= require "views/meme-canvas"
 //= require "views/meme-editor"
+//= require "helpers/font-monitor"
