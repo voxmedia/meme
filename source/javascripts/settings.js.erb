@@ -27,10 +27,10 @@ var MEME_SETTINGS = {
   watermarkMaxWidthRatio: 1, // Maximum allowed width of watermark, relative to canvas width.
   watermarkSrc: (localStorage && localStorage.getItem('sbn_meme_watermark')) || '<%= image_path("sbnation.png") %>', // Load watermark pref out of localStorage.
   watermarkOpts: [
-    {text: 'SB Nation', value: '<%= image_path("sbnation.png") %>', data: '<%= asset_data_uri("sbnation.png") %>'},
-    {text: 'Bloody Elbow', value: '<%= image_path("bloodyelbow.png") %>', data: '<%= asset_data_uri("bloodyelbow.png") %>'},
-    {text: 'MMA Fighting', value: '<%= image_path("mmafighting.png") %>', data: '<%= asset_data_uri("mmafighting.png") %>'},
-    {text: 'MMA Mania', value: '<%= image_path("mmamania.png") %>', data: '<%= asset_data_uri("mmamania.png") %>'}
+    {text: 'SB Nation', value: '<%= image_path("sbnation.png") %>'}, // data: '<% asset_data_uri("sbnation.png") %>'},
+    {text: 'Bloody Elbow', value: '<%= image_path("bloodyelbow.png") %>'}, // data: '<% asset_data_uri("bloodyelbow.png") %>'},
+    {text: 'MMA Fighting', value: '<%= image_path("mmafighting.png") %>'}, // data: '<% asset_data_uri("mmafighting.png") %>'},
+    {text: 'MMA Mania', value: '<%= image_path("mmamania.png") %>'} // data: '<% asset_data_uri("mmamania.png") %>'}
   ],
   width: 755 // Canvas rendering width.
 };
