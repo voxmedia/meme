@@ -53,18 +53,27 @@ MEME.MemeEditorView = Backbone.View.extend({
 
       $('#overlay').show().find('ul').append(overlayOpts);
     }
+
+    if (d.watermarkOpts && d.watermarkOpts.length) {
+      var watermarkOpts = _.reduce(d.watermarkOpts, function(memo, opt) {
+        return memo += '<option value="'+opt.value+'">'+opt.text+'</option>';
+      }, '');
+
+      $('#watermark').append(watermarkOpts);
+    }
   },
 
   render: function() {
     var d = this.model.toJSON();
-    $('#headline').val(d.headlineText);
-    $('#credit').val(d.creditText);
-    $('#image-scale').val(d.imageScale);
-    $('#font-size').val(d.fontSize);
-    $('#font-family').val(d.fontFamily);
-    $('#text-align').val(d.textAlign);
-    $('#text-shadow').prop('checked', d.textShadow);
-    $('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
+    this.$('#headline').val(d.headlineText);
+    this.$('#credit').val(d.creditText);
+    this.$('#watermark').val(d.watermarkSrc);
+    this.$('#image-scale').val(d.imageScale);
+    this.$('#font-size').val(d.fontSize);
+    this.$('#font-family').val(d.fontFamily);
+    this.$('#text-align').val(d.textAlign);
+    this.$('#text-shadow').prop('checked', d.textShadow);
+    this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
   },
 
   events: {
@@ -73,6 +82,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #font-family': 'onFontFamily',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
+    'input #watermark': 'onWatermark',
     'input #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
@@ -105,6 +115,11 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set('fontFamily', this.$('#font-family').val());
   },
 
+  onWatermark: function() {
+    this.model.set('watermarkSrc', this.$('#watermark').val());
+    if (localStorage) localStorage.setItem('sbn_meme_watermark', this.$('#watermark').val());
+  },
+
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());
   },
@@ -123,19 +138,19 @@ MEME.MemeEditorView = Backbone.View.extend({
     var dataTransfer = this.getDataTransfer(evt);
     if (dataTransfer) {
       dataTransfer.dropEffect = 'copy';
-      $('#dropzone').addClass('pulse');
+      this.$('#dropzone').addClass('pulse');
     }
   },
 
   onZoneOut: function(evt) {
-    $('#dropzone').removeClass('pulse');
+    this.$('#dropzone').removeClass('pulse');
   },
 
   onZoneDrop: function(evt) {
     var dataTransfer = this.getDataTransfer(evt);
     if (dataTransfer) {
       this.model.loadBackground(dataTransfer.files[0]);
-      $('#dropzone').removeClass('pulse');
+      this.$('#dropzone').removeClass('pulse');
     }
   }
 });
