@@ -26,34 +26,35 @@ MEME.MemeModel = Backbone.Model.extend({
     watermarkAlpha: 0.75,
     watermarkMaxWidthRatio: 0.20,
     watermarkSrc: '',
+    watermarkOpts: [],
     width: 755
   },
 
   // Initialize with custom image members used for background and watermark:
   // These images will (sort of) behave like managed model fields.
   initialize: function() {
-    var background = this.background = new Image();
-    var watermark = this.watermark = new Image();
+    this.background = new Image();
+    this.watermark = new Image();
 
     // Configure for cross-origin requests:
-    background.setAttribute('crossOrigin', 'anonymous');
-    watermark.setAttribute('crossOrigin', 'anonymous');
+    //background.setAttribute('crossOrigin', 'anonymous');
+    //watermark.setAttribute('crossOrigin', 'anonymous');
 
     // Set image sources to trigger "change" whenever they reload:
-    background.onload = watermark.onload = _.bind(function() {
+    this.background.onload = this.watermark.onload = _.bind(function() {
       this.trigger('change');
     }, this);
 
     // Set initial image and watermark sources:
-    if (this.get('imageSrc')) background.src = this.get('imageSrc');
-    if (this.get('watermarkSrc')) watermark.src = this.get('watermarkSrc');
+    if (this.get('imageSrc')) this.background.src = this.get('imageSrc');
+    if (this.get('watermarkSrc')) this.setWatermarkSrc(this.get('watermarkSrc'));
 
     // Update image and watermark sources if new source URLs are set:
     this.listenTo(this, 'change:imageSrc', function() {
-      background.src = this.get('imageSrc');
+      this.background.src = this.get('imageSrc');
     });
     this.listenTo(this, 'change:watermarkSrc', function() {
-      watermark.src = this.get('watermarkSrc');
+      this.setWatermarkSrc(this.get('watermarkSrc'));
     });
   },
 
@@ -69,5 +70,10 @@ MEME.MemeModel = Backbone.Model.extend({
 
   loadWatermark: function(file) {
     this.loadFileForImage(file, this.watermark);
+  },
+
+  setWatermarkSrc: function(src) {
+    var option = _.findWhere(this.get('watermarkOpts'), {value: src});
+    this.watermark.src = (option && option.data) || src;
   }
 });
