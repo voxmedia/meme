@@ -24,12 +24,12 @@ var MEME_SETTINGS = {
   textShadowEdit: false, // Toggles text shadow control within the editor.
   watermarkAlpha: 1, // Opacity of watermark image.
   watermarkMaxWidthRatio: 1, // Maximum allowed width of watermark, relative to canvas width.
-  watermarkSrc: (localStorage && localStorage.getItem('sbn_meme_watermark')) || '<%= image_path("sbnation.png") %>', // Load watermark pref out of localStorage.
+  watermarkSrc: (localStorage && localStorage.getItem('sbn_meme_watermark')) || 'watermarks/sbnation.png', // Load watermark pref out of localStorage.
   watermarkOpts: [
-    {text: 'SB Nation', value: '<%= image_path("sbnation.png") %>'},
-    {text: 'Bloody Elbow', value: '<%= image_path("bloodyelbow.png") %>'},
-    {text: 'MMA Fighting', value: '<%= image_path("mmafighting.png") %>'},
-    {text: 'MMA Mania', value: '<%= image_path("mmamania.png") %>'}
+    {text: 'SB Nation', value: 'watermarks/sbnation.png'},
+    {text: 'Bloody Elbow', value: 'watermarks/bloodyelbow.png'},
+    {text: 'MMA Fighting', value: 'watermarks/mmafighting.png'},
+    {text: 'MMA Mania', value: 'watermarks/mmamania.png'}
   ],
   width: 755 // Canvas rendering width.
 };
