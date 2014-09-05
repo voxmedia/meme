@@ -8,7 +8,11 @@ var MEME_SETTINGS = {
   fontFamilyOpts: [],
   fontSize: 24, // Font size of main headline.
   // Font size options: set to empty array to disable font-size selector.
-  fontSizeOpts: [14, 24, 36],
+  fontSizeOpts: [
+    {text: 'Small text', value: 14},
+    {text: 'Medium text', value: 24},
+    {text: 'Large text', value: 36}
+  ],
   headlineText: 'Write your own headline', // Default headline text.
   height: 378, // Canvas rendering height.
   imageScale: 1, // Background image scale.
@@ -18,19 +22,23 @@ var MEME_SETTINGS = {
   // Overlay color options: set to empty array to disable overlay options selector.
   overlayColorOpts: ['#000', '#777', '#d32027'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
-  textAlign: 'left', // Text alignment.
+  textAlign: 'left', // Text alignment. Valid values are "left", "center", and "right".
   // Text alignment options: set to empty array to disable alignment picker.
-  textAlignOpts: ['left', 'center', 'right'],
+  textAlignOpts: [
+    {text: 'Align left', value: 'left'}, 
+    {text: 'Align center', value: 'center'},
+    {text: 'Align right', value: 'right'}
+  ],
   textShadow: false, // Text shadow.
   textShadowEdit: false, // Toggles text shadow control within the editor.
   watermarkAlpha: 1, // Opacity of watermark image.
   watermarkMaxWidthRatio: 1, // Maximum allowed width of watermark, relative to canvas width.
   watermarkSrc: (localStorage && localStorage.getItem('sbn_meme_watermark')) || '<%= image_path("sbnation.png") %>', // Load watermark pref out of localStorage.
   watermarkOpts: [
-    {text: 'SB Nation', value: '<%= image_path("sbnation.png") %>'}, // data: '<% asset_data_uri("sbnation.png") %>'},
-    {text: 'Bloody Elbow', value: '<%= image_path("bloodyelbow.png") %>'}, // data: '<% asset_data_uri("bloodyelbow.png") %>'},
-    {text: 'MMA Fighting', value: '<%= image_path("mmafighting.png") %>'}, // data: '<% asset_data_uri("mmafighting.png") %>'},
-    {text: 'MMA Mania', value: '<%= image_path("mmamania.png") %>'} // data: '<% asset_data_uri("mmamania.png") %>'}
+    {text: 'SB Nation', value: '<%= image_path("sbnation.png") %>', data: ''}, // data: '<% asset_data_uri("sbnation.png") %>'
+    {text: 'Bloody Elbow', value: '<%= image_path("bloodyelbow.png") %>', data: ''},
+    {text: 'MMA Fighting', value: '<%= image_path("mmafighting.png") %>', data: ''},
+    {text: 'MMA Mania', value: '<%= image_path("mmamania.png") %>', data: ''}
   ],
   width: 755 // Canvas rendering width.
 };

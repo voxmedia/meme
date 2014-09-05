@@ -73,8 +73,9 @@ MEME.MemeModel = Backbone.Model.extend({
     this.loadFileForImage(file, this.watermark);
   }
 
-  /*,setWatermarkSrc: function(src) {
+  /*, setWatermarkSrc: function(src) {
     var option = _.findWhere(this.get('watermarkOpts'), {value: src});
     this.watermark.src = (option && option.data) || src;
+    this.set('watermarkSrc', src);
   }*/
 });

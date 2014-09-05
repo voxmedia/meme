@@ -2,7 +2,13 @@ MEME.waitForFonts = function(callback) {
 
   // Parse out fonts list:
   var fonts = this.model.get('fontFamily').split(',');
-  fonts = fonts.concat(this.model.get('fontFamilyOpts') || []);
+
+  // Concat on additional font options:
+  fonts = _.map(this.model.get('fontFamilyOpts') || [], function(opt) {
+    return opt.hasOwnProperty('value') ? opt.value : opt;
+  }).concat(fonts);
+
+  // Filter down to unique fonts list:
   fonts = _.unique(fonts);
 
   // Setup loader values:

@@ -14,52 +14,44 @@ MEME.MemeEditorView = Backbone.View.extend({
   buildForms: function() {
     var d = this.model.toJSON();
 
+    function buildOptions(opts) {
+      return _.reduce(opts, function(memo, opt) {
+        return memo += ['<option value="', opt.hasOwnProperty('value') ? opt.value : opt, '">', opt.hasOwnProperty('text') ? opt.text : opt, '</option>'].join('');
+      }, '');
+    }
+
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
     }
 
     // Build text alignment options:
     if (d.textAlignOpts && d.textAlignOpts.length) {
-      var alignOpts = _.reduce(d.textAlignOpts, function(memo, opt) {
-        return memo += ['<option value="', opt, '">Align ', opt, '</option>'].join('');
-      }, '');
-
-      $('#text-align').append(alignOpts).show();
+      $('#text-align').append(buildOptions(d.textAlignOpts)).show();
     }
 
     // Build font size options:
     if (d.fontSizeOpts && d.fontSizeOpts.length) {
-      var sizeLabels = ['Small', 'Medium', 'Large', 'Massive'];
-      var sizeOpts = _.reduce(d.fontSizeOpts, function(memo, opt, index) {
-        return memo += ['<option value="', opt, '">', sizeLabels[index], ' text</option>'].join('');
-      }, '');
-
-      $('#font-size').append(sizeOpts).show();
+      $('#font-size').append(buildOptions(d.fontSizeOpts)).show();
     }
 
     // Build font family options:
     if (d.fontFamilyOpts && d.fontFamilyOpts.length) {
-      var familyOpts = _.reduce(d.fontFamilyOpts, function(memo, opt) {
-        return memo += ['<option value="', opt, '">', opt, '</option>'].join('');
-      }, '');
-
-      $('#font-family').append(familyOpts).show();
+      $('#font-family').append(buildOptions(d.fontFamilyOpts)).show();
     }
 
+    // Build watermark options:
+    if (d.watermarkOpts && d.watermarkOpts.length) {
+      $('#watermark').append(buildOptions(d.watermarkOpts)).show();
+    }
+
+    // Build overlay color options:
     if (d.overlayColorOpts && d.overlayColorOpts.length) {
       var overlayOpts = _.reduce(d.overlayColorOpts, function(memo, opt) {
-        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+opt+'" type="radio" name="overlay" value="'+opt+'"></label></li>';
+        var color = opt.hasOwnProperty('value') ? opt.value : opt;
+        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
       }, '');
 
       $('#overlay').show().find('ul').append(overlayOpts);
-    }
-
-    if (d.watermarkOpts && d.watermarkOpts.length) {
-      var watermarkOpts = _.reduce(d.watermarkOpts, function(memo, opt) {
-        return memo += '<option value="'+opt.value+'">'+opt.text+'</option>';
-      }, '');
-
-      $('#watermark').append(watermarkOpts);
     }
   },
 
