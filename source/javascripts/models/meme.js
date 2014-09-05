@@ -32,24 +32,28 @@ MEME.MemeModel = Backbone.Model.extend({
   // Initialize with custom image members used for background and watermark:
   // These images will (sort of) behave like managed model fields.
   initialize: function() {
-    this.background = new Image();
-    this.watermark = new Image();
-    
+    var background = this.background = new Image();
+    var watermark = this.watermark = new Image();
+
+    // Configure for cross-origin requests:
+    background.setAttribute('crossOrigin', 'anonymous');
+    watermark.setAttribute('crossOrigin', 'anonymous');
+
     // Set image sources to trigger "change" whenever they reload:
-    this.background.onload = this.watermark.onload = _.bind(function() {
+    background.onload = watermark.onload = _.bind(function() {
       this.trigger('change');
     }, this);
 
     // Set initial image and watermark sources:
-    if (this.get('imageSrc')) this.background.src = this.get('imageSrc');
-    if (this.get('watermarkSrc')) this.watermark.src = this.get('watermarkSrc');
+    if (this.get('imageSrc')) background.src = this.get('imageSrc');
+    if (this.get('watermarkSrc')) watermark.src = this.get('watermarkSrc');
 
     // Update image and watermark sources if new source URLs are set:
     this.listenTo(this, 'change:imageSrc', function() {
-      this.background.src = this.get('imageSrc');
+      background.src = this.get('imageSrc');
     });
     this.listenTo(this, 'change:watermarkSrc', function() {
-      this.watermark.src = this.get('watermarkSrc');
+      watermark.src = this.get('watermarkSrc');
     });
   },
 
