@@ -25,7 +25,7 @@ MEME.MemeModel = Backbone.Model.extend({
     textShadow: true,
     textShadowEdit: true,
     watermarkAlpha: 0.75,
-    watermarkMaxWidthRatio: 0.20,
+    watermarkMaxWidthRatio: 0.25,
     watermarkSrc: '',
     watermarkOpts: [],
     width: 755
@@ -48,14 +48,14 @@ MEME.MemeModel = Backbone.Model.extend({
 
     // Set initial image and watermark sources:
     if (this.get('imageSrc')) this.background.src = this.get('imageSrc');
-    if (this.get('watermarkSrc')) this.watermark.src = this.get('watermarkSrc');
+    if (this.get('watermarkSrc')) this.setWatermarkSrc(this.get('watermarkSrc'));
 
     // Update image and watermark sources if new source URLs are set:
     this.listenTo(this, 'change:imageSrc', function() {
       this.background.src = this.get('imageSrc');
     });
     this.listenTo(this, 'change:watermarkSrc', function() {
-      this.watermark.src = this.get('watermarkSrc');
+      this.setWatermarkSrc(this.get('watermarkSrc'));
     });
   },
 
@@ -65,17 +65,23 @@ MEME.MemeModel = Backbone.Model.extend({
     reader.readAsDataURL(file);
   },
 
+  // Loads a file reference into the background image data source:
   loadBackground: function(file) {
     this.loadFileForImage(file, this.background);
   },
 
+  // Loads a file reference into the watermark image data source:
   loadWatermark: function(file) {
     this.loadFileForImage(file, this.watermark);
-  }
+  },
 
-  /*, setWatermarkSrc: function(src) {
-    var option = _.findWhere(this.get('watermarkOpts'), {value: src});
-    this.watermark.src = (option && option.data) || src;
+  // When setting a new watermark "src",
+  // this method looks through watermark options and finds the matching option.
+  // The option's "data" attribute will be set as the watermark, if defined.
+  // This is useful for avoiding cross-origin resource loading issues.
+  setWatermarkSrc: function(src) {
+    var opt = _.findWhere(this.get('watermarkOpts'), {value: src});
+    this.watermark.src = (opt && opt.data) || src;
     this.set('watermarkSrc', src);
-  }*/
+  }
 });
