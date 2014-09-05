@@ -38,8 +38,8 @@ MEME.MemeModel = Backbone.Model.extend({
     this.watermark = new Image();
 
     // Configure for cross-origin requests:
-    //background.setAttribute('crossOrigin', 'anonymous');
-    //watermark.setAttribute('crossOrigin', 'anonymous');
+    this.background.setAttribute('crossOrigin', 'anonymous');
+    this.watermark.setAttribute('crossOrigin', 'anonymous');
 
     // Set image sources to trigger "change" whenever they reload:
     this.background.onload = this.watermark.onload = _.bind(function() {
@@ -48,14 +48,14 @@ MEME.MemeModel = Backbone.Model.extend({
 
     // Set initial image and watermark sources:
     if (this.get('imageSrc')) this.background.src = this.get('imageSrc');
-    if (this.get('watermarkSrc')) this.setWatermarkSrc(this.get('watermarkSrc'));
+    if (this.get('watermarkSrc')) this.watermark.src = this.get('watermarkSrc');
 
     // Update image and watermark sources if new source URLs are set:
     this.listenTo(this, 'change:imageSrc', function() {
       this.background.src = this.get('imageSrc');
     });
     this.listenTo(this, 'change:watermarkSrc', function() {
-      this.setWatermarkSrc(this.get('watermarkSrc'));
+      this.watermark.src = this.get('watermarkSrc');
     });
   },
 
@@ -71,10 +71,10 @@ MEME.MemeModel = Backbone.Model.extend({
 
   loadWatermark: function(file) {
     this.loadFileForImage(file, this.watermark);
-  },
+  }
 
-  setWatermarkSrc: function(src) {
+  /*,setWatermarkSrc: function(src) {
     var option = _.findWhere(this.get('watermarkOpts'), {value: src});
     this.watermark.src = (option && option.data) || src;
-  }
+  }*/
 });
