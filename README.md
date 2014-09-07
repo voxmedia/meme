@@ -2,7 +2,7 @@
 
 Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart, Greg MacWilliam.
 
-Meme is a generator that Vox Media uses to create social sharing images. See working version at [http://www.sbnation.com/a/meme](http://www.sbnation.com/a/meme).
+Meme is a generator that Vox Media uses to create social sharing images. See working version at [http://test.apps.voxmedia.com/tools/meme/](http://test.apps.voxmedia.com/tools/meme/).
 
 ![screenshot](readme.png)
 
@@ -49,7 +49,7 @@ If you're hosting this application on the same domain that serves your images, t
 
 ## Examples
 
-* http://www.sbnation.com/a/meme
+* http://test.apps.voxmedia.com/tools/meme/
 * https://twitter.com/voxdotcom/status/481671889094340608
 * https://twitter.com/voxdotcom/status/479228288221470721
 * https://twitter.com/voxdotcom/status/481619042545844225
