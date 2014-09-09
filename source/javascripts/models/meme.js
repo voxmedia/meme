@@ -56,6 +56,12 @@ MEME.MemeModel = Backbone.Model.extend({
     });
   },
 
+  // Specifies if the background image currently has data:
+  hasBackground: function() {
+    return this.background.width && this.background.height;
+  },
+
+  // Loads a file stream into an image object:
   loadFileForImage: function(file, image) {
     var reader = new FileReader();
     reader.onload = function() { image.src = reader.result; };
