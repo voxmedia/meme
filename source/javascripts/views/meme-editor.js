@@ -59,7 +59,6 @@ MEME.MemeEditorView = Backbone.View.extend({
     var d = this.model.toJSON();
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
-    console.log(d.watermarkSrc);
     this.$('#watermark').val(d.watermarkSrc);
     this.$('#image-scale').val(d.imageScale);
     this.$('#font-size').val(d.fontSize);
@@ -110,7 +109,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onWatermark: function() {
     this.model.set('watermarkSrc', this.$('#watermark').val());
-    if (localStorage) localStorage.setItem('sbn_meme_watermark', this.$('#watermark').val());
+    if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
   },
 
   onScale: function() {
