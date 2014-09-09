@@ -12,6 +12,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     if (canvas && canvas.getContext) {
       $container.html(canvas);
       this.canvas = canvas;
+      this.setDownload();
       this.render();
     } else {
       $container.html(this.$('noscript').html());
@@ -19,6 +20,13 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     // Listen to model for changes, and re-render in response:
     this.listenTo(this.model, 'change', this.render);
+  },
+
+  setDownload: function() {
+    var a = document.createElement('a');
+    if (typeof a.download == 'undefined') {
+      this.$el.append('<p class="m-canvas__download-note">Right-click button and select "Download Linked File..." to save image.</p>');
+    }
   },
 
   render: function() {
@@ -151,7 +159,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderCredit(ctx);
     renderWatermark(ctx);
 
-    var data = this.canvas.toDataURL().replace('image/png', 'image/octet-stream');
+    var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
     this.$('#meme-download').attr({
       'href': data,
       'download': (d.downloadName || 'share') + '.png'

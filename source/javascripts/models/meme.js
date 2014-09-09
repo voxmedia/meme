@@ -37,10 +37,6 @@ MEME.MemeModel = Backbone.Model.extend({
     this.background = new Image();
     this.watermark = new Image();
 
-    // Configure for cross-origin requests:
-    this.background.setAttribute('crossOrigin', 'anonymous');
-    this.watermark.setAttribute('crossOrigin', 'anonymous');
-
     // Set image sources to trigger "change" whenever they reload:
     this.background.onload = this.watermark.onload = _.bind(function() {
       this.trigger('change');
@@ -81,7 +77,16 @@ MEME.MemeModel = Backbone.Model.extend({
   // This is useful for avoiding cross-origin resource loading issues.
   setWatermarkSrc: function(src) {
     var opt = _.findWhere(this.get('watermarkOpts'), {value: src});
-    this.watermark.src = (opt && opt.data) || src;
+    var data = (opt && opt.data) || src;
+
+    // Toggle cross-origin attribute for Data URI requests:
+    if (data.indexOf('data:') === 0) {
+      this.watermark.removeAttribute('crossorigin');
+    } else {
+      this.watermark.setAttribute('crossorigin', 'anonymous');
+    }
+
+    this.watermark.src = data;
     this.set('watermarkSrc', src);
   }
 });

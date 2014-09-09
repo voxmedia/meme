@@ -29,4 +29,10 @@ $m: '.m-canvas';
       background: lighten($theme-color, 25);
     }
   }
+
+  #{$m}__download-note {
+    color: #777;
+    font-size: 12px;
+    font-style: italic;
+  }
 }

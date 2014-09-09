@@ -59,6 +59,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     var d = this.model.toJSON();
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
+    console.log(d.watermarkSrc);
     this.$('#watermark').val(d.watermarkSrc);
     this.$('#image-scale').val(d.imageScale);
     this.$('#font-size').val(d.fontSize);
@@ -70,12 +71,12 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   events: {
     'input #headline': 'onHeadline',
-    'input #font-size': 'onFontSize',
-    'input #font-family': 'onFontFamily',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
-    'input #watermark': 'onWatermark',
-    'input #text-align': 'onTextAlign',
+    'change #font-size': 'onFontSize',
+    'change #font-family': 'onFontFamily',
+    'change #watermark': 'onWatermark',
+    'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
