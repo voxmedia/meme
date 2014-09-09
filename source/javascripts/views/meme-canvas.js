@@ -7,6 +7,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
   initialize: function() {
     var canvas = document.createElement('canvas');
     var $container = $('#meme-canvas');
+    var _this = this;
 
     // Display canvas, if enabled:
     if (canvas && canvas.getContext) {
@@ -20,6 +21,17 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     // Listen to model for changes, and re-render in response:
     this.listenTo(this.model, 'change', this.render);
+    // Allow for moving the background image within the canvas
+    $(this.canvas).on('mousedown', function(e) {
+      _this.startDrag(e);
+    });
+    $(document).on('mouseup', function(e) {
+      _this.stopDrag(e);
+    });
+    $(document).on('mousemove', function(e) {
+      _this.moveDrag(e);
+    });
+
   },
 
   setDownload: function() {
@@ -50,11 +62,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var bw = m.background.width;
 
       if (bh && bw) {
+        var bp = m.get('backgroundPosition');
+
         // Transformed height and width:
+        // Set the base position if null
         var th = bh * d.imageScale;
         var tw = bw * d.imageScale;
-        var cx = d.width / 2;
-        var cy = d.height / 2;
+        var cx = bp.x || d.width / 2;
+        var cy = bp.y || d.height / 2;
+
         ctx.drawImage(m.background, 0, 0, bw, bh, cx-(tw/2), cy-(th/2), tw, th);
       }
     }
@@ -164,5 +180,40 @@ MEME.MemeCanvasView = Backbone.View.extend({
       'href': data,
       'download': (d.downloadName || 'share') + '.png'
     });
+  },
+
+  startDrag: function(e) {
+
+    if (e.button != null && e.button != 0) {
+      this._canMove = false;
+      return true;
+    }
+
+    this._canMove = true;
+    $('body').addClass('noselect');
+
+    this._startBG = this.model.get('backgroundPosition');
+    this._startPos = { x: e.clientX, y: e.clientY };
+    this.canvas.style.cursor = 'move';
+  },
+
+  stopDrag: function(e) {
+    this._canMove = false;
+    $('body').removeClass('noselect');
+    this.canvas.style.cursor = 'default';
+  },
+
+  moveDrag: function(e) {
+    if (typeof(this._canMove) !== "undefined" && this._canMove) {
+      var origPos = this._startBG;
+
+      var position = {
+        x: origPos.x - (this._startPos.x - e.clientX),
+        y: origPos.y - (this._startPos.y - e.clientY)
+      };
+
+      this.model.set('backgroundPosition', position);
+
+    }
   }
 });

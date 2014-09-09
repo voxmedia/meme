@@ -25,11 +25,18 @@ $m: '.m-editor';
     vertical-align: middle;
 
     &.pulse {
-      -webkit-animation-name: pulsate;
-      -webkit-animation-duration: 0.3s;
-      -webkit-animation-iteration-count: infinite;
+      -webkit-animation: pulsate 0.3s infinite;
       -webkit-animation-direction: alternate;
       -webkit-animation-timing-function: ease-in-out;
+      -moz-animation: pulsate 0.3s infinite;
+      -moz-animation-direction: alternate;
+      -moz-animation-timing-function: ease-in-out;
+      -o-animation: pulsate 0.3s infinite;
+      -o-animation-direction: alternate;
+      -o-animation-timing-function: ease-in-out;
+      animation: pulsate 0.3s infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
     }
   }
 
@@ -90,7 +97,7 @@ $m: '.m-editor';
   }
 }
 
-@-webkit-keyframes pulsate {
+@mixin pulsate-keyframe() {
   0% {
     background-color: #fcfcfc;
     border-color: #cfcfcf;
@@ -99,4 +106,17 @@ $m: '.m-editor';
     background-color: lighten($theme-color, 40);
     border-color: $theme-color;
   }
+}
+
+@-webkit-keyframes pulsate {
+  @include pulsate-keyframe();
+}
+@-moz-keyframes pulsate {
+  @include pulsate-keyframe();
+}
+@-o-keyframes pulsate {
+  @include pulsate-keyframe();
+}
+@keyframes pulsate {
+  @include pulsate-keyframe();
 }
