@@ -80,7 +80,9 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
-    'drop #dropzone': 'onZoneDrop'
+    'drop #dropzone': 'onZoneDrop',
+    'change #loadinput': 'onFileLoad'
+    
   },
 
   onCredit: function() {
@@ -144,5 +146,14 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
     }
-  }
+  },
+  
+  onFileLoad: function(evt){
+    input = evt.target
+    if (input.files && input.files[0]) {
+      this.model.loadBackground(input.files[0]);
+      this.$('#dropzone').removeClass('pulse');
+    }
+  } 
+  
 });
