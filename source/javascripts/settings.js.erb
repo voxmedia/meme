@@ -48,7 +48,7 @@ var MEME_SETTINGS = {
 
   // Path to the watermark image source, or blank for no watermark:
   // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
+  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("memerizecinza.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
@@ -56,6 +56,8 @@ var MEME_SETTINGS = {
   watermarkOpts: [
     {text: 'Água Não Tem Dono branco', value: '<%= image_path("AguaNaoTemDono.png") %>', data: '<%= asset_data_uri("AguaNaoTemDono.png") %>'},
     {text: 'Itu Pede Socorro', value: '<%= image_path("itupedesocorro.png") %>', data: ''}
+    {text: 'Água Não Tem Dono logo', value: '<%= image_path("antd-trans.png") %>', data: ''}
+    {text: 'Memerize', value: '<%= image_path("memerizecinza.png") %>', data: ''}
   ],
 
   width: 755 // Canvas rendering width.
