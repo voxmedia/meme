@@ -5,15 +5,15 @@
 MEME.MemeModel = Backbone.Model.extend({
   defaults: {
     backgroundPosition: { x: null, y: null },
-    creditText: 'Source:',
+    creditText: 'Fonte:',
     creditSize: 12,
-    downloadName: 'share',
+    downloadName: 'compartilhe-13300',
     fontColor: 'white',
     fontFamily: 'Helvetica Neue',
     fontFamilyOpts: ['Helvetica', 'Helvetica Neue', 'Comic Sans MS'],
     fontSize: 24,
     fontSizeOpts: [14, 24, 36],
-    headlineText: 'Write your own headline',
+    headlineText: 'Escreva sua frase forte aqui',
     height: 378,
     imageScale: 1,
     imageSrc: '',
