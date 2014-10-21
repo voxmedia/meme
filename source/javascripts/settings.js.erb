@@ -54,8 +54,8 @@ var MEME_SETTINGS = {
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'Água Não Tem Dono logo', value: '<%= image_path("antd-trans.png") %>', data: ''}
-    {text: 'Memerize', value: '<%= image_path("memerizecinza.png") %>', data: ''}
+    {text: 'Água Não Tem Dono branco', value: '<%= image_path("antd-branco.png") %>', data: '<%= asset_data_uri("antd-branco.png") %>'},
+    {text: 'Itu Pede Socorro', value: '<%= image_path("itupedesocorro.png") %>', data: ''}
   ],
 
   width: 755 // Canvas rendering width.
