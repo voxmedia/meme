@@ -47,8 +47,8 @@ var MEME_SETTINGS = {
   watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("memerizecinza.png") %>',
+  // Alternatively, use '<%= asset_data_uri("memerizecinza.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
+  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("source/images/memerizecinza.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
