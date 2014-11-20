@@ -1,5 +1,5 @@
 var MEME_SETTINGS = {
-  creditText: 'Source:', // Default "credits" text.
+  creditText: 'Photo by', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
   fontColor: 'white', // Universal font color.
