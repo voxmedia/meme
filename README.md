@@ -6,6 +6,8 @@ The Statesman's meme generator is a lightly-modified fork of the [Vox meme gener
 
 Assets are now built using Grunt, which transpiles the SASS files and concatenates/minifies the JavaScript. We modified the app this way to make it more easily deployable on our internal infrastructure.
 
+![screenshot](readme.png)
+
 ## Deploying
 
 Statesman images, fonts, etc. are currently in the app so you'll need to follow the steps below to customize the app for your use:
