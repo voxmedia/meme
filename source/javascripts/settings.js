@@ -29,7 +29,7 @@ var MEME_SETTINGS = {
   // Image overlay color, or blank ('') for no overlay:
   overlayColor: '#000',
   // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#000', '#777', '#1368b2', '#98012e', '#62b246', '#1955a5'],
+  overlayColorOpts: ['#000', '#777', '#1368b2', '#98012e', '#62b246', '#1955a5', '#BF5700'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
 
   // Text alignment: valid settings are "left", "center", and "right".
