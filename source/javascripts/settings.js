@@ -6,11 +6,11 @@ var MEME_SETTINGS = {
 
   // Universal font family for texts:
   // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
-  fontFamily: 'Helvetica Neue',
+  fontFamily: 'Oswald',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['Arial', 'Helvetica Neue', 'Comic Sans MS'],
-  
+  fontFamilyOpts: ['Oswald', 'Georgia'],
+
   // Font size of main headline:
   fontSize: 24,
   // Font size options: set to empty array to disable font-size selector.
@@ -29,33 +29,34 @@ var MEME_SETTINGS = {
   // Image overlay color, or blank ('') for no overlay:
   overlayColor: '#000',
   // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#000', '#777', '#2980b9'],
+  overlayColorOpts: ['#000', '#777', '#1368b2', '#98012e', '#62b246', '#1955a5'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
-  
+
   // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
-    {text: 'Align left', value: 'left'}, 
+    {text: 'Align left', value: 'left'},
     {text: 'Align center', value: 'center'},
     {text: 'Align right', value: 'right'}
   ],
 
-  textShadow: false, // Text shadow toggle.
+  textShadow: true, // Text shadow toggle.
   textShadowEdit: true, // Toggles text shadow control within the editor.
   watermarkAlpha: 1, // Opacity of watermark image.
   watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
-  
+  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || 'source/images/statesman.png',
+
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'Vox', value: '<%= image_path("vox.png") %>', data: '<%= asset_data_uri("vox.png") %>'},
-    {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''}
+    {text: 'Statesman', value: 'source/images/statesman.png', data: ''},
+    {text: 'MyStatesman', value: 'source/images/mystatesman.png', data: ''},
+    {text: 'Austin360', value: 'source/images/austin360.png', data: ''},
+    {text: 'Ahora Si', value: 'source/images/ahorasi.png', data: ''}
   ],
 
   width: 755 // Canvas rendering width.
