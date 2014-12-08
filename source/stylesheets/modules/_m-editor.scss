@@ -67,24 +67,35 @@ $m: '.m-editor';
       margin: 0;
       padding: 0;
 
-      label {
-        display: block;
-        float: left;
-        height: 20px;
-        line-height: 20px;
+      li {
+        label {
+          display: block;
+          float: left;
+          height: 20px;
+          line-height: 20px;
+          margin-bottom: .5em;
+        }
+        &.no-color label {
+          margin-right: 1em;
+        }
       }
     }
+  }
+
+  #{$m}__font-color {
+    margin-bottom: .5em;
   }
 
   #{$m}__swatch {
     @include appearance(none);
     background-color: #000;
+    border: 1px solid #cfcfcf;
     border-radius: 3px;
     cursor: pointer;
     display: block;
     height: 100%;
     margin: 0;
-    margin-left: 1em;
+    margin-right: 1em;
     outline: none;
     text-align: center;
     width: 30px;

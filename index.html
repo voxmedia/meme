@@ -21,6 +21,7 @@
         <h2><label for="headline">Headline</label></h2>
         <textarea id="headline" name="headline" type="text" value=""></textarea>
 
+        <h2>Text options</h2>
         <select class="text-align" id="text-align">
           <option value="" disabled>Select alignment</option>
         </select>
@@ -34,7 +35,6 @@
         </select>
 
         <div class="m-editor__font-color" id="font-color">
-          <h2>Font Color</h2>
           <ul class="checkbox-group"></ul>
         </div>
 
@@ -43,6 +43,7 @@
           <label for="text-shadow">Text Shadow</label>
         </div>
 
+        <h2>Watermark</h2>
         <select class="watermark" id="watermark">
           <option value="" disabled>Select a watermark</option>
         </select>
@@ -53,7 +54,7 @@
         <div class="m-editor__overlay" id="overlay">
           <h2>Overlay Color</h2>
           <ul class="checkbox-group">
-            <li><label><input type="radio" name="overlay" value=""> None</label></li>
+            <li class="no-color"><label><input type="radio" name="overlay" value=""> None</label></li>
           </ul>
         </div>
       </form>
