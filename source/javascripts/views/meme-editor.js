@@ -20,6 +20,13 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
+    function buildColorOptions(opts) {
+      return _.reduce(opts, function(memo, opt) {
+        var color = opt.hasOwnProperty('value') ? opt.value : opt;
+        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
+      }, '');
+    }
+
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
     }
@@ -39,6 +46,11 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#font-family').append(buildOptions(d.fontFamilyOpts)).show();
     }
 
+    // Build font color options:
+    if (d.fontColorOpts && d.fontColorOpts.length) {
+      $('#font-color').show().find('ul').append(buildColorOptions(d.fontColorOpts));
+    }
+
     // Build watermark options:
     if (d.watermarkOpts && d.watermarkOpts.length) {
       $('#watermark').append(buildOptions(d.watermarkOpts)).show();
@@ -46,12 +58,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     // Build overlay color options:
     if (d.overlayColorOpts && d.overlayColorOpts.length) {
-      var overlayOpts = _.reduce(d.overlayColorOpts, function(memo, opt) {
-        var color = opt.hasOwnProperty('value') ? opt.value : opt;
-        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
-      }, '');
-
-      $('#overlay').show().find('ul').append(overlayOpts);
+      $('#overlay').show().find('ul').append(buildColorOptions(d.overlayColorOpts));
     }
   },
 

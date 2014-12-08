@@ -19,6 +19,9 @@ var MEME_SETTINGS = {
     {text: 'Medium text', value: 24},
     {text: 'Large text', value: 36}
   ],
+  // Font color options
+  fontColor: '#fff',
+  fontColorOpts: ['#fff', '#000'],
 
   headlineText: 'Write your own headline', // Default headline text.
   height: 378, // Canvas rendering height.
