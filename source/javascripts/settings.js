@@ -21,7 +21,7 @@ var MEME_SETTINGS = {
   ],
   // Font color options
   fontColor: '#fff',
-  fontColorOpts: ['#fff', '#000'],
+  fontColorOpts: ['#fff', '#333', '#000'],
 
   headlineText: 'Write your own headline', // Default headline text.
   height: 378, // Canvas rendering height.
