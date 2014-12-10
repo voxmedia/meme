@@ -59,6 +59,7 @@ var MEME_SETTINGS = {
     {text: 'Statesman', value: 'source/images/statesman.png', data: ''},
     {text: 'MyStatesman', value: 'source/images/mystatesman.png', data: ''},
     {text: 'Austin360', value: 'source/images/austin360.png', data: ''},
+    {text: 'Austin360 app', value: 'source/images/austin360app.png', data: ''},
     {text: 'Ahora Si', value: 'source/images/ahorasi.png', data: ''},
     {text: 'PolitiFact Texas', value: 'source/images/politifact.png', data: ''}
   ],
