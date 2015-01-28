@@ -25,6 +25,8 @@ MEME.MemeModel = Backbone.Model.extend({
     textAlignOpts: ['left', 'center', 'right'],
     textShadow: true,
     textShadowEdit: true,
+    textUppercase: true,
+    textUppercaseEdit: true,
     watermarkAlpha: 0.75,
     watermarkMaxWidthRatio: 0.25,
     watermarkSrc: '',
