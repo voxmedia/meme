@@ -104,6 +104,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.textAlign = 'left';
       }
 
+      // Uppercase text:
+      if (d.textUppercase) {
+        d.headlineText = d.headlineText.toUpperCase();
+      }
+
       var words = d.headlineText.split(' ');
       var line  = '';
 
