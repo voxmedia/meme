@@ -65,6 +65,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#font-family').val(d.fontFamily);
     this.$('#text-align').val(d.textAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
+    this.$('#head-uppercase').prop('checked', d.headUppercase);
+    this.$('#source-uppercase').prop('checked', d.sourceUppercase);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
   },
 
@@ -77,6 +79,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
+    'change #head-uppercase': 'onHeadUppercase',
+    'change #source-uppercase': 'onSourceUppercase',
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
@@ -97,6 +101,14 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onTextShadow: function() {
     this.model.set('textShadow', this.$('#text-shadow').prop('checked'));
+  },
+
+  onHeadUppercase: function() {
+    this.model.set('headUppercase', this.$('#head-uppercase').prop('checked'));
+  },
+
+  onSourceUppercase: function() {
+    this.model.set('sourceUppercase', this.$('#source-uppercase').prop('checked'));
   },
 
   onFontSize: function() {

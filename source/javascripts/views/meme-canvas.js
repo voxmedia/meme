@@ -104,6 +104,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.textAlign = 'left';
       }
 
+      // Headline Text Case
+      if (d.headUppercase) {
+        d.headlineText = d.headlineText.toUpperCase();
+      }
+      
       var words = d.headlineText.split(' ');
       var line  = '';
 
@@ -130,6 +135,10 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
       ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
+      // Source Text Case
+      if (d.sourceUppercase) {
+        d.creditText = d.creditText.toUpperCase();
+      }
       ctx.fillText(d.creditText, padding, d.height - padding);
     }
 
