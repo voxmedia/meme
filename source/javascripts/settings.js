@@ -42,8 +42,8 @@ var MEME_SETTINGS = {
     height: 378
   }, {
     label: 'Facebook',
-    width: 484,
-    height: 252
+    width: 755,
+    height: 393
   }, {
     label: 'Instagram',
     width: 612,
