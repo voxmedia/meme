@@ -35,6 +35,17 @@ var MEME_SETTINGS = {
   overlayColorOpts: ['#000', '#777', '#1368b2', '#98012e', '#62b246', '#1955a5', '#BF5700'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
 
+  // Size options: these are some sane defaults for the three social networks
+  sizeOpts: [{
+    label: 'Twitter / Facebook',
+    width: 755,
+    height: 378
+  }, {
+    label: 'Instagram',
+    width: 612,
+    height: 612
+  }],
+
   // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',
   // Text alignment options: set to empty array to disable alignment picker.

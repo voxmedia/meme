@@ -27,6 +27,12 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
+    function buildSizeOptions(opts) {
+      return _.reduce(opts, function(memo, opt) {
+        return memo += '<option value="' + opt.label + '">' + opt.label + '</option>';
+      }, '');
+    }
+
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
     }
@@ -60,6 +66,11 @@ MEME.MemeEditorView = Backbone.View.extend({
     if (d.overlayColorOpts && d.overlayColorOpts.length) {
       $('#overlay').show().find('ul').append(buildColorOptions(d.overlayColorOpts, 'overlay'));
     }
+
+    // Setup available image sizes:
+    if (d.sizeOpts && d.sizeOpts.length) {
+      $('#image-size').show().append(buildSizeOptions(d.sizeOpts));
+    }
   },
 
   render: function() {
@@ -79,6 +90,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   events: {
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
+    'change #image-size': 'onImageSize',
     'input #image-scale': 'onScale',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
@@ -123,6 +135,16 @@ MEME.MemeEditorView = Backbone.View.extend({
   onWatermark: function() {
     this.model.set('watermarkSrc', this.$('#watermark').val());
     if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
+  },
+
+  onImageSize: function(e) {
+    var sizes = this.model.get('sizeOpts'),
+        size = _.findWhere(sizes, {label: e.currentTarget.value});
+
+    this.model.set({
+      width: size.width,
+      height: size.height
+    });
   },
 
   onScale: function() {

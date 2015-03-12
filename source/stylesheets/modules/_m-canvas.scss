@@ -5,12 +5,9 @@ $m: '.m-canvas';
     width: 70%;
   }
 
-  #{$m}__canvas {
+  #{$m}__canvas canvas {
     background: #fcfcfc;
-
-    canvas {
-      max-width: 100% !important;
-    }
+    max-width: 100% !important;
   }
 
   #{$m}__download a {
