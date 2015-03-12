@@ -37,9 +37,13 @@ var MEME_SETTINGS = {
 
   // Size options: these are some sane defaults for the three social networks
   sizeOpts: [{
-    label: 'Twitter / Facebook',
+    label: 'Twitter',
     width: 755,
     height: 378
+  }, {
+    label: 'Facebook',
+    width: 484,
+    height: 252
   }, {
     label: 'Instagram',
     width: 612,
