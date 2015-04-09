@@ -1,12 +1,18 @@
 @charset "utf-8";
 @import 'compass';
-@import 'mixin';
+@import 'tn/mixin';
 
 @import 'vars';
 @import 'fonts';
 @import 'globals';
 
-@import 'normalize';
-@import 'base';
-@import 'style';
 
+@import 'tn/normalize';
+@import 'tn/base';
+@import 'tn/style';
+@import 'tn/mediaqueries';
+
+@import 'modules/m-meme';
+@import 'modules/m-canvas';
+@import 'modules/m-editor';
+@import 'modules/forms';
