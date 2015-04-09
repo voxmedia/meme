@@ -1,12 +1,12 @@
+@mixin hide() {
+  display: none;
+  visibility: hidden;
+}
+
 @mixin show() {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-}
-
-@mixin hide() {
-  display: none;
-  visibility: hidden;
 }
 
 @mixin ff($name, $file){
