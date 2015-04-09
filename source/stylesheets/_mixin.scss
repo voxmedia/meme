@@ -1,0 +1,121 @@
+@mixin show() {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@mixin hide() {
+  display: none;
+  visibility: hidden;
+}
+
+@mixin ff($name, $file){
+  font-family: $name;
+  src: url('../fonts/' + $file + '-eot.eot');
+  src: url('../fonts/' + $file + '-eot.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/' + $file + '-woff.woff') format('woff'),
+       url('../fonts/' + $file + '-ttf.ttf') format('truetype'),
+       url('../fonts/' + $file + '-svg.svg#' + $name) format('svg');  
+}
+
+@mixin background_clip($value) {
+  -webkit-background-clip: $value;
+  -moz-background-clip: $value;
+  background-clip: $value;
+}
+
+@mixin border_radius($radius: 10px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box_shadow($value...) {
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  -o-box-shadow: $value;
+  box-shadow: $value;
+}
+
+@mixin text_shadow($value...) {
+  -webkit-text-shadow: $value;
+  -moz-text-shadow: $value;
+  text-shadow: $value;
+}
+
+@mixin outline($color) {
+  -webkit-text-shadow: 0 -1px 0 $color, 1px 0 0 $color, 0 1px 0 $color, -1px 0 0 $color;
+  -moz-text-shadow: 0 -1px 0 $color, 1px 0 0 $color, 0 1px 0 $color, -1px 0 0 $color;
+  text-shadow: 0 -1px 1px $color, 1px 0 1px $color, 0 1px 1px $color, -1px 0 1px $color;
+}
+
+@mixin box_sizing($value) {
+  -webkit-box-sizing: $value; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: $value; /* Firefox, other Gecko */
+  box-sizing: $value; /* Opera/IE 8+ */
+}
+
+@mixin gradient_v($top: black, $bottom: white) {
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(top, $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top), color-stop(100%, $bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $top 0%, $bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $top 0%, $bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $top 0%, $bottom 100%); /* IE10+ */
+  background: linear-gradient(top, $top 0%, $bottom 100%); /* W3C */
+}
+
+@mixin gradient_h($top: black, $bottom: white) {
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(left, $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, $top), color-stop(100%, $bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, $top 0%, $bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, $top 0%, $bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $top 0%, $bottom 100%); /* IE10+ */
+  background: linear-gradient(left, $top 0%, $bottom 100%); /* W3C */
+}
+
+@mixin transition($value...) {
+  -moz-transition: $value;
+  -webkit-transition: $value;
+  -o-transition: $value;
+  transition-property: $value;
+}
+
+@mixin transform($value) {
+  -moz-transform: $value;
+  -webkit-transform: $value;
+  transform: $value;
+}
+
+@mixin small_article(){
+	padding-bottom: (20em/16);
+	
+	figure {
+	  padding-bottom: (163%/290*100);
+	}
+	
+	.dropline {
+	  font-size: (13em/16);
+	  word-spacing: (3em/12);
+	}
+	
+	.entry-title {
+	  font-size: (22em/16);
+	  margin-top: (10em/22);
+	}	
+}
+
+@mixin author_watermark(){
+  .watermark {
+    width: (50em/16);
+    padding-bottom: (50em/16);
+    height: 0;
+    /*float: left;*/
+    margin-right: (3em/16);
+    background-size: 64%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }	
+}

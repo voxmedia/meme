@@ -1,0 +1,21 @@
+<!DOCTYPE svg>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="70px" height="70px" viewBox="0 0 70 70" enable-background="new 0 0 70 70" xml:space="preserve">
+<g>
+	<circle opacity="0.5" fill="#EEEEEE" cx="34.793" cy="35.208" r="33.25"/>
+	<g>
+		<path fill="#EEEEEE" d="M34.793,9.659c14.089,0,25.55,11.462,25.55,25.55c0,14.088-11.461,25.55-25.55,25.55
+			c-14.088,0-25.55-11.462-25.55-25.55C9.243,21.121,20.705,9.659,34.793,9.659 M34.793,1.958c-18.364,0-33.25,14.887-33.25,33.25
+			s14.887,33.25,33.25,33.25c18.363,0,33.25-14.887,33.25-33.25S53.156,1.958,34.793,1.958L34.793,1.958z"/>
+	</g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="34.9814" y1="59.1304" x2="34.8145" y2="37.8358">
+		<stop  offset="0.2667" style="stop-color:#EEEEEE"/>
+		<stop  offset="1" style="stop-color:#CCCCCC"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M68.036,34.824c0-0.013-0.003-0.025-0.005-0.038C67.805,16.618,53.016,1.958,34.793,1.958
+		c-18.364,0-33.25,14.887-33.25,33.25c0,9.219,3.754,17.56,9.814,23.583l5.453-5.453C12.14,48.706,9.243,42.29,9.243,35.208
+		c0-14.088,11.462-25.55,25.55-25.55c14.089,0,25.55,11.462,25.55,25.55c0,0,0.017,0.094,0.02,0.142
+		c0.146,2.119,1.981,3.719,4.101,3.574C66.581,38.779,68.182,36.943,68.036,34.824z"/>
+		<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 35 35" to="360 35 35" begin="0s" dur="1s" repeatCount="indefinite"/>
+</g>
+</svg>

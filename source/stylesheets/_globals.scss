@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-
+/*
 body {
   background-color: #fff;
   color: $default-text-color;
@@ -33,8 +33,8 @@ body.noselect {
 
 .cf:before,
 .cf:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+    content: " ";
+    display: table;
 }
 .cf:after {
     clear: both;
@@ -42,3 +42,4 @@ body.noselect {
 .cf {
     *zoom: 1;
 }
+*/
