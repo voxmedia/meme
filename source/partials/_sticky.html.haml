@@ -1,0 +1,117 @@
+%section#sticky
+  %h2.visuallyhidden Navegación secundaria
+  %ul#secondary-navigation.wrapper
+    %li.sticky-logo-tn
+      %a.title-item.logo-tn{:href => "/", :title => "Todo Noticias"} Todo Noticias
+    %li.has-submenu.sections-menu.touch-menu
+      %span.title-item Secciones
+      .sub-menu.hide-menu
+        .menu-content.clearfix.wrapper
+          .sub-menu-block.block-microsites
+            .block-title Categorías
+            %ul.block-list
+              %li
+                %a{:href => "/todapasion", :title => "Toda Pasión"} Toda Pasión
+              %li
+                %a{:href => "/laviola", :title => "La Viola"} La Viola
+              %li
+                %a{:href => "/famosos", :title => "Famosos"} Famosos
+              %li
+                %a{:href => "/tecno", :title => "Tecno"} Tecno
+              %li
+                %a{:href => "/tnylagente", :title => "TN y La Gente"} TN y La Gente
+              %li
+                %a{:href => "/videos", :title => "TN Videos"} TN Videos
+          .sub-menu-block
+            .block-title Secciones
+            %ul.block-list
+              %li
+                %a{:href => "/politica", :title=>"Política"} Política
+              %li
+                %a{:href => "/policiales",:title =>"Policiales"} Policiales
+              %li
+                %a{:href => "/espectaculos",:title => "Espectáculos"} Espectáculos
+              %li
+                %a{:href => "/internacional",:title => "Internacional"} Internacional
+              %li
+                %a{:href => "/sociedad",:title =>"Sociedad"} Sociedad
+              %li
+                %a{:href => "/secciones",:title =>"Más secciones"} Más Secciones
+          .sub-menu-block
+            .block-title Servicios
+            %ul.block-list
+              %li
+                %a{:href => "/clima",:title =>"Clima"} Clima
+              %li
+                %a{:href => "/transito",:title =>"Transito"} Tránsito
+              %li
+                %a{:href => "/loterias",:title =>"Quinielas"} Quinielas
+              %li
+                %a{:href => "/deportes/resultados",:title =>"Resultados deportivos"} Resultados Deportivos
+              %li
+                %a{:href => "/cine",:title =>"Cartelera de cine"} Cartelera de Cine
+              %li
+                %a{:href => "/teatro",:title =>"Cartelera de teatro"} Cartelera de Teatro
+              %li
+                %a{:href => "/feriados",:title =>"Feriados"} Feriados
+              %li
+                %a{:href => "http://interactivo.tn.com.ar/",:title =>"TN interactivo"} TN Interactivo
+          .sub-menu-block
+            .block-title Programas
+            %ul.block-list
+              %li
+                %a{:href => "/programas/a-dos-voces",:title =>"A Dos Voces"} A Dos Voces
+              %li
+                %a{:href => "/programas/agenda-nacional",:title =>"Agenda Nacional"} Agenda Nacional
+              %li
+                %a{:href => "/programas/argentina-para-armar",:title =>"Argentina para Armar"} Argentina para Armar
+              %li
+                %a{:href => "/programas/codigo-politico",:title =>"Código Polí­tico"} Código Polí­tico
+              %li
+                %a{:href => "/programas/colectivo-imaginario",:title =>"Colectivo Imaginario"} Colectivo Imaginario
+              %li
+                %a{:href => "/programas/desde-el-llano",:title =>"Desde el Llano"} Desde el Llano
+              %li
+                %a{:href => "/programas/208060",:title =>"Diarios de Motoneta"} Diarios de Motoneta
+              %li
+                %a{:href => "/programas",:title =>"Más Programas"} Más Programas
+          .sub-menu-block.no-right
+            .block-title Apps
+            %ul.block-list
+              %li
+                %a{:href => "https://play.google.com/store/apps/details?id=com.tn&feature=search_result#?t=W251bGwsMSwxLDEsImNvbS50biJd",:title =>"Android"} Android
+              %li
+                %a{:href => "https://itunes.apple.com/us/app/tn-hd/id391803698?mt=8",:title =>"iPad"} iPad
+              %li
+                %a{:href => "https://itunes.apple.com/us/app/tn/id391573980?mt=8",:title =>"iPhone"} iPhone
+              %li
+                %a{:href => "http://www.windowsphone.com/es-es/store/app/tn/f497841e-7d12-4fc4-8596-bcd9c9fa4cf1",:title =>"Windows"} Windows
+              %li
+                %a{:href => "http://appworld.blackberry.com/webstore/content/46472890/?lang=es&countrycode=AR",:title =>"Blackberry"} Blackberry
+              %li
+                %a{:href => "http://tn.com.ar/flip",:title =>"TN Flip"} TN Flip
+              %li
+                %a{:href => "http://flpbd.it/todonoticias",:title =>"Flipboard"} Flipboard
+              %li
+                %a{:href => "https://chrome.google.com/webstore/detail/tn-todo-noticias/mfdljeahedcobnjhjkabpeafoicpkcgm",:title =>"Chrome"} Chrome
+              
+    %li.live
+      %a.title-item{:href => "/envivo/24hs", :title=>"En Vivo"} En Vivo
+ 
+    %li.item-right.first-child.login-item
+      %a#user-image.title-item{:data=>{:url=> "ajax/user_image"}, :href => "http://tn.com.ar/user", :title => "Conectate a TN y la Gente"}
+        %img.small-avatar{:alt=> "usuario", :src=>relative_path_to("/images/usertnylgt.svg")}
+        %span.hidden usuario     
+    
+    %li.item-right.has-submenu.search
+      %span.title-item{:title => "Buscar en TN"} Buscar
+      .sub-menu
+        %form.wrapper{:action=> "/buscar", :method=> "post"}
+          %input.input-text{:maxlength=> "100", :name=> "keys", :placeholder=> "Buscar", :required=> "required", :type=> "input"}
+          %input.submit.button.red{:type=> "submit", :value=> "Buscar"}
+              
+    %li.item-right.traffic
+      %a.title-item{:href => "/transito", :title => "Tránsito"} Tránsito
+
+    %li.item-right.weather-icon
+      %a.title-item{:href => "/clima", :title => "Clima"} Clima
