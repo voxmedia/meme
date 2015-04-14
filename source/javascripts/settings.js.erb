@@ -50,19 +50,19 @@ var MEME_SETTINGS = {
 
   // Path to the watermark image source, or blank for no watermark:
   // Alternatively, use  to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("watermark/todonoticias.png") %>',
+  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("watermarks/todonoticias.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
     {text: 'Ninguna', value: '', data: ''},
-    {text: 'TN', value: '<%= image_path("watermark/todonoticias.png") %>', data: ''},
-    {text: 'Todapasion', value: '<%= image_path("watermark/todapasion.png") %>', data: ''},
-    {text: 'La viola', value: '<%= image_path("watermark/la-viola.png") %>', data: ''},
-    {text: 'Famosos', value: '<%= image_path("watermark/famosos.png") %>', data: ''},
-    {text: 'Tecno', value: '<%= image_path("watermark/tecno.png") %>', data: ''},
-    {text: 'TN y la Gente', value: '<%= image_path("watermark/tn-y-la-gente.png") %>', data: ''}    
+    {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png") %>', data: ''},
+    {text: 'Todapasion', value: '<%= image_path("watermarks/todapasion.png") %>', data: ''},
+    {text: 'La viola', value: '<%= image_path("watermarks/la-viola.png") %>', data: ''},
+    {text: 'Famosos', value: '<%= image_path("watermarks/famosos.png") %>', data: ''},
+    {text: 'Tecno', value: '<%= image_path("watermarks/tecno.png") %>', data: ''},
+    {text: 'TN y la Gente', value: '<%= image_path("watermarks/tn-y-la-gente.png") %>', data: ''}    
   ],
 
   width: 970 // Canvas rendering width.
