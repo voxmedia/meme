@@ -24,8 +24,14 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#text-shadow').parent().show();
     }
     
+    // Build aspect ratio options:
     if (d.aspectRatioOpts && d.aspectRatioOpts.length) {
       $('#aspect-ratio').append(buildOptions(d.aspectRatioOpts)).show();
+    }    
+
+    // Build background options:
+    if (d.backgroundOpts && d.backgroundOpts.length) {
+      $('#background').append(buildOptions(d.backgroundOpts)).show();
     }    
 
     // Build text alignment options:
@@ -64,7 +70,6 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   render: function() {
     var d = this.model.toJSON();
-    console.log(d)
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
@@ -91,6 +96,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'drop #dropzone': 'onZoneDrop',
     
     'change #aspect-ratio': 'onAspectRatio',
+    'change #background': 'onBackground',
   },
 
   onCredit: function() {
@@ -129,7 +135,12 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set('height', wh[1]);
     
     this.$('#meme-canvas').attr('class', 'ratio-' + this.$('#aspect-ratio').find(':selected').text().split(' ')[0].toLowerCase());
-  },  
+  },
+  
+  onBackground: function() {
+    this.model.set('backgroundSrc', this.$('#background').val());
+    if (localStorage) localStorage.setItem('meme_background', this.$('#background').val());
+  },    
 
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());

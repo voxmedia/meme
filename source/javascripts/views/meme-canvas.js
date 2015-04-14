@@ -44,7 +44,30 @@ MEME.MemeCanvasView = Backbone.View.extend({
     this.canvas.height = d.height;
     ctx.clearRect(0, 0, d.width, d.height);
 
+
     function renderBackground(ctx) {
+      // Base & transformed height and width:
+      
+      if (d.backgroundSrc == '') {
+        return;
+      }
+      
+      var image = new Image();
+      image.src = d.backgroundSrc;
+      
+      image.onload = function(){
+        ctx.save();
+        ctx.fillStyle= ctx.createPattern(image,"repeat");
+        ctx.fillRect(0, 0, 250,250);
+        ctx.globalAlpha = 1;
+        ctx.restore();
+        //ctx.fill();
+      };
+
+    }
+
+    function renderImage(ctx) {
+      console.log('aca va')
       // Base height and width:
       var bh = m.background.height;
       var bw = m.background.width;
@@ -156,6 +179,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     renderBackground(ctx);
+    renderImage(ctx);
     renderOverlay(ctx);
     renderHeadline(ctx);
     renderCredit(ctx);
@@ -164,10 +188,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
     $('#meme-download').attr({
       'href': data,
-      'download': 'vasdvd.png'
+      'download': 'm3m3.png'
     });
-    
-    console.log(data);
 
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';

@@ -4,6 +4,8 @@
 */
 MEME.MemeModel = Backbone.Model.extend({
   defaults: {
+    backgroundSrc: '',
+    backgroundOpts: [],
     backgroundPosition: { x: null, y: null },
     creditText: 'Source:',
     creditSize: 12,
