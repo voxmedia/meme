@@ -146,7 +146,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         // Constrain transformed height based on maximum allowed width:
         if (mw < bw) {
           th = bh * (mw / bw);
-          tw = mw;
+          tw = mw; 
         }
 
         ctx.globalAlpha = d.watermarkAlpha;
@@ -164,8 +164,10 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
     this.$('#meme-download').attr({
       'href': data,
-      'download': (d.downloadName || 'share') + '.png'
+      'download': 'vasdvd.png'
     });
+    
+    console.log(data);
 
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';

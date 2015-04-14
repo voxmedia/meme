@@ -1,3 +1,6 @@
+:ruby
+  overlay = ['#970018', '#e00038','#e84e1b','#ed7511','#f3c423','#9cc43f','#75932f','#007f76','#6ac0c2','#04b1ff','#0073a4','#2b406b','#6b2449','#d64892','#2d2d2d','#7b7b7b','#ffffff']
+  
 %form#meme-editor-view
   
   %fieldset.upload-image
@@ -24,16 +27,17 @@
     .form-input
       %label.form-title{:for => "aspect-ratio"} Proporciones
       %select#aspect-ratio
-        %option{:disabled => "disabled"} Ninguno  
-        %option{:value=>"twitter"} Twitter [506x253px]
-        %option{:value=>"Instagram"} Instagram [510x510px]
     
-    #overlay.items-group.form-input
+    .items-group.form-input
       .form-title Color
-      %ul.clearfix
+      %ul#overlay.clearfix
         %li
           %label.form-title{:for=>'overlay-none'} Ninguno
-          %input#overlay-none{:name => "overlay", :type => "radio", :value => ""}        
+          %input#overlay-none{:name => "overlay", :type => "radio", :value => ""}
+        - overlay.each_with_index do |element, index|
+          %li
+            %input{:id=>"overlay-#{index}", :name => "overlay", :type => "radio", :value =>element}
+            %label.form-title{:for=>"overlay-#{index}"}= element
 
     .form-input
       %label.form-title{:for => "background"} Fondo
@@ -97,4 +101,4 @@
       %select#emojis-align.text-align
           
           
-  #meme-download{:download => "share.png"} Download Image          
+  %a#meme-download{:href=>"#", :title=>"Descargar imagen",:download => "share.png"} Descargar imagen          

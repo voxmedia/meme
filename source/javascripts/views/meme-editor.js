@@ -23,6 +23,10 @@ MEME.MemeEditorView = Backbone.View.extend({
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
     }
+    
+    if (d.aspectRatioOpts && d.aspectRatioOpts.length) {
+      $('#aspect-ratio').append(buildOptions(d.aspectRatioOpts)).show();
+    }    
 
     // Build text alignment options:
     if (d.textAlignOpts && d.textAlignOpts.length) {
@@ -43,7 +47,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     if (d.watermarkOpts && d.watermarkOpts.length) {
       $('#watermark').append(buildOptions(d.watermarkOpts)).show();
     }
-
+    /*
     // Build overlay color options:
     if (d.overlayColorOpts && d.overlayColorOpts.length) {
       var overlayOpts = _.reduce(d.overlayColorOpts, function(memo, opt) {
@@ -53,10 +57,12 @@ MEME.MemeEditorView = Backbone.View.extend({
 
       $('#overlay').show().find('ul').append(overlayOpts);
     }
+    */
   },
 
   render: function() {
     var d = this.model.toJSON();
+    console.log(d)
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
@@ -80,7 +86,9 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
-    'drop #dropzone': 'onZoneDrop'
+    'drop #dropzone': 'onZoneDrop',
+    
+    //'change #aspect-ratio': 'onAspectRatio',
   },
 
   onCredit: function() {
@@ -112,6 +120,12 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set('watermarkSrc', this.$('#watermark').val());
     if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
   },
+  
+  onAspectRatio: function() {
+    var wh = this.$('#aspect-ratio').val().split('x');
+    this.model.set('width', wh[0]);
+    this.model.set('height', wh[1]);
+  },  
 
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());
