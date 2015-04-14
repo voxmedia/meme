@@ -162,7 +162,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderWatermark(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
-    this.$('#meme-download').attr({
+    $('#meme-download').attr({
       'href': data,
       'download': 'vasdvd.png'
     });

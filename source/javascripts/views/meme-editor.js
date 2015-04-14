@@ -58,6 +58,8 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#overlay').show().find('ul').append(overlayOpts);
     }
     */
+   
+   this.onAspectRatio();
   },
 
   render: function() {
@@ -88,7 +90,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop',
     
-    //'change #aspect-ratio': 'onAspectRatio',
+    'change #aspect-ratio': 'onAspectRatio',
   },
 
   onCredit: function() {
@@ -96,7 +98,6 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onHeadline: function() {
-    console.log('onheadline', this.$('#headline').val(), this, this.model)
     this.model.set('headlineText', this.$('#headline').val());
   },
 
@@ -123,8 +124,11 @@ MEME.MemeEditorView = Backbone.View.extend({
   
   onAspectRatio: function() {
     var wh = this.$('#aspect-ratio').val().split('x');
+    
     this.model.set('width', wh[0]);
     this.model.set('height', wh[1]);
+    
+    this.$('#meme-canvas').attr('class', 'ratio-' + this.$('#aspect-ratio').find(':selected').text().split(' ')[0].toLowerCase());
   },  
 
   onScale: function() {
