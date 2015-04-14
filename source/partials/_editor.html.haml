@@ -1,30 +1,98 @@
-%form#meme-editor-view.m-editor
-  #dropzone.dropzone Drop Image Here
-  %h2
-    %label{:for => "image-scale"} Resize image
-  %input#image-scale{:max => "4", :min => ".01", :step => ".01", :type => "range", :value => "1"}/
-  %h2
-    %label{:for => "headline"} Headline
-  %textarea#headline{:name => "headline", :type => "text", :value => ""}
-  %select#text-align.text-align
-    %option{:disabled => "disabled", :value => ""} Select alignment
-  %select#font-size.font-size
-    %option{:disabled => "disabled", :value => ""} Select a font size
-  %select#font-family.font-family
-    %option{:disabled => "disabled", :value => ""} Select a font
-  .checkbox-group.text-shadow
-    %input#text-shadow{:name => "shadow", :type => "checkbox"}/
-    %label{:for => "text-shadow"} Text Shadow
-  %select#watermark.watermark
-    %option{:disabled => "disabled", :value => ""} Select a watermark
-  %h2
-    %label{:for => "credit"} Credit
-  %input#credit{:name => "credit", :type => "text", :value => ""}/
-  #overlay.m-editor__overlay
-    %h2 Overlay Color
-    %ul.checkbox-group
-      %li
-        %label
-          %input{:name => "overlay", :type => "radio", :value => ""}/
-          None
-  = partial "partials/canvas"
+%form#meme-editor-view
+  
+  %fieldset.upload-image
+    
+    .upload-wrapper
+      .form-input
+        #dropzone Arrastrar imagen
+      .form-input
+        %label{:for => "image"} Subir imagen
+        %input#image{:name => "image", :type => "file"}
+      
+    #meme-canvas-view
+      #meme-canvas
+        %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
+  
+  
+  %fieldset
+    %legend Imagen
+    
+    .form-input
+      %label.form-title{:for => "image-scale"} Ajustar tamaño
+      %input#image-scale{:max => "4", :min => ".01", :step => ".01", :type => "range", :value => "1"}
+    
+    .form-input
+      %label.form-title{:for => "aspect-ratio"} Proporciones
+      %select#aspect-ratio
+        %option{:disabled => "disabled"} Ninguno  
+    
+    #overlay.items-group.form-input
+      .form-title Color
+      %ul.clearfix
+        %li
+          %label.form-title{:for=>'overlay-none'} Ninguno
+          %input#overlay-none{:name => "overlay", :type => "radio", :value => ""}        
+
+    .form-input
+      %label.form-title{:for => "background"} Fondo
+      %select#background
+        %option{:disabled => "disabled"} Ninguno    
+  
+  %fieldset
+    %legend Texto
+
+    .form-input
+      %label.form-title{:for => "headline"} Títular
+      %textarea#headline{:name => "headline"}
+
+    .form-input
+      %label.form-title{:for => "credit"} Fuente
+      %input#credit{:name => "credit", :type => "text"}
+    
+    .form-input
+      %label.form-title{:for => "font-family"} Tipografía
+      %select#font-family
+  
+    .two-columns
+      
+      .form-input
+        %label.form-title{:for => "text-align"} Alineación
+        %select#text-align
+      
+      .form-input
+        %label.form-title{:for => "font-size"} Tamaño
+        %select#font-size
+    
+    
+    .form-input.checkbox-group
+      .checkbox-item
+        %label.form-title{:for => "text-shadow"} Sombra
+        %input#text-shadow{:name => "shadow", :type => "checkbox"}
+      
+    
+  %fieldset
+    %legend Extra
+    
+    .form-input
+      %label.form-title{:for => "watermark"} Logo
+      %select#watermark
+        %option{:disabled => "disabled", :value => ""} Ninguno
+
+    .form-input
+      %label.form-title{:for => "ribbon"} Barra
+      %select#ribbon
+        %option{:disabled => "disabled", :value => ""} Ninguna
+
+    #emojis.items-group
+      .form-title Emojis
+      %ul.clearfix
+        %li
+          %label.form-title Ninguno
+          %input{:name => "emojis-none", :type => "radio", :value => ""}  
+  
+    .form-input
+      %label.form-title{:for => "emojis-align"} Posición emojis
+      %select#emojis-align.text-align
+          
+          
+  #meme-download{:download => "share.png"} Download Image          
