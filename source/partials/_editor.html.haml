@@ -1,0 +1,30 @@
+%form#meme-editor-view.m-editor
+  #dropzone.dropzone Drop Image Here
+  %h2
+    %label{:for => "image-scale"} Resize image
+  %input#image-scale{:max => "4", :min => ".01", :step => ".01", :type => "range", :value => "1"}/
+  %h2
+    %label{:for => "headline"} Headline
+  %textarea#headline{:name => "headline", :type => "text", :value => ""}
+  %select#text-align.text-align
+    %option{:disabled => "disabled", :value => ""} Select alignment
+  %select#font-size.font-size
+    %option{:disabled => "disabled", :value => ""} Select a font size
+  %select#font-family.font-family
+    %option{:disabled => "disabled", :value => ""} Select a font
+  .checkbox-group.text-shadow
+    %input#text-shadow{:name => "shadow", :type => "checkbox"}/
+    %label{:for => "text-shadow"} Text Shadow
+  %select#watermark.watermark
+    %option{:disabled => "disabled", :value => ""} Select a watermark
+  %h2
+    %label{:for => "credit"} Credit
+  %input#credit{:name => "credit", :type => "text", :value => ""}/
+  #overlay.m-editor__overlay
+    %h2 Overlay Color
+    %ul.checkbox-group
+      %li
+        %label
+          %input{:name => "overlay", :type => "radio", :value => ""}/
+          None
+  = partial "partials/canvas"
