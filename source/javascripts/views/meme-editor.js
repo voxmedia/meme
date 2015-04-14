@@ -88,6 +88,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onHeadline: function() {
+    console.log('onheadline', this.$('#headline').val(), this, this.model)
     this.model.set('headlineText', this.$('#headline').val());
   },
 
