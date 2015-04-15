@@ -140,6 +140,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
           line = testLine;
         }
       }
+      
+      //console.log(x,y, padding)
 
       ctx.fillText(line, x, y);
       ctx.shadowColor = 'transparent';
@@ -202,9 +204,33 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
     
     function renderEmoji(ctx){
-      if (d.ribbon.emoji == ''){
+      if (d.emoji == ''){
         return;
-      }      
+      }
+      
+      var x = padding, y = padding;
+          
+      switch (d.emojiPosition){
+        case 0:
+          x = padding;
+          y = padding;         
+        break;
+        case 1:
+          x = d.width - d.emojiSize - padding;
+          y = padding;              
+        break;
+        case 2:
+          x = d.width - d.emojiSize - padding;
+          y = d.height - d.emojiSize - padding;              
+        break;
+        case 3:
+          x = padding;
+          y = d.height - d.emojiSize - padding;              
+        break;
+
+      }
+
+      ctx.drawImage(m.emoji, d.emojiSize * d.emoji, 0, d.emojiSize, d.emojiSize, x, y, d.emojiSize, d.emojiSize);
       
       
     }

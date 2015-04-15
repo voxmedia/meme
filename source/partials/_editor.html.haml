@@ -94,14 +94,14 @@
         %li
           %label.form-title{:for=>'emoji-none'} Ninguno
           %input#emoji-none{:name => "emoji", :type => "radio", :value => ""}  
-        - (1..17).each do |element|
+        - (0..16).each do |element|
           %li
             %input{:id=>"emoji-#{element}", :name => "emoji", :type => "radio", :value =>element}
             %label.form-title{:for=>"emoji-#{element}", :class=>"emoji-#{element}"}= "Emoji #{element}"          
   
     .form-input
       %label.form-title{:for => "emojis-align"} Posición emojis
-      %select#emojis-align.text-align
+      %select#emoji-align
           
           
   %a#meme-download{:href=>"#", :title=>"Descargar imagen",:download => "share.png"} Descargar imagen          
