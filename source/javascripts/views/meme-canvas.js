@@ -206,8 +206,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
         return;
       }
 
-      ctx.drawImage(m.emoji, 160*d.emoji, 0, 160,160, 50,50, 160,160 );
-      //ctx.globalAlpha = 1;
+      ctx.drawImage(m.emoji, 100*d.emoji, 0, 100, 100, 50, 50, 100, 100);
+      
+      
     }
 
     renderBackground(ctx);
