@@ -117,11 +117,22 @@ body {
     text-transform: uppercase;
     color: #fff;
     font-family: museo-sans-700;
-    font-size: (35em/16);
+    font-size: (36em/16);
     height: (49em/35);
     line-height: (49em/35);
     position: relative;
     z-index: 1;
+    &:before{
+      position: absolute;
+      content: "Hola mundo";
+      height: (42em/16);
+      width: (195em/16);
+      top:0;
+      right: 0;
+      background: url("../images/sprite.png");
+
+
+    }
   }
 
   .header-link {
