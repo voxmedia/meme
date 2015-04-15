@@ -104,7 +104,7 @@ body {
 #header {
   position: relative;
   padding-top: (48em/16);
-  margin-bottom: (20em/16);
+  margin-bottom: (5em/16);
   height: (69em/16);
   
   &.fixed {
@@ -117,21 +117,21 @@ body {
     text-transform: uppercase;
     color: #fff;
     font-family: museo-sans-700;
-    font-size: (36em/16);
-    height: (49em/35);
-    line-height: (49em/35);
+    font-size: (36rem/16);
     position: relative;
     z-index: 1;
+    display: table;
+    margin: 0 auto;
+    padding-right: (197rem/16);
+
     &:before{
       position: absolute;
-      content: "Hola mundo";
-      height: (42em/16);
-      width: (195em/16);
-      top:0;
-      right: 0;
-      background: url("../images/sprite.png");
-
-
+      content: "";
+      height: (40rem/16);
+      width: (188rem/16);
+      top:(4rem/16);
+      left: (117rem/16);
+      background: url("../images/sprite-meme.png") 0 -94px;
     }
   }
 
@@ -291,7 +291,8 @@ body {
 
 #main,#header{
   &.wrapper {
-    width: (970rem/16);
+    width: 100%;
+    max-width: (970rem/16);
     margin: 0 auto;
     position: relative;
   }
