@@ -10,6 +10,10 @@ MEME.MemeModel = Backbone.Model.extend({
     creditText: 'Source:',
     creditSize: 12,
     downloadName: 'share',
+    emoji: '',
+    emojiImage: '',
+    emojiPosition: '',
+    emojiSize: '',
     fontColor: 'white',
     fontFamily: 'Helvetica Neue',
     fontFamilyOpts: ['Helvetica', 'Helvetica Neue', 'Comic Sans MS'],
@@ -44,6 +48,7 @@ MEME.MemeModel = Backbone.Model.extend({
   initialize: function() {
     this.background = new Image();
     this.watermark = new Image();
+    this.emoji = new Image();
 
     // Set image sources to trigger "change" whenever they reload:
     this.background.onload = this.watermark.onload = _.bind(function() {

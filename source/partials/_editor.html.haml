@@ -93,8 +93,12 @@
       .form-title Emojis
       %ul.clearfix
         %li
-          %label.form-title Ninguno
-          %input{:name => "emojis-none", :type => "radio", :value => ""}  
+          %label.form-title{:for=>'emoji-none'} Ninguno
+          %input#emoji-none{:name => "emoji", :type => "radio", :value => ""}  
+        - (1..17).each do |element|
+          %li
+            %input{:id=>"emoji-#{element}", :name => "emoji", :type => "radio", :value =>element}
+            %label.form-title{:for=>"emoji-#{element}", :class=>"emoji-#{element}"}= "Emoji #{element}"          
   
     .form-input
       %label.form-title{:for => "emojis-align"} Posición emojis

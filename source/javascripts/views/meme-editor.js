@@ -16,7 +16,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     function buildOptions(opts) {
       return _.reduce(opts, function(memo, opt) {
-        return memo += ['<option value="', opt.hasOwnProperty('value') ? opt.value : opt, '">', opt.hasOwnProperty('text') ? opt.text : opt, '</option>'].join('');
+        return memo += ['<option value="', opt.hasOwnProperty('value') ? opt.value : opt, '"', opt.hasOwnProperty('selected') ? 'selected="selected"' : '' , '>', opt.hasOwnProperty('text') ? opt.text : opt, '</option>'].join('');
       }, '');
     }
 
@@ -34,6 +34,11 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#background').append(buildOptions(d.backgroundOpts)).show();
     }    
 
+    // Build emojis options:
+    if (d.emojiOpts && d.emojiOpts.length) {
+      $('#emojis-align').append(buildOptions(d.emojiOpts)).show();
+    }  
+    
     // Build ribbon options:
     if (d.ribbonOpts && d.ribbonOpts.length) {
       $('#ribbon').append(buildOptions(d.ribbonOpts)).show();
@@ -83,7 +88,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#font-family').val(d.fontFamily);
     this.$('#text-align').val(d.textAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
-    this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
+    //this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
   },
 
   events: {
@@ -102,7 +107,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     
     'change #aspect-ratio': 'onAspectRatio',
     'change #background': 'onBackground',
-    'change #ribbon': 'onRibbon'
+    'change #ribbon': 'onRibbon',
+    'change [name="emoji"]': 'onEmojiImage',
   },
 
   onCredit: function() {
@@ -154,6 +160,10 @@ MEME.MemeEditorView = Backbone.View.extend({
       background: this.$('#ribbon').val()
     });
   },
+  
+  onEmojiImage: function(evt) {
+    this.model.set('emojiImage', this.$(evt.target).val());
+  },  
 
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());
