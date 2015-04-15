@@ -4,11 +4,10 @@
 %form#meme-editor-view
   
   %fieldset.upload-image
-    
     .upload-wrapper
-      .form-input
+      .form-input.drop
         #dropzone Arrastrar imagen
-      .form-input
+      .form-input.explore
         %label{:for => "image"} Subir imagen
         %input#image{:name => "image", :type => "file"}
       
