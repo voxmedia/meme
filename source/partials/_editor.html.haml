@@ -17,7 +17,7 @@
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
   
-  %fieldset.hidden
+  %fieldset
     %legend Imagen
     
     .form-input
@@ -44,7 +44,7 @@
       %select#background
         %option{:value=>""} Ninguno    
   
-  %fieldset.hidden
+  %fieldset
     %legend Texto
 
     .form-input
@@ -102,7 +102,7 @@
   
     .form-input
       %label.form-title{:for => "emojis-align"} Posición emojis
-      %select#emojis-align.text-align
+      %select#emoji-align
           
           
   %a#meme-download{:href=>"#", :title=>"Descargar imagen",:download => "share.png"} Descargar imagen          

@@ -36,7 +36,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     // Build emojis options:
     if (d.emojiOpts && d.emojiOpts.length) {
-      $('#emojis-align').append(buildOptions(d.emojiOpts)).show();
+      $('#emoji-align').append(buildOptions(d.emojiOpts)).show();
     }  
     
     // Build ribbon options:
@@ -109,6 +109,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #background': 'onBackground',
     'change #ribbon': 'onRibbon',
     'change [name="emoji"]': 'onEmojiImage',
+    'change #emoji-align': 'onEmojiAlign',
   },
 
   onCredit: function() {
@@ -163,6 +164,12 @@ MEME.MemeEditorView = Backbone.View.extend({
   
   onEmojiImage: function(evt) {
     this.model.set('emoji', this.$(evt.target).val());
+  },  
+  
+  onEmojiAlign: function() {
+    
+    console.log('emojiPosition', parseInt(this.$('#emoji-align').val(),10))
+    this.model.set('emojiPosition', parseInt(this.$('#emoji-align').val(),10));
   },  
 
   onScale: function() {
