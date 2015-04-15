@@ -60,7 +60,7 @@
 
 
 body {
-  background: #3b3b3b;
+  background: url("../images/backgrounds/tweed.png");
   position:relative;
 }
 
@@ -118,6 +118,7 @@ body {
 
   .header-top {
     margin-top: (20em/16);
+    text-align: center;
     
     .header-subtitle {
       color: #0099DB;
@@ -263,11 +264,18 @@ body {
   }
 }
 
+#main,#header{
+  &.wrapper {
+    width: (970rem/16);
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
 #main {
   margin-bottom: (30em/16);
   position: relative;
   overflow: hidden;
-  
 }
 
 #sticky {
