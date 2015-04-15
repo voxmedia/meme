@@ -52,16 +52,22 @@ MEME.MemeCanvasView = Backbone.View.extend({
         return;
       }
       
-      var image = new Image();
-      image.src = d.backgroundSrc;
+      console.log(m)
       
+      var image = new Image();
+      console.log(image);
+      image.src = d.backgroundSrc;
+      console.log(image);
       image.onload = function(){
-        ctx.save();
+        //ctx.save();
+        /*
         ctx.fillStyle= ctx.createPattern(image,"repeat");
         ctx.fillRect(0, 0, 250,250);
-        ctx.globalAlpha = 1;
-        ctx.restore();
+        */
+        //ctx.globalAlpha = 1;
+        //ctx.restore();
         //ctx.fill();
+        console.log(image);
       };
 
     }
@@ -79,12 +85,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
         var tw = bw * d.imageScale;
         var cx = d.backgroundPosition.x || d.width / 2;
         var cy = d.backgroundPosition.y || d.height / 2;
+        
+        
 
         ctx.drawImage(m.background, 0, 0, bw, bh, cx-(tw/2), cy-(th/2), tw, th);
       }
     }
 
     function renderOverlay(ctx) {
+
       if (d.overlayColor) {
         ctx.save();
         ctx.globalAlpha = d.overlayAlpha;

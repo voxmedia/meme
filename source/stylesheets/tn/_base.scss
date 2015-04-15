@@ -1,17 +1,35 @@
 @font-face {
   font-family: 'museo-sans-300';
-  src: url('../fonts/museosans-300-eot.eot');
-  src: url('../fonts/museosans-300-eot.eot?#iefix') format("embedded-opentype"), url('../fonts/museosans-300-woff.woff') format("woff"), url('../fonts/museosans-300-ttf.ttf') format("truetype"), url('../fonts/museosans-300-svg.svg#museo_sans300') format("svg");
+  src: url('../fonts/museosans-300.eot');
+  src: url('../fonts/museosans-300.eot?#iefix') format("embedded-opentype"),
+       url('../fonts/museosans-300.woff') format("woff"),
+       url('../fonts/museosans-300.ttf') format("truetype"),
+       url('../fonts/museosans-300.svg#museo_sans300') format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'museo-sans-700';
-  src: url('../fonts/museosans-700-eot.eot');
-  src: url('../fonts/museosans-700-eot.eot?#iefix') format("embedded-opentype"), url('../fonts/museosans-700-woff.woff') format("woff"), url('../fonts/museosans-700-ttf.ttf') format("truetype"), url('../fonts/museosans-700-svg.svg#museo_sans700') format("svg");
+  src: url('../fonts/museosans-700.eot');
+  src: url('../fonts/museosans-700.eot?#iefix') format("embedded-opentype"),
+       url('../fonts/museosans-700.woff') format("woff"),
+       url('../fonts/museosans-700.ttf') format("truetype"),
+       url('../fonts/museosans-700.svg#museo_sans700') format("svg");
   font-weight: bold;
   font-style: normal;
+}
+
+@font-face {
+    font-family: 'blokletters_viltstifviltstift';
+    src: url('../fonts/blokletters-viltstift-webfont.eot');
+    src: url('../fonts/blokletters-viltstift-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/blokletters-viltstift-webfont.woff') format('woff'),
+         url('../fonts/blokletters-viltstift-webfont.ttf') format('truetype'),
+         url('../fonts/blokletters-viltstift-webfont.svg#blokletters_viltstifviltstift') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 body {
