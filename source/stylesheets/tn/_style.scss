@@ -1,19 +1,4 @@
 @import 'mixin';
 
-.irwd {
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
-	padding-bottom: 56.2%;
-	height: 0;
-	overflow: hidden; 
-	-webkit-overflow-scrolling:touch;
-	
-	iframe {
-	  position: absolute;
-	  width: 100%;
-	  height: 100%;
-	  left: 0;
-	  top: 0;
-	}
-}
+
+
