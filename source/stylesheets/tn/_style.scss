@@ -1,6 +1,10 @@
 @import 'mixin';
 
-.upload-image{
+.upload-image {
+  .upload-wrapper {
+    margin-bottom: (36rem/16);
+  }
+
   .form-input {
     float: left;
     width: 50%;
@@ -11,25 +15,48 @@
     line-height: (65rem/16);
     @include box_sizing(border-box);
 
-    &.drop{
+    &.drop {
       border: 3px dotted #999;
       border-right: none;
       @include border_radius(5px 0 0 5px)
     }
-    &.explore{
+    &.explore {
       border: 3px solid #999;
       @include border_radius(0 5px 5px 0)
     }
 
-    label{
+    label {
       width: 100%;
       height: 100%;
       display: table;
     }
 
-    #image{
+    #image {
       display: none;
     }
   }
+}
 
+#meme-canvas-view {
+  background: #1A1A1A;
+  position: relative;
+
+  &:before{
+    background: none repeat scroll 0 0 #1a1a1a;
+    content: "";
+    height: 100%;
+    left: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  &:after{
+    background: none repeat scroll 0 0 #1a1a1a;
+    content: "";
+    height: 100%;
+    right: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }
