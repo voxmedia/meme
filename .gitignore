@@ -19,7 +19,7 @@
 
 # IDE files
 .project
-/.idea
+.idea/*
 
 # Gemfile.lock
 Gemfile.lock
