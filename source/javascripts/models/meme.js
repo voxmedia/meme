@@ -75,6 +75,8 @@ MEME.MemeModel = Backbone.Model.extend({
       this.setWatermarkSrc(this.get('watermarkSrc'));
     });
   },
+  
+  data: null,
 
   // Specifies if the background image currently has data:
   hasBackground: function() {

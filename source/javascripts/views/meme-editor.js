@@ -129,6 +129,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #ribbon': 'onRibbon',
     'change [name="emoji"]': 'onEmojiImage',
     'change #emoji-align': 'onEmojiAlign',
+    
+    'click #meme-download': 'onDownload'
   },
 
   onCredit: function() {
@@ -142,6 +144,18 @@ MEME.MemeEditorView = Backbone.View.extend({
     }
     
     this.model.set('creditText', str);
+  },
+  
+  onDownload: function(){
+    
+    var anchor = document.createElement('a');
+    anchor.href = this.model.data;
+    anchor.target = '_blank';
+    anchor.download = 'meme.png';
+
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);    
   },
 
   onHeadline: function() {
