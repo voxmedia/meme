@@ -46,8 +46,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
 
     function renderBackground(ctx) {
-      // Base & transformed height and width:
-      
       if (d.backgroundSrc == '') {
         return;
       }
@@ -98,17 +96,23 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var maxWidth = Math.round(d.width * 0.75);
       var x = padding;
       var y = padding;
-
-      ctx.font = d.fontSize +'pt '+ d.fontFamily;
+      
+      
+      ctx.font =  (d.fontBold ? 'bold ' : '') + d.fontSize +'pt '+ d.fontFamily;
+      /*
+      if (d.fontBold) {
+        ctx.font = 'bold ' + ctx.font; 
+      }
+      */
       ctx.fillStyle = d.fontColor;
       ctx.textBaseline = 'top';
 
       // Text shadow:
       if (d.textShadow) {
-        ctx.shadowColor = "#666";
-        ctx.shadowOffsetX = -2;
-        ctx.shadowOffsetY = 1;
-        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#000";
+        ctx.shadowOffsetX = 4;
+        ctx.shadowOffsetY = 4;
+        ctx.shadowBlur = 4;
       }
 
       // Text alignment:

@@ -97,7 +97,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     
     'change #aspect-ratio': 'onAspectRatio',
     'change #background': 'onBackground',
-    'change #text-bold': 'onTextBold',
+    'change #font-bold': 'onFontBold',
   },
 
   onCredit: function() {
@@ -143,9 +143,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     if (localStorage) localStorage.setItem('meme_background', this.$('#background').val());
   },   
   
-  onTextBold: function() {
-    console.log(this.$('#font-bold').val());
-    this.model.set('fontBold', this.$('#font-bold').val());
+  onFontBold: function() {
+    this.model.set('fontBold', this.$('#font-bold').prop('checked'));
   },   
 
   onScale: function() {

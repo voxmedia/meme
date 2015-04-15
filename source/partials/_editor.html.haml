@@ -17,7 +17,7 @@
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
   
-  %fieldset
+  %fieldset.hidden
     %legend Imagen
     
     .form-input
@@ -73,11 +73,11 @@
     .form-input.checkbox-group
       .checkbox-item
         %label.form-title{:for => "text-shadow"} Sombra
-        %input#text-shadow{:name => "shadow", :type => "checkbox", :value=>"true"}
+        %input#text-shadow{:name => "shadow", :type => "checkbox"}
       
       .checkbox-item
-        %label.form-title{:for => "text-bold"} Negrita
-        %input#text-bold{:name => "bold", :type => "checkbox", :value=>"true"}
+        %label.form-title{:for => "font-bold"} Negrita
+        %input#font-bold{:name => "bold", :type => "checkbox"}
     
   %fieldset
     %legend Extra
