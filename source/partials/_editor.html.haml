@@ -17,7 +17,7 @@
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
   
-  %fieldset.hidden
+  %fieldset
     %legend Imagen
     
     .form-input
@@ -28,7 +28,7 @@
       %label.form-title{:for => "aspect-ratio"} Proporciones
       %select#aspect-ratio
     
-    .items-group.form-input
+    .items-group.form-input.hidden
       .form-title Color
       %ul#overlay.clearfix
         %li
@@ -42,7 +42,7 @@
     .form-input
       %label.form-title{:for => "background"} Fondo
       %select#background
-        %option{:disabled => "disabled"} Ninguno    
+        %option{:value=>""} Ninguno    
   
   %fieldset
     %legend Texto
@@ -73,8 +73,11 @@
     .form-input.checkbox-group
       .checkbox-item
         %label.form-title{:for => "text-shadow"} Sombra
-        %input#text-shadow{:name => "shadow", :type => "checkbox"}
+        %input#text-shadow{:name => "shadow", :type => "checkbox", :value=>"true"}
       
+      .checkbox-item
+        %label.form-title{:for => "text-bold"} Negrita
+        %input#text-bold{:name => "bold", :type => "checkbox", :value=>"true"}
     
   %fieldset
     %legend Extra

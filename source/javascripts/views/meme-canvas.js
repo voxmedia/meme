@@ -52,28 +52,18 @@ MEME.MemeCanvasView = Backbone.View.extend({
         return;
       }
       
-      console.log(m)
-      
       var image = new Image();
-      console.log(image);
       image.src = d.backgroundSrc;
-      console.log(image);
+      
       image.onload = function(){
-        //ctx.save();
-        /*
+        ctx.globalCompositeOperation="destination-over";
         ctx.fillStyle= ctx.createPattern(image,"repeat");
-        ctx.fillRect(0, 0, 250,250);
-        */
-        //ctx.globalAlpha = 1;
-        //ctx.restore();
-        //ctx.fill();
-        console.log(image);
+        ctx.fillRect(0, 0, d.width, d.height);
       };
 
     }
 
     function renderImage(ctx) {
-      console.log('aca va')
       // Base height and width:
       var bh = m.background.height;
       var bw = m.background.width;
