@@ -34,6 +34,11 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#background').append(buildOptions(d.backgroundOpts)).show();
     }    
 
+    // Build ribbon options:
+    if (d.ribbonOpts && d.ribbonOpts.length) {
+      $('#ribbon').append(buildOptions(d.ribbonOpts)).show();
+    }
+
     // Build text alignment options:
     if (d.textAlignOpts && d.textAlignOpts.length) {
       $('#text-align').append(buildOptions(d.textAlignOpts)).show();
@@ -97,7 +102,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     
     'change #aspect-ratio': 'onAspectRatio',
     'change #background': 'onBackground',
-    'change #font-bold': 'onFontBold',
+    'change #ribbon': 'onRibbon'
   },
 
   onCredit: function() {
@@ -142,10 +147,13 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set('backgroundSrc', this.$('#background').val());
     if (localStorage) localStorage.setItem('meme_background', this.$('#background').val());
   },   
-  
-  onFontBold: function() {
-    this.model.set('fontBold', this.$('#font-bold').prop('checked'));
-  },   
+
+  onRibbon: function() {
+    this.model.set('ribbon', {
+      text: this.$('#ribbon').find(':selected').text(),
+      background: this.$('#ribbon').val()
+    });
+  },
 
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());

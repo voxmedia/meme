@@ -17,7 +17,7 @@
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
   
-  %fieldset.hidden
+  %fieldset
     %legend Imagen
     
     .form-input
@@ -74,10 +74,7 @@
       .checkbox-item
         %label.form-title{:for => "text-shadow"} Sombra
         %input#text-shadow{:name => "shadow", :type => "checkbox"}
-      
-      .checkbox-item
-        %label.form-title{:for => "font-bold"} Negrita
-        %input#font-bold{:name => "bold", :type => "checkbox"}
+
     
   %fieldset
     %legend Extra
@@ -85,12 +82,12 @@
     .form-input
       %label.form-title{:for => "watermark"} Logo
       %select#watermark
-        %option{:disabled => "disabled", :value => ""} Ninguno
+        %option{:value => ""} Ninguno
 
     .form-input
       %label.form-title{:for => "ribbon"} Barra
       %select#ribbon
-        %option{:disabled => "disabled", :value => ""} Ninguna
+        %option{:value => ""} Ninguna
 
     #emojis.items-group
       .form-title Emojis

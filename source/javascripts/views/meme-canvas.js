@@ -74,8 +74,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
         var cx = d.backgroundPosition.x || d.width / 2;
         var cy = d.backgroundPosition.y || d.height / 2;
         
-        
-
         ctx.drawImage(m.background, 0, 0, bw, bh, cx-(tw/2), cy-(th/2), tw, th);
       }
     }
@@ -98,18 +96,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var y = padding;
       
       
-      ctx.font =  (d.fontBold ? 'bold ' : '') + d.fontSize +'pt '+ d.fontFamily;
-      /*
-      if (d.fontBold) {
-        ctx.font = 'bold ' + ctx.font; 
-      }
-      */
+      ctx.font =  d.fontSize +'px '+ d.fontFamily;
+
       ctx.fillStyle = d.fontColor;
       ctx.textBaseline = 'top';
 
       // Text shadow:
       if (d.textShadow) {
-        ctx.shadowColor = "#000";
+        ctx.shadowColor = "rgba(0,0,0, .5)";
         ctx.shadowOffsetX = 4;
         ctx.shadowOffsetY = 4;
         ctx.shadowBlur = 4;
@@ -119,7 +113,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.textAlign == 'center') {
         ctx.textAlign = 'center';
         x = d.width / 2;
-        y = d.height - d.height / 1.5;
+        //y = d.height - d.height / 1.5;
         maxWidth = d.width - d.width / 3;
 
       } else if (d.textAlign == 'right' ) {
@@ -180,6 +174,32 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.globalAlpha = 1;
       }
     }
+    
+    function renderRibbon(ctx){
+      
+      if (d.ribbon.background == ''){
+        return;
+      }
+      
+      var h = 80;
+
+      //Rectangulo      
+      ctx.globalCompositeOperation="source-over";
+      ctx.fillStyle=d.ribbon.background;
+      ctx.fillRect(0, ((d.height / 2) - (h / 2)), d.width, h);
+      
+      //Texto
+      ctx.font = 'normal 36px museo-sans-700';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center';      
+      ctx.fillStyle = d.fontColor;
+      ctx.shadowColor = "rgba(0,0,0, .5)";
+      ctx.shadowOffsetX = 4;
+      ctx.shadowOffsetY = 4;
+      ctx.shadowBlur = 4;   
+      ctx.fillText(d.ribbon.text.toUpperCase(), d.width / 2, d.height / 2);
+      
+    }
 
     renderBackground(ctx);
     renderImage(ctx);
@@ -187,6 +207,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderHeadline(ctx);
     renderCredit(ctx);
     renderWatermark(ctx);
+    renderRibbon(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
     $('#meme-download').attr({

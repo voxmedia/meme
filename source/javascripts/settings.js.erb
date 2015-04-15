@@ -21,16 +21,15 @@ var MEME_SETTINGS = {
 
   // Universal font family for texts:
   // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
-  fontFamily: 'Helvetica Neue',
+  fontFamily: 'museo-sans-900',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
   fontFamilyOpts: [
-    {text: 'Arial', value: 'Arial'},
     {text: 'Blokletters Viltstift', value: 'blokletters_viltstifviltstift'},
-    {text: 'Comic Sans MS', value: 'Comic Sans MS'},
-    {text: 'Helvetica Neue', value: 'Helvetica Neue'},
-    {text: 'Museo Sans 300', value: 'museo-sans-300'},
-    {text: 'Museo Sans 700', value: 'museo-sans-700'},
+    {text: 'Museo Normal', value: 'museo-300'},
+    {text: 'Museo Negrita', value: 'museo-700'},
+    {text: 'Museo Sans Normal', value: 'museo-sans-300'},
+    {text: 'Museo Sans Negrita', value: 'museo-sans-900'},
   ],
   
   //['Arial', 'Blokletters Viltstift', 'Comic Sans MS', 'Helvetica Neue', 'Museo Sans 300', 'Museo Sans 700',],
@@ -56,6 +55,15 @@ var MEME_SETTINGS = {
   overlayColorOpts: ['#970018', '#e00038','#e84e1b','#ed7511','#f3c423','#9cc43f','#75932f','#007f76','#6ac0c2','#04b1ff','#0073a4','#2b406b','#6b2449','#d64892','#2d2d2d','#7b7b7b','#ffffff'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
   
+  ribbonOpts: [
+    {text: 'Ahora', value:'rgba(224, 0, 0, .5)'},
+    {text: 'Urgente', value:'rgba(224, 0, 0, .5)'},
+    {text: 'En Vivo', value:'rgba(224, 0, 0, .5)'},
+    {text: 'Exclusivo', value:'rgba(224, 0, 0, .5)'},
+    {text: 'Última noticia', value:'rgba(243, 196, 35, .7)'},
+    {text: 'Alerta meteorológica', value:'rgba(243, 196, 35, .7)'}
+  ],
+  
   // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',
   // Text alignment options: set to empty array to disable alignment picker.
@@ -79,7 +87,6 @@ var MEME_SETTINGS = {
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'Ninguna', value: '', data: ''},
     {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png") %>', data: ''},
     {text: 'Todapasion', value: '<%= image_path("watermarks/todapasion.png") %>', data: ''},
     {text: 'La viola', value: '<%= image_path("watermarks/la-viola.png") %>', data: ''},
