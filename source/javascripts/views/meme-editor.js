@@ -16,7 +16,14 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     function buildOptions(opts) {
       return _.reduce(opts, function(memo, opt) {
-        return memo += ['<option value="', opt.hasOwnProperty('value') ? opt.value : opt, '"', opt.hasOwnProperty('selected') ? 'selected="selected"' : '' , '>', opt.hasOwnProperty('text') ? opt.text : opt, '</option>'].join('');
+        return memo += ['<option value="',
+                         opt.hasOwnProperty('value') ? opt.value : opt,
+                         '"',
+                         opt.hasOwnProperty('selected') ? 'selected="selected"' : '',
+                         opt.hasOwnProperty('disabled') ? 'disabled="disabled"' : '',
+                         '>',
+                         opt.hasOwnProperty('text') ? opt.text : opt,
+                         '</option>'].join('');
       }, '');
     }
 
@@ -90,6 +97,16 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#text-shadow').prop('checked', d.textShadow);
     //this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
   },
+  
+  resetEmoji: function(pos){
+    
+    if (this.model.attributes.emojiPosition == pos){
+      var p = this.model.attributes.textAlign == 'right' ? 0 : 1;
+      this.model.set('emojiPosition', p);
+      this.$('#emoji-align').find('option').removeAttr('selected').end().val(p);
+    }
+
+  },
 
   events: {
     'input #headline': 'onHeadline',
@@ -113,7 +130,17 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onCredit: function() {
-    this.model.set('creditText', this.$('#credit').val());
+    
+    var str = this.$('#credit').val().trim();
+    
+    if (str == ''){
+      this.$('#emoji-align').find('option[value="3"]').removeAttr('disabled');
+    } else {
+      this.$('#emoji-align').find('option[value="3"]').attr('disabled', 'disabled');
+      this.resetEmoji(3);
+    }
+    
+    this.model.set('creditText', str);
   },
 
   onHeadline: function() {
@@ -121,6 +148,21 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onTextAlign: function() {
+    
+    this.$('#emoji-align').find('option[value="1"]').removeAttr('disabled').end()
+                          .find('option[value="2"]').removeAttr('disabled');
+    
+    switch (this.$('#text-align').val()){
+      case 'left':
+        this.$('#emoji-align').find('option[value="0"]').attr('disabled', 'disabled');
+        this.resetEmoji(0);
+      break;
+      case 'right':
+        this.$('#emoji-align').find('option[value="1"]').attr('disabled', 'disabled');
+        this.resetEmoji(1);
+      break; 
+    }
+    
     this.model.set('textAlign', this.$('#text-align').val());
   },
 
@@ -137,6 +179,14 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onWatermark: function() {
+    
+    if (this.$('#watermark').val() == ''){
+      this.$('#emoji-align').find('option[value="2"]').removeAttr('disabled');  
+    } else {
+      this.$('#emoji-align').find('option[value="2"]').attr('disabled', 'disabled');
+      this.resetEmoji(2);
+    }    
+    
     this.model.set('watermarkSrc', this.$('#watermark').val());
     if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
   },
@@ -167,8 +217,6 @@ MEME.MemeEditorView = Backbone.View.extend({
   },  
   
   onEmojiAlign: function() {
-    
-    console.log('emojiPosition', parseInt(this.$('#emoji-align').val(),10))
     this.model.set('emojiPosition', parseInt(this.$('#emoji-align').val(),10));
   },  
 
