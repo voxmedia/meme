@@ -200,6 +200,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.fillText(d.ribbon.text.toUpperCase(), d.width / 2, d.height / 2);
       
     }
+    
+    function renderEmoji(ctx){
+      if (d.ribbon.emoji == ''){
+        return;
+      }      
+      
+      
+    }
 
     renderBackground(ctx);
     renderImage(ctx);
@@ -208,6 +216,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderCredit(ctx);
     renderWatermark(ctx);
     renderRibbon(ctx);
+    renderEmoji(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
     $('#meme-download').attr({

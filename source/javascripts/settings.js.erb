@@ -17,6 +17,18 @@ var MEME_SETTINGS = {
   creditSize: 12, // Font size for credit text.
   
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
+  
+  emojiImage: '<%= image_path("emojis/emojis-canvas.png") %>',
+  emojiPosition: 1,
+  emojiOpts: [
+    {text: 'Izquierda abajo', value: 0},
+    {text: 'Izquierda arriba', value: 1},
+    {text: 'Derecha abajo', value: 2},
+    {text: 'Derecha arriba', value: 3, selected:true}
+  ],  
+  emojiSize: '160',
+    
+      
   fontColor: 'white', // Universal font color.
 
   // Universal font family for texts:
