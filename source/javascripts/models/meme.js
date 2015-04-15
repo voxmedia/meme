@@ -46,9 +46,17 @@ MEME.MemeModel = Backbone.Model.extend({
   // Initialize with custom image members used for background and watermark:
   // These images will (sort of) behave like managed model fields.
   initialize: function() {
+    console.log(this)
+    
+    var emo = (this.attributes.emojiImage || this.defaults.emojiImage);
+    
     this.background = new Image();
     this.watermark = new Image();
     this.emoji = new Image();
+    
+    if (emo != '') {
+      this.emoji.src = emo;  
+    }
 
     // Set image sources to trigger "change" whenever they reload:
     this.background.onload = this.watermark.onload = _.bind(function() {

@@ -202,11 +202,12 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
     
     function renderEmoji(ctx){
-      if (d.ribbon.emoji == ''){
+      if (d.emoji == ''){
         return;
-      }      
-      
-      
+      }
+
+      ctx.drawImage(m.emoji, 160*d.emoji, 0, 160,160, 50,50, 160,160 );
+      //ctx.globalAlpha = 1;
     }
 
     renderBackground(ctx);

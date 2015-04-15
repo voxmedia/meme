@@ -17,7 +17,7 @@
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
   
-  %fieldset
+  %fieldset.hidden
     %legend Imagen
     
     .form-input
@@ -44,7 +44,7 @@
       %select#background
         %option{:value=>""} Ninguno    
   
-  %fieldset
+  %fieldset.hidden
     %legend Texto
 
     .form-input
@@ -95,7 +95,7 @@
         %li
           %label.form-title{:for=>'emoji-none'} Ninguno
           %input#emoji-none{:name => "emoji", :type => "radio", :value => ""}  
-        - (1..17).each do |element|
+        - (0..16).each do |element|
           %li
             %input{:id=>"emoji-#{element}", :name => "emoji", :type => "radio", :value =>element}
             %label.form-title{:for=>"emoji-#{element}", :class=>"emoji-#{element}"}= "Emoji #{element}"          

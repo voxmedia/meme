@@ -162,7 +162,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
   
   onEmojiImage: function(evt) {
-    this.model.set('emojiImage', this.$(evt.target).val());
+    this.model.set('emoji', this.$(evt.target).val());
   },  
 
   onScale: function() {
