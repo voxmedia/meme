@@ -148,11 +148,6 @@
 
   .form-input{
     margin-top: (10rem/16);
-    
-    &:first-child {
-      margin-top:0;
-      
-    }
 
     input[type='range'],
     input[type='text'],
@@ -243,6 +238,59 @@
       visibility: visible;             
     }
     
+  }
+
+  .two-columns{
+    clear: both;
+    .form-input{
+      float: left;
+      width: 48%;
+      &:last-child{
+        float: right;
+      }
+    }
+  }
+
+  .checkbox-item{
+    clear: both;
+    display: table;
+    margin-top: (15rem/16);
+    position: relative;
+
+    label{
+      margin: 6px 0 11px 36px;
+      &:before{
+        width: 30px;
+        height: 30px;
+        content: "";
+        background: #ffffff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include border_radius(5px);
+      }
+    }
+
+
+    input{
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      opacity: 0;
+
+      &:checked ~ label:before {
+        background: image-url("images/sprite-meme.png") -117px -30px #ffffff;
+      }
+    }
+
+
+
+
+
   }
 }
 

@@ -58,7 +58,7 @@
         %label.form-title{:for => "font-family"} Tipografía
         %select#font-family
 
-      .two-columns
+      .two-columns.clearfix
 
         .form-input
           %label.form-title{:for => "text-align"} Alineación
@@ -71,8 +71,9 @@
 
       .form-input.checkbox-group
         .checkbox-item
-          %label.form-title{:for => "text-shadow"} Sombra
           %input#text-shadow{:name => "shadow", :type => "checkbox"}
+          %label.form-title{:for => "text-shadow"} Sombra
+
 
 
     %fieldset
