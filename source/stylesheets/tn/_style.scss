@@ -60,3 +60,22 @@
     width: 100%;
   }
 }
+
+.options{
+  clear: both;
+ fieldset{
+   width: 32%;
+   float: left;
+   @include border_radius(10px);
+   border: solid 1px #999999;
+   position: relative;
+   &:nth-child(3){
+     float: right;
+   }
+   h2{
+     text-transform: uppercase;
+     color: #ffffff;
+     position: absolute;
+   }
+ }
+}

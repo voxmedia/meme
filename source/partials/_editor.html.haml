@@ -15,93 +15,93 @@
       #meme-canvas
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
-  
-  %fieldset
-    %legend Imagen
-    
-    .form-input
-      %label.form-title{:for => "image-scale"} Ajustar tamaño
-      %input#image-scale{:max => "4", :min => ".01", :step => ".01", :type => "range", :value => "1"}
-    
-    .form-input
-      %label.form-title{:for => "aspect-ratio"} Proporciones
-      %select#aspect-ratio
-    
-    .items-group.form-input
-      .form-title Color
-      %ul#overlay.clearfix
-        %li
-          %label.form-title{:for=>'overlay-none'} Ninguno
-          %input#overlay-none{:name => "overlay", :type => "radio", :value => "", :checked=>"checked"}
-        - overlay.each_with_index do |element, index|
-          %li
-            %input{:id=>"overlay-#{index}", :name => "overlay", :type => "radio", :value =>element}
-            %label.form-title{:for=>"overlay-#{index}", :style=>"background: #{element}"}= element
+  .options
+    %fieldset
+      %h2 Imagen
 
-    .form-input
-      %label.form-title{:for => "background"} Fondo
-      %select#background
-        %option{:value=>""} Ninguno    
-  
-  %fieldset
-    %legend Texto
-
-    .form-input
-      %label.form-title{:for => "headline"} Títular
-      %textarea#headline{:name => "headline"}
-
-    .form-input
-      %label.form-title{:for => "credit"} Fuente
-      %input#credit{:name => "credit", :type => "text"}
-    
-    .form-input
-      %label.form-title{:for => "font-family"} Tipografía
-      %select#font-family
-  
-    .two-columns
-      
       .form-input
-        %label.form-title{:for => "text-align"} Alineación
-        %select#text-align
-      
+        %label.form-title{:for => "image-scale"} Ajustar tamaño
+        %input#image-scale{:max => "4", :min => ".01", :step => ".01", :type => "range", :value => "1"}
+
       .form-input
-        %label.form-title{:for => "font-size"} Tamaño
-        %select#font-size
-    
-    
-    .form-input.checkbox-group
-      .checkbox-item
-        %label.form-title{:for => "text-shadow"} Sombra
-        %input#text-shadow{:name => "shadow", :type => "checkbox"}
+        %label.form-title{:for => "aspect-ratio"} Proporciones
+        %select#aspect-ratio
 
-    
-  %fieldset
-    %legend Extra
-    
-    .form-input
-      %label.form-title{:for => "watermark"} Logo
-      %select#watermark
-        %option{:value => ""} Ninguno
-
-    .form-input
-      %label.form-title{:for => "ribbon"} Barra
-      %select#ribbon
-        %option{:value => "", :selected=>"selected"} Ninguna
-
-    #emojis.items-group
-      .form-title Emojis
-      %ul.clearfix
-        %li
-          %label.form-title{:for=>'emoji-none'} Ninguno
-          %input#emoji-none{:name => "emoji", :type => "radio", :value => "", :checked=>"checked"}  
-        - (0..16).each do |element|
+      .items-group.form-input
+        .form-title Color
+        %ul#overlay.clearfix
           %li
-            %input{:id=>"emoji-#{element}", :name => "emoji", :type => "radio", :value =>element}
-            %label.form-title{:for=>"emoji-#{element}", :class=>"emoji-#{element}"}= "Emoji #{element}"          
-  
-    .form-input
-      %label.form-title{:for => "emojis-align"} Posición emojis
-      %select#emoji-align
+            %label.form-title{:for=>'overlay-none'} Ninguno
+            %input#overlay-none{:name => "overlay", :type => "radio", :value => "", :checked=>"checked"}
+          - overlay.each_with_index do |element, index|
+            %li
+              %input{:id=>"overlay-#{index}", :name => "overlay", :type => "radio", :value =>element}
+              %label.form-title{:for=>"overlay-#{index}", :style=>"background: #{element}"}= element
+
+      .form-input
+        %label.form-title{:for => "background"} Fondo
+        %select#background
+          %option{:value=>""} Ninguno
+
+    %fieldset
+      %h2 Texto
+
+      .form-input
+        %label.form-title{:for => "headline"} Títular
+        %textarea#headline{:name => "headline"}
+
+      .form-input
+        %label.form-title{:for => "credit"} Fuente
+        %input#credit{:name => "credit", :type => "text"}
+
+      .form-input
+        %label.form-title{:for => "font-family"} Tipografía
+        %select#font-family
+
+      .two-columns
+
+        .form-input
+          %label.form-title{:for => "text-align"} Alineación
+          %select#text-align
+
+        .form-input
+          %label.form-title{:for => "font-size"} Tamaño
+          %select#font-size
+
+
+      .form-input.checkbox-group
+        .checkbox-item
+          %label.form-title{:for => "text-shadow"} Sombra
+          %input#text-shadow{:name => "shadow", :type => "checkbox"}
+
+
+    %fieldset
+      %h2 Extra
+
+      .form-input
+        %label.form-title{:for => "watermark"} Logo
+        %select#watermark
+          %option{:value => ""} Ninguno
+
+      .form-input
+        %label.form-title{:for => "ribbon"} Barra
+        %select#ribbon
+          %option{:value => "", :selected=>"selected"} Ninguna
+
+      #emojis.items-group
+        .form-title Emojis
+        %ul.clearfix
+          %li
+            %label.form-title{:for=>'emoji-none'} Ninguno
+            %input#emoji-none{:name => "emoji", :type => "radio", :value => "", :checked=>"checked"}
+          - (0..16).each do |element|
+            %li
+              %input{:id=>"emoji-#{element}", :name => "emoji", :type => "radio", :value =>element}
+              %label.form-title{:for=>"emoji-#{element}", :class=>"emoji-#{element}"}= "Emoji #{element}"
+
+      .form-input
+        %label.form-title{:for => "emojis-align"} Posición emojis
+        %select#emoji-align
           
           
   #meme-download{:title=>"Descargar imagen"} Descargar imagen          
