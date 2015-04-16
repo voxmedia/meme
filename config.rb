@@ -29,8 +29,8 @@ set :absolute_prefix, 'http://localhost:4567'
 # Build-specific configuration
 configure :build do
   puts "local build"
-  set :url_prefix, "prefix/"
-  set :absolute_prefix, "./"
+  set :url_prefix, ""
+  set :absolute_prefix, ""
   set :images_dir, 'images'
     
   activate :asset_hash

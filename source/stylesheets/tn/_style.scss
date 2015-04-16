@@ -1,5 +1,9 @@
 @import 'mixin';
 
+@mixin emoji($i){
+  background-position: (-30px*$i) 0;  
+}
+
 .upload-image {
   .upload-wrapper {
     margin-bottom: (36rem/16);
@@ -93,7 +97,6 @@
 }
 
 .options {
-  clear: both;
 
   fieldset {
     width: 32%;
@@ -106,63 +109,185 @@
     &:nth-child(3) {
       float: right;
     }
+  }
 
-    h2 {
-      text-transform: uppercase;
-      color: #ffffff;
-      text-align: center;
-      position: relative;
-      font-weight: 300;
-      margin-bottom: (10rem/16);
+  h2 {
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    font-weight: 300;
+    margin-bottom: (10rem/16);
 
-      &:before {
-        background:#808080;
-        bottom: 0;
-        content: "";
-        height: 1px;
-        left: 1%;
-        position: absolute;
-        width: 98%;
-      }
-    }
-
-    .form-title{
-      text-transform: uppercase;
-      font-size: (14rem/16);
-      color: #ffffff;
-      display: block;
-    }
-
-    .form-input{
-      margin-bottom: (10rem/16);
-
-      input[type='range'],
-      input[type='text'],
-      select,
-      textarea{
-        width: 100%;
-        @include box_sizing(border-box);
-        border: none;
-      }
-
-      input[type='text'],
-      select,
-      textarea{
-        border: none;
-        background: #ffffff;
-        font-size: (14rem/16);
-        padding: (10rem/16);
-        @include border_radius(5px);
-      }
-
-      input[type='radio']{
-        float: left;
-      }
-
-
-
+    &:before {
+      background:#808080;
+      bottom: 0;
+      content: "";
+      height: 1px;
+      left: 1%;
+      position: absolute;
+      width: 98%;
     }
   }
 
+  .form-title{
+    text-transform: uppercase;
+    font-size: (14rem/16);
+    color: #ffffff;
+    display: block;
+  }
 
+  .form-input{
+    margin-bottom: (10rem/16);
+
+    input[type='range'],
+    input[type='text'],
+    select,
+    textarea{
+      width: 100%;
+      @include box_sizing(border-box);
+      border: none;
+    }
+
+    input[type='text'],
+    select,
+    textarea{
+      border: none;
+      background: #ffffff;
+      font-size: (14rem/16);
+      padding: (10rem/16);
+      @include border_radius(5px);
+    }
+  }
+     
+  .items-group{
+    li {
+      float:left;
+      width: (32rem/16);
+      height: (32rem/16);
+      position: relative;
+      cursor: pointer;
+    }
+    label {
+      width: 100%;
+      height: 100%;
+      text-indent: -999em;
+      overflow: hidden;
+      display: block;
+      position: relative;
+      cursor: pointer;
+      
+      &:before{
+        position: absolute;
+        width: 100%;
+        height: 100%; 
+        border:solid (1rem/16) white;
+        left: 0;
+        top: 0;
+        content:"";
+        box-sizing: border-box;
+        z-index: 9;
+        
+        display:none;
+        visibility: hidden;
+      }
+    }
+    input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 2;
+      top:0;
+      left: 0;
+      cursor: pointer;
+      
+      &:checked ~ label:before {
+        display:block;
+        visibility: visible;     
+        border-color:white !important;   
+      }
+    } 
+    
+    .items-group-none:before {
+      content:"X";
+      color:#999;
+      line-height: (32rem/16);
+      text-align: center;
+      border-color:#999 !important;
+      text-indent: 0;
+      display:block;
+      visibility: visible;             
+    }
+    
+  }
+}
+
+#emojis {
+  label:after {
+    background: image-url("images/emojis/emojis-editor.png") left top no-repeat;
+    width: 30px;
+    height: 30px;
+    content:"";
+    position: absolute;
+    left: 1px;
+    top:1px;
+    
+  }
+  
+  .items-group-none:after {
+    background: none;
+  }
+  
+  .emoji-0:after{
+    @include emoji(0);
+  }
+  .emoji-1:after{
+    @include emoji(1);
+  }
+  .emoji-2:after{
+    @include emoji(2);
+  }
+  .emoji-3:after{
+    @include emoji(3);
+  }
+  .emoji-4:after{
+    @include emoji(4);
+  }
+  .emoji-5:after{
+    @include emoji(5);
+  }    
+  .emoji-6:after{
+    @include emoji(6);
+  }
+  .emoji-7:after{
+    @include emoji(7);
+  }
+  .emoji-8:after{
+    @include emoji(8);
+  }
+  .emoji-9:after{
+    @include emoji(9);
+  }
+  .emoji-10:after{
+    @include emoji(10);
+  }
+  .emoji-11:after{
+    @include emoji(11);
+  }
+  .emoji-12:after{
+    @include emoji(12);
+  }
+  .emoji-13:after{
+    @include emoji(13);
+  }
+  .emoji-14:after{
+    @include emoji(14);
+  }
+  .emoji-15:after{
+    @include emoji(15);
+  }    
+  .emoji-16:after{
+    @include emoji(16);
+  }  
 }
