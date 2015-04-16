@@ -3,6 +3,16 @@
 @mixin emoji($i){
   background-position: (-30px*$i) 0;  
 }
+/*
+#header .header-title::before {
+  
+}
+*/
+
+canvas {
+  margin:0 auto;
+  display: block;
+}
 
 .upload-image {
   .upload-wrapper {
@@ -17,6 +27,7 @@
     color: #999999;
     line-height: (65rem/16);
     position: relative;
+    text-align: center;
     @include box_sizing(border-box);
   }
 
@@ -38,41 +49,42 @@
   .drop {
     border: 3px dotted #999;
     border-right: none;
-
-    @include border_radius(5px 0 0 5px);
     position: relative;
+    
+    @include border_radius(5px 0 0 5px);
 
-    .icon-photo{
-      display: table;
-      margin: 0 auto;
-      padding-left: (38rem/16);
-
-      &:before{
-        content: "";
-        position: absolute;
-        top: (14rem/16);
-        left: (120rem/16);
-        width: (38rem/16);
-        height: (31rem/16);
-        background: image-url("images/sprite-meme.png") -115px -61px;
-      }
+    &:before{
+      content: "";
+      position: relative;
+      width: 38px;
+      height: 31px;
+      background: image-url("images/sprite-meme.png") -125px 0;
+      top:(8rem/16);
+      left: (-4rem/16);
+      display: inline-block;
     }
+
   }
   .explore {
     border: 3px solid #999;
     @include border_radius(0 5px 5px 0);
 
     .icon-arrow-up{
-      padding-left: (38rem/16);
+      display: block;
+      width: 100%;
+      height: 100%;
+      
       &:before{
         content: "";
-        position: absolute;
-        top: (14rem/16);
-        left: (155rem/16);
-        width: (38rem/16);
-        height: (31rem/16);
-        background: image-url("images/sprite-meme.png") -140px -3px;
-      }
+        position: relative;
+        width: 22px;
+        height: 31px;
+        background: image-url("images/sprite-meme.png") -99px 0;
+        top:(8rem/16);
+        left: (-8rem/16);
+        display: inline-block;
+      }      
+      
     }
   }
 
@@ -145,7 +157,15 @@
     color: #ffffff;
     display: block;
   }
-
+  /*
+  .two-columns {
+    margin-top: (10rem/16);
+    
+    .form-input{
+      margin-top:0;
+    }
+  }
+  */
   .form-input{
     margin-top: (10rem/16);
 
@@ -304,6 +324,17 @@
   margin-top: (20rem/16);
   line-height: (70rem/16);
   cursor: pointer;
+  
+  &:before{
+    content: "";
+    position: relative;
+    width: 21px;
+    height: 31px;
+    background: image-url("images/sprite-meme.png") -77px 0;
+    top:(8rem/16);
+    left: (-8rem/16);
+    display: inline-block;
+  }  
 }
 
 
