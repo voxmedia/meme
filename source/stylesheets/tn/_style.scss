@@ -248,6 +248,19 @@
   }
 }
 
+#meme-download{
+  background: #000000;
+  @include border_radius(10px);
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: (18rem/16);
+  text-align: center;
+  margin-top: (20rem/16);
+  line-height: (70rem/16);
+  cursor: pointer;
+}
+
+
 #emojis {
   label:after {
     background: image-url("images/emojis/emojis-editor.png") left top no-repeat;
