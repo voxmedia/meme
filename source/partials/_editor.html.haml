@@ -88,9 +88,9 @@
         %select#ribbon
           %option{:value => "", :selected=>"selected"} Ninguna
 
-      #emojis.items-group
+      .items-group.form-input
         .form-title Emojis
-        %ul.clearfix
+        %ul#emojis.clearfix
           %li
             %input#emoji-none{:name => "emoji", :type => "radio", :value => "", :checked=>"checked"}
             %label.items-group-none{:for=>'emoji-none'} Ninguno

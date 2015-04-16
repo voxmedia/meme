@@ -141,7 +141,12 @@
   }
 
   .form-input{
-    margin-bottom: (10rem/16);
+    margin-top: (10rem/16);
+    
+    &:first-child {
+      margin-top:0;
+      
+    }
 
     input[type='range'],
     input[type='text'],
@@ -170,6 +175,15 @@
       height: (32rem/16);
       position: relative;
       cursor: pointer;
+      margin-top: (10rem/16);
+      margin-left: (19.2rem/16);
+      
+      &:nth-child(-n+6){
+        margin-top:0;
+      }
+      &:nth-child(6n+1) {
+        margin-left: 0;
+      }
     }
     label {
       width: 100%;
