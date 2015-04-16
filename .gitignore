@@ -19,7 +19,8 @@
 
 # IDE files
 .project
-.idea/*
+.idea/workspace.xml
+/.idea/workspace.xml
 
 # Gemfile.lock
 Gemfile.lock

@@ -65,16 +65,18 @@ MEME.MemeCanvasView = Backbone.View.extend({
       // Base height and width:
       var bh = m.background.height;
       var bw = m.background.width;
-
+      
       if (bh && bw) {
         // Transformed height and width:
         // Set the base position if null
         var th = bh * d.imageScale;
         var tw = bw * d.imageScale;
-        var cx = d.backgroundPosition.x || d.width / 2;
-        var cy = d.backgroundPosition.y || d.height / 2;
+        //Use position or center
+        d.backgroundPosition.x = d.backgroundPosition.x || (d.width / 2) - (bw / 2);
+        d.backgroundPosition.y = d.backgroundPosition.y || (d.height / 2) - (bh / 2);
         
-        ctx.drawImage(m.background, 0, 0, bw, bh, cx-(tw/2), cy-(th/2), tw, th);
+        ctx.drawImage(m.background, 0, 0, bw, bh, d.backgroundPosition.x, d.backgroundPosition.y, tw, th);
+        
       }
     }
 
@@ -254,12 +256,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderEmoji(ctx);
     
     this.model.data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
-    /*
-    $('#meme-download').attr({
-      'href': data,
-      'download': 'm3m3.png'
-    });
-    */
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
   },
@@ -271,10 +267,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
   // Performs drag-and-drop on the background image placement:
   onDrag: function(evt) {
     evt.preventDefault();
-
     // Return early if there is no background image:
     if (!this.model.hasBackground()) return;
-
+    
     // Configure drag settings:
     var model = this.model;
     var d = model.toJSON();
@@ -282,16 +277,25 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ih = model.background.height * d.imageScale / 2;
     var origin = {x: evt.clientX, y: evt.clientY};
     var start = d.backgroundPosition;
-    start.x = start.x || d.width / 2;
-    start.y = start.y || d.height / 2;
+    start.x = start.x || (d.width / 2) - (iw / 2);
+    start.y = start.y || (d.height / 2) - (ih / 2);
 
+    
     // Create update function with draggable constraints:
     function update(evt) {
       evt.preventDefault();
+      
+      model.set('backgroundPosition', {
+        x: start.x - (origin.x - evt.clientX ),
+        y: start.y - (origin.y - evt.clientY )
+      });
+     
+      /*
       model.set('backgroundPosition', {
         x: Math.max(d.width-iw, Math.min(start.x - (origin.x - evt.clientX), iw)),
         y: Math.max(d.height-ih, Math.min(start.y - (origin.y - evt.clientY), ih))
       });
+      */
     }
 
     // Perform drag sequence:

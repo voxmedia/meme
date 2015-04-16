@@ -46,8 +46,6 @@ MEME.MemeModel = Backbone.Model.extend({
   // Initialize with custom image members used for background and watermark:
   // These images will (sort of) behave like managed model fields.
   initialize: function() {
-    console.log(this)
-    
     var emo = (this.attributes.emojiImage || this.defaults.emojiImage);
     
     this.background = new Image();
@@ -93,6 +91,8 @@ MEME.MemeModel = Backbone.Model.extend({
   // Loads a file reference into the background image data source:
   loadBackground: function(file) {
     this.loadFileForImage(file, this.background);
+    this.attributes.backgroundPosition.x = null;
+    this.attributes.backgroundPosition.y = null;
   },
 
   // Loads a file reference into the watermark image data source:

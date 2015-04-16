@@ -114,8 +114,6 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.$('#emoji-align').find('option').removeAttr('selected').end().val(p);
     }
     
-    console.log('memem')
-
   },
 
   events: {
@@ -129,7 +127,6 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
-    'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop',
     
     'change #aspect-ratio': 'onAspectRatio',
@@ -137,8 +134,12 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #ribbon': 'onRibbon',
     'change [name="emoji"]': 'onEmojiImage',
     'change #emoji-align': 'onEmojiAlign',
+    'change #image-upload': 'onFileSelect',
+    'click #meme-download': 'onDownload',
     
-    'click #meme-download': 'onDownload'
+    'dragover canvas': 'onZoneOver',
+    'drop canvas': 'onZoneDrop',
+    
   },
 
   onCredit: function() {
@@ -169,7 +170,17 @@ MEME.MemeEditorView = Backbone.View.extend({
   onHeadline: function() {
     this.model.set('headlineText', this.$('#headline').val());
   },
-
+  /*
+  onExploreClick: function() {
+    console.log('click')
+    //$("#image-upload").click();
+  },
+  */
+  onFileSelect: function(t) {
+        var e = t.target;
+        e && this.model.loadBackground(e.files[0]);
+  },
+  
   onTextAlign: function() {
     
     this.$('#emoji-align').find('option[value="0"]').removeAttr('disabled').end()
@@ -241,7 +252,8 @@ MEME.MemeEditorView = Backbone.View.extend({
   },  
 
   onScale: function() {
-    this.model.set('imageScale', this.$('#image-scale').val());
+    this.model.set({imageScale: this.$('#image-scale').val()});
+    //this.model.set('imageScale', this.$('#image-scale').val());
   },
 
   onOverlayColor: function(evt) {
