@@ -208,29 +208,38 @@ MEME.MemeCanvasView = Backbone.View.extend({
         return;
       }
       
-      var x = padding, y = padding;
+      var x = padding,
+          y = padding,
+          mw = d.width * d.emojiMaxWidthRatio,// Calculate watermark maximum width:
+          efinal = d.emojiSize;
           
+      // Constrain transformed height based on maximum allowed width:
+      if (mw < d.emojiSize) {
+        efinal = d.emojiSize * (mw / d.emojiSize);
+      }            
+                
       switch (d.emojiPosition){
         case 0:
           x = padding;
           y = padding;         
         break;
         case 1:
-          x = d.width - d.emojiSize - padding;
+          x = d.width - efinal - padding;
           y = padding;              
         break;
         case 2:
-          x = d.width - d.emojiSize - padding;
-          y = d.height - d.emojiSize - padding;              
+          x = d.width - efinal - padding;
+          y = d.height - efinal - padding;              
         break;
         case 3:
           x = padding;
-          y = d.height - d.emojiSize - padding;              
+          y = d.height - efinal - padding;              
         break;
-
       }
-
-      ctx.drawImage(m.emoji, d.emojiSize * d.emoji, 0, d.emojiSize, d.emojiSize, x, y, d.emojiSize, d.emojiSize);
+      
+      ctx.drawImage(m.emoji,
+                    d.emojiSize * d.emoji, 0, d.emojiSize, d.emojiSize,
+                    x, y, efinal, efinal);
       
       
     }
