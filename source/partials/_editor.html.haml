@@ -7,9 +7,9 @@
     .upload-wrapper.clearfix
       .form-input.drop
         #dropzone Arrastrar imagen
-      .form-input.explore
+      .form-input#explore.explore
         %label{:for => "image"} Subir imagen
-        %input#image{:name => "image", :type => "file"}
+        %input#image-upload.image-upload{:name => "image", :type => "file"}
       
     #meme-canvas-view
       #meme-canvas
