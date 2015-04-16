@@ -16,7 +16,7 @@
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
   
-  %fieldset
+  %fieldset.hidden
     %legend Imagen
     
     .form-input
@@ -36,7 +36,7 @@
         - overlay.each_with_index do |element, index|
           %li
             %input{:id=>"overlay-#{index}", :name => "overlay", :type => "radio", :value =>element}
-            %label.form-title{:for=>"overlay-#{index}"}= element
+            %label.form-title{:for=>"overlay-#{index}", :style=>"background: #{element}"}= element
 
     .form-input
       %label.form-title{:for => "background"} Fondo

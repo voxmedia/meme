@@ -1,14 +1,14 @@
 var MEME_SETTINGS = {
 
   aspectRatioOpts: [
-    {text: 'Tn [970x545px]', value: '970x545'}, 
+    {text: 'TN [970x545px]', value: '970x545'}, 
     {text: 'Instagram [510x510px]', value: '510x510'},
     {text: 'Twitter [506x253px]', value: '506x253'}
   ],
   
   backgroundOpts: [
-    {text: 'Rojo Tn', value: '<%= image_path("backgrounds/tn-red.png") %>'}, 
-    {text: 'Azul Tn', value: '<%= image_path("backgrounds/tn-blue.png") %>'},
+    {text: 'Rojo TN', value: '<%= image_path("backgrounds/tn-red.png") %>'}, 
+    {text: 'Azul TN', value: '<%= image_path("backgrounds/tn-blue.png") %>'},
     {text: 'Hormigon', value: '<%= image_path("backgrounds/concrete.png") %>'},
     {text: 'Trama', value: '<%= image_path("backgrounds/tweed.png") %>'}
   ],
@@ -99,7 +99,7 @@ var MEME_SETTINGS = {
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png") %>'},
+    {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png") %>', selected:true},
     {text: 'Todapasion', value: '<%= image_path("watermarks/todapasion.png") %>'},
     {text: 'La viola', value: '<%= image_path("watermarks/la-viola.png") %>'},
     {text: 'Famosos', value: '<%= image_path("watermarks/famosos.png") %>'},
