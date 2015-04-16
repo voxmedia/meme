@@ -38,15 +38,20 @@
   .drop {
     border: 3px dotted #999;
     border-right: none;
+
     @include border_radius(5px 0 0 5px);
     position: relative;
 
     .icon-photo{
+      display: table;
+      margin: 0 auto;
+      padding-left: (38rem/16);
+
       &:before{
         content: "";
         position: absolute;
         top: (14rem/16);
-        left: (105rem/16);
+        left: (120rem/16);
         width: (38rem/16);
         height: (31rem/16);
         background: image-url("images/sprite-meme.png") -115px -61px;
@@ -58,11 +63,12 @@
     @include border_radius(0 5px 5px 0);
 
     .icon-arrow-up{
+      padding-left: (38rem/16);
       &:before{
         content: "";
         position: absolute;
         top: (14rem/16);
-        left: (140rem/16);
+        left: (155rem/16);
         width: (38rem/16);
         height: (31rem/16);
         background: image-url("images/sprite-meme.png") -140px -3px;
