@@ -88,11 +88,19 @@ MEME.MemeModel = Backbone.Model.extend({
     var reader = new FileReader();
     reader.onload = function() { image.src = reader.result; };
     reader.readAsDataURL(file);
+    console.log('load')
   },
 
   // Loads a file reference into the background image data source:
   loadBackground: function(file) {
     this.loadFileForImage(file, this.background);
+    this.attributes.backgroundPosition.x = null;
+    this.attributes.backgroundPosition.y = null;
+    /*set('backgroundPosition', {
+      x: null,
+      y: null
+    });
+    */    
   },
 
   // Loads a file reference into the watermark image data source:
