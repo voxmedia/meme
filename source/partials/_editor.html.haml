@@ -32,11 +32,11 @@
       %ul#overlay.clearfix
         %li
           %label.form-title{:for=>'overlay-none'} Ninguno
-          %input#overlay-none{:name => "overlay", :type => "radio", :value => ""}
+          %input#overlay-none{:name => "overlay", :type => "radio", :value => "", :checked=>"checked"}
         - overlay.each_with_index do |element, index|
           %li
             %input{:id=>"overlay-#{index}", :name => "overlay", :type => "radio", :value =>element}
-            %label.form-title{:for=>"overlay-#{index}"}= element
+            %label.form-title{:for=>"overlay-#{index}", :style=>"background: #{element}"}= element
 
     .form-input
       %label.form-title{:for => "background"} Fondo
@@ -86,14 +86,14 @@
     .form-input
       %label.form-title{:for => "ribbon"} Barra
       %select#ribbon
-        %option{:value => ""} Ninguna
+        %option{:value => "", :selected=>"selected"} Ninguna
 
     #emojis.items-group
       .form-title Emojis
       %ul.clearfix
         %li
           %label.form-title{:for=>'emoji-none'} Ninguno
-          %input#emoji-none{:name => "emoji", :type => "radio", :value => ""}  
+          %input#emoji-none{:name => "emoji", :type => "radio", :value => "", :checked=>"checked"}  
         - (0..16).each do |element|
           %li
             %input{:id=>"emoji-#{element}", :name => "emoji", :type => "radio", :value =>element}
@@ -104,4 +104,4 @@
       %select#emoji-align
           
           
-  %a#meme-download{:href=>"#", :title=>"Descargar imagen",:download => "share.png"} Descargar imagen          
+  #meme-download{:title=>"Descargar imagen"} Descargar imagen          

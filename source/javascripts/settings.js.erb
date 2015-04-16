@@ -1,14 +1,14 @@
 var MEME_SETTINGS = {
 
   aspectRatioOpts: [
-    {text: 'Tn [970x545px]', value: '970x545'}, 
+    {text: 'TN [970x545px]', value: '970x545'}, 
     {text: 'Instagram [510x510px]', value: '510x510'},
     {text: 'Twitter [506x253px]', value: '506x253'}
   ],
   
   backgroundOpts: [
-    {text: 'Rojo Tn', value: '<%= image_path("backgrounds/tn-red.png") %>'}, 
-    {text: 'Azul Tn', value: '<%= image_path("backgrounds/tn-blue.png") %>'},
+    {text: 'Rojo TN', value: '<%= image_path("backgrounds/tn-red.png") %>'}, 
+    {text: 'Azul TN', value: '<%= image_path("backgrounds/tn-blue.png") %>'},
     {text: 'Hormigon', value: '<%= image_path("backgrounds/concrete.png") %>'},
     {text: 'Trama', value: '<%= image_path("backgrounds/tweed.png") %>'}
   ],
@@ -27,7 +27,7 @@ var MEME_SETTINGS = {
     {text: 'Derecha arriba', value: 1, selected:true}
   ],  
   emojiSize: '100',
-    
+  emojiMaxWidthRatio: 0.12,
       
   fontColor: 'white', // Universal font color.
 
@@ -41,7 +41,7 @@ var MEME_SETTINGS = {
     {text: 'Museo Normal', value: 'museo-300'},
     {text: 'Museo Negrita', value: 'museo-700'},
     {text: 'Museo Sans Normal', value: 'museo-sans-300'},
-    {text: 'Museo Sans Negrita', value: 'museo-sans-900'},
+    {text: 'Museo Sans Negrita', value: 'museo-sans-900', selected:true},
   ],
   
   //['Arial', 'Blokletters Viltstift', 'Comic Sans MS', 'Helvetica Neue', 'Museo Sans 300', 'Museo Sans 700',],
@@ -51,7 +51,7 @@ var MEME_SETTINGS = {
   // Font size options: set to empty array to disable font-size selector.
   fontSizeOpts: [
     {text: 'Chica', value: 36},
-    {text: 'Mediana', value: 48},
+    {text: 'Mediana', value: 48, selected:true},
     {text: 'Grande', value: 60}
   ],
 
@@ -80,7 +80,7 @@ var MEME_SETTINGS = {
   textAlign: 'left',
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
-    {text: 'Izquierda', value: 'left'}, 
+    {text: 'Izquierda', value: 'left', selected:true}, 
     {text: 'Centro', value: 'center'},
     {text: 'Derecha', value: 'right'}
   ],
@@ -89,7 +89,7 @@ var MEME_SETTINGS = {
   textShadowEdit: true, // Toggles text shadow control within the editor.
   
   watermarkAlpha: 1, // Opacity of watermark image.
-  watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
+  watermarkMaxWidthRatio: 0.15, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
   // Alternatively, use  to populate the watermark with base64 data, avoiding Cross-Origin issues.
@@ -99,12 +99,12 @@ var MEME_SETTINGS = {
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png") %>', data: ''},
-    {text: 'Todapasion', value: '<%= image_path("watermarks/todapasion.png") %>', data: ''},
-    {text: 'La viola', value: '<%= image_path("watermarks/la-viola.png") %>', data: ''},
-    {text: 'Famosos', value: '<%= image_path("watermarks/famosos.png") %>', data: ''},
-    {text: 'Tecno', value: '<%= image_path("watermarks/tecno.png") %>', data: ''},
-    {text: 'TN y la Gente', value: '<%= image_path("watermarks/tn-y-la-gente.png") %>', data: ''}    
+    {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png") %>', selected:true},
+    {text: 'Todapasion', value: '<%= image_path("watermarks/todapasion.png") %>'},
+    {text: 'La viola', value: '<%= image_path("watermarks/la-viola.png") %>'},
+    {text: 'Famosos', value: '<%= image_path("watermarks/famosos.png") %>'},
+    {text: 'Tecno', value: '<%= image_path("watermarks/tecno.png") %>'},
+    {text: 'TN y la Gente', value: '<%= image_path("watermarks/tn-y-la-gente.png") %>'}    
   ],
 
   width: 970 // Canvas rendering width.

@@ -12,7 +12,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     if (canvas && canvas.getContext) {
       $container.html(canvas);
       this.canvas = canvas;
-      this.setDownload();
+      //this.setDownload();
       this.render();
     } else {
       $container.html(this.$('noscript').html());
@@ -151,7 +151,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
-      ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
+      ctx.font = 'normal '+ d.creditSize +'pt museo-300';
       ctx.fillText(d.creditText, padding, d.height - padding);
     }
 
@@ -183,7 +183,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         return;
       }
       
-      var h = 80;
+      var h = 65;
 
       //Rectangulo      
       ctx.globalCompositeOperation="source-over";
@@ -208,29 +208,38 @@ MEME.MemeCanvasView = Backbone.View.extend({
         return;
       }
       
-      var x = padding, y = padding;
+      var x = padding,
+          y = padding,
+          mw = d.width * d.emojiMaxWidthRatio,// Calculate watermark maximum width:
+          efinal = d.emojiSize;
           
+      // Constrain transformed height based on maximum allowed width:
+      if (mw < d.emojiSize) {
+        efinal = d.emojiSize * (mw / d.emojiSize);
+      }            
+                
       switch (d.emojiPosition){
         case 0:
           x = padding;
           y = padding;         
         break;
         case 1:
-          x = d.width - d.emojiSize - padding;
+          x = d.width - efinal - padding;
           y = padding;              
         break;
         case 2:
-          x = d.width - d.emojiSize - padding;
-          y = d.height - d.emojiSize - padding;              
+          x = d.width - efinal - padding;
+          y = d.height - efinal - padding;              
         break;
         case 3:
           x = padding;
-          y = d.height - d.emojiSize - padding;              
+          y = d.height - efinal - padding;              
         break;
-
       }
-
-      ctx.drawImage(m.emoji, d.emojiSize * d.emoji, 0, d.emojiSize, d.emojiSize, x, y, d.emojiSize, d.emojiSize);
+      
+      ctx.drawImage(m.emoji,
+                    d.emojiSize * d.emoji, 0, d.emojiSize, d.emojiSize,
+                    x, y, efinal, efinal);
       
       
     }
@@ -243,17 +252,18 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderWatermark(ctx);
     renderRibbon(ctx);
     renderEmoji(ctx);
-
-    var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
+    
+    this.model.data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
+    /*
     $('#meme-download').attr({
       'href': data,
       'download': 'm3m3.png'
     });
-
+    */
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
   },
-
+  
   events: {
     'mousedown canvas': 'onDrag'
   },
@@ -291,5 +301,5 @@ MEME.MemeCanvasView = Backbone.View.extend({
         $doc.off('mouseup.drag mousemove.drag');
         update(evt);
       });
-  }
+  } 
 });
