@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d1cd812-0f87-46df-93b5-97fc881e3a25" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/stylesheets/tn/_style.scss" afterPath="$PROJECT_DIR$/source/stylesheets/tn/_style.scss" />
     </list>
     <ignored path="meme.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,16 +34,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_style.scss" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_style.scss" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/stylesheets/tn/_style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.518518" vertical-offset="1156" max-vertical-offset="1692">
-              <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
-              <folding>
-                <marker date="1429208536973" expanded="true" signature="475:514" placeholder="{...}" />
-                <marker date="1429208536973" expanded="true" signature="539:600" placeholder="{...}" />
-                <marker date="1429208536973" expanded="true" signature="650:685" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.8448276" vertical-offset="2002" max-vertical-offset="2700">
+              <caret line="133" column="26" selection-start-line="133" selection-start-column="26" selection-end-line="133" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6700611" vertical-offset="85" max-vertical-offset="612">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="612">
+              <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -96,9 +91,9 @@
         <option value="$PROJECT_DIR$/source/index.html.haml" />
         <option value="$PROJECT_DIR$/source/partials/_header.html.haml" />
         <option value="$PROJECT_DIR$/source/stylesheets/tn/_base.scss" />
-        <option value="$PROJECT_DIR$/source/stylesheets/tn/_style.scss" />
         <option value="$PROJECT_DIR$/source/partials/_editor.html.haml" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/source/stylesheets/tn/_style.scss" />
       </list>
     </option>
   </component>
@@ -423,11 +418,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="652" max-vertical-offset="1206">
           <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <marker date="1429208536973" expanded="true" signature="475:514" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="539:600" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="650:685" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -451,11 +442,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="180">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1429208536973" expanded="true" signature="475:514" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="539:600" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="650:685" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -494,11 +481,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="180">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1429208536973" expanded="true" signature="475:514" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="539:600" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="650:685" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -611,18 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/stylesheets/tn/_style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.518518" vertical-offset="1156" max-vertical-offset="1692">
-          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
-          <folding>
-            <marker date="1429208536973" expanded="true" signature="475:514" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="539:600" placeholder="{...}" />
-            <marker date="1429208536973" expanded="true" signature="650:685" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/partials/_editor.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="37.333332" vertical-offset="1350" max-vertical-offset="2016">
@@ -633,8 +604,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6700611" vertical-offset="85" max-vertical-offset="612">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="612">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/stylesheets/tn/_style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8448276" vertical-offset="2002" max-vertical-offset="2700">
+          <caret line="133" column="26" selection-start-line="133" selection-start-column="26" selection-end-line="133" selection-end-column="26" />
           <folding />
         </state>
       </provider>
