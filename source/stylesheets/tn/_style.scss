@@ -3,7 +3,11 @@
 @mixin emoji($i){
   background-position: (-30px*$i) 0;  
 }
-
+/*
+#header .header-title::before {
+  
+}
+*/
 .upload-image {
   .upload-wrapper {
     margin-bottom: (36rem/16);
@@ -147,7 +151,15 @@
     color: #ffffff;
     display: block;
   }
-
+  /*
+  .two-columns {
+    margin-top: (10rem/16);
+    
+    .form-input{
+      margin-top:0;
+    }
+  }
+  */
   .form-input{
     margin-top: (10rem/16);
     
@@ -258,6 +270,17 @@
   margin-top: (20rem/16);
   line-height: (70rem/16);
   cursor: pointer;
+  
+  &:before{
+    content: "";
+    position: relative;
+    width: 21px;
+    height: 31px;
+    background: image-url("images/sprite-meme.png") -77px 0;
+    top:(8rem/16);
+    left: (-8rem/16);
+    display: inline-block;
+  }  
 }
 
 
