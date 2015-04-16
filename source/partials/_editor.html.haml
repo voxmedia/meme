@@ -15,7 +15,7 @@
       #meme-canvas
         %noscript Lo sentimos, esta herramienta requiere un navegador moderno. Prueba Google Chrome.
   
-  .options
+  .options.clearfix
     %fieldset
       %h2 Imagen
 
@@ -31,12 +31,12 @@
         .form-title Color
         %ul#overlay.clearfix
           %li
-            %label.form-title{:for=>'overlay-none'} Ninguno
             %input#overlay-none{:name => "overlay", :type => "radio", :value => "", :checked=>"checked"}
+            %label.items-group-none{:for=>'overlay-none'} Ninguno
           - overlay.each_with_index do |element, index|
             %li
               %input{:id=>"overlay-#{index}", :name => "overlay", :type => "radio", :value =>element}
-              %label.form-title{:for=>"overlay-#{index}", :style=>"background: #{element}"}= element
+              %label{:for=>"overlay-#{index}", :style=>"background: #{element}"}= element
 
       .form-input
         %label.form-title{:for => "background"} Fondo
@@ -92,12 +92,12 @@
         .form-title Emojis
         %ul.clearfix
           %li
-            %label.form-title{:for=>'emoji-none'} Ninguno
             %input#emoji-none{:name => "emoji", :type => "radio", :value => "", :checked=>"checked"}
+            %label.items-group-none{:for=>'emoji-none'} Ninguno
           - (0..16).each do |element|
             %li
               %input{:id=>"emoji-#{element}", :name => "emoji", :type => "radio", :value =>element}
-              %label.form-title{:for=>"emoji-#{element}", :class=>"emoji-#{element}"}= "Emoji #{element}"
+              %label{:for=>"emoji-#{element}", :class=>"emoji-#{element}"}= "Emoji #{element}"
 
       .form-input
         %label.form-title{:for => "emojis-align"} Posición emojis
