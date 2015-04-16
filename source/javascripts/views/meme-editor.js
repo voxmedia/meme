@@ -103,10 +103,18 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#emoji-align').find('option[value="' + pos + '"]').attr('disabled', 'disabled');
     
     if (this.model.attributes.emojiPosition == pos){
-      var p = this.model.attributes.textAlign == 'right' ? 0 : 1;
-      this.model.set('emojiPosition', p);
+      
+      var p = this.$('#text-align').val() == 'right' ? 0 : 1,
+          m = this.model;
+      
+      setTimeout(function(){
+        m.set('emojiPosition', p);
+      }, 10);
+      
       this.$('#emoji-align').find('option').removeAttr('selected').end().val(p);
     }
+    
+    console.log('memem')
 
   },
 
@@ -164,8 +172,8 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onTextAlign: function() {
     
-    this.$('#emoji-align').find('option[value="1"]').removeAttr('disabled').end()
-                          .find('option[value="2"]').removeAttr('disabled');
+    this.$('#emoji-align').find('option[value="0"]').removeAttr('disabled').end()
+                          .find('option[value="1"]').removeAttr('disabled');
     
     switch (this.$('#text-align').val()){
       case 'left':
