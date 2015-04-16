@@ -1,1 +1,71 @@
+/* Canvas fonts */
+@font-face {
+    font-family: 'blokletters_viltstifviltstift';
+    src: font-url('../fonts/blokletters-viltstift.eot');
+    src: font-url('../fonts/blokletters-viltstift.eot?#iefix') format('embedded-opentype'),
+         font-url('../fonts/blokletters-viltstift.woff') format('woff'),
+         font-url('../fonts/blokletters-viltstift.ttf') format('truetype'),
+         font-url('../fonts/blokletters-viltstift.svg#blokletters_viltstifviltstift') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
+}
+
+@font-face {
+    font-family: 'museo-300';
+    src: font-url('../fonts/museo-300.eot');
+    src: font-url('../fonts/museo-300.eot?#iefix') format('embedded-opentype'),
+         font-url('../fonts/museo-300.woff') format('woff'),
+         font-url('../fonts/museo-300.ttf') format('truetype'),
+         font-url('../fonts/museo-300.svg#museo300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'museo-700';
+    src: font-url('../fonts/museo-700.eot');
+    src: font-url('../fonts/museo-700.eot?#iefix') format('embedded-opentype'),
+         font-url('../fonts/museo-700.woff') format('woff'),
+         font-url('../fonts/museo-700.ttf') format('truetype'),
+         font-url('../fonts/museo-700.svg#museo700') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'museo-sans-300';
+  src: font-url('../fonts/museosans-300.eot');
+  src: font-url('../fonts/museosans-300.eot?#iefix') format("embedded-opentype"),
+       font-url('../fonts/museosans-300.woff') format("woff"),
+       font-url('../fonts/museosans-300.ttf') format("truetype"),
+       font-url('../fonts/museosans-300.svg#museo_sans300') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'museo-sans-900';
+    src: font-url('../fonts/museosans-900.eot');
+    src: font-url('../fonts/museosans-900.eot?#iefix') format('embedded-opentype'),
+         font-url('../fonts/museosans-900.woff') format('woff'),
+         font-url('../fonts/museosans-900.ttf') format('truetype'),
+         font-url('../fonts/museosans-900.svg#museo_sans900') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* Base fonts */
+
+@font-face {
+  font-family: 'museo-sans-700';
+  src: font-url('../fonts/museosans-700.eot');
+  src: font-url('../fonts/museosans-700.eot?#iefix') format("embedded-opentype"),
+       font-url('../fonts/museosans-700.woff') format("woff"),
+       font-url('../fonts/museosans-700.ttf') format("truetype"),
+       font-url('../fonts/museosans-700.svg#museo_sans700') format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
