@@ -54,11 +54,11 @@ body {
     &:before{
       position: absolute;
       content: "";
-      height: (40rem/16);
-      width: (188rem/16);
+      height: 39px;
+      width: 185px;
       top:(4rem/16);
       left: (117rem/16);
-      background: $sprite 0 -94px;
+      background: $sprite 0 bottom;
     }
   }
 
@@ -114,7 +114,7 @@ body {
     }
 
   }
-
+  /*
   .shares {
     position:absolute;
     right:0;
@@ -214,6 +214,7 @@ body {
       }
     }
   }
+  */
 }
 
 #main,#header{
@@ -409,11 +410,11 @@ body {
     width: 80px;
 
     &:before {
-      $h: 37px;
-      $w: 73px;
+      $h: 45px;
+      $w: 76px;
       width: $w;
       height: $h;
-      background: $sprite 0 -22px;
+      background: $sprite 0 0;
       content: "";
       position: absolute;
       top:53%;
@@ -428,7 +429,7 @@ body {
     &:before {
       $h: 16px;
       content: "";
-      background: $sprite -152px -90px;
+      background: $sprite -47px -46px;
       width: 19px;
       height: $h;
       position: absolute;
@@ -449,7 +450,7 @@ body {
       &:before {
         $h: 23px;
         content: "";
-        background: $sprite -128px -90px;
+        background: $sprite -78px -46px;
         width: 22px;
         height: $h;
         position: absolute;
@@ -501,7 +502,7 @@ body {
     &:before {
       width: $w;
       height: $h;
-      background-position: -69px -92px;
+      background-position: -101px -46px;
       margin-top: ($h/-2);
     }
   }
@@ -514,7 +515,7 @@ body {
     &:before {
       width: $w;
       height: $h;
-      background-position: -70px -63px;
+      background-position: -31px -46px;
       margin-top: ($h/-2);
     }
   }
@@ -526,7 +527,7 @@ body {
       &:before {
         $h: 28px;
         content: "";
-        background: $sprite -85px -63px;
+        background: $sprite -0px -46px;
         width: 31px;
         height: $h;
         margin-top: ($h/-2);
