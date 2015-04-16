@@ -103,17 +103,20 @@
 }
 
 .options {
+  margin-top: (20rem/16);
 
   fieldset {
-    width: 32%;
+    width: (310rem/16);
     float: left;
     @include border_radius(10px);
     border: solid 1px #808080;
     position: relative;
-    padding: (5rem/16);
+    padding: (10rem/16);
+    margin-left: (20%/970*100);
+    box-sizing: border-box;
 
-    &:nth-child(3) {
-      float: right;
+    &:first-child {
+      margin-left:0;
     }
   }
 
