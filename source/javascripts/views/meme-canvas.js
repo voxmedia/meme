@@ -66,23 +66,17 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var bh = m.background.height;
       var bw = m.background.width;
       
-      console.log(m.background.src)
-
       if (bh && bw) {
         // Transformed height and width:
         // Set the base position if null
         var th = bh * d.imageScale;
         var tw = bw * d.imageScale;
         //Use position or center
-        
-        console.log(d.backgroundPosition)
-        
         d.backgroundPosition.x = d.backgroundPosition.x || (d.width / 2) - (bw / 2);
         d.backgroundPosition.y = d.backgroundPosition.y || (d.height / 2) - (bh / 2);
         
         ctx.drawImage(m.background, 0, 0, bw, bh, d.backgroundPosition.x, d.backgroundPosition.y, tw, th);
         
-        console.log('fraw')
       }
     }
 

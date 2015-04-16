@@ -114,8 +114,6 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.$('#emoji-align').find('option').removeAttr('selected').end().val(p);
     }
     
-    console.log('memem')
-
   },
 
   events: {
@@ -241,7 +239,8 @@ MEME.MemeEditorView = Backbone.View.extend({
   },  
 
   onScale: function() {
-    this.model.set('imageScale', this.$('#image-scale').val());
+    this.model.set({imageScale: this.$('#image-scale').val()});
+    //this.model.set('imageScale', this.$('#image-scale').val());
   },
 
   onOverlayColor: function(evt) {
