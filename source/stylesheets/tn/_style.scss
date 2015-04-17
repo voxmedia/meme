@@ -191,6 +191,13 @@ canvas {
       padding: (10rem/16);
       @include border_radius(5px);
     }
+
+    input[type='text'],
+    select{
+      padding: 0 (10rem/16);
+      height: (40rem/16);
+      line-height: (40rem/16);
+    }
   }
      
   .items-group{
