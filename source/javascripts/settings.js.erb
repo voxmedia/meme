@@ -7,10 +7,10 @@ var MEME_SETTINGS = {
   ],
   
   backgroundOpts: [
-    {text: 'Rojo TN', value: '<%= image_path("backgrounds/tn-red.png") %>'}, 
-    {text: 'Azul TN', value: '<%= image_path("backgrounds/tn-blue.png") %>'},
-    {text: 'Hormigon', value: '<%= image_path("backgrounds/concrete.png") %>'},
-    {text: 'Trama', value: '<%= image_path("backgrounds/tweed.png") %>'}
+    {text: 'Rojo TN', value: '<%= image_path("backgrounds/tn-red.png").gsub("../", "") %>'}, 
+    {text: 'Azul TN', value: '<%= image_path("backgrounds/tn-blue.png").gsub("../", "") %>'},
+    {text: 'Hormigon', value: '<%= image_path("backgrounds/concrete.png").gsub("../", "") %>'},
+    {text: 'Trama', value: '<%= image_path("backgrounds/tweed.png").gsub("../", "") %>'}
   ],
  
   creditText: 'Fuente:', // Default "credits" text.
@@ -18,7 +18,7 @@ var MEME_SETTINGS = {
   
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
   
-  emojiImage: '<%= image_path("emojis/emojis-canvas.png") %>',
+  emojiImage: '<%= image_path("emojis/emojis-canvas.png").gsub("../", "") %>',
   emojiPosition: 1,
   emojiOpts: [
     {text: 'Izquierda abajo', value: 3, disabled:true},
@@ -99,12 +99,12 @@ var MEME_SETTINGS = {
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png") %>', selected:true},
-    {text: 'Todapasion', value: '<%= image_path("watermarks/todapasion.png") %>'},
-    {text: 'La viola', value: '<%= image_path("watermarks/la-viola.png") %>'},
-    {text: 'Famosos', value: '<%= image_path("watermarks/famosos.png") %>'},
-    {text: 'Tecno', value: '<%= image_path("watermarks/tecno.png") %>'},
-    {text: 'TN y la Gente', value: '<%= image_path("watermarks/tn-y-la-gente.png") %>'}    
+    {text: 'TN', value: '<%= image_path("watermarks/todonoticias.png").gsub("../", "") %>'},
+    {text: 'Todapasion', value: '<%= image_path("watermarks/todapasion.png").gsub("../", "") %>'},
+    {text: 'La viola', value: '<%= image_path("watermarks/la-viola.png").gsub("../", "") %>'},
+    {text: 'Famosos', value: '<%= image_path("watermarks/famosos.png").gsub("../", "") %>'},
+    {text: 'Tecno', value: '<%= image_path("watermarks/tecno.png").gsub("../", "") %>'},
+    {text: 'TN y la Gente', value: '<%= image_path("watermarks/tn-y-la-gente.png").gsub("../", "") %>'}    
   ],
 
   width: 970 // Canvas rendering width.

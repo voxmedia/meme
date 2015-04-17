@@ -52,7 +52,7 @@
 
       .form-input
         %label.form-title{:for => "credit"} Fuente
-        %input#credit{:name => "credit", :type => "text"}
+        %input#credit.text{:name => "credit", :type=>"text"}
 
       .form-input
         %label.form-title{:for => "font-family"} Tipografía
@@ -69,7 +69,7 @@
           %select#font-size
 
 
-      .form-input.checkbox-group
+      .form-input.checkbox-group.clearfix
         .checkbox-item
           %input#text-shadow{:name => "shadow", :type => "checkbox"}
           %label.form-title{:for => "text-shadow"} Sombra
@@ -82,7 +82,7 @@
       .form-input
         %label.form-title{:for => "watermark"} Logo
         %select#watermark
-          %option{:value => ""} Ninguno
+          %option{:value => "", :selected=>"selected"} Ninguno
 
       .form-input
         %label.form-title{:for => "ribbon"} Barra

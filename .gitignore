@@ -23,6 +23,8 @@
 .idea/*
 .idea/workspace.xml
 /.idea/workspace.xml
+.settings/
+.buildpath
 
 # Gemfile.lock
 Gemfile.lock
