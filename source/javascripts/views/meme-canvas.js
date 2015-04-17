@@ -255,7 +255,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderRibbon(ctx);
     renderEmoji(ctx);
     
-    this.model.data = this.canvas.toDataURL("image/jpeg", 0.8); //.replace('image/png', 'image/octet-stream');
+    this.model.data = this.canvas.toDataURL("image/jpeg", 1); //.replace('image/png', 'image/octet-stream');
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
   },
