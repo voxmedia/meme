@@ -120,6 +120,7 @@ canvas {
   fieldset {
     width: (310rem/16);
     float: left;
+    height: (405rem/16);
     @include border_radius(10px);
     border: solid 1px #808080;
     position: relative;
