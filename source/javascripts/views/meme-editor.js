@@ -118,6 +118,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   events: {
     'input #headline': 'onHeadline',
+    'keydown #headline':'onKeyAction',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
     'change #font-size': 'onFontSize',
@@ -144,7 +145,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onCredit: function() {
     
-    var str = this.$('#credit').val().trim();
+    var str = this.$('#credit').val().trim().replace(/(\r\n|\n|\r)/gm,"");
     
     if (str == ''){
       this.$('#emoji-align').find('option[value="3"]').removeAttr('disabled');
@@ -153,6 +154,13 @@ MEME.MemeEditorView = Backbone.View.extend({
     }
     
     this.model.set('creditText', str);
+  },
+  
+  onKeyAction: function(e) {
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+      return false;
+    }
   },
   
   onDownload: function(){
@@ -168,7 +176,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onHeadline: function() {
-    this.model.set('headlineText', this.$('#headline').val());
+    this.model.set('headlineText', this.$('#headline').val().trim().replace(/(\r\n|\n|\r)/gm,"") );
   },
   /*
   onExploreClick: function() {

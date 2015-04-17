@@ -172,12 +172,13 @@ canvas {
     margin-top: (10rem/16);
 
     input[type='range'],
-    input[type='text'],
+    input.text,
     select,
     textarea{
       width: 100%;
-      @include box_sizing(border-box);
       border: none;
+      resize: none;
+      @include box_sizing(border-box);
     }
 
     input[type='text'],
@@ -263,10 +264,11 @@ canvas {
   }
 
   .two-columns{
-    clear: both;
+  
     .form-input{
       float: left;
       width: 48%;
+      
       &:last-child{
         float: right;
       }
@@ -274,39 +276,61 @@ canvas {
   }
 
   .checkbox-item{
-    clear: both;
-    display: table;
-    margin-top: (15rem/16);
     position: relative;
+    height: (30rem/16);
+    float:left;
+    cursor: pointer;
 
     label{
-      margin: 6px 0 11px 36px;
+      display:block;
+      margin-left: (35rem/16);
+      height: (30rem/16);
+      line-height: (30rem/16);
+      cursor: pointer;
+      
+      &:after,
+      &:before  {
+	      content: "";
+	      position: absolute;
+      }
       
       &:before{
-        width: 30px;
-        height: 30px;
-        content: "";
+        width: (30rem/16);
+        height: (30rem/16);
         background: #ffffff;
-        position: absolute;
         top: 0;
         left: 0;
         @include border_radius(5px);
+      }
+      
+      &:after {
+        $h:10px;
+        background: $sprite -131px -46px;
+        width: 12px;
+        height: $h;
+        top:50%;
+        left:(9rem/16);
+        margin-top: ($h/-2);
+        
+        @include hide();
       }
     }
 
 
     input{
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
+      
+      width: (30rem/16);
+      height: (30rem/16);
       left: 0;
       position: absolute;
       top: 0;
       z-index: 2;
       opacity: 0;
+      cursor: pointer;
 
-      &:checked ~ label:before {
-        background: $sprite -121px -36px #ffffff;
+      &:checked ~ label:after {
+        display:block;
+        visibility: visible;
       }
     }
 
