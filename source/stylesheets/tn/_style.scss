@@ -122,6 +122,7 @@ canvas {
   fieldset {
     width: (310rem/16);
     float: left;
+    height: (405rem/16);
     @include border_radius(10px);
     border: solid 1px #808080;
     position: relative;
@@ -189,6 +190,13 @@ canvas {
       font-size: (14rem/16);
       padding: (10rem/16);
       @include border_radius(5px);
+    }
+
+    input[type='text'],
+    select{
+      padding: 0 (10rem/16);
+      height: (40rem/16);
+      line-height: (40rem/16);
     }
   }
      
