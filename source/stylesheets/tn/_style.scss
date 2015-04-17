@@ -3,15 +3,16 @@
 @mixin emoji($i){
   background-position: (-30px*$i) 0;  
 }
-/*
-#header .header-title::before {
-  
-}
-*/
+
 
 canvas {
   margin:0 auto;
   display: block;
+  background: black;
+  
+  &.animate {
+    
+  }
 }
 
 .upload-image {
@@ -93,6 +94,7 @@ canvas {
 #meme-canvas-view {
   background: #1A1A1A;
   position: relative;
+  
 
   &:before {
     background: none repeat scroll 0 0 #1a1a1a;

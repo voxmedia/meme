@@ -1,6 +1,7 @@
 //= require "vendor/jquery"
 //= require "vendor/underscore"
 //= require "vendor/backbone"
+//= require "vendor/jquery-cookie"
 //= require "main"
 //= require "models/meme"
 //= require "views/meme-canvas"

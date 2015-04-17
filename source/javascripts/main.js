@@ -29,4 +29,14 @@ MEME = {
 
 MEME.$(function() {
   MEME.init();
+  
+  if ($.cookie('tns01')) {
+    $('#user-image').find('.small-avatar')
+        .removeAttr('data-original')
+        .attr('src', $.parseJSON($.cookie('tns01')).image);
+  } else {
+    console.log('nocoiie')
+  }
+  
+  $('canvas').addClass('animate');
 });

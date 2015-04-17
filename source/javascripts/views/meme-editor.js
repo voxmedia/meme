@@ -160,7 +160,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     var anchor = document.createElement('a');
     anchor.href = this.model.data;
     anchor.target = '_blank';
-    anchor.download = 'meme.png';
+    anchor.download = this.model.attributes.downloadName + '.jpg';
 
     document.body.appendChild(anchor);
     anchor.click();
