@@ -34,8 +34,6 @@ MEME.$(function() {
     $('#user-image').find('.small-avatar')
         .removeAttr('data-original')
         .attr('src', $.parseJSON($.cookie('tns01')).image);
-  } else {
-    console.log('nocoiie')
   }
   
   $('canvas').addClass('animate');
