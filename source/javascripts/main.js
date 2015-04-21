@@ -36,5 +36,5 @@ MEME.$(function() {
         .attr('src', $.parseJSON($.cookie('tns01')).image);
   }
   
-  $('canvas').addClass('animate');
+  //$('#meme-canvas').addClass('animate');
 });
