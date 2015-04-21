@@ -2,11 +2,19 @@
 Media queries styles, This is Hell on Earth
 */
 
+@media (max-width: 969px) {
+  #meme-download,
+  .upload-wrapper,
+  .options {
+    margin-left: (5rem/16);
+    margin-right: (5rem/16);    
+  }
+}
+
 /* One column */
 
 @media (max-width: 649px) {
   .options {
-    padding: 0 (5rem/16);
     
     fieldset {
       width: 100%;
@@ -23,17 +31,11 @@ Media queries styles, This is Hell on Earth
     
     
   }
-  
-  #meme-download {
-    margin-left: (5rem/16);
-    margin-right: (5rem/16);
-  }
 }
 
 /* Two column */
 @media (min-width: 650px) and (max-width: 969px) {
   .options {
-    padding: 0 (5rem/16);
   
     fieldset {
       &:nth-child(1),
@@ -52,11 +54,6 @@ Media queries styles, This is Hell on Earth
     }  
   
   }
-  
-  #meme-download {
-    margin-left: (5rem/16);
-    margin-right: (5rem/16);
-  }  
 }
 
 /* Three column */
@@ -64,6 +61,9 @@ Media queries styles, This is Hell on Earth
   
 }
 
+
+
+/* Fix ratios */
 @media (max-width: 969px) {
   #meme-canvas.ratio-tn {
     width: 100%;
