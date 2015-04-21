@@ -63,3 +63,21 @@ Media queries styles, This is Hell on Earth
 @media (min-width: 970px) {
   
 }
+
+@media (max-width: 969px) {
+  #meme-canvas.ratio-tn {
+    width: 100%;
+  }  
+}
+@media (max-width: 509px) {
+  #meme-canvas.ratio-instagram {
+    width: 100%;
+    padding-bottom: 100%;
+  }  
+}
+@media (max-width: 505px) {
+  #meme-canvas.ratio-twitter {
+    width: 100%;
+    padding-bottom: (253%/506*100);
+  }  
+}

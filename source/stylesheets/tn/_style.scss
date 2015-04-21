@@ -131,11 +131,11 @@ canvas {
   }
   &.ratio-instagram {
     width: (510rem/16);
-    padding-bottom: (510%/510*100);
+    padding-bottom: (510rem/16);
   }
   &.ratio-twitter {
-    width: (253rem/16);
-    padding-bottom: (253%/506*100);
+    width: (506rem/16);
+    padding-bottom: (253rem/16);
   }
   
 }
