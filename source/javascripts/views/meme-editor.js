@@ -90,6 +90,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     
     console.log(d, this.model.hasBackground())
     
+    //Image
     this.$('#image-scale').val(d.imageScale);
     this.$('#aspect-ratio').val(d.aspectRatio);
     this.$('#overlay').val(d.overlayColor);
@@ -255,8 +256,11 @@ MEME.MemeEditorView = Backbone.View.extend({
   onAspectRatio: function() {
     var wh = this.$('#aspect-ratio').val().split('x');
     
-    this.model.set('width', wh[0]);
-    this.model.set('height', wh[1]);
+    this.model.set({
+      aspectRatio: this.$('#aspect-ratio').val(),
+      width:wh[0],
+      height:wh[1]
+    });
     
     this.$('#meme-canvas').attr('class', 'ratio-' + this.$('#aspect-ratio').find(':selected').text().split(' ')[0].toLowerCase());
   },
