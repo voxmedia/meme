@@ -1,15 +1,17 @@
 var MEME_SETTINGS = {
 
+  aspectRatio: '970x545',
   aspectRatioOpts: [
-    {text: 'TN [970x545px]', value: '970x545'}, 
+    {text: 'TN [970x545px]', value: '970x545', selected:"selected"}, 
     {text: 'Instagram [510x510px]', value: '510x510'},
     {text: 'Twitter [506x253px]', value: '506x253'}
   ],
   
+  backgroundOpt: '<%= image_path("backgrounds/concrete.png").gsub("../", "") %>',
   backgroundOpts: [
     {text: 'Rojo TN', value: '<%= image_path("backgrounds/tn-red.png").gsub("../", "") %>'}, 
     {text: 'Azul TN', value: '<%= image_path("backgrounds/tn-blue.png").gsub("../", "") %>'},
-    {text: 'Hormigon', value: '<%= image_path("backgrounds/concrete.png").gsub("../", "") %>'},
+    {text: 'Hormigon', value: '<%= image_path("backgrounds/concrete.png").gsub("../", "") %>', selected:"selected"},
     {text: 'Trama', value: '<%= image_path("backgrounds/tweed.png").gsub("../", "") %>'}
   ],
  

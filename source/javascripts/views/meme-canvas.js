@@ -46,12 +46,12 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
 
     function renderBackground(ctx) {
-      if (d.backgroundSrc == '') {
+      if (d.backgroundOpt == '') {
         return;
       }
       
       var image = new Image();
-      image.src = d.backgroundSrc;
+      image.src = d.backgroundOpt;
       
       image.onload = function(){
         ctx.globalCompositeOperation="destination-over";
@@ -187,20 +187,24 @@ MEME.MemeCanvasView = Backbone.View.extend({
       
       var h = 65;
 
-      //Rectangulo      
+      //Rectangulo 
+      /*
       ctx.globalCompositeOperation="source-over";
       ctx.fillStyle=d.ribbon.background;
       ctx.fillRect(0, ((d.height / 2) - (h / 2)), d.width, h);
+      */
       
       //Texto
       ctx.font = 'normal 36px museo-sans-700';
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';      
       ctx.fillStyle = d.fontColor;
+      
       ctx.shadowColor = "rgba(0,0,0, .5)";
       ctx.shadowOffsetX = 4;
       ctx.shadowOffsetY = 4;
-      ctx.shadowBlur = 4;   
+      ctx.shadowBlur = 4;  
+      
       ctx.fillText(d.ribbon.text.toUpperCase(), d.width / 2, d.height / 2);
       
     }

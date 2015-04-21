@@ -87,15 +87,33 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   render: function() {
     var d = this.model.toJSON();
+    
+    console.log(d, this.model.hasBackground())
+    
+    this.$('#image-scale').val(d.imageScale);
+    this.$('#aspect-ratio').val(d.aspectRatio);
+    this.$('#overlay').val(d.overlayColor);
+    this.$('#background').val(d.backgroundOpt);
+    
+    //Text
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
-    this.$('#watermark').val(d.watermarkSrc);
-    this.$('#image-scale').val(d.imageScale);
     this.$('#font-size').val(d.fontSize);
-    this.$('#font-family').val(d.fontFamily);
     this.$('#text-align').val(d.textAlign);
+    this.$('#font-family').val(d.fontFamily);
     this.$('#text-shadow').prop('checked', d.textShadow);
+    
+    //Extra
+    this.$('#watermark').val(d.watermarkSrc);
+    this.$('#ribbon').val(d.ribbon.background);
+    this.$('#emojis').val(d.emoji);
+    this.$('#emoji-align').val(d.emojiPosition);
+    
     //this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
+    
+    if (this.model.hasBackground()){
+      $('#meme-download').removeClass('disabled')
+    }
   },
   
   resetEmoji: function(pos){
@@ -163,7 +181,11 @@ MEME.MemeEditorView = Backbone.View.extend({
     }
   },
   
-  onDownload: function(){
+  onDownload: function(e){
+    
+    if (e.currentTarget.className == 'disabled'){
+      return;
+    }
     
     var anchor = document.createElement('a');
     anchor.href = this.model.data;
@@ -240,7 +262,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
   
   onBackground: function() {
-    this.model.set('backgroundSrc', this.$('#background').val());
+    this.model.set('backgroundOpt', this.$('#background').val());
     if (localStorage) localStorage.setItem('meme_background', this.$('#background').val());
   },   
 
