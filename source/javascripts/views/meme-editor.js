@@ -88,8 +88,6 @@ MEME.MemeEditorView = Backbone.View.extend({
   render: function() {
     var d = this.model.toJSON();
     
-    console.log(d, this.model.hasBackground())
-    
     //Image
     this.$('#image-scale').val(d.imageScale);
     this.$('#aspect-ratio').val(d.aspectRatio);
