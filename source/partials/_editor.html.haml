@@ -41,7 +41,7 @@
       .form-input
         %label.form-title{:for => "background"} Fondo
         %select#background
-          %option{:value=>""} Ninguno
+          %option{:value=>"", :selected=>"selected"} Ninguno
 
     %fieldset
       %h2 Texto
@@ -82,7 +82,7 @@
       .form-input
         %label.form-title{:for => "watermark"} Logo
         %select#watermark
-          %option{:value => "", :selected=>"selected"} Ninguno
+          %option{:value => ""} Ninguno
 
       .form-input
         %label.form-title{:for => "ribbon"} Barra

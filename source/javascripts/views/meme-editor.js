@@ -112,9 +112,11 @@ MEME.MemeEditorView = Backbone.View.extend({
     
     //this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
     
+    /*
     if (this.model.hasBackground()){
       $('#meme-download').removeClass('disabled')
     }
+    */
   },
   
   resetEmoji: function(pos){
@@ -183,11 +185,11 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
   
   onDownload: function(e){
-    
+    /*
     if (e.currentTarget.className == 'disabled'){
       return;
     }
-    
+    */
     var anchor = document.createElement('a');
     anchor.href = this.model.data;
     anchor.target = '_blank';
