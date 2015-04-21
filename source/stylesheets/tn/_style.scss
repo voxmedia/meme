@@ -206,7 +206,7 @@ canvas {
       @include box_sizing(border-box);
     }
 
-    input[type='text'],
+    input.text,
     select,
     textarea{
       border: none;
@@ -216,7 +216,7 @@ canvas {
       @include border_radius(5px);
     }
 
-    input[type='text'],
+    input.text,
     select{
       padding: 0 (10rem/16);
       height: (40rem/16);
