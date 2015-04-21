@@ -25,10 +25,11 @@ Media queries styles, This is Hell on Earth
       }
     }
     
+    /*
     .items-group li{
       margin-left: (19%/288*100);
     }
-    
+    */
     
   }
 }
@@ -54,6 +55,40 @@ Media queries styles, This is Hell on Earth
     }  
   
   }
+  
+  /* 618 */
+ 
+  #emojis{
+    font-size: 0;
+    li {
+      font-size: 1rem;
+      float:none;
+      display:inline-block;
+      text-align:center;
+      
+      width: (100%/9);
+      margin-left: 0;
+      
+      label:after {
+        right: 1px;
+        margin:0 auto;
+      }
+      
+      /*
+      margin-left: (68%/837*100);
+      
+      &:first-child,
+      &:nth-child(10) {
+        margin-left:0;
+      }
+      
+      &:nth-child(-n+9){
+        margin-top:0;
+      }
+      */
+    }
+  }
+  
 }
 
 /* Three column */
