@@ -20,7 +20,7 @@ Media queries styles, This is Hell on Earth
   
   
   #header {
-    margin-bottom: (10em/16);
+    margin-bottom: (20em/16);
     height: auto;
     
     /*
@@ -42,7 +42,6 @@ Media queries styles, This is Hell on Earth
 	    top: 0;
 	    z-index: 9999;
 	    color: #ffffff !important;
-	    top: (10em/28);    
     }
     
     .header-top {
@@ -133,7 +132,7 @@ Media queries styles, This is Hell on Earth
   }
 
 }
-
+/*
 @media (min-width: 728px) and (max-width: 767px){
   #header{
      .header-title{
@@ -145,13 +144,13 @@ Media queries styles, This is Hell on Earth
      &.fixed {
 	     .header-title{
 	       position:fixed;
-	       top:0.14286em;
+	       top:0;
 	       right: 1em;
 	     }
      }
   }
 }
-
+*/
 /*
 768 layout
 */

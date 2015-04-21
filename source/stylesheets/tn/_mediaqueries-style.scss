@@ -14,10 +14,12 @@ Media queries styles, This is Hell on Earth
 /* One column */
 
 @media (max-width: 649px) {
+  
   .options {
     
     fieldset {
       width: 100%;
+      height: auto;
       margin: (20rem/16) 0 0 0;
       
       &:first-child {
@@ -25,12 +27,68 @@ Media queries styles, This is Hell on Earth
       }
     }
     
-    /*
-    .items-group li{
-      margin-left: (19%/288*100);
+    #overlay {
+      label,
+      input {
+        width: (32rem/16);
+        right: 0;
+        margin: 0 auto;
+      }      
+    }    
+
+    .items-group {
+      font-size: 0;
+      
+      li {
+        font-size: 1rem;
+        float:none;
+        display:inline-block;
+        text-align:center;
+        
+        width: (100%/6);
+        margin-left: 0;
+        
+        label:after {
+          right: 1px;
+          margin:0 auto;
+        }
+      }
     }
-    */
     
+  }
+}
+
+/* overlay */
+@media (min-width: 460px) and (max-width: 649px) {
+  #overlay {
+    li {
+      width: (100%/9);
+    }
+  }
+}
+
+@media (max-width: 499px) {
+  .upload-image{
+    
+    .drop,
+    .explore .icon-arrow-up {
+      font-size: 0;
+      
+      &:before{
+        top:1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 449px) {
+  #header .header-title{
+    padding-right: 0;
+    
+    &:before {
+      display:none;
+      visibility: hidden;
+    }
   }
 }
 
@@ -50,13 +108,33 @@ Media queries styles, This is Hell on Earth
       &:nth-child(3) {
         margin: (20rem/16) 0 0 0;
         width: 100%;
+        height: auto;
       }      
 
     }  
   
   }
   
-  /* 618 */
+  #overlay {
+    font-size: 0;
+    
+    li {
+      font-size: 1rem;
+      float:none;
+      display:inline-block;
+      width: (100%/6);
+      margin-left: 0;
+      text-align: center;
+    }    
+    
+    label,
+    input {
+      width: (32rem/16);
+      right: 0;
+      margin: 0 auto;
+    }
+  }
+  
  
   #emojis{
     font-size: 0;
