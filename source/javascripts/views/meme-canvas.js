@@ -22,13 +22,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
     this.listenTo(this.model, 'change', this.render);
   },
 
-  setDownload: function() {
-    var a = document.createElement('a');
-    if (typeof a.download == 'undefined') {
-      this.$el.append('<p class="m-canvas__download-note">Right-click button and select "Download Linked File..." to save image.</p>');
-    }
-  },
-
   render: function() {
     // Return early if there is no valid canvas to render:
     if (!this.canvas) return;
@@ -188,11 +181,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var h = 65;
 
       //Rectangulo 
-      /*
       ctx.globalCompositeOperation="source-over";
       ctx.fillStyle=d.ribbon.background;
       ctx.fillRect(0, ((d.height / 2) - (h / 2)), d.width, h);
-      */
       
       //Texto
       ctx.font = 'normal 36px museo-sans-700';
@@ -206,7 +197,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.shadowBlur = 4;  
       
       ctx.fillText(d.ribbon.text.toUpperCase(), d.width / 2, d.height / 2);
-      
+      ctx.shadowColor = 'transparent';
     }
     
     function renderEmoji(ctx){
