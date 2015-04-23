@@ -189,7 +189,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     }
     */
     var anchor = document.createElement('a');
-    anchor.href = this.model.data;
+    anchor.href = this.model.canvas.toDataURL("image/jpeg", .80);
     anchor.target = '_blank';
     anchor.download = this.model.attributes.downloadName + '.jpg';
 
@@ -201,12 +201,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   onHeadline: function() {
     this.model.set('headlineText', this.$('#headline').val().trim().replace(/(\r\n|\n|\r)/gm,"") );
   },
-  /*
-  onExploreClick: function() {
-    console.log('click')
-    //$("#image-upload").click();
-  },
-  */
+
   onFileSelect: function(t) {
         var e = t.target;
         e && this.model.loadBackground(e.files[0]);

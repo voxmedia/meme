@@ -42,15 +42,10 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.backgroundOpt == '') {
         return;
       }
-      
-      var image = new Image();
-      image.src = d.backgroundOpt;
-      
-      image.onload = function(){
-        ctx.globalCompositeOperation="destination-over";
-        ctx.fillStyle= ctx.createPattern(image,"repeat");
-        ctx.fillRect(0, 0, d.width, d.height);
-      };
+          
+      ctx.globalCompositeOperation="destination-over";
+      ctx.fillStyle= ctx.createPattern(m.backgroundOpt,"repeat");
+      ctx.fillRect(0, 0, d.width, d.height);
 
     }
 
@@ -136,8 +131,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
         }
       }
       
-      //console.log(x,y, padding)
-
       ctx.fillText(line, x, y);
       ctx.shadowColor = 'transparent';
     }
@@ -250,7 +243,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderRibbon(ctx);
     renderEmoji(ctx);
     
-    this.model.data = this.canvas.toDataURL("image/jpeg", .80); //.replace('image/png', 'image/octet-stream');
+    this.model.canvas = this.canvas;//.toDataURL("image/jpeg", .80); //.replace('image/png', 'image/octet-stream');
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
   },
