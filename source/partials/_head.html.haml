@@ -9,3 +9,9 @@
 
 %link{:href => "humans.txt", :rel => "author"}
 = stylesheet_link_tag "main", {media: false}
+
+:javascript
+  
+  if (window.navigator.userAgent.match(/tablet|android|iphone|ipad|ipod|windows phone|mobi|xoom|sch-i800|playbook|tablet|kindle|GoogleTV|SmartTV|Internet.TV|NetCast|NETTV|AppleTV|boxee|Kylo|Roku|DLNADOC|CE\-HTML/gi)){
+    document.documentElement.className = 'is-touch';
+  }

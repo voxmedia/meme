@@ -4,6 +4,9 @@
   background-position: (-30px*$i) 0;  
 }
 
+body {
+  overflow-x: hidden;
+}
 
 canvas {
   display: block;
@@ -14,6 +17,23 @@ canvas {
   left: 0;
   top: 0;
   
+}
+
+.is-touch {
+  #dropzone {
+    display:none;
+    visibility: hidden;
+  }
+  
+  .upload-image {
+    .form-input {
+      width: 100%;
+    }
+    
+    .explore {
+      @include border_radius((5rem/16));
+    }
+  }
 }
 
 .upload-image {
@@ -69,7 +89,7 @@ canvas {
   }
   .explore {
     border: 3px solid #999;
-    @include border_radius(0 5px 5px 0);
+    @include border_radius(0 (5rem/16) (5rem/16) 0);
 
     .icon-arrow-up{
       display: block;
