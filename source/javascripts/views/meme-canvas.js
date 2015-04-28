@@ -169,11 +169,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
     
     function renderRibbon(ctx){
       
-      if (d.ribbon.background == ''){
+      if (d.ribbon.background == '' || d.aspectRatio != '970x545'){
         return;
       }
-      
-      var h = 65;
+            
+      var h = 120;
 
       //Rectangulo 
       ctx.globalCompositeOperation="source-over";
@@ -181,17 +181,23 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.fillRect(0, ((d.height / 2) - (h / 2)), d.width, h);
       
       //Texto
-      ctx.font = 'normal 36px museo-sans-700';
+      if (d.ribbon.text == 'Alerta meteorológica') {
+        ctx.font = 'normal 60px museo-sans-900';  
+      } else {
+        ctx.font = 'normal 84px museo-sans-900';
+      }
+      
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';      
       ctx.fillStyle = d.fontColor;
       
+      //sombra
       ctx.shadowColor = "rgba(0,0,0, .5)";
       ctx.shadowOffsetX = 4;
       ctx.shadowOffsetY = 4;
       ctx.shadowBlur = 4;  
       
-      ctx.fillText(d.ribbon.text.toUpperCase(), d.width / 2, d.height / 2);
+      ctx.fillText(d.ribbon.text.toUpperCase(), d.width / 2, (d.height / 2) + 8 );
       ctx.shadowColor = 'transparent';
     }
     
