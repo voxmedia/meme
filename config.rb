@@ -31,11 +31,12 @@ configure :build do
   puts "local build"
   set :url_prefix, ""
   set :absolute_prefix, ""
-  set :images_dir, 'images'
+  #set :images_dir, 'images'
     
   activate :asset_hash
-  activate :minify_html
   activate :minify_javascript
   activate :minify_css
+  
+  activate :minify_html
   activate :relative_assets
 end

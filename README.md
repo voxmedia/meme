@@ -47,6 +47,21 @@ If you're hosting this application on the same domain that serves your images, t
 
 2. Embed all of your watermark images as base64 data URIs within the `settings.js.erb` file. The asset pipeline's `asset_data_uri` helper method makes this very easy, and effectively embeds all image data within your JavaScript. The downside here is that your JavaScript will become a very large payload as you include more images. In the long term, getting CORS headers configured will be a better option.
 
+## Instaling in apache
+
+It's uses middleman to run, and middleman have a command to build.
+
+* `bundle exec middleman build`
+
+### Fixing assets
+
+Before use it, you have to fix the asset. Add inside the build block in [config file](https://github.com/voxmedia/meme/blob/master/config.js.erb#L36) this config
+
+* `activate :minify_html`
+* `activate :relative_assets`
+
+In your css, you must use [middleman's helpers](https://middlemanapp.com/advanced/asset_pipeline/#helpers) to fix the paths, and in your [settings file](https://github.com/voxmedia/meme/blob/master/source/javascripts/settings.js.erb) you must use `asset_data_uri` function
+
 ## Examples
 
 * http://www.sbnation.com/a/meme
