@@ -15,6 +15,16 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 * Highly (and easily!) customizable editor and theme options.
 * Watermark selector.
 
+## What's new in meme-tn version?
+
+* New responsive UI.
+* Add ribbons feature.
+* Add and position emojis features.
+* Change image proportions for Twitter and Facebook.
+* Choose between different background patterns for transparent background images. 
+* Improved image generation, no more DOM access in every rendering.
+* Better drag n’ drop behaviour when the image doesn't fit in the canvas.
+
 ## Install
 
 * `git clone https://github.com/voxmedia/meme.git`
@@ -47,20 +57,20 @@ If you're hosting this application on the same domain that serves your images, t
 
 2. Embed all of your watermark images as base64 data URIs within the `settings.js.erb` file. The asset pipeline's `asset_data_uri` helper method makes this very easy, and effectively embeds all image data within your JavaScript. The downside here is that your JavaScript will become a very large payload as you include more images. In the long term, getting CORS headers configured will be a better option.
 
-## Instaling in apache
+## Installing in Apache
 
-It's uses middleman to run, and middleman have a command to build.
+It uses Middleman to run. You must use this command to build it:
 
 * `bundle exec middleman build`
 
-### Fixing assets
+### Fixing Assets
 
-Before use it, you have to fix the asset. Add inside the build block in [config file](https://github.com/voxmedia/meme/blob/master/config.js.erb#L36) this config
+Before you use it, you have to fix the asset. Add these lines to the build block in [config file](https://github.com/voxmedia/meme/blob/master/config.js.erb#L36) 
 
 * `activate :minify_html`
 * `activate :relative_assets`
 
-In your css, you must use [middleman's helpers](https://middlemanapp.com/advanced/asset_pipeline/#helpers) to fix the paths, and in your [settings file](https://github.com/voxmedia/meme/blob/master/source/javascripts/settings.js.erb) you must use `asset_data_uri` function
+To fix the paths, use [middleman's helpers](https://middlemanapp.com/advanced/asset_pipeline/#helpers) in your CSS, and the `asset_data_uri` function in your [settings file](https://github.com/voxmedia/meme/blob/master/source/javascripts/settings.js.erb).
 
 ## Examples
 
