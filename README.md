@@ -23,6 +23,12 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 
 This will start a local web server running at: `http://localhost:4567/`
 
+## Deploy
+
+* `bundle exec middleman build`
+
+This will bake the files in `source/` into a static app in `build/`.
+
 ## Customization
 
 ### Configuration
