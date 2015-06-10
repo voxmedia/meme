@@ -146,9 +146,12 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
+    
     'dragover #dropzone': 'onZoneOver',
     'drop #dropzone': 'onZoneDrop',
-    
+    'dragover canvas': 'onZoneOver',
+    'drop canvas': 'onZoneDrop',
+        
     'change #aspect-ratio': 'onAspectRatio',
     'change #background': 'onBackground',
     'change #ribbon': 'onRibbon',
@@ -157,8 +160,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #image-upload': 'onFileSelect',
     'click #meme-download': 'onDownload',
     
-    'dragover canvas': 'onZoneOver',
-    'drop canvas': 'onZoneDrop',
+
     
   },
 

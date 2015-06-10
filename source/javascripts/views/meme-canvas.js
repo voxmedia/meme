@@ -257,12 +257,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
   },
   
   events: {
-    'mousedown canvas': 'onDrag'
+    'mousedown canvas': 'onDrag',
+    'touchstart canvas': 'onDrag',
   },
 
   // Performs drag-and-drop on the background image placement:
   onDrag: function(evt) {
     evt.preventDefault();
+    
     // Return early if there is no background image:
     if (!this.model.hasBackground()) return;
     
@@ -271,21 +273,26 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var d = model.toJSON();
     var iw = model.background.width * d.imageScale / 2;
     var ih = model.background.height * d.imageScale / 2;
-    var origin = {x: evt.clientX, y: evt.clientY};
+    var origin = {x: evt.clientX || evt.originalEvent.touches[0].clientX,
+                  y: evt.clientY || evt.originalEvent.touches[0].clientY};
     var start = d.backgroundPosition;
     start.x = start.x || (d.width / 2) - (iw / 2);
     start.y = start.y || (d.height / 2) - (ih / 2);
-
     
     // Create update function with draggable constraints:
     function update(evt) {
+      
       evt.preventDefault();
       
+      if (evt.type == 'touchend') {
+        return;
+      }
+      
       model.set('backgroundPosition', {
-        x: start.x - (origin.x - evt.clientX ),
-        y: start.y - (origin.y - evt.clientY )
+        x: start.x - (origin.x - (evt.clientX || evt.originalEvent.touches[0].clientX) ),
+        y: start.y - (origin.y - (evt.clientY || evt.originalEvent.touches[0].clientY) )
       });
-     
+      
       /*
       model.set('backgroundPosition', {
         x: Math.max(d.width-iw, Math.min(start.x - (origin.x - evt.clientX), iw)),
@@ -293,12 +300,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
       });
       */
     }
+    
+    //alert(evt.type)
 
     // Perform drag sequence:
     var $doc = MEME.$(document)
-      .on('mousemove.drag', update)
-      .on('mouseup.drag', function(evt) {
-        $doc.off('mouseup.drag mousemove.drag');
+      .on('mousemove.drag touchmove.drag', update)
+      .on('mouseup.drag touchend.drag', function(evt) {
+        $doc.off('mouseup.drag mousemove.drag touchmove.drag touchend.drag');
         update(evt);
       });
   } 
