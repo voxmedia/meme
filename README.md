@@ -24,6 +24,7 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 * Choose between different background patterns for transparent background images. 
 * Improved image generation, no more DOM access in every rendering.
 * Better drag n’ drop behaviour when the image doesn't fit in the canvas.
+* Better drag n’ drop behaviour in touch devices.
 
 ## Install
 
