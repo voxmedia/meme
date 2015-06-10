@@ -12,6 +12,18 @@
 }
 
 @font-face {
+    font-family: 'Impact';
+    src: font-url('../fonts/Impact.eot');
+    src: font-url('../fonts/Impact.eot?#iefix') format('embedded-opentype'),
+         font-url('../fonts/Impact.woff') format('woff'),
+         font-url('../fonts/Impact.ttf') format('truetype'),
+         font-url('../fonts/Impact.svg#Impact') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
     font-family: 'museo-300';
     src: font-url('../fonts/museo-300.eot');
     src: font-url('../fonts/museo-300.eot?#iefix') format('embedded-opentype'),

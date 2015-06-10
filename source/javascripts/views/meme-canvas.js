@@ -45,9 +45,13 @@ MEME.MemeCanvasView = Backbone.View.extend({
           
       ctx.save();
       ctx.globalCompositeOperation="destination-over";
-      ctx.fillStyle= ctx.createPattern(m.backgroundOpt,"repeat");
-      ctx.fillRect(0, 0, d.width, d.height);
-      ctx.restore();
+      //console.log(ctx.createPattern(m.backgroundOpt,"repeat"))
+      try {
+        ctx.fillStyle = ctx.createPattern(m.backgroundOpt,"repeat");
+        ctx.fillRect(0, 0, d.width, d.height);
+        ctx.restore();
+        
+      }catch(err) {}
 
     }
 
