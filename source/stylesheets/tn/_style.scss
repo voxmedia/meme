@@ -19,6 +19,14 @@ canvas {
   
 }
 
+.form-input {
+  input:focus,
+  textarea:focus {
+    -webkit-user-modify: read-write-plaintext-only;
+  }
+}
+
+
 .is-touch {
   #dropzone {
     display:none;
