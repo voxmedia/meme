@@ -1,0 +1,17 @@
+!!! 5
+%html.is-desktop
+  %head
+    
+    = partial "partials/head"
+  
+  %body{:class=>page_classes}
+  
+    = partial 'partials/header'
+  
+    %main#main.clearfix.wrapper{:role=>"main"}
+      
+      = partial "partials/editor"
+        
+    
+    = partial 'partials/footer'
+    = partial 'partials/scripts'

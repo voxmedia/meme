@@ -1,62 +1,114 @@
 var MEME_SETTINGS = {
-  creditText: 'Source:', // Default "credits" text.
+
+  aspectRatio: '970x545',
+  aspectRatioOpts: [
+    {text: 'TN [970x545px]', value: '970x545', selected:"selected"}, 
+    {text: 'Instagram [510x510px]', value: '510x510'},
+    {text: 'Twitter [506x253px]', value: '506x253'}
+  ],
+  
+  backgroundOpt: '',
+  backgroundOpts: [
+    {text: 'Rojo TN', value: '<%= asset_data_uri("backgrounds/tn-red.png") %>'}, 
+    {text: 'Azul TN', value: '<%= asset_data_uri("backgrounds/tn-blue.png") %>'},
+    {text: 'Hormigon', value: '<%= asset_data_uri("backgrounds/concrete.png") %>'},
+    {text: 'Trama', value: '<%= asset_data_uri("backgrounds/tweed.png") %>'}
+  ],
+ 
+  creditText: 'Fuente:', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
-  downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
+  
+  downloadName: 'meme', // The name of the downloaded image file (will have a ".png" extension added).
+  
+  emojiImage: '<%= asset_data_uri("emojis/emojis-canvas.png") %>',
+  emojiPosition: 1,
+  emojiOpts: [
+    {text: 'Izquierda abajo', value: 3, disabled:true},
+    {text: 'Izquierda arriba', value: 0, disabled:true},
+    {text: 'Derecha abajo', value: 2, disabled:true},
+    {text: 'Derecha arriba', value: 1, selected:true}
+  ],  
+  emojiSize: '100',
+  emojiMaxWidthRatio: 0.12,
+      
   fontColor: 'white', // Universal font color.
 
   // Universal font family for texts:
   // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
-  fontFamily: 'Helvetica Neue',
+  fontFamily: 'museo-sans-900',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['Arial', 'Helvetica Neue', 'Comic Sans MS'],
+  fontFamilyOpts: [
+    {text: 'Blokletters Viltstift', value: 'blokletters_viltstifviltstift'},
+    {text: 'Impact', value: 'Impact'},
+    {text: 'Museo Normal', value: 'museo-300'},
+    {text: 'Museo Negrita', value: 'museo-700'},
+    {text: 'Museo Sans Normal', value: 'museo-sans-300'},
+    {text: 'Museo Sans Negrita', value: 'museo-sans-900', selected:true},
+  ],
+  
+  //['Arial', 'Blokletters Viltstift', 'Comic Sans MS', 'Helvetica Neue', 'Museo Sans 300', 'Museo Sans 700',],
   
   // Font size of main headline:
-  fontSize: 24,
+  fontSize: 48,
   // Font size options: set to empty array to disable font-size selector.
   fontSizeOpts: [
-    {text: 'Small text', value: 14},
-    {text: 'Medium text', value: 24},
-    {text: 'Large text', value: 36}
+    {text: 'Chica', value: 36},
+    {text: 'Mediana', value: 48, selected:true},
+    {text: 'Grande', value: 60}
   ],
 
-  headlineText: 'Write your own headline', // Default headline text.
-  height: 378, // Canvas rendering height.
+  headlineText: 'Escribe el titular', // Default headline text.
+  height: 545, // Canvas rendering height.
   imageScale: 1, // Background image scale.
   imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
   overlayAlpha: 0.5, // Opacity of image overlay.
 
   // Image overlay color, or blank ('') for no overlay:
-  overlayColor: '#000',
+  overlayColor: '',
   // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#000', '#777', '#2980b9'],
+  //overlayColorOpts: ['#970018', '#e00038','#e84e1b','#ed7511','#f3c423','#9cc43f','#75932f','#007f76','#6ac0c2','#04b1ff','#0073a4','#2b406b','#6b2449','#d64892','#2d2d2d','#7b7b7b','#ffffff'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
+  
+  ribbonOpts: [
+    {text: 'Ahora', value:'rgba(224, 0, 0, .8)'},
+    {text: 'Urgente', value:'rgba(224, 0, 0, .8)'},
+    {text: 'En Vivo', value:'rgba(224, 0, 0, .8)'},
+    {text: 'Exclusivo', value:'rgba(224, 0, 0, .8)'},
+    {text: 'Última noticia', value:'rgba(243, 196, 35, .8)'},
+    {text: 'Alerta meteorológica', value:'rgba(243, 196, 35, .8)'}
+  ],
   
   // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
-    {text: 'Align left', value: 'left'}, 
-    {text: 'Align center', value: 'center'},
-    {text: 'Align right', value: 'right'}
+    {text: 'Izquierda', value: 'left', selected:true}, 
+    {text: 'Centro', value: 'center'},
+    {text: 'Derecha', value: 'right'}
   ],
 
   textShadow: false, // Text shadow toggle.
   textShadowEdit: true, // Toggles text shadow control within the editor.
+  
   watermarkAlpha: 1, // Opacity of watermark image.
-  watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
+  watermarkMaxWidthRatio: 0.15, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
+  // Alternatively, use  to populate the watermark with base64 data, avoiding Cross-Origin issues.
+  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("watermarks/todonoticias.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'Vox', value: '<%= image_path("vox.png") %>', data: '<%= asset_data_uri("vox.png") %>'},
-    {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''}
+    {text: 'TN', value: '<%= asset_data_uri("watermarks/todonoticias.png") %>', selected:true},
+    {text: 'Todapasion', value: '<%= asset_data_uri("watermarks/todapasion.png") %>'},
+    {text: 'La viola', value: '<%= asset_data_uri("watermarks/la-viola.png") %>'},
+    {text: 'Famosos', value: '<%= asset_data_uri("watermarks/famosos.png") %>'},
+    {text: 'Tecno', value: '<%= asset_data_uri("watermarks/tecno.png") %>'},
+    {text: 'TN y la Gente', value: '<%= asset_data_uri("watermarks/tn-y-la-gente.png") %>'}    
   ],
 
-  width: 755 // Canvas rendering width.
+  width: 970 // Canvas rendering width.
 };

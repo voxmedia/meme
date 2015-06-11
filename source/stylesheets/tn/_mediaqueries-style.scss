@@ -1,0 +1,210 @@
+/*
+Media queries styles, This is Hell on Earth
+*/
+
+@media (max-width: 969px) {
+  #meme-download,
+  .upload-wrapper,
+  .options {
+    margin-left: (5rem/16);
+    margin-right: (5rem/16);    
+  }
+}
+
+/* One column */
+
+@media (max-width: 649px) {
+  
+  .options {
+    
+    fieldset {
+      width: 100%;
+      height: auto;
+      margin: (20rem/16) 0 0 0;
+      
+      &:first-child {
+        margin-top:0;
+      }
+    }
+    
+    #overlay {
+      label,
+      input {
+        width: (32rem/16);
+        right: 0;
+        margin: 0 auto;
+      }      
+    }    
+
+    .items-group {
+      font-size: 0;
+      
+      li {
+        font-size: 1rem;
+        float:none;
+        display:inline-block;
+        text-align:center;
+        
+        width: (100%/6);
+        margin-left: 0;
+        
+        label:after {
+          right: 1px;
+          margin:0 auto;
+        }
+      }
+    }
+    
+  }
+}
+
+/* overlay */
+@media (min-width: 460px) and (max-width: 649px) {
+  #overlay {
+    li {
+      width: (100%/9);
+    }
+  }
+}
+
+@media (max-width: 499px) {
+  
+  .is-desktop {
+    .upload-image{
+      
+      .drop,
+      .explore .icon-arrow-up {
+        font-size: 0;
+        
+        &:before{
+          top:1rem;
+        }
+      }
+    }
+    
+  }
+  
+}
+
+@media (max-width: 449px) {
+  #header .header-title{
+    padding-right: 0;
+    
+    &:before {
+      display:none;
+      visibility: hidden;
+    }
+  }
+}
+
+/* Two column */
+@media (min-width: 650px) and (max-width: 969px) {
+  .options {
+  
+    fieldset {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: 49%;
+        
+      }
+      &:nth-child(2) {
+        margin-left: 2%;
+      }
+      &:nth-child(3) {
+        margin: (20rem/16) 0 0 0;
+        width: 100%;
+        height: auto;
+      }      
+
+    }  
+  
+  }
+  
+  #overlay {
+    font-size: 0;
+    
+    li {
+      font-size: 1rem;
+      float:none;
+      display:inline-block;
+      width: (100%/6);
+      margin-left: 0;
+      text-align: center;
+    }    
+    
+    label,
+    input {
+      width: (32rem/16);
+      right: 0;
+      margin: 0 auto;
+    }
+  }
+  
+ 
+  #emojis{
+    font-size: 0;
+    li {
+      font-size: 1rem;
+      float:none;
+      display:inline-block;
+      text-align:center;
+      
+      width: (100%/9);
+      margin-left: 0;
+      
+      label:after {
+        right: 1px;
+        margin:0 auto;
+      }
+      
+      /*
+      margin-left: (68%/837*100);
+      
+      &:first-child,
+      &:nth-child(10) {
+        margin-left:0;
+      }
+      
+      &:nth-child(-n+9){
+        margin-top:0;
+      }
+      */
+    }
+  }
+  
+}
+
+/* Three column */
+@media (min-width: 970px) {
+  
+}
+
+
+
+/* Fix ratios */
+@media (max-width: 969px) {
+  #meme-canvas.ratio-tn {
+    width: 100%;
+  }
+  #meme-canvas-view {
+    overflow: hidden;
+  }    
+}
+@media (max-width: 509px) {
+  #meme-canvas.ratio-instagram {
+    width: 100%;
+    padding-bottom: 100%;
+  }  
+  #meme-canvas-view {
+    overflow: hidden;
+  }
+}
+@media (max-width: 505px) {
+  #meme-canvas.ratio-twitter {
+    width: 100%;
+    padding-bottom: (253%/506*100);
+  }  
+  #meme-canvas-view {
+    overflow: hidden;
+  }  
+}

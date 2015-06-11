@@ -1,0 +1,495 @@
+@import 'mixin';
+
+@mixin emoji($i){
+  background-position: (-30px*$i) 0;  
+}
+
+body {
+  overflow-x: hidden;
+}
+
+canvas {
+  display: block;
+  background: black;
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
+  left: 0;
+  top: 0;
+  
+}
+
+.form-input {
+  input:focus,
+  textarea:focus {
+    -webkit-user-modify: read-write-plaintext-only;
+  }
+}
+
+
+.is-touch {
+  #dropzone {
+    display:none;
+    visibility: hidden;
+  }
+  
+  .upload-image {
+    .form-input {
+      width: 100%;
+    }
+    
+    .explore {
+      @include border_radius((5rem/16));
+    }
+  }
+}
+
+.upload-image {
+  .upload-wrapper {
+    margin-bottom: (36rem/16);
+  }
+
+  .form-input {
+    float: left;
+    width: 50%;
+    text-transform: uppercase;
+    font-size: (18rem/16);
+    color: #999999;
+    line-height: (65rem/16);
+    position: relative;
+    text-align: center;
+    @include box_sizing(border-box);
+  }
+
+  label {
+    height: 100%;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .image-upload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .drop {
+    border: 3px dotted #999;
+    border-right: none;
+    position: relative;
+    
+    @include border_radius(5px 0 0 5px);
+
+    &:before{
+      content: "";
+      position: relative;
+      width: 38px;
+      height: 31px;
+      background: $sprite -125px 0;
+      top:(8rem/16);
+      left: (-4rem/16);
+      display: inline-block;
+    }
+
+  }
+  .explore {
+    border: 3px solid #999;
+    @include border_radius(0 (5rem/16) (5rem/16) 0);
+
+    .icon-arrow-up{
+      display: block;
+      width: 100%;
+      height: 100%;
+      
+      &:before{
+        content: "";
+        position: relative;
+        width: 22px;
+        height: 31px;
+        background: $sprite -99px 0;
+        top:(8rem/16);
+        left: (-8rem/16);
+        display: inline-block;
+      }      
+      
+    }
+  }
+
+}
+
+#meme-canvas-view {
+  background: #1A1A1A;
+  position: relative;
+  
+  
+  &:before {
+    background: none repeat scroll 0 0 #1a1a1a;
+    content: "";
+    height: 100%;
+    left: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  &:after {
+    background: none repeat scroll 0 0 #1a1a1a;
+    content: "";
+    height: 100%;
+    right: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+}
+
+#meme-canvas {
+  position: relative;
+  width: 100%;
+  height: 0;
+  margin: 0 auto;
+  @include transition(all .25s linear);
+  
+  &.ratio-tn {
+    width: (970rem/16);
+    padding-bottom: (545%/970*100);
+  }
+  &.ratio-instagram {
+    width: (510rem/16);
+    padding-bottom: (510rem/16);
+  }
+  &.ratio-twitter {
+    width: (506rem/16);
+    padding-bottom: (253rem/16);
+  }
+  
+}
+
+.options {
+  margin-top: (20rem/16);
+
+  fieldset {
+    width: (310rem/16);
+    float: left;
+    height: (405rem/16);
+    @include border_radius(10px);
+    border: solid 1px #808080;
+    position: relative;
+    padding: (10rem/16);
+    margin-left: (20%/970*100);
+    box-sizing: border-box;
+
+    &:first-child {
+      margin-left:0;
+    }
+  }
+
+  h2 {
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    font-weight: 300;
+    margin-bottom: (10rem/16);
+
+    &:before {
+      background:#808080;
+      bottom: 0;
+      content: "";
+      height: 1px;
+      left: 1%;
+      position: absolute;
+      width: 98%;
+    }
+  }
+
+  .form-title{
+    text-transform: uppercase;
+    font-size: (14rem/16);
+    color: #ffffff;
+    display: block;
+  }
+  /*
+  .two-columns {
+    margin-top: (10rem/16);
+    
+    .form-input{
+      margin-top:0;
+    }
+  }
+  */
+  .form-input{
+    margin-top: (10rem/16);
+
+    input[type='range'],
+    input.text,
+    select,
+    textarea{
+      width: 100%;
+      border: none;
+      resize: none;
+      @include box_sizing(border-box);
+    }
+
+    input.text,
+    select,
+    textarea{
+      border: none;
+      background: #ffffff;
+      font-size: (14rem/16);
+      padding: (10rem/16);
+      @include border_radius(5px);
+    }
+
+    input.text,
+    select{
+      padding: 0 (10rem/16);
+      height: (40rem/16);
+      line-height: (40rem/16);
+    }
+  }
+     
+  .items-group{
+    li {
+      float:left;
+      width: (32rem/16);
+      height: (32rem/16);
+      position: relative;
+      cursor: pointer;
+      margin-top: (10rem/16);
+      margin-left: (19.2%/288*100);
+      
+      &:nth-child(-n+6){
+        margin-top:0;
+      }
+      &:nth-child(6n+1) {
+        margin-left: 0;
+      }
+    }
+    label {
+      width: 100%;
+      height: 100%;
+      text-indent: -999em;
+      overflow: hidden;
+      display: block;
+      position: relative;
+      cursor: pointer;
+      
+      &:before{
+        position: absolute;
+        width: 100%;
+        height: 100%; 
+        border:solid (1rem/16) white;
+        left: 0;
+        top: 0;
+        content:"";
+        box-sizing: border-box;
+        z-index: 9;
+        
+        display:none;
+        visibility: hidden;
+      }
+    }
+    input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 2;
+      top:0;
+      left: 0;
+      cursor: pointer;
+      
+      &:checked ~ label:before {
+        display:block;
+        visibility: visible;     
+        border-color:white !important;   
+      }
+    } 
+    
+    .items-group-none:before {
+      content:"X";
+      color:#999;
+      line-height: (32rem/16);
+      text-align: center;
+      border-color:#999 !important;
+      text-indent: 0;
+      display:block;
+      visibility: visible;             
+    }
+    
+  }
+
+  .two-columns{
+  
+    .form-input{
+      float: left;
+      width: 48%;
+      
+      &:last-child{
+        float: right;
+      }
+    }
+  }
+
+  .checkbox-item{
+    position: relative;
+    height: (30rem/16);
+    float:left;
+    cursor: pointer;
+
+    label{
+      display:block;
+      margin-left: (35rem/16);
+      height: (30rem/16);
+      line-height: (30rem/16);
+      cursor: pointer;
+      
+      &:after,
+      &:before  {
+	      content: "";
+	      position: absolute;
+      }
+      
+      &:before{
+        width: (30rem/16);
+        height: (30rem/16);
+        background: #ffffff;
+        top: 0;
+        left: 0;
+        @include border_radius(5px);
+      }
+      
+      &:after {
+        $h:10px;
+        background: $sprite -131px -46px;
+        width: 12px;
+        height: $h;
+        top:50%;
+        left:(9rem/16);
+        margin-top: ($h/-2);
+        
+        @include hide();
+      }
+    }
+
+
+    input{
+      
+      width: (30rem/16);
+      height: (30rem/16);
+      left: 0;
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+
+      &:checked ~ label:after {
+        display:block;
+        visibility: visible;
+      }
+    }
+
+
+
+
+
+  }
+}
+
+#meme-download{
+  background: #000000;
+  @include border_radius(10px);
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: (18rem/16);
+  text-align: center;
+  margin-top: (20rem/16);
+  line-height: (70rem/16);
+  cursor: pointer;
+  
+  &:before{
+    content: "";
+    position: relative;
+    width: 21px;
+    height: 31px;
+    background: $sprite -77px 0;
+    top:(8rem/16);
+    left: (-8rem/16);
+    display: inline-block;
+  }  
+}
+
+
+#emojis {
+  label:after {
+    background: image-url("images/emojis/emojis-editor.png") left top no-repeat;
+    width: 30px;
+    height: 30px;
+    content:"";
+    position: absolute;
+    left: 1px;
+    top:1px;
+    
+  }
+  
+  .items-group-none:after {
+    background: none;
+  }
+  
+  .emoji-0:after{
+    @include emoji(0);
+  }
+  .emoji-1:after{
+    @include emoji(1);
+  }
+  .emoji-2:after{
+    @include emoji(2);
+  }
+  .emoji-3:after{
+    @include emoji(3);
+  }
+  .emoji-4:after{
+    @include emoji(4);
+  }
+  .emoji-5:after{
+    @include emoji(5);
+  }    
+  .emoji-6:after{
+    @include emoji(6);
+  }
+  .emoji-7:after{
+    @include emoji(7);
+  }
+  .emoji-8:after{
+    @include emoji(8);
+  }
+  .emoji-9:after{
+    @include emoji(9);
+  }
+  .emoji-10:after{
+    @include emoji(10);
+  }
+  .emoji-11:after{
+    @include emoji(11);
+  }
+  .emoji-12:after{
+    @include emoji(12);
+  }
+  .emoji-13:after{
+    @include emoji(13);
+  }
+  .emoji-14:after{
+    @include emoji(14);
+  }
+  .emoji-15:after{
+    @include emoji(15);
+  }    
+  .emoji-16:after{
+    @include emoji(16);
+  }  
+}

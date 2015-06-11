@@ -1,0 +1,240 @@
+/*
+Media queries styles, This is Hell on Earth
+*/
+@import 'tn/mixin';
+/*
+  Banner layout
+*/
+
+@media (max-width: 727px){
+  body {
+    padding:0;
+  }	
+	
+}
+
+/*
+  320
+*/
+@media (max-width: 767px) {
+  
+  
+  #header {
+    margin-bottom: (20em/16);
+    height: auto;
+    
+    /*
+    &:after{
+      background: rgba(0, 0, 0, .5);
+      z-index: 0;
+      height: (93em/16);
+      content:"";
+      position: absolute;
+      width: 100%;
+      top:0;
+    }
+    */  
+    
+    
+	  .header-title {
+	    right: 1em;
+	    position: fixed;
+	    top: 0;
+	    z-index: 9999;
+	    color: #ffffff !important;
+    }
+    
+    .header-top {
+      padding: 0;
+      margin: 0 auto; 
+      
+      .header-subtitle{
+        margin-left: 0;
+        font-size: (30em/16);
+      }
+    }    
+
+
+    .shares {
+      width: 100%;
+      position: static;
+      margin: (6em/12.8) 0 (17em/12.8) 0;
+      padding: 0;
+      @include show();
+      
+      &:before {
+        @include hide();
+      }
+      
+      .text {
+        @include hide();
+      }
+      
+      .share {
+        @include show();
+        width: 100%;
+        position: relative;
+        border: none;
+        padding:0;
+        @include box_shadow(none);
+        font-size: (18em/16);
+        background:none;
+
+        .share-item {
+          float: left;
+          width: 32%;
+          margin:0 2% 0 0;
+          border: none;
+          text-align: center;
+          color: #ffffff;
+          text-indent: 0;
+
+          background: none;
+          @include box_shadow(none);          
+
+          &:before {
+            @include hide();
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &.tw {
+            background: #00ADFA;
+          }
+          &.fb {
+            background: #1757BC;
+          }
+          &.gp {
+            background: #E00102;
+          }
+        }
+      }
+    }    
+  }
+  
+
+
+  .wrapper {
+    width: (290%/320*100);
+    /*width: 290px;*/
+  }
+
+  #secondary-navigation {
+    li {
+      @include hide();
+    }
+
+    .sticky-logo-tn {
+      @include show();
+    }
+  }
+
+}
+/*
+@media (min-width: 728px) and (max-width: 767px){
+  #header{
+     .header-title{
+       position:absolute;
+       top:(-44em/28);
+       right: (-7em/28);
+     }
+     
+     &.fixed {
+	     .header-title{
+	       position:fixed;
+	       top:0;
+	       right: 1em;
+	     }
+     }
+  }
+}
+*/
+/*
+768 layout
+*/
+
+
+
+/* 1024 */
+
+
+@media (min-width: 1000px) and (max-width: 1279px) {
+
+  .wrapper {
+    width: (970%/1025*100);
+    /*width: 970px;*/
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 860px) {
+	.networks #header .header-top .header-subtitle{
+	  @include hide();
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+  #header {
+    .shares {
+      height: (32em/16);
+	    .text {
+	      @include hide();
+	    }
+	    
+	    .share {
+	      top: (32em/16);
+	    }      
+    }
+  }
+}
+
+
+@media (max-width: 390px) {
+
+
+  #footer {
+    .legal {
+      margin: 0 20px 20px;
+      line-height: 1.3em;
+    }
+  }
+
+
+}
+
+@media (min-width: 391px) and (max-width: 689px) {
+
+
+  #footer {
+    .legal {
+      margin: 0 20px 20px;
+      line-height: 1.3em;
+    }
+  }
+
+}
+
+
+@media (min-width: 960px) and (max-width: 1220px) {
+
+  .wrapper {
+    width: (1230%/1280*100);
+  }
+
+
+
+}
+
+/*
+  BIG Layout
+*/
+
+@media (min-width: 1560px) {
+  body {
+    font-size: 1.3em;
+  }
+
+}

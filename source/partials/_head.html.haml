@@ -1,0 +1,17 @@
+%meta{:charset => "utf-8"}
+%meta{:content => "width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0", :name => "viewport"}
+
+/ Always force latest IE rendering engine or request Chrome Frame
+%meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+
+%title= current_page.data.title
+%meta{:content => current_page.data.description, :name => "description"}
+
+%link{:href => "humans.txt", :rel => "author"}
+= stylesheet_link_tag "main", {media: false}
+
+:javascript
+  
+  if (window.navigator.userAgent.match(/tablet|android|iphone|ipad|ipod|windows phone|mobi|xoom|sch-i800|playbook|tablet|kindle|GoogleTV|SmartTV|Internet.TV|NetCast|NETTV|AppleTV|boxee|Kylo|Roku|DLNADOC|CE\-HTML/gi)){
+    document.documentElement.className = 'is-touch';
+  }
