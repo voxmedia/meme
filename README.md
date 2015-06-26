@@ -18,10 +18,23 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 ## Install
 
 * `git clone https://github.com/voxmedia/meme.git`
-* `bundle install`
+* `cd meme`  
+(If `bundler` not already installed: `gem install bundler`.)
+* `bundle install`  
+(If you get `An error occurred while installing eventmachine ... `, do `bundle update`, then `bundle install`)
 * `bundle exec middleman`
 
 This will start a local web server running at: `http://localhost:4567/`
+
+To build static html:
+
+`bundle exec middleman build`
+
+To run on port 80:
+
+`sudo bundle exec middleman --port 80`
+
+`middleman` docs [here](https://middlemanapp.com/basics/install/).
 
 ## Customization
 
