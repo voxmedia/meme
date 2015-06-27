@@ -1,1 +1,32 @@
+@font-face {
+	font-family: "BentonSansCond Regular";
+	src: url("http://fonts.registerguard.com/benton/sanscondbold.eot");
+	src: url("http://fonts.registerguard.com/benton/sanscondbold.eot?#iefix") format("embedded-opentype"),
+		url("http://fonts.registerguard.com/benton/sanscondbold.woff") format("woff"),
+		url("http://fonts.registerguard.com/benton/sanscondbold.ttf") format("truetype"),
+		url("http://fonts.registerguard.com/benton/sanscondbold.svg#web") format("svg");
+	font-style: normal;
+	font-weight: bold;
+}
 
+@font-face {
+	font-family: "MillerHeadline Bold";
+	src: url("http://fonts.registerguard.com/miller/headlinebold.eot");
+	src: url("http://fonts.registerguard.com/miller/headlinebold.eot?#iefix") format("embedded-opentype"),
+		url("http://fonts.registerguard.com/miller/headlinebold.woff") format("woff"),
+		url("http://fonts.registerguard.com/miller/headlinebold.ttf") format("truetype"),
+		url("http://fonts.registerguard.com/miller/headlinebold.svg#web") format("svg");
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "MillerHeadline Light";
+	src: url("http://fonts.registerguard.com/miller/headlinelight.eot");
+	src: url("http://fonts.registerguard.com/miller/headlinelight.eot?#iefix") format("embedded-opentype"),
+		url("http://fonts.registerguard.com/miller/headlinelight.woff") format("woff"),
+		url("http://fonts.registerguard.com/miller/headlinelight.ttf") format("truetype"),
+		url("http://fonts.registerguard.com/miller/headlinelight.svg#web") format("svg");
+	font-style: normal;
+	font-weight: normal;
+}
