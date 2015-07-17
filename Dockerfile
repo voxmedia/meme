@@ -7,6 +7,9 @@ RUN apt-get -y update
 # Upgrade as well
 RUN apt-get -qy upgrade
 
+# Install bundler
+RUN gem install bundler
+
 # Copy our app source code to a folder 
 COPY ./app /usr/src/app
 
