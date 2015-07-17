@@ -7,20 +7,22 @@ RUN apt-get -y update
 # Upgrade as well
 RUN apt-get -qy upgrade
 
-# Copy our app source code to a folder 
-COPY ./app /usr/src/app
-
 # Set the work directory where source is now located
-WORKDIR /usr/src/app
+WORKDIR /usr/src
+
+# Copy our app source code to a folder 
+COPY Gemfile /usr/src/
+COPY . /usr/src/
 
 # Install bundler
-RUN cd /usr/src/app && gem install bundler
+RUN gem install bundler
 
 # Install dependencies
-RUN cd /usr/src/app && bundle install
+RUN apt-get -y install nodejs
+RUN bundle install
 
 # Define the port where the app is going serve
 EXPOSE 80
 
 # Define the default command for starting the app that Docker would use 
-CMD cd /usr/src/app && bundle exec middleman -p 80
+CMD bundle exec middleman -p 80
