@@ -7,6 +7,12 @@ RUN apt-get -y update
 # Upgrade as well
 RUN apt-get -qy upgrade
 
+# Copy our app source code to a folder 
+COPY ./app /usr/src/app
+
+# Set the work directory where source is now located
+WORKDIR /usr/src/app
+
 # Install dependencies
 RUN bundle install
 
