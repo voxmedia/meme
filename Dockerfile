@@ -8,10 +8,10 @@ RUN apt-get -y update
 RUN apt-get -qy upgrade
 
 # Copy our app source code to a folder 
-COPY ./app /usr/src/app
+COPY ./ /usr/src/meme
 
 # Set the work directory where source is now located
-WORKDIR /usr/src/app
+WORKDIR /usr/src/meme
 
 # Install dependencies
 RUN bundle install
