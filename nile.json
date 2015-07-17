@@ -10,10 +10,10 @@
       "branch": "master",
       "notify": "meme",
       "tags": [
-        "1.0.0",
+        "v1.0.0",
         "latest"
       ],
-      "version": "1.0.0"
+      "version": "v1.0.0"
     }
   ],
   "environment": {
