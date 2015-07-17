@@ -7,20 +7,20 @@ RUN apt-get -y update
 # Upgrade as well
 RUN apt-get -qy upgrade
 
-# Install bundler
-RUN gem install bundler
-
 # Copy our app source code to a folder 
 COPY ./app /usr/src/app
 
 # Set the work directory where source is now located
 WORKDIR /usr/src/app
 
+# Install bundler
+RUN cd /usr/src/app && gem install bundler
+
 # Install dependencies
-RUN bundle install
+RUN cd /usr/src/app && bundle install
 
 # Define the port where the app is going serve
 EXPOSE 80
 
 # Define the default command for starting the app that Docker would use 
-CMD PORT=80 bundle exec middleman
+CMD cd /usr/src/app && bundle exec middleman -p 80
