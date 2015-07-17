@@ -1,14 +1,14 @@
 {
-  "name": "meme",
+  "name": "socialcard",
   "cluster": "api.wpit.nile.works",
-  "image": "quay.io/washpost/meme",
+  "image": "quay.io/washpost/socialcard",
   "port": 80,
   "paths": ["/"],
   "builds": [
     {
       "autodeploy": true,
       "branch": "master",
-      "notify": "meme",
+      "notify": "socialcard",
       "tags": [
         "1.0.0"
       ],
@@ -21,7 +21,7 @@
   "stages": [{
     "name": "prod",
     "scale": 1,
-    "domain": "meme.wpit.nile.works",
+    "domain": "socialcard.wpit.nile.works",
     "environment": {
       "NODE_ENV":"production",
       "PRODUCTION_PORT": "80"
