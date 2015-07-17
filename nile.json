@@ -1,0 +1,31 @@
+{
+  "name": "meme",
+  "cluster": "api.wpit.nile.works",
+  "image": "quay.io/washpost/meme",
+  "port": 80,
+  "paths": ["/"],
+  "builds": [
+    {
+      "autodeploy": true,
+      "branch": "master",
+      "notify": "meme",
+      "tags": [
+        "1.0.0",
+        "latest"
+      ],
+      "version": "1.0.0"
+    }
+  ],
+  "environment": {
+
+  },
+  "stages": [{
+    "name": "prod",
+    "scale": 1,
+    "domain": "meme.wpit.nile.works",
+    "environment": {
+      "NODE_ENV":"production",
+      "PRODUCTION_PORT": "80"
+    }
+  }]
+}
