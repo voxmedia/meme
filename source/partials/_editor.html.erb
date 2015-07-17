@@ -1,22 +1,28 @@
 <form class="m-editor" id="meme-editor-view">
-  <div class="dropzone" id="dropzone">Drop Image Here</div>
+  <div class="dropzone" id="dropzone">Drag Image Here</div>
   
-  <h2><label for="image-scale">Resize image</label></h2>
+  <h2><label for="image-scale">Resize Image</label></h2>
   <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
   
-  <h2><label for="headline">Headline</label></h2>
+  <h2><label for="headline">Text</label></h2>
   <textarea id="headline" name="headline" type="text" value=""></textarea>
   
+  <h2>Horizontal Alignment</h2>
   <select class="text-align" id="text-align">
     <option value="" disabled>Select alignment</option>
   </select>
 
+  <h2>Vertical Alignment</h2>
+  <input id="vertical-align" type="range" max="0.85" min="0" step=".025" value="0.4">
+
+  <h2>Font Size</h2>
   <select class="font-size" id="font-size">
-    <option value="" disabled>Select a font size</option>
+    <option value="" disabled>Select font size</option>
   </select>
 
+  <h2>Font</h2>
   <select class="font-family" id="font-family">
-    <option value="" disabled>Select a font</option>
+    <option value="" disabled>Select font</option>
   </select>
 
   <div class="checkbox-group text-shadow">
@@ -24,17 +30,29 @@
     <label for="text-shadow">Text Shadow</label>
   </div>
 
-  <select class="watermark" id="watermark">
+  <!-- <select class="watermark" id="watermark">
     <option value="" disabled>Select a watermark</option>
-  </select>
+  </select> -->
 
-  <h2><label for="credit">Credit</label></h2>
-  <input id="credit" name="credit" type="text" value="">
+  <!-- <h2><label for="credit">Credit</label></h2>
+  <input id="credit" name="credit" type="text" value=""> -->
 
   <div class="m-editor__overlay" id="overlay">
     <h2>Overlay Color</h2>
     <ul class="checkbox-group">
       <li><label><input type="radio" name="overlay" value=""> None</label></li>
+    </ul>
+  </div>
+
+  <h2>Overlay Opacity</h2>
+  <input id="overlay-opacity" type="range" max="1" min="0" step=".025" value="0.5">
+
+  <div class="m-editor__score" id="overlay">
+    <h2>Score</h2>
+    <ul class="checkbox-group">
+      <li><label><input type="radio" name="score" value="" checked> None</label></li>
+      <li><label><input type="radio" name="score" value="up"> <i class="fa fa-thumbs-o-up"></i></label></li>
+      <li><label><input type="radio" name="score" value="down"> <i class="fa fa-thumbs-o-down"></i></label></li>
     </ul>
   </div>
 </form>

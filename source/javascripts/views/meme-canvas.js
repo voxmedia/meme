@@ -84,17 +84,16 @@ MEME.MemeCanvasView = Backbone.View.extend({
       // Text shadow:
       if (d.textShadow) {
         ctx.shadowColor = "#666";
-        ctx.shadowOffsetX = -2;
-        ctx.shadowOffsetY = 1;
-        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
+        ctx.shadowBlur = 20;
       }
 
       // Text alignment:
       if (d.textAlign == 'center') {
         ctx.textAlign = 'center';
         x = d.width / 2;
-        y = d.height - d.height / 1.5;
-        maxWidth = d.width - d.width / 3;
+        maxWidth = d.width * 0.75;
 
       } else if (d.textAlign == 'right' ) {
         ctx.textAlign = 'right';
@@ -103,6 +102,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
       } else {
         ctx.textAlign = 'left';
       }
+
+      // Vertical alignment
+      y = d.height * d.verticalAlign;
 
       var words = d.headlineText.split(' ');
       var line  = '';
@@ -133,6 +135,18 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.fillText(d.creditText, padding, d.height - padding);
     }
 
+    function renderScore(ctx) {
+      ctx.textBaseline = 'bottom';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = d.fontColor;
+      ctx.font = 'normal 120px FontAwesome';
+      var scoreText = '';
+      if(d.score) {
+        scoreText = d.score == 'up' ? '\uf087' : '\uf088';
+      }
+      ctx.fillText(scoreText, padding, d.height - padding);
+    }
+
     function renderWatermark(ctx) {
       // Base & transformed height and width:
       var bw, bh, tw, th;
@@ -159,6 +173,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderOverlay(ctx);
     renderHeadline(ctx);
     renderCredit(ctx);
+    renderScore(ctx);
     renderWatermark(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');

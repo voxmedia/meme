@@ -64,20 +64,25 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#font-size').val(d.fontSize);
     this.$('#font-family').val(d.fontFamily);
     this.$('#text-align').val(d.textAlign);
+    this.$('#vertical-align').val(d.verticalAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
+    this.$('#overlay-opacity').val(d.overlayAlpha);
   },
 
   events: {
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
+    'input #vertical-align': 'onVerticalAlign',
+    'input #overlay-opacity': 'onOverlayOpacity',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
+    'change [name="score"]': 'onScore',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop'
@@ -93,6 +98,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onTextAlign: function() {
     this.model.set('textAlign', this.$('#text-align').val());
+  },
+
+  onVerticalAlign: function() {
+    this.model.set('verticalAlign', this.$('#vertical-align').val());
   },
 
   onTextShadow: function() {
@@ -118,6 +127,14 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onOverlayColor: function(evt) {
     this.model.set('overlayColor', this.$(evt.target).val());
+  },
+
+  onOverlayOpacity: function() {
+    this.model.set('overlayAlpha', this.$('#overlay-opacity').val());
+  },
+
+  onScore: function(evt) {
+    this.model.set('score', this.$(evt.target).val());
   },
 
   getDataTransfer: function(evt) {

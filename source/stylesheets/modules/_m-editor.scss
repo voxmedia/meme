@@ -50,6 +50,7 @@ $m: '.m-editor';
 
   #{$m}__overlay {
     display: none;
+    margin-bottom: 1em;
 
     // Mini-clearfix:
     &:before,
@@ -89,10 +90,42 @@ $m: '.m-editor';
     width: 30px;
 
     &:checked:before {
-      content: 'x';
+      content: '\2718';
       color: white;
       font-size: 18px;
       vertical-align: center;
+    }
+  }
+
+  #{$m}__score {
+    margin-bottom: 1em;
+
+    // Mini-clearfix:
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      label {
+        display: block;
+        float: left;
+        height: 20px;
+        line-height: 20px;
+        margin-right: 10px;
+
+        i {
+          font-size: 16px;
+        }
+      }
     }
   }
 }
