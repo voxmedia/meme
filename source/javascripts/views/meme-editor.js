@@ -68,6 +68,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#text-shadow').prop('checked', d.textShadow);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
     this.$('#overlay-opacity').val(d.overlayAlpha);
+    this.$('#bottom-text').val(d.bottomText);
   },
 
   events: {
@@ -76,6 +77,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #image-scale': 'onScale',
     'input #vertical-align': 'onVerticalAlign',
     'input #overlay-opacity': 'onOverlayOpacity',
+    'input #bottom-text': 'onBottomText',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
@@ -135,6 +137,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onScore: function(evt) {
     this.model.set('score', this.$(evt.target).val());
+  },
+
+  onBottomText: function() {
+    this.model.set('bottomText', this.$('#bottom-text').val());
   },
 
   getDataTransfer: function(evt) {

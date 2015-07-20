@@ -139,12 +139,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
-      ctx.font = 'normal 120px FontAwesome';
+      ctx.font = 'normal 100px FontAwesome';
       var scoreText = '';
       if(d.score) {
         scoreText = d.score == 'up' ? '\uf087' : '\uf088';
       }
       ctx.fillText(scoreText, padding, d.height - padding);
+      ctx.font = 'normal 80px "Helvetica Neue"';
+      ctx.fillText(d.bottomText, padding + 130, d.height - padding);
     }
 
     function renderWatermark(ctx) {
