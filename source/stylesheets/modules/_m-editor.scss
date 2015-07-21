@@ -1,5 +1,23 @@
 $m: '.m-editor';
 
+#image-remove {
+  background: $theme-color;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 0.8em;
+  display: block;
+  line-height: 35px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 15px;
+  @include transition (background-color ease-in-out 0.1s);
+
+  &:hover {
+    background: lighten($theme-color, 25);
+  }
+}
+
 #{$m} {
   margin-bottom: 30px;
 
@@ -72,6 +90,7 @@ $m: '.m-editor';
         float: left;
         height: 20px;
         line-height: 20px;
+        margin-bottom: 5px;
       }
     }
   }
@@ -88,12 +107,63 @@ $m: '.m-editor';
     outline: none;
     text-align: center;
     width: 30px;
+    border: 1px solid #333;
 
     &:checked:before {
       content: '\2718';
+      position: relative;
+      top: -1px;
       color: white;
       font-size: 18px;
-      vertical-align: center;
+    }
+
+    &[value='gradient-left-right'] {
+      background: -webkit-linear-gradient(left, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -o-linear-gradient(right, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -moz-linear-gradient(right, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: linear-gradient(to right, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+    }
+    &[value='gradient-right-left'] {
+      background: -webkit-linear-gradient(right, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -o-linear-gradient(left, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -moz-linear-gradient(left, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: linear-gradient(to left, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+    }
+    &[value='gradient-top-bottom'] {
+      background: -webkit-linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -o-linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -moz-linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+    }
+    &[value='gradient-bottom-top'] {
+      background: -webkit-linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: -o-linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: -moz-linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+    }
+    &[value='gradient-middle-light-vertical'] {
+      background: -webkit-linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: -o-linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: -moz-linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: linear-gradient(rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+    }
+    &[value='gradient-middle-dark-vertical'] {
+      background: -webkit-linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -o-linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -moz-linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+    }
+    &[value='gradient-middle-light-horizontal'] {
+      background: -webkit-linear-gradient(left, rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: -o-linear-gradient(right, rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: -moz-linear-gradient(right, rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+      background: linear-gradient(to right, rgba(0,0,0,1.0), rgba(0,0,0,0.0), rgba(0,0,0,1.0));
+    }
+    &[value='gradient-middle-dark-horizontal'] {
+      background: -webkit-linear-gradient(left, rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -o-linear-gradient(right, rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: -moz-linear-gradient(right, rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+      background: linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,1.0), rgba(0,0,0,0.0));
     }
   }
 

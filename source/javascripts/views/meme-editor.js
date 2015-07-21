@@ -85,6 +85,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
     'change [name="score"]': 'onScore',
+    'click #image-remove': 'onImageRemove',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop'
@@ -167,5 +168,10 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
     }
+  },
+
+  onImageRemove: function(evt) {
+    evt.preventDefault();
+    this.model.initialize();
   }
 });

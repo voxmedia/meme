@@ -65,7 +65,64 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.overlayColor) {
         ctx.save();
         ctx.globalAlpha = d.overlayAlpha;
-        ctx.fillStyle = d.overlayColor;
+
+        switch(d.overlayColor) {
+          case 'gradient-left-right':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-right-left':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-top-bottom':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+            case 'gradient-bottom-top':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-light-vertical':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(0.5,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-dark-vertical':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(0.5,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-light-horizontal':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(0.5,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-dark-horizontal':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(0.5,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          default:
+            ctx.fillStyle = d.overlayColor;
+        }
+
         ctx.fillRect(0, 0, d.width, d.height);
         ctx.globalAlpha = 1;
         ctx.restore();
@@ -139,14 +196,16 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
-      ctx.font = 'normal 100px FontAwesome';
+      ctx.font = 'normal 50px FontAwesome';
       var scoreText = '';
+      var scorePadding = 0;
       if(d.score) {
         scoreText = d.score == 'up' ? '\uf087' : '\uf088';
+        scorePadding = 65;
       }
       ctx.fillText(scoreText, padding, d.height - padding);
-      ctx.font = 'normal 80px "Helvetica Neue"';
-      ctx.fillText(d.bottomText, padding + 130, d.height - padding);
+      ctx.font = 'normal 40px "Helvetica Neue"';
+      ctx.fillText(d.bottomText, padding + scorePadding, d.height - padding);
     }
 
     function renderWatermark(ctx) {
