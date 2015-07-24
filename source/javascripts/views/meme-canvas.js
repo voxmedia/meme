@@ -203,9 +203,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
         scoreText = d.score == 'up' ? '\uf087' : '\uf088';
         scorePadding = 65;
       }
-      ctx.fillText(scoreText, padding, d.height - padding + 7);
+      ctx.fillText(scoreText, padding, d.height - padding + 3);
       ctx.font = 'normal 40px "FranklinITCProThin"';
-      ctx.fillText(d.bottomText, padding + scorePadding, d.height - padding + 7);
+      ctx.fillText(d.bottomText, padding + scorePadding, d.height - padding + 5);
     }
 
     function renderWatermark(ctx) {
