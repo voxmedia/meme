@@ -204,7 +204,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         scorePadding = 65;
       }
       ctx.fillText(scoreText, padding, d.height - padding);
-      ctx.font = 'normal 40px "Helvetica Neue"';
+      ctx.font = 'normal 40px "FranklinITCProLight"';
       ctx.fillText(d.bottomText, padding + scorePadding, d.height - padding);
     }
 
