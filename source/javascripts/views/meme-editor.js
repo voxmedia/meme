@@ -20,6 +20,10 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
+    if (d.candidateOpts && d.candidateOpts.length) {
+      $('#candidate-face').append(buildOptions(d.candidateOpts)).show();
+    }
+
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
     }
@@ -57,6 +61,9 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   render: function() {
     var d = this.model.toJSON();
+    this.$('#candidate-face').val(d.candidate);
+    this.$('#candidate-horizontal').val(d.candidateHorizontal);
+    this.$('#candidate-vertical').val(d.candidateVertical);
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
@@ -72,12 +79,16 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   events: {
+    'input #candidate-size': 'onCandidateSize',
+    'input #candidate-horizontal': 'onCandidateHorizontal',
+    'input #candidate-vertical': 'onCandidateVertical',
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
     'input #vertical-align': 'onVerticalAlign',
     'input #overlay-opacity': 'onOverlayOpacity',
     'input #bottom-text': 'onBottomText',
+    'change #candidate-face': 'onCandidateFace',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
@@ -89,6 +100,22 @@ MEME.MemeEditorView = Backbone.View.extend({
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop'
+  },
+
+  onCandidateFace: function() {
+    this.model.set('candidate', this.$('#candidate-face').val());
+  },
+
+  onCandidateSize: function() {
+    this.model.set('candidateSize', this.$('#candidate-size').val());
+  },
+
+  onCandidateHorizontal: function() {
+    this.model.set('candidateHorizontal', this.$('#candidate-horizontal').val());
+  },
+
+  onCandidateVertical: function() {
+    this.model.set('candidateVertical', this.$('#candidate-vertical').val());
   },
 
   onCredit: function() {

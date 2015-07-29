@@ -230,12 +230,22 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
     }
 
+    function renderFace(ctx) {
+      var source = new Image();
+      source.src = d.candidate;
+      var h = d.candidateSize;
+      source.onload = function(){
+        ctx.drawImage(source,d.candidateHorizontal*d.width,d.candidateVertical*d.height,0.862*h,h);
+      }
+    }
+
     renderBackground(ctx);
     renderOverlay(ctx);
     renderHeadline(ctx);
     renderCredit(ctx);
     renderScore(ctx);
     renderWatermark(ctx);
+    renderFace(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
     this.$('#meme-download').attr({

@@ -1,5 +1,18 @@
 var MEME_SETTINGS = {
   bottomText: '',
+  candidate: '<%= image_path("candidates/jeb_bush.svg") %>',
+  candidateHorizontal: 0.05,
+  candidateSize: '400',
+  candidateOpts: [
+    {text: 'Jeb Bush', value: '<%= image_path("candidates/jeb_bush.svg") %>'},
+    {text: 'Chris Christie', value: '<%= image_path("candidates/chris_christie.svg") %>'},
+    {text: 'Ted Cruz', value: '<%= image_path("candidates/ted_cruz.svg") %>'},
+    {text: 'Rand Paul', value: '<%= image_path("candidates/rand_paul.svg") %>'},
+    {text: 'Marco Rubio', value: '<%= image_path("candidates/marco_rubio.svg") %>'},
+    {text: 'Donald Trump', value: '<%= image_path("candidates/donald_trump.svg") %>'},
+    {text: 'Scott Walker', value: '<%= image_path("candidates/scott_walker.svg") %>'}
+  ],
+  candidateVertical: 0.2,
   creditText: '', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'social_card', // The name of the downloaded image file (will have a ".png" extension added).
@@ -27,17 +40,17 @@ var MEME_SETTINGS = {
   height: 640, // Canvas rendering height.
   imageScale: 1, // Background image scale.
   imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
-  overlayAlpha: 0.5, // Opacity of image overlay.
+  overlayAlpha: 0.8, // Opacity of image overlay.
 
   // Image overlay color, or blank ('') for no overlay:
   overlayColor: '#000',
   // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#000', '#777', '#2980b9'],
+  overlayColorOpts: ['#000', '#007FC5', '#61A2D8', '#ED1C24', '#FF6666', '#B7B19B', '#C8C7B3', '#D7DF23', '#B55DE8', '#F7941E', '#005826', '#00A651'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
   score: '',
   
   // Text alignment: valid settings are "left", "center", and "right".
-  textAlign: 'center',
+  textAlign: 'right',
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
     {text: 'Left', value: 'left'}, 
