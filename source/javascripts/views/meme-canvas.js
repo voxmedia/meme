@@ -236,9 +236,13 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var h = d.candidateSize;
       source.onload = function(){
         ctx.drawImage(source,d.candidateHorizontal*d.width,d.candidateVertical*d.height,0.862*h,h);
+        saveData();
       }
     }
 
+    var self = this;
+    var data = '';
+    
     renderBackground(ctx);
     renderOverlay(ctx);
     renderHeadline(ctx);
@@ -247,11 +251,13 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderWatermark(ctx);
     renderFace(ctx);
 
-    var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
-    this.$('#meme-download').attr({
-      'href': data,
-      'download': (d.downloadName || 'share') + '.png'
-    });
+    function saveData() {
+      data = self.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
+      self.$('#meme-download').attr({
+        'href': data,
+        'download': (d.downloadName || 'share') + '.png'
+      });
+    }
 
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
