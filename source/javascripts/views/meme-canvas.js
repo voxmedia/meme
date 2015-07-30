@@ -130,7 +130,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderHeadline(ctx) {
-      var maxWidth = Math.round(d.width * 0.75);
+      var maxWidth = Math.round(d.width * 0.6);
       var x = padding;
       var y = padding;
 
@@ -143,7 +143,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.shadowColor = "#666";
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
-        ctx.shadowBlur = 20;
+        ctx.shadowBlur = 10;
       }
 
       // Text alignment:
