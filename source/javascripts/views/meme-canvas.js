@@ -255,7 +255,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       data = self.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
       self.$('#meme-download').attr({
         'href': data,
-        'download': (d.downloadName || 'share') + '.png'
+        'download': 'social_card [' + (new Date()).toString() + '].png'
       });
     }
 
