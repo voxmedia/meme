@@ -154,7 +154,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
       } else if (d.textAlign == 'right' ) {
         ctx.textAlign = 'right';
-        x = d.width - padding;
+        x = d.width - padding + 20;
 
       } else {
         ctx.textAlign = 'left';
