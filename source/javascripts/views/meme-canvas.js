@@ -235,7 +235,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       source.src = d.candidate;
       var h = d.candidateSize;
       source.onload = function(){
-        ctx.drawImage(source,d.candidateHorizontal*d.width,d.candidateVertical*d.height,0.862*h,h);
+        ctx.drawImage(source,d.candidateHorizontal*d.width,d.candidateVertical*d.height,d.candidateRatio*h,h);
         saveData();
       }
     }

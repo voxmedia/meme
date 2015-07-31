@@ -64,6 +64,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#candidate-face').val(d.candidate);
     this.$('#candidate-horizontal').val(d.candidateHorizontal);
     this.$('#candidate-vertical').val(d.candidateVertical);
+    this.$('#candidate-ratio').val(d.candidateRatio);
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
@@ -82,6 +83,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #candidate-size': 'onCandidateSize',
     'input #candidate-horizontal': 'onCandidateHorizontal',
     'input #candidate-vertical': 'onCandidateVertical',
+    'input #candidate-ratio': 'onCandidateRatio',
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
@@ -116,6 +118,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onCandidateVertical: function() {
     this.model.set('candidateVertical', this.$('#candidate-vertical').val());
+  },
+
+  onCandidateRatio: function() {
+    this.model.set('candidateRatio', this.$('#candidate-ratio').val());
   },
 
   onCredit: function() {
