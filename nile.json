@@ -1,6 +1,6 @@
 {
   "name": "socialcard",
-  "cluster": "api.wpit.nile.works",
+  "cluster": "alpine.nile.works",
   "image": "quay.io/washpost/socialcard",
   "port": 80,
   "paths": ["/"],
@@ -26,5 +26,11 @@
       "NODE_ENV":"production",
       "PRODUCTION_PORT": "80"
     }
-  }]
+  }],
+  "routes": [
+    {
+      "path": "/",
+      "external": false
+    }
+  ]
 }
