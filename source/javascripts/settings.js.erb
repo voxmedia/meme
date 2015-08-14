@@ -1,10 +1,11 @@
 var MEME_SETTINGS = {
   bottomText: '',
   candidate: '<%= image_path("candidates_new/jeb_bush.png") %>',
-  candidateHorizontal: 0.05,
+  candidateHorizontal: 0.715,
   candidateRatio: 0.75,
   candidateSize: '400',
   candidateOpts: [
+    {text: 'None', value: ''},
     {text: 'Jeb Bush', value: '<%= image_path("candidates_new/jeb_bush.png") %>'},
     {text: 'Ben Carson', value: '<%= image_path("candidates_new/ben_carson.png") %>'},
     {text: 'Chris Christie', value: '<%= image_path("candidates_new/chris_christie.png") %>'},
@@ -22,7 +23,7 @@ var MEME_SETTINGS = {
     {text: 'Donald Trump', value: '<%= image_path("candidates_new/donald_trump.png") %>'},
     {text: 'Scott Walker', value: '<%= image_path("candidates_new/scott_walker.png") %>'}
   ],
-  candidateVertical: 0.2,
+  candidateVertical: 0.15,
   creditText: '', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'social_card', // The name of the downloaded image file (will have a ".png" extension added).
@@ -33,7 +34,7 @@ var MEME_SETTINGS = {
   fontFamily: 'FranklinITCProBold',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['FranklinITCProBold', 'FranklinCondITCStdBold', 'Helvetica Neue'],
+  fontFamilyOpts: ['FranklinITCProBold', 'FranklinCondITCStdBold', 'PostoniStandardRegular', 'PostoniStandardBold', 'PostoniStandardItalic', 'PostoniStandardBoldItalic', 'Helvetica Neue'],
   
   // Font size of main headline:
   fontSize: 50,
@@ -60,7 +61,7 @@ var MEME_SETTINGS = {
   score: '',
   
   // Text alignment: valid settings are "left", "center", and "right".
-  textAlign: 'right',
+  textAlign: 'left',
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
     {text: 'Left', value: 'left'}, 
