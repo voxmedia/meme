@@ -59,6 +59,12 @@ var MEME_SETTINGS = {
   overlayColorOpts: ['#000', '#007FC5', '#61A2D8', '#ED1C24', '#FF6666', '#B7B19B', '#C8C7B3', '#D7DF23', '#B55DE8', '#F7941E', '#005826', '#00A651'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
   score: '',
+  template: 'text_candidate',
+  templateOpts: [
+    {text: 'Text + Candidate', value: 'text_candidate'},
+    {text: 'Text Only', value: 'text_only'},
+    // {text: 'Fact Checker', value: 'fact_checker'},
+  ],
   
   // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',

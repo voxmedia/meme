@@ -20,6 +20,10 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
+    if (d.templateOpts && d.templateOpts.length) {
+      $('#template').append(buildOptions(d.templateOpts)).show();
+    }
+
     if (d.candidateOpts && d.candidateOpts.length) {
       $('#candidate-face').append(buildOptions(d.candidateOpts)).show();
     }
@@ -61,6 +65,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   render: function() {
     var d = this.model.toJSON();
+    this.$('#template').val(d.template);
     this.$('#candidate-face').val(d.candidate);
     this.$('#candidate-horizontal').val(d.candidateHorizontal);
     this.$('#candidate-vertical').val(d.candidateVertical);
@@ -90,6 +95,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #vertical-align': 'onVerticalAlign',
     'input #overlay-opacity': 'onOverlayOpacity',
     'input #bottom-text': 'onBottomText',
+    'change #template': 'onTemplate',
     'change #candidate-face': 'onCandidateFace',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
@@ -99,9 +105,28 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change [name="overlay"]': 'onOverlayColor',
     'change [name="score"]': 'onScore',
     'click #image-remove': 'onImageRemove',
+    'click .editor-section-title': 'toggleEditorSection',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
     'drop #dropzone': 'onZoneDrop'
+  },
+
+  onTemplate: function() {
+    var template = this.$('#template').val();
+    this.model.set('template', template);
+
+    switch(template) {
+      case 'text_candidate':
+        this.model.set('textAlign', 'left');
+        $('#wrapper-candidate').show();
+        break;
+      case 'text_only':
+        this.model.set('textAlign', 'center');
+        $('#wrapper-candidate').hide();
+        break;
+      default:
+        var showCandidate = true;
+    }
   },
 
   onCandidateFace: function() {
@@ -206,5 +231,16 @@ MEME.MemeEditorView = Backbone.View.extend({
   onImageRemove: function(evt) {
     evt.preventDefault();
     this.model.initialize();
+  },
+
+  toggleEditorSection: function(evt) {
+    var self = $(evt.currentTarget);
+    if(self.hasClass('opened')) {
+      self.removeClass('opened').addClass('closed');
+    }
+    else {
+      self.removeClass('closed').addClass('opened');
+    }
+    self.next().slideToggle(250);
   }
 });

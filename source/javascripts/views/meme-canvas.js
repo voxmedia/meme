@@ -39,6 +39,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
 
+    switch(d.template) {
+      case 'text_only':
+        var showCandidate = false;
+        break;
+      default:
+        var showCandidate = true;
+    }
+
     // Reset canvas display:
     this.canvas.width = d.width;
     this.canvas.height = d.height;
@@ -249,7 +257,10 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderCredit(ctx);
     renderScore(ctx);
     renderWatermark(ctx);
-    renderFace(ctx);
+
+    if(showCandidate) {
+      renderFace(ctx);
+    }
 
     function saveData() {
       data = self.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
