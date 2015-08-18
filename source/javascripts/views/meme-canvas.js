@@ -42,9 +42,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
     switch(d.template) {
       case 'text_only':
         var showCandidate = false;
+        var widerText = true;
         break;
       default:
         var showCandidate = true;
+        var widerText = false;
     }
 
     // Reset canvas display:
@@ -138,7 +140,12 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderHeadline(ctx) {
-      var maxWidth = Math.round(d.width * 0.6);
+      if(widerText) {
+        var maxWidth = Math.round(d.width * 0.925);
+      }
+      else {
+        var maxWidth = Math.round(d.width * 0.6);
+      }
       var x = padding;
       var y = padding;
 
@@ -158,7 +165,10 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.textAlign == 'center') {
         ctx.textAlign = 'center';
         x = d.width / 2;
-        maxWidth = d.width * 0.75;
+
+        if(!widerText) {
+          maxWidth = d.width * 0.75;
+        }
 
       } else if (d.textAlign == 'right' ) {
         ctx.textAlign = 'right';
@@ -213,7 +223,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
       ctx.fillText(scoreText, padding, d.height - padding + 3);
       ctx.font = 'normal 40px "FranklinITCProThin"';
-      ctx.fillText(d.bottomText, padding + scorePadding, d.height - padding + 7);
+      ctx.fillText(d.bottomText, padding + scorePadding, d.height - padding + 5);
     }
 
     function renderWatermark(ctx) {
