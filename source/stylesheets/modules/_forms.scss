@@ -25,9 +25,10 @@ form {
     border: 1px solid #ccc;
     outline: 0;
     padding: 6px 5px;
+    @include transition (box-shadow ease-in-out 0.1s);
 
     &:focus {
-      border: 1px solid lighten($theme-color, 40);
+      box-shadow: 0 0 2px lighten($theme-color, 15);
     }
   }
 

@@ -1,16 +1,27 @@
-@font-face {
-	font-family: FranklinCompITCStdBold;
-	src: url("FranklinCompITCStd-Bold.otf") format("opentype");
-}
-
-@font-face {
-	font-family: FranklinCondITCStdBold;
-	src: url("FranklinCondITCStd-Bold.otf") format("opentype");
-}
 
 @font-face {
 	font-family: FranklinITCProBold;
 	src: url("FranklinITCProBold.ttf") format("opentype");
+}
+
+@font-face {
+	font-family: PostoniStandard-Regular;
+	src: url("PostoniStandard-Regular.ttf") format("opentype");
+}
+
+@font-face {
+	font-family: PostoniStandard-Bold;
+	src: url("PostoniStandard-Bold.ttf") format("opentype");
+}
+
+@font-face {
+	font-family: PostoniStandard-Italic;
+	src: url("PostoniStandard-Italic.ttf") format("opentype");
+}
+
+@font-face {
+	font-family: PostoniStandard-Bold_Italic;
+	src: url("PostoniStandard-Bold_Italic.ttf") format("opentype");
 }
 
 @font-face {
@@ -24,21 +35,11 @@
 }
 
 @font-face {
-	font-family: PostoniStandardBoldItalic;
-	src: url("PostoniStandard-Bold_Italic.ttf") format("opentype");
+	font-family: FranklinCompITCStd-Bold;
+	src: url("FranklinCompITCStd-Bold.otf") format("opentype");
 }
 
 @font-face {
-	font-family: PostoniStandardBold;
-	src: url("PostoniStandard-Bold.ttf") format("opentype");
-}
-
-@font-face {
-	font-family: PostoniStandardItalic;
-	src: url("PostoniStandard-Italic.ttf") format("opentype");
-}
-
-@font-face {
-	font-family: PostoniStandardRegular;
-	src: url("PostoniStandard-Regular.ttf") format("opentype");
+	font-family: FranklinCondITCStd-Bold;
+	src: url("FranklinCondITCStd-Bold.otf") format("opentype");
 }

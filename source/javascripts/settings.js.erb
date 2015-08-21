@@ -1,44 +1,36 @@
 var MEME_SETTINGS = {
   bottomText: '',
-  candidate: '<%= image_path("candidates_new/jeb_bush.png") %>',
+  candidate: '<%= image_path("candidates/jeb_bush.png") %>',
   candidateHorizontal: 0.715,
   candidateRatio: 0.75,
   candidateSize: '400',
   candidateOpts: [
     {text: 'None', value: ''},
-    {text: 'Jeb Bush', value: '<%= image_path("candidates_new/jeb_bush.png") %>'},
-    {text: 'Ben Carson', value: '<%= image_path("candidates_new/ben_carson.png") %>'},
-    {text: 'Chris Christie', value: '<%= image_path("candidates_new/chris_christie.png") %>'},
-    {text: 'Ted Cruz', value: '<%= image_path("candidates_new/ted_cruz.png") %>'},
-    {text: 'Carly Fiorina', value: '<%= image_path("candidates_new/carly_fiorina.png") %>'},
-    {text: 'Mike Huckabee', value: '<%= image_path("candidates_new/mike_huckabee.png") %>'},
-    {text: 'Jim Gilmore', value: '<%= image_path("candidates_new/jim_gilmore.png") %>'},
-    {text: 'Lindsey Graham', value: '<%= image_path("candidates_new/lindsey_graham.png") %>'},
-    {text: 'Bobby Jindal', value: '<%= image_path("candidates_new/bobby_jindal.png") %>'},
-    {text: 'John Kasich', value: '<%= image_path("candidates_new/john_kasich.png") %>'},
-    {text: 'Rand Paul', value: '<%= image_path("candidates_new/rand_paul.png") %>'},
-    {text: 'Rick Perry', value: '<%= image_path("candidates_new/rick_perry.png") %>'},
-    {text: 'Rick Santorum', value: '<%= image_path("candidates_new/rick_santorum.png") %>'},
-    {text: 'Marco Rubio', value: '<%= image_path("candidates_new/marco_rubio.png") %>'},
-    {text: 'Donald Trump', value: '<%= image_path("candidates_new/donald_trump.png") %>'},
-    {text: 'Scott Walker', value: '<%= image_path("candidates_new/scott_walker.png") %>'}
+    {text: 'Jeb Bush', value: '<%= image_path("candidates/jeb_bush.png") %>'},
+    {text: 'Ben Carson', value: '<%= image_path("candidates/ben_carson.png") %>'},
+    {text: 'Chris Christie', value: '<%= image_path("candidates/chris_christie.png") %>'},
+    {text: 'Ted Cruz', value: '<%= image_path("candidates/ted_cruz.png") %>'},
+    {text: 'Carly Fiorina', value: '<%= image_path("candidates/carly_fiorina.png") %>'},
+    {text: 'Mike Huckabee', value: '<%= image_path("candidates/mike_huckabee.png") %>'},
+    {text: 'Jim Gilmore', value: '<%= image_path("candidates/jim_gilmore.png") %>'},
+    {text: 'Lindsey Graham', value: '<%= image_path("candidates/lindsey_graham.png") %>'},
+    {text: 'Bobby Jindal', value: '<%= image_path("candidates/bobby_jindal.png") %>'},
+    {text: 'John Kasich', value: '<%= image_path("candidates/john_kasich.png") %>'},
+    {text: 'Rand Paul', value: '<%= image_path("candidates/rand_paul.png") %>'},
+    {text: 'Rick Perry', value: '<%= image_path("candidates/rick_perry.png") %>'},
+    {text: 'Rick Santorum', value: '<%= image_path("candidates/rick_santorum.png") %>'},
+    {text: 'Marco Rubio', value: '<%= image_path("candidates/marco_rubio.png") %>'},
+    {text: 'Donald Trump', value: '<%= image_path("candidates/donald_trump.png") %>'},
+    {text: 'Scott Walker', value: '<%= image_path("candidates/scott_walker.png") %>'}
   ],
   candidateVertical: 0.15,
-  creditText: '', // Default "credits" text.
-  creditSize: 12, // Font size for credit text.
-  downloadName: 'social_card', // The name of the downloaded image file (will have a ".png" extension added).
-  fontColor: 'white', // Universal font color.
-
-  // Universal font family for texts:
-  // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
+  creditText: '',
+  creditSize: 12,
+  downloadName: 'social_card',
+  fontColor: 'white',
   fontFamily: 'FranklinITCProBold',
-  // Font family options: set to empty array to disable font selector.
-  // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['FranklinITCProBold', 'FranklinCondITCStdBold', 'PostoniStandardRegular', 'PostoniStandardBold', 'PostoniStandardItalic', 'PostoniStandardBoldItalic', 'Helvetica Neue'],
-  
-  // Font size of main headline:
+  fontFamilyOpts: ['FranklinITCProBold', 'PostoniStandard-Regular', 'PostoniStandard-Bold', 'PostoniStandard-Italic', 'PostoniStandard-Bold_Italic'],
   fontSize: 50,
-  // Font size options: set to empty array to disable font-size selector.
   fontSizeOpts: [
     {text: 'Very Small', value: 30},
     {text: 'Small', value: 40},
@@ -46,49 +38,32 @@ var MEME_SETTINGS = {
     {text: 'Large', value: 60},
     {text: 'Very Large', value: 70}
   ],
-
-  headlineText: 'Write your text here.', // Default headline text.
-  height: 640, // Canvas rendering height.
-  imageScale: 1, // Background image scale.
-  imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
-  overlayAlpha: 1.0, // Opacity of image overlay.
-
-  // Image overlay color, or blank ('') for no overlay:
+  headlineText: 'Write your text here.',
+  height: 640,
+  imageScale: 1,
+  imageSrc: '', 
+  overlayAlpha: 1.0,
   overlayColor: '#000',
-  // Overlay color options: set to empty array to disable overlay options selector.
   overlayColorOpts: ['#000', '#007FC5', '#61A2D8', '#ED1C24', '#FF6666', '#B7B19B', '#C8C7B3', '#D7DF23', '#B55DE8', '#F7941E', '#005826', '#00A651'],
-  paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
-  score: '',
+  paddingRatio: 0.05,
   template: 'text_candidate',
   templateOpts: [
     {text: 'Text + Candidate', value: 'text_candidate'},
     {text: 'Text Only', value: 'text_only'},
     // {text: 'Fact Checker', value: 'fact_checker'},
   ],
-  
-  // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',
-  // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
     {text: 'Left', value: 'left'}, 
     {text: 'Center', value: 'center'},
     {text: 'Right', value: 'right'}
   ],
-
-  textShadow: false, // Text shadow toggle.
-  textShadowEdit: true, // Toggles text shadow control within the editor.
+  textShadow: false,
+  textShadowEdit: true,
   verticalAlign: 0.4,
-  watermarkAlpha: 1, // Opacity of watermark image.
-  watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
-
-  // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
+  watermarkAlpha: 1,
+  watermarkMaxWidthRatio: 0.25,
   watermarkSrc: '<%= image_path("wp_logo.png") %>',
-  
-  // Watermark image options: set to empty array to disable watermark picker.
-  // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
-  // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [],
-
-  width: 1280 // Canvas rendering width.
+  width: 1280
 };

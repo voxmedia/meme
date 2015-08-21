@@ -39,6 +39,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
 
+    // Set template variables:
     switch(d.template) {
       case 'text_only':
         var showCandidate = false;
@@ -210,20 +211,12 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.fillText(d.creditText, padding, d.height - padding);
     }
 
-    function renderScore(ctx) {
+    function renderBottomText(ctx) {
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
-      ctx.font = 'normal 50px FontAwesome';
-      var scoreText = '';
-      var scorePadding = 0;
-      if(d.score) {
-        scoreText = d.score == 'up' ? '\uf087' : '\uf088';
-        scorePadding = 65;
-      }
-      ctx.fillText(scoreText, padding, d.height - padding + 3);
       ctx.font = 'normal 40px "FranklinITCProThin"';
-      ctx.fillText(d.bottomText, padding + scorePadding, d.height - padding + 5);
+      ctx.fillText(d.bottomText, padding, d.height - padding + 5);
     }
 
     function renderWatermark(ctx) {
@@ -248,7 +241,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
     }
 
-    function renderFace(ctx) {
+    function renderCandidate(ctx) {
       var source = new Image();
       source.src = d.candidate;
       var h = d.candidateSize;
@@ -260,17 +253,13 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     var self = this;
     var data = '';
-    
     renderBackground(ctx);
     renderOverlay(ctx);
     renderHeadline(ctx);
-    renderCredit(ctx);
-    renderScore(ctx);
+    // renderCredit(ctx);
+    renderBottomText(ctx);
     renderWatermark(ctx);
-
-    if(showCandidate) {
-      renderFace(ctx);
-    }
+    if(showCandidate) { renderCandidate(ctx); }
 
     function saveData() {
       data = self.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
@@ -280,10 +269,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
       });
     }
 
-    /* 
-      Smartquotes conversion
-      Copied from https://github.com/kellym/smartquotesjs/blob/master/src/smartquotes.js
-    */
+    // Enable drag cursor while canvas has artwork:
+    this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
+
+    /* Smartquotes conversion
+       Copied from https://github.com/kellym/smartquotesjs/blob/master/src/smartquotes.js */
     function convertQuotes(str) {
       return str
         .replace(/'''/g, '\u2034')                                                   // triple prime
@@ -298,9 +288,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
         .replace(/(\B|^)\u2018(?=([^\u2019]*\u2019\b)*([^\u2019\u2018]*\W[\u2019\u2018]\b|[^\u2019\u2018]*$))/ig, '$1\u2019') // backwards apostrophe
         .replace(/'/g, '\u2032');
     }
-
-    // Enable drag cursor while canvas has artwork:
-    this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
   },
 
   events: {

@@ -1,4 +1,6 @@
 <form class="m-editor" id="meme-editor-view">
+
+  <!-- Template -->
   <h2 class="editor-section-title opened">Template Settings</h2>
   <div class="editor-section">
     <h2>Template</h2>
@@ -7,18 +9,18 @@
     </select>
   </div>
 
+  <!-- Background Image -->
   <!-- <div class="dropzone" id="dropzone">Drag Image Here</div>
-  
   <a href="#" id="image-remove">Remove Image</a>
-
   <h2><label for="image-scale">Resize Image</label></h2>
   <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1"> -->
 
-  <div id="wrapper-candidate">
+  <!-- Candidate -->
+  <div id="candidate-section">
     <h2 class="editor-section-title opened">Candidate Settings</h2>
     <div class="editor-section">
       <h2>Candidate</h2>
-      <select class="candidate-face" id="candidate-face">
+      <select class="candidate" id="candidate">
         <option value="" disabled>Select candidate face</option>
       </select>
 
@@ -36,6 +38,7 @@
     </div>
   </div>
   
+  <!-- Text -->
   <h2 class="editor-section-title opened">Text Settings</h2>
   <div class="editor-section">
     <h2><label for="headline">Text</label></h2>
@@ -65,13 +68,11 @@
     </div>
   </div>
 
-  <!-- <select class="watermark" id="watermark">
-    <option value="" disabled>Select a watermark</option>
-  </select> -->
-
+  <!-- Credit -->
   <!-- <h2><label for="credit">Credit</label></h2>
   <input id="credit" name="credit" type="text" value=""> -->
 
+  <!-- Overlay Color -->
   <h2 class="editor-section-title opened">Background Settings</h2>
   <div class="editor-section">
     <div class="m-editor__overlay" id="overlay">
@@ -93,6 +94,7 @@
     <input id="overlay-opacity" type="range" max="1" min="0" step=".025" value="0.5">
   </div>
 
+  <!-- Score -->
   <!-- <div class="m-editor__score" id="overlay">
     <h2>Score</h2>
     <ul class="checkbox-group">
@@ -102,9 +104,10 @@
     </ul>
   </div> -->
 
+  <!-- Extras -->
   <h2 class="editor-section-title opened">Extras</h2>
   <div class="editor-section">
     <h2><label for="bottom-text">Bottom Text</label></h2>
-    <input id="bottom-text" name="bottom-text" type="text" value="" placeholder="Write your text here..." />
+    <input id="bottom-text" name="bottom-text" type="text" value="" placeholder="Write your text here." />
   </div>
 </form>

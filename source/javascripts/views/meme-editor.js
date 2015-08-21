@@ -25,7 +25,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     }
 
     if (d.candidateOpts && d.candidateOpts.length) {
-      $('#candidate-face').append(buildOptions(d.candidateOpts)).show();
+      $('#candidate').append(buildOptions(d.candidateOpts)).show();
     }
 
     if (d.textShadowEdit) {
@@ -66,7 +66,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   render: function() {
     var d = this.model.toJSON();
     this.$('#template').val(d.template);
-    this.$('#candidate-face').val(d.candidate);
+    this.$('#candidate').val(d.candidate);
     this.$('#candidate-horizontal').val(d.candidateHorizontal);
     this.$('#candidate-vertical').val(d.candidateVertical);
     this.$('#candidate-ratio').val(d.candidateRatio);
@@ -96,14 +96,13 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #overlay-opacity': 'onOverlayOpacity',
     'input #bottom-text': 'onBottomText',
     'change #template': 'onTemplate',
-    'change #candidate-face': 'onCandidateFace',
+    'change #candidate': 'onCandidate',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
-    'change [name="score"]': 'onScore',
     'click #image-remove': 'onImageRemove',
     'click .editor-section-title': 'toggleEditorSection',
     'dragover #dropzone': 'onZoneOver',
@@ -118,19 +117,19 @@ MEME.MemeEditorView = Backbone.View.extend({
     switch(template) {
       case 'text_candidate':
         this.model.set('textAlign', 'left');
-        $('#wrapper-candidate').show();
+        $('#candidate-section').show();
         break;
       case 'text_only':
         this.model.set('textAlign', 'center');
-        $('#wrapper-candidate').hide();
+        $('#candidate-section').hide();
         break;
       default:
         var showCandidate = true;
     }
   },
 
-  onCandidateFace: function() {
-    this.model.set('candidate', this.$('#candidate-face').val());
+  onCandidate: function() {
+    this.model.set('candidate', this.$('#candidate').val());
   },
 
   onCandidateSize: function() {
@@ -192,10 +191,6 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onOverlayOpacity: function() {
     this.model.set('overlayAlpha', this.$('#overlay-opacity').val());
-  },
-
-  onScore: function(evt) {
-    this.model.set('score', this.$(evt.target).val());
   },
 
   onBottomText: function() {

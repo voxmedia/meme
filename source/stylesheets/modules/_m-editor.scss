@@ -1,59 +1,5 @@
 $m: '.m-editor';
 
-#image-remove {
-  background: $theme-color;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 0.8em;
-  display: block;
-  line-height: 35px;
-  text-align: center;
-  text-decoration: none;
-  margin-bottom: 15px;
-  @include transition (background-color ease-in-out 0.1s);
-
-  &:hover {
-    background: lighten($theme-color, 25);
-  }
-}
-
-.editor-section-title {
-  background: #ccc;
-  margin-bottom: 0;
-  padding: 5px 10px;
-  position: relative;
-}
-.editor-section-title.closed:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #4c4e4d;
-  right: 12px;
-  top: 14px;
-}
-.editor-section-title.opened:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid #4c4e4d;
-  right: 12px;
-  top: 14px;
-}
-.editor-section-title:hover {
-  cursor: pointer;
-}
-.editor-section {
-  background: #efefef;
-  padding: 15px 20px 10px 20px;
-}
-
 #{$m} {
   margin-bottom: 30px;
 
@@ -100,6 +46,61 @@ $m: '.m-editor';
   .text-shadow,
   .watermark {
     display: none;
+  }
+
+  #image-remove {
+    background: $theme-color;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 0.8em;
+    display: block;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 15px;
+    @include transition (background-color ease-in-out 0.1s);
+
+    &:hover {
+      background: lighten($theme-color, 5);
+    }
+  }
+
+  // Sections
+  .editor-section-title {
+    background: #ccc;
+    margin-bottom: 0;
+    padding: 5px 10px;
+    position: relative;
+  }
+  .editor-section-title.closed:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #4c4e4d;
+    right: 12px;
+    top: 14px;
+  }
+  .editor-section-title.opened:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #4c4e4d;
+    right: 12px;
+    top: 14px;
+  }
+  .editor-section-title:hover {
+    cursor: pointer;
+  }
+  .editor-section {
+    background: #efefef;
+    padding: 15px 20px 10px 20px;
   }
 
   #{$m}__overlay {
