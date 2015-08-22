@@ -102,6 +102,9 @@ $m: '.m-editor';
     background: #efefef;
     padding: 15px 20px 10px 20px;
   }
+  #candidate-section, #fact-checker-section {
+    display: none;
+  }
 
   #{$m}__overlay {
     display: none;

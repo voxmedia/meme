@@ -8,9 +8,13 @@ form {
   select,
   textarea,
   input[type="text"],
-  input[type="range"],
-  .checkbox-group {
+  input[type="range"] {
     margin-bottom: 1.25em;
+    width: 100%;
+  }
+
+  .checkbox-group {
+    margin-bottom: 0.5em;
     width: 100%;
   }
 

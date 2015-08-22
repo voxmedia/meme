@@ -20,12 +20,12 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
-    if (d.templateOpts && d.templateOpts.length) {
-      $('#template').append(buildOptions(d.templateOpts)).show();
-    }
-
     if (d.candidateOpts && d.candidateOpts.length) {
       $('#candidate').append(buildOptions(d.candidateOpts)).show();
+    }
+
+    if (d.factCheckerOpts && d.factCheckerOpts.length) {
+      $('#fact-checker').append(buildOptions(d.factCheckerOpts)).show();
     }
 
     if (d.textShadowEdit) {
@@ -65,11 +65,20 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   render: function() {
     var d = this.model.toJSON();
-    this.$('#template').val(d.template);
+    if(d.showCandidate) {
+      this.$('#show-candidate').prop('checked', true)
+      this.$('#candidate-section').show();
+    };
+    if(d.showFactChecker) {
+      this.$('#show-fact-checker').prop('checked', true)
+      this.$('#fact-checker-section').show();
+    };
     this.$('#candidate').val(d.candidate);
     this.$('#candidate-horizontal').val(d.candidateHorizontal);
     this.$('#candidate-vertical').val(d.candidateVertical);
     this.$('#candidate-ratio').val(d.candidateRatio);
+    this.$('#fact-checker').val(d.factChecker);
+    this.$('#fact-checker-vertical').val(d.factCheckerVertical);
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
@@ -95,14 +104,17 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #vertical-align': 'onVerticalAlign',
     'input #overlay-opacity': 'onOverlayOpacity',
     'input #bottom-text': 'onBottomText',
-    'change #template': 'onTemplate',
+    'input #fact-checker-vertical': 'onFactCheckerVertical',
     'change #candidate': 'onCandidate',
+    'change #fact-checker': 'onFactChecker',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
     'change [name="overlay"]': 'onOverlayColor',
+    'change #show-candidate': 'onShowCandidate',
+    'change #show-fact-checker': 'onShowFactChecker',
     'click #image-remove': 'onImageRemove',
     'click .editor-section-title': 'toggleEditorSection',
     'dragover #dropzone': 'onZoneOver',
@@ -116,16 +128,36 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     switch(template) {
       case 'text_candidate':
-        this.model.set('textAlign', 'left');
         $('#candidate-section').show();
         break;
       case 'text_only':
-        this.model.set('textAlign', 'center');
         $('#candidate-section').hide();
         break;
       default:
         var showCandidate = true;
     }
+  },
+
+  onShowCandidate: function() {
+    var checked = this.$('#show-candidate').prop('checked');
+    if(checked) {
+      this.$('#candidate-section').show();
+    }
+    else {
+      this.$('#candidate-section').hide();
+    }
+    this.model.set('showCandidate', checked);
+  },
+
+  onShowFactChecker: function() {
+    var checked = this.$('#show-fact-checker').prop('checked');
+    if(checked) {
+      this.$('#fact-checker-section').show();
+    }
+    else {
+      this.$('#fact-checker-section').hide();
+    }
+    this.model.set('showFactChecker', checked);
   },
 
   onCandidate: function() {
@@ -166,6 +198,14 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onTextShadow: function() {
     this.model.set('textShadow', this.$('#text-shadow').prop('checked'));
+  },
+
+  onFactChecker: function() {
+    this.model.set('factChecker', this.$('#fact-checker').val());
+  },
+
+  onFactCheckerVertical: function() {
+    this.model.set('factCheckerVertical', this.$('#fact-checker-vertical').val());
   },
 
   onFontSize: function() {

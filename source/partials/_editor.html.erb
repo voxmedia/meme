@@ -1,12 +1,22 @@
 <form class="m-editor" id="meme-editor-view">
 
-  <!-- Template -->
-  <h2 class="editor-section-title opened">Template Settings</h2>
+  <!-- Global -->
+  <h2 class="editor-section-title opened">Global Settings</h2>
   <div class="editor-section">
-    <h2>Template</h2>
-    <select class="template" id="template">
-      <option value="" disabled>Select template</option>
-    </select>
+    <div class="checkbox-group">
+      <input id="show-candidate" type="checkbox"> 
+      <label for="show-candidate">Show Candidate</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input id="show-fact-checker" type="checkbox"> 
+      <label for="show-fact-checker">Show Fact Checker</label>
+    </div>
+
+    <div class="checkbox-group text-shadow">
+      <input id="text-shadow" name="shadow" type="checkbox"> 
+      <label for="text-shadow">Text Shadow</label>
+    </div>
   </div>
 
   <!-- Background Image -->
@@ -37,6 +47,20 @@
       <input id="candidate-vertical" type="range" max="1.2" min="-1" step=".025" value="0.2">
     </div>
   </div>
+
+  <!-- Fact Checker -->
+  <div id="fact-checker-section">
+    <h2 class="editor-section-title opened">Fact Checker Settings</h2>
+    <div class="editor-section">
+      <h2>Icons</h2>
+      <select class="fact-checker" id="fact-checker">
+        <option value="" disabled>Select fact checker icons</option>
+      </select>
+
+      <h2>Vertical Position</h2>
+      <input id="fact-checker-vertical" type="range" max="1.2" min="-0.5" step=".025" value="0.2">
+    </div>
+  </div>
   
   <!-- Text -->
   <h2 class="editor-section-title opened">Text Settings</h2>
@@ -61,11 +85,6 @@
     <select class="font-size" id="font-size">
       <option value="" disabled>Select font size</option>
     </select>
-
-    <div class="checkbox-group text-shadow">
-      <input id="text-shadow" name="shadow" type="checkbox"> 
-      <label for="text-shadow">Text Shadow</label>
-    </div>
   </div>
 
   <!-- Credit -->

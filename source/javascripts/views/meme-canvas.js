@@ -39,15 +39,22 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
 
-    // Set template variables:
-    switch(d.template) {
-      case 'text_only':
-        var showCandidate = false;
-        var widerText = true;
-        break;
-      default:
-        var showCandidate = true;
-        var widerText = false;
+    // Candidate display
+    if(d.showCandidate) {
+      var showCandidate = true;
+      var widerText = false;
+    }
+    else {
+      var showCandidate = false;
+      var widerText = true;
+    }
+
+    // Fact checker display
+    if(d.showFactChecker) {
+      var showFactChecker = true;
+    }
+    else {
+      var showFactChecker = false;
     }
 
     // Reset canvas display:
@@ -156,10 +163,10 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
       // Text shadow:
       if (d.textShadow) {
-        ctx.shadowColor = "#666";
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
-        ctx.shadowBlur = 10;
+        ctx.shadowColor = "#333";
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowBlur = 5;
       }
 
       // Text alignment:
@@ -215,8 +222,18 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
-      ctx.font = 'normal 40px "FranklinITCProThin"';
-      ctx.fillText(d.bottomText, padding, d.height - padding + 5);
+      ctx.font = 'normal 34px "FranklinITCProThin"';
+
+      if (d.textShadow) {
+        ctx.globalAlpha = d.watermarkAlpha;
+        ctx.shadowColor = "#333";
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowBlur = 3;
+      }
+
+      ctx.fillText(d.bottomText, padding+3, d.height - padding-10);
+      ctx.shadowColor = 'transparent';
     }
 
     function renderWatermark(ctx) {
@@ -235,9 +252,16 @@ MEME.MemeCanvasView = Backbone.View.extend({
           tw = mw;
         }
 
-        ctx.globalAlpha = d.watermarkAlpha;
-        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-padding-tw, d.height-padding-th, tw, th);
+        if (d.textShadow) {
+          ctx.globalAlpha = d.watermarkAlpha;
+          ctx.shadowColor = "#333";
+          ctx.shadowOffsetX = 1;
+          ctx.shadowOffsetY = 1;
+          ctx.shadowBlur = 3;
+        }
+        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-40-tw, d.height-30-th, tw, th);
         ctx.globalAlpha = 1;
+        ctx.shadowColor = 'transparent';
       }
     }
 
@@ -251,6 +275,42 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
     }
 
+    function renderFactChecker(ctx) {
+      if(d.factChecker) {
+        var type = d.factChecker.charAt(1);
+        var count = d.factChecker.charAt(0);
+        if(type === 'p') {
+          var source = new Image();
+          source.src = '../../images/pinocchio.svg';
+          source.onload = function(){
+            for(var i=0; i<count; i++) {
+              ctx.drawImage(source,25+(150*i),d.factCheckerVertical*d.height,200,200);
+            }
+            saveData();
+          }
+        }
+        else {
+          ctx.textBaseline = 'top';
+          ctx.textAlign = 'left';
+          ctx.fillStyle = d.fontColor;
+          ctx.font = 'normal 100px FontAwesome';
+          if (d.textShadow) {
+            ctx.globalAlpha = d.watermarkAlpha;
+            ctx.shadowColor = "#333";
+            ctx.shadowOffsetX = 1;
+            ctx.shadowOffsetY = 1;
+            ctx.shadowBlur = 5;
+          }
+          var str = '';
+          for(var i=0; i<count; i++) {
+            str += '\uf058 ';
+          }
+          ctx.fillText(str, 60, d.factCheckerVertical*d.height+60);
+          ctx.shadowColor = 'transparent';
+        }
+      }
+    }
+
     var self = this;
     var data = '';
     renderBackground(ctx);
@@ -260,6 +320,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderBottomText(ctx);
     renderWatermark(ctx);
     if(showCandidate) { renderCandidate(ctx); }
+    if(showFactChecker) { renderFactChecker(ctx) };
 
     function saveData() {
       data = self.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
