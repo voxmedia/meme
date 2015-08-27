@@ -80,7 +80,13 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change [name="overlay"]': 'onOverlayColor',
     'dragover #dropzone': 'onZoneOver',
     'dragleave #dropzone': 'onZoneOut',
-    'drop #dropzone': 'onZoneDrop'
+    'drop #dropzone': 'onZoneDrop',
+    'change #loadinput': 'onFileLoad',
+    'click #size1': 'onSizeTwitterChange',
+    'click #size2': 'onSizeFacebookPostChange',
+    'click #size3': 'onSizeFacebookAdd',
+    'click #size4': 'onSizeFacebookCover',
+    'click #size5': 'onSizeInstagram'
   },
 
   onCredit: function() {
@@ -144,5 +150,44 @@ MEME.MemeEditorView = Backbone.View.extend({
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
     }
+  },
+  
+  onFileLoad: function(evt){
+    input = evt.target
+    if (input.files && input.files[0]) {
+      this.model.loadBackground(input.files[0]);
+      this.$('#dropzone').removeClass('pulse');
+    }
+  },
+  
+  onSizeTwitterChange: function(evt){
+    this.model.set('width', 1024);
+    this.model.set('height', 512);
+    evt.preventDefault();
+  },
+
+  onSizeFacebookPostChange: function(evt){
+    this.model.set('width', 940);
+    this.model.set('height', 788);
+    evt.preventDefault();
+  },
+
+  onSizeFacebookAdd: function(evt){
+    this.model.set('width', 1200);
+    this.model.set('height', 627);
+    evt.preventDefault();
+  },
+
+  onSizeFacebookCover: function(evt){
+    this.model.set('width', 851);
+    this.model.set('height', 315);
+    evt.preventDefault();
+  },
+
+  onSizeInstagram: function(evt){
+    this.model.set('width', 612);
+    this.model.set('height', 612);
+    evt.preventDefault();
   }
+  
 });
