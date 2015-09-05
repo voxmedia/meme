@@ -3,14 +3,17 @@
   <!-- Global -->
   <h2 class="editor-section-title opened">Global Settings</h2>
   <div class="editor-section">
+
+    <h2>Presets</h2>
+    <select class="preset" id="preset">
+      <option value="" disabled>Select preset</option>
+      <option value="default" selected>Default</option>
+      <option value="quote">Quote</option>
+    </select>
+
     <div class="checkbox-group">
       <input id="show-candidate" type="checkbox"> 
       <label for="show-candidate">Show Candidate</label>
-    </div>
-
-    <div class="checkbox-group">
-      <input id="show-fact-checker" type="checkbox"> 
-      <label for="show-fact-checker">Show Fact Checker</label>
     </div>
 
     <div class="checkbox-group text-shadow">
@@ -34,31 +37,17 @@
         <option value="" disabled>Select candidate face</option>
       </select>
 
-      <h2><label for="candidate-ratio">Image Width/Height Ratio</label></h2>
-      <input id="candidate-ratio" name="candidate-ratio" type="text" value="" />
+      <!-- <h2><label for="candidate-ratio">Image Width/Height Ratio</label></h2>
+      <input id="candidate-ratio" name="candidate-ratio" type="text" value="" /> -->
 
       <h2>Image Size</h2>
-      <input id="candidate-size" type="range" max="600" min="200" step="10" value="400">
+      <input id="candidate-size" type="range" max="600" min="200" step="10">
 
       <h2>Horizontal Position</h2>
-      <input id="candidate-horizontal" type="range" max="1.2" min="-1" step=".025" value="0.05">
+      <input id="candidate-horizontal" type="range" max="1.2" min="-1" step=".025">
 
       <h2>Vertical Position</h2>
-      <input id="candidate-vertical" type="range" max="1.2" min="-1" step=".025" value="0.2">
-    </div>
-  </div>
-
-  <!-- Fact Checker -->
-  <div id="fact-checker-section">
-    <h2 class="editor-section-title opened">Fact Checker Settings</h2>
-    <div class="editor-section">
-      <h2>Icons</h2>
-      <select class="fact-checker" id="fact-checker">
-        <option value="" disabled>Select fact checker icons</option>
-      </select>
-
-      <h2>Vertical Position</h2>
-      <input id="fact-checker-vertical" type="range" max="1.2" min="-0.5" step=".025" value="0.2">
+      <input id="candidate-vertical" type="range" max="1.2" min="-1" step=".025">
     </div>
   </div>
   
@@ -67,6 +56,11 @@
   <div class="editor-section">
     <h2><label for="headline">Text</label></h2>
     <textarea id="headline" name="headline" type="text" value=""></textarea>
+
+    <div class="checkbox-group">
+      <input id="quotes" type="checkbox"> 
+      <label for="quotes">Include Quotes</label>
+    </div>
     
     <h2>Horizontal Alignment</h2>
     <select class="text-align" id="text-align">
@@ -74,7 +68,7 @@
     </select>
 
     <h2>Vertical Position</h2>
-    <input id="vertical-align" type="range" max="0.85" min="0" step=".025" value="0.4">
+    <input id="vertical-align" type="range" max="0.85" min="0" step=".025">
 
     <h2>Font</h2>
     <select class="font-family" id="font-family">
@@ -85,6 +79,9 @@
     <select class="font-size" id="font-size">
       <option value="" disabled>Select font size</option>
     </select>
+
+    <h2>Leading</h2>
+    <input id="leading" type="range" max="2.5" min="1.5" step=".05">
   </div>
 
   <!-- Credit -->
@@ -109,8 +106,8 @@
       </ul>
     </div>
 
-    <h2>Opacity</h2>
-    <input id="overlay-opacity" type="range" max="1" min="0" step=".025" value="0.5">
+    <!-- <h2>Opacity</h2>
+    <input id="overlay-opacity" type="range" max="1" min="0" step=".025"> -->
   </div>
 
   <!-- Score -->
@@ -123,10 +120,25 @@
     </ul>
   </div> -->
 
-  <!-- Extras -->
-  <h2 class="editor-section-title opened">Extras</h2>
+  <!-- Bottom Text -->
+  <h2 class="editor-section-title opened">Bottom Text Settings</h2>
   <div class="editor-section">
-    <h2><label for="bottom-text">Bottom Text</label></h2>
+    <h2><label for="bottom-text">Bottom Text (Bold)</label></h2>
     <input id="bottom-text" name="bottom-text" type="text" value="" placeholder="Write your text here." />
+    <h2><label for="bottom-text-2">Bottom Text</label></h2>
+    <input id="bottom-text-2" name="bottom-text-2" type="text" value="" placeholder="Write your text here." />
+    <h2>Vertical Position</h2>
+    <input id="bottom-text-vertical" type="range" max="1" min="0.9" step=".01">
+  </div>
+
+  <!-- Fact Checker -->
+  <h2 class="editor-section-title opened">Fact Checker Settings</h2>
+  <div class="editor-section">
+    <h2>Icons</h2>
+    <select class="fact-checker" id="fact-checker">
+      <option value="" disabled>Select fact checker icons</option>
+    </select>
+    <h2>Vertical Position</h2>
+    <input id="fact-checker-vertical" type="range" max="1.2" min="-0.5" step=".025">
   </div>
 </form>

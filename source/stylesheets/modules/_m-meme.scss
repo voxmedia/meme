@@ -8,6 +8,7 @@ body {
 #{$m} {
   margin: 20px auto 50px;
   max-width: 990px;
+  position: relative;
 
   // Mini-clearfix:
   &:before,

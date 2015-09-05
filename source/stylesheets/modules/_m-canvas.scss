@@ -1,8 +1,23 @@
 $m: '.m-canvas';
 
+.canvas-wrapper {
+  position: relative;
+  width: 66.67%;
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
+}
+
 #{$m} {
   @media screen and (min-width: 700px) {
-    width: 70%;
+    position: fixed;
+    width: inherit;
+    max-width: 693px;    
+  }
+
+  @media screen and (max-width: 700px) {
+    margin-top: 50px;  
   }
 
   #{$m}__canvas {
@@ -27,6 +42,12 @@ $m: '.m-canvas';
 
     &:hover {
       background: lighten($theme-color, 5);
+    }
+
+    .fa-download {
+      position: relative;
+      top: 1px;
+      padding-right: 3px;
     }
   }
 

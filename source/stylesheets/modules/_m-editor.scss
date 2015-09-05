@@ -1,7 +1,7 @@
 $m: '.m-editor';
 
 #{$m} {
-  margin-bottom: 30px;
+  margin-bottom: -30px;
 
   @media screen and (min-width: 700px) {
     @include box-sizing(border-box);

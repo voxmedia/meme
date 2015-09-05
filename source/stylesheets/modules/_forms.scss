@@ -6,15 +6,19 @@ form {
   }
 
   select,
-  textarea,
   input[type="text"],
   input[type="range"] {
     margin-bottom: 1.25em;
     width: 100%;
   }
 
+  textarea {
+    margin-bottom: 0.25em;
+    width: 100%;
+  }
+
   .checkbox-group {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em;
     width: 100%;
   }
 
