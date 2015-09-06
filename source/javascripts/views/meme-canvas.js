@@ -224,7 +224,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
-      ctx.font = 'normal 34px "FranklinITCProBold"';
+      ctx.font = 'normal '+d.bottomTextFontSize+'px "FranklinITCProBold"';
 
       if (d.textShadow) {
         ctx.globalAlpha = d.watermarkAlpha;
@@ -239,8 +239,26 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
       // Second text
       var firstTextWidth = ctx.measureText(d.bottomText).width;
-      ctx.font = 'normal 34px "FranklinITCProThin"';
+      ctx.font = 'normal '+d.bottomTextFontSize+'px "FranklinITCProThin"';
       ctx.fillText(d.bottomText2, firstTextWidth+padding, d.bottomTextVertical*d.height-30);
+      ctx.shadowColor = 'transparent';
+    }
+
+    function renderNumberText(ctx) {
+      ctx.textBaseline = 'top';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = d.fontColor;
+      ctx.font = 'normal 140px "PostoniStandard-Bold_Italic"';
+
+      if (d.textShadow) {
+        ctx.globalAlpha = d.watermarkAlpha;
+        ctx.shadowColor = "#333";
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowBlur = 5;
+      }
+
+      ctx.fillText(d.numberText, padding, d.numberTextVertical*d.height+40);
       ctx.shadowColor = 'transparent';
     }
 
@@ -326,9 +344,11 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderHeadline(ctx);
     // renderCredit(ctx);
     renderBottomText(ctx);
+    renderNumberText(ctx);
     renderWatermark(ctx);
-    if(showCandidate) { renderCandidate(ctx); }
     renderFactChecker(ctx);
+    if(showCandidate) { renderCandidate(ctx); }
+    saveData();
 
     function saveData() {
       data = self.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');

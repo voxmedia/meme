@@ -1,6 +1,11 @@
 var MEME_SETTINGS = {
   bottomText: '',
   bottomText2: '',
+  bottomTextFontSize: 34,
+  bottomTextFontSizeOpts: [
+    {text: 'Small', value: 28},
+    {text: 'Default', value: 34}
+  ],
   bottomTextVertical: 1,
   candidate: '<%= image_path("candidates/joe_biden.png") %>',
   candidateHorizontal: 0.715,
@@ -65,6 +70,8 @@ var MEME_SETTINGS = {
   imageScale: 1,
   imageSrc: '', 
   leading: 1.6,
+  numberText: '',
+  numberTextVertical: 0.05,
   overlayAlpha: 1.0,
   overlayColor: '#000000',
   overlayColorOpts: ['#000000', '#b7b19b', '#656769', '#004b98', '#0081C5', '#00b5bb', '#ed1c24', '#F68B28', '#c7aa53', '#9136b1'],
@@ -80,7 +87,7 @@ var MEME_SETTINGS = {
   ],
   textShadow: false,
   textShadowEdit: true,
-  verticalAlign: 0.35,
+  verticalAlign: 0.325,
   watermarkAlpha: 1,
   watermarkMaxWidthRatio: 0.25,
   watermarkSrc: '<%= image_path("wp_logo.png") %>',

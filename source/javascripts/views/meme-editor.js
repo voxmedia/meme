@@ -42,6 +42,10 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#font-size').append(buildOptions(d.fontSizeOpts)).show();
     }
 
+    if (d.bottomTextFontSizeOpts && d.bottomTextFontSizeOpts.length) {
+      $('#bottom-text-font-size').append(buildOptions(d.bottomTextFontSizeOpts)).show();
+    }
+
     // Build font family options:
     if (d.fontFamilyOpts && d.fontFamilyOpts.length) {
       $('#font-family').append(buildOptions(d.fontFamilyOpts)).show();
@@ -94,7 +98,10 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#overlay-opacity').val(d.overlayAlpha);
     this.$('#bottom-text').val(d.bottomText);
     this.$('#bottom-text-2').val(d.bottomText2);
+    this.$('#bottom-text-font-size').val(d.bottomTextFontSize);
     this.$('#bottom-text-vertical').val(d.bottomTextVertical);
+    this.$('#number-text').val(d.numberText);
+    this.$('#number-text-vertical').val(d.numberTextVertical);
   },
 
   events: {
@@ -111,11 +118,14 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #bottom-text': 'onBottomText',
     'input #bottom-text-2': 'onBottomText2',
     'input #bottom-text-vertical': 'onBottomTextVertical',
+    'input #number-text': 'onNumberText',
+    'input #number-text-vertical': 'onNumberTextVertical',
     'input #fact-checker-vertical': 'onFactCheckerVertical',
     'change #preset': 'onPreset',
     'change #candidate': 'onCandidate',
     'change #fact-checker': 'onFactChecker',
     'change #font-size': 'onFontSize',
+    'change #bottom-text-font-size': 'onBottomTextFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
@@ -135,52 +145,17 @@ MEME.MemeEditorView = Backbone.View.extend({
     var preset = this.$('#preset').val();
     switch(preset) {
 
-      // Quote
-      case 'quote':
-        this.$('#show-candidate').prop('checked', false);
+      // Number Card
+      case 'number':
         this.model.set('showCandidate', false);
+        this.$('#show-candidate').prop('checked', false);
         this.$('#candidate-section').hide();
 
-        this.model.set('quotes', true);
-        this.$('#quotes').prop('checked', true);
-
-        this.model.set('textAlign', 'left');
-        this.$('#text-align').val('left');
-
-        this.model.set('verticalAlign', 0.1);
-        this.$('#vertical-align').val(0.1);
-
-        this.model.set('fontFamily', 'PostoniStandard-Regular');
-        this.$('#font-family').val('PostoniStandard-Regular');
-
-        this.model.set('fontSize', 50);
-        this.$('#font-size').val(50);
-
-        this.model.set('leading', 1.7);
-        this.$('#leading').val(1.7);
+        this.$('#text-shadow').prop('checked', false);
+        this.model.set('textShadow', false);
 
         this.model.set('overlayColor', '#004b98');
         this.$('#overlay').find('[value="#004b98"]').prop('checked', true);
-
-        this.model.set('bottomTextVertical', 0.93);
-        this.$('#bottom-text-vertical').val(0.93);
-
-        break;
-
-      // Default
-      default:
-        this.$('#show-candidate').prop('checked', true);
-        this.model.set('showCandidate', true);
-        this.$('#candidate-section').show();
-
-        this.model.set('candidateSize', 400);
-        this.$('#candidate-size').val(400);
-
-        this.model.set('candidateHorizontal', 0.715);
-        this.$('#candidate-horizontal').val(0.715);
-
-        this.model.set('candidateVertical', 0.125);
-        this.$('#candidate-vertical').val(0.125);
 
         this.model.set('quotes', false);
         this.$('#quotes').prop('checked', false);
@@ -197,14 +172,153 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('fontSize', 50);
         this.$('#font-size').val(50);
 
-        this.model.set('leading', 1.6);
-        this.$('#leading').val(1.6);
+        this.model.set('leading', 1.75);
+        this.$('#leading').val(1.75);
+
+        this.model.set('bottomText', '');
+        this.$('#bottom-text').val('');
+
+        this.model.set('bottomText2', 'SOURCE: CREDIT, CREDIT, CREDIT');
+        this.$('#bottom-text-2').val('SOURCE: CREDIT, CREDIT, CREDIT');
+
+        this.model.set('bottomTextVertical', 1);
+        this.$('#bottom-text-vertical').val(1);
+
+        this.model.set('bottomTextFontSize', 28);
+        this.$('#bottom-text-font-size').val(28);
+
+        this.model.set('numberText', '$1.4 million');
+        this.$('#number-text').val('$1.4 million');
+
+        this.model.set('numberTextVertical', 0.05);
+        this.$('#number-text-vertical').val(0.05);
+
+        this.model.set('factChecker', '');
+        this.$('#fact-checker').val('');
+
+        this.model.set('factCheckerVertical', 0.05);
+        this.$('#fact-checker-vertical').val(0.05);
+
+        break;
+
+      // Quote Card
+      case 'quote':
+        this.model.set('showCandidate', false);
+        this.$('#show-candidate').prop('checked', false);
+        this.$('#candidate-section').hide();
+
+        this.$('#text-shadow').prop('checked', false);
+        this.model.set('textShadow', false);
+
+        this.model.set('overlayColor', '#004b98');
+        this.$('#overlay').find('[value="#004b98"]').prop('checked', true);
+
+        this.model.set('quotes', true);
+        this.$('#quotes').prop('checked', true);
+
+        this.model.set('textAlign', 'left');
+        this.$('#text-align').val('left');
+
+        this.model.set('verticalAlign', 0.1);
+        this.$('#vertical-align').val(0.1);
+
+        this.model.set('fontFamily', 'PostoniStandard-Regular');
+        this.$('#font-family').val('PostoniStandard-Regular');
+
+        this.model.set('fontSize', 50);
+        this.$('#font-size').val(50);
+
+        this.model.set('leading', 1.75);
+        this.$('#leading').val(1.75);
+
+        this.model.set('bottomText', 'NAME');
+        this.$('#bottom-text').val('NAME');
+
+        this.model.set('bottomText2', ', ATTRIBUTION');
+        this.$('#bottom-text-2').val(', ATTRIBUTION');
+
+        this.model.set('bottomTextVertical', 0.94);
+        this.$('#bottom-text-vertical').val(0.94);
+
+        this.model.set('bottomTextFontSize', 34);
+        this.$('#bottom-text-font-size').val(34);
+
+        this.model.set('numberText', '');
+        this.$('#number-text').val('');
+
+        this.model.set('numberTextVertical', 0.05);
+        this.$('#number-text-vertical').val(0.05);
+
+        this.model.set('factChecker', '');
+        this.$('#fact-checker').val('');
+
+        this.model.set('factCheckerVertical', 0.05);
+        this.$('#fact-checker-vertical').val(0.05);
+
+        break;
+
+      // Default
+      default:
+        this.model.set('showCandidate', true);
+        this.$('#show-candidate').prop('checked', true);
+        this.$('#candidate-section').show();
+
+        this.$('#text-shadow').prop('checked', false);
+        this.model.set('textShadow', false);
 
         this.model.set('overlayColor', '#000000');
         this.$('#overlay').find('[value="#000000"]').prop('checked', true);
 
+        this.model.set('candidateSize', 400);
+        this.$('#candidate-size').val(400);
+
+        this.model.set('candidateHorizontal', 0.715);
+        this.$('#candidate-horizontal').val(0.715);
+
+        this.model.set('candidateVertical', 0.125);
+        this.$('#candidate-vertical').val(0.125);
+
+        this.model.set('quotes', false);
+        this.$('#quotes').prop('checked', false);
+
+        this.model.set('textAlign', 'left');
+        this.$('#text-align').val('left');
+
+        this.model.set('verticalAlign', 0.325);
+        this.$('#vertical-align').val(0.325);
+
+        this.model.set('fontFamily', 'PostoniStandard-Regular');
+        this.$('#font-family').val('PostoniStandard-Regular');
+
+        this.model.set('fontSize', 50);
+        this.$('#font-size').val(50);
+
+        this.model.set('leading', 1.6);
+        this.$('#leading').val(1.6);
+
+        this.model.set('bottomText', '');
+        this.$('#bottom-text').val('');
+
+        this.model.set('bottomText2', '');
+        this.$('#bottom-text-2').val('');
+
         this.model.set('bottomTextVertical', 1);
         this.$('#bottom-text-vertical').val(1);
+
+        this.model.set('bottomTextFontSize', 34);
+        this.$('#bottom-text-font-size').val(34);
+
+        this.model.set('numberText', '');
+        this.$('#number-text').val('');
+
+        this.model.set('numberTextVertical', 0.05);
+        this.$('#number-text-vertical').val(0.05);
+
+        this.model.set('factChecker', '');
+        this.$('#fact-checker').val('');
+
+        this.model.set('factCheckerVertical', 0.05);
+        this.$('#fact-checker-vertical').val(0.05);
     }
   },
 
@@ -317,6 +431,18 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onBottomText2: function() {
     this.model.set('bottomText2', this.$('#bottom-text-2').val());
+  },
+
+  onBottomTextFontSize: function() {
+    this.model.set('bottomTextFontSize', this.$('#bottom-text-font-size').val());
+  },
+
+  onNumberText: function() {
+    this.model.set('numberText', this.$('#number-text').val());
+  },
+
+  onNumberTextVertical: function() {
+    this.model.set('numberTextVertical', this.$('#number-text-vertical').val());
   },
 
   onBottomTextVertical: function() {

@@ -8,7 +8,8 @@
     <select class="preset" id="preset">
       <option value="" disabled>Select preset</option>
       <option value="default" selected>Default</option>
-      <option value="quote">Quote</option>
+      <option value="quote">Quote Card</option>
+      <option value="number">Number Card</option>
     </select>
 
     <div class="checkbox-group">
@@ -21,12 +22,6 @@
       <label for="text-shadow">Text Shadow</label>
     </div>
   </div>
-
-  <!-- Background Image -->
-  <!-- <div class="dropzone" id="dropzone">Drag Image Here</div>
-  <a href="#" id="image-remove">Remove Image</a>
-  <h2><label for="image-scale">Resize Image</label></h2>
-  <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1"> -->
 
   <!-- Candidate -->
   <div id="candidate-section">
@@ -50,6 +45,34 @@
       <input id="candidate-vertical" type="range" max="1.2" min="-1" step=".025">
     </div>
   </div>
+
+  <!-- Overlay Color -->
+  <h2 class="editor-section-title opened">Background Settings</h2>
+  <div class="editor-section">
+    <div class="m-editor__overlay" id="overlay">
+      <h2>Color</h2>
+      <ul class="checkbox-group">
+        <!-- <li><label><input type="radio" name="overlay" value=""> None</label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-left-right"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-right-left"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-top-bottom"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-bottom-top"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-light-vertical"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-dark-vertical"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-light-horizontal"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-dark-horizontal"></label></li> -->
+      </ul>
+    </div>
+
+    <!-- <h2>Opacity</h2>
+    <input id="overlay-opacity" type="range" max="1" min="0" step=".025"> -->
+  </div>
+
+  <!-- Background Image -->
+  <!-- <div class="dropzone" id="dropzone">Drag Image Here</div>
+  <a href="#" id="image-remove">Remove Image</a>
+  <h2><label for="image-scale">Resize Image</label></h2>
+  <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1"> -->
   
   <!-- Text -->
   <h2 class="editor-section-title opened">Text Settings</h2>
@@ -88,28 +111,6 @@
   <!-- <h2><label for="credit">Credit</label></h2>
   <input id="credit" name="credit" type="text" value=""> -->
 
-  <!-- Overlay Color -->
-  <h2 class="editor-section-title opened">Background Settings</h2>
-  <div class="editor-section">
-    <div class="m-editor__overlay" id="overlay">
-      <h2>Color</h2>
-      <ul class="checkbox-group">
-        <!-- <li><label><input type="radio" name="overlay" value=""> None</label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-left-right"></label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-right-left"></label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-top-bottom"></label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-bottom-top"></label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-light-vertical"></label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-dark-vertical"></label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-light-horizontal"></label></li>
-        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-dark-horizontal"></label></li> -->
-      </ul>
-    </div>
-
-    <!-- <h2>Opacity</h2>
-    <input id="overlay-opacity" type="range" max="1" min="0" step=".025"> -->
-  </div>
-
   <!-- Score -->
   <!-- <div class="m-editor__score" id="overlay">
     <h2>Score</h2>
@@ -127,8 +128,21 @@
     <input id="bottom-text" name="bottom-text" type="text" value="" placeholder="Write your text here." />
     <h2><label for="bottom-text-2">Bottom Text</label></h2>
     <input id="bottom-text-2" name="bottom-text-2" type="text" value="" placeholder="Write your text here." />
+    <h2>Font Size</h2>
+    <select class="bottom-text-font-size" id="bottom-text-font-size">
+      <option value="" disabled>Select font size</option>
+    </select>
     <h2>Vertical Position</h2>
     <input id="bottom-text-vertical" type="range" max="1" min="0.9" step=".01">
+  </div>
+
+  <!-- Number Text -->
+  <h2 class="editor-section-title opened">Number Text Settings</h2>
+  <div class="editor-section">
+    <h2><label for="number-text">Number Text</label></h2>
+    <input id="number-text" name="number-text" type="text" value="" placeholder="Write your text here." />
+    <h2>Vertical Position</h2>
+    <input id="number-text-vertical" type="range" max="1.2" min="-0.5" step=".025">
   </div>
 
   <!-- Fact Checker -->
