@@ -203,7 +203,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
         setTimeout(function() {
           m.trigger('change', m);
-        }, 50);
+        }, 250);
         break;
 
       // Quote Card
@@ -262,7 +262,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
         setTimeout(function() {
           m.trigger('change', m);
-        }, 50);
+        }, 250);
         break;
 
       // Default
@@ -333,7 +333,7 @@ MEME.MemeEditorView = Backbone.View.extend({
 
         setTimeout(function() {
           m.trigger('change', m);
-        }, 50);
+        }, 250);
     }
   },
 
