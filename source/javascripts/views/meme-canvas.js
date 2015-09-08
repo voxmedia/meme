@@ -310,7 +310,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
           source.src = '../../images/pinocchio.svg';
           source.onload = function(){
             for(var i=0; i<count; i++) {
-              ctx.drawImage(source,25+(150*i),d.factCheckerVertical*d.height-10,200,200);
+              ctx.drawImage(source,25+(150*i),d.factCheckerVertical*d.height-15,200,200);
             }
             saveData();
           }
@@ -331,7 +331,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
           for(var i=0; i<count; i++) {
             str += '\uf058 ';
           }
-          ctx.fillText(str, 60, d.factCheckerVertical*d.height+60);
+          ctx.fillText(str, 60, d.factCheckerVertical*d.height+55);
           ctx.shadowColor = 'transparent';
         }
       }
