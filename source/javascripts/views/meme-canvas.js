@@ -130,6 +130,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.textAlign = 'left';
       ctx.fillStyle = d.fontColor;
       ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
+
+      // Text shadow:
+      if (d.textShadow) {
+        ctx.shadowColor = "#666";
+        ctx.shadowOffsetX = -2;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowBlur = 10;
+      }
+
       ctx.fillText(d.creditText, padding, d.height - padding);
     }
 

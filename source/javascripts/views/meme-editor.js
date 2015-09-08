@@ -20,6 +20,19 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
+    function buildColorOptions(opts, name) {
+      return _.reduce(opts, function(memo, opt) {
+        var color = opt.hasOwnProperty('value') ? opt.value : opt;
+        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="'+name+'" value="'+color+'"></label></li>';
+      }, '');
+    }
+
+    function buildSizeOptions(opts) {
+      return _.reduce(opts, function(memo, opt) {
+        return memo += '<option value="' + opt.label + '">' + opt.label + '</option>';
+      }, '');
+    }
+
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
     }
@@ -39,6 +52,11 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#font-family').append(buildOptions(d.fontFamilyOpts)).show();
     }
 
+    // Build font color options:
+    if (d.fontColorOpts && d.fontColorOpts.length) {
+      $('#font-color').show().find('ul').append(buildColorOptions(d.fontColorOpts, 'font-color'));
+    }
+
     // Build watermark options:
     if (d.watermarkOpts && d.watermarkOpts.length) {
       $('#watermark').append(buildOptions(d.watermarkOpts)).show();
@@ -46,12 +64,12 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     // Build overlay color options:
     if (d.overlayColorOpts && d.overlayColorOpts.length) {
-      var overlayOpts = _.reduce(d.overlayColorOpts, function(memo, opt) {
-        var color = opt.hasOwnProperty('value') ? opt.value : opt;
-        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
-      }, '');
+      $('#overlay').show().find('ul').append(buildColorOptions(d.overlayColorOpts, 'overlay'));
+    }
 
-      $('#overlay').show().find('ul').append(overlayOpts);
+    // Setup available image sizes:
+    if (d.sizeOpts && d.sizeOpts.length) {
+      $('#image-size').show().append(buildSizeOptions(d.sizeOpts));
     }
   },
 
@@ -66,14 +84,17 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#text-align').val(d.textAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
+    this.$('#font-color').find('[value="'+d.fontColor+'"]').prop('checked', true);
   },
 
   events: {
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
+    'change #image-size': 'onImageSize',
     'input #image-scale': 'onScale',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
+    'change [name="font-color"]': 'onFontColor',
     'change #watermark': 'onWatermark',
     'change #text-align': 'onTextAlign',
     'change #text-shadow': 'onTextShadow',
@@ -107,9 +128,23 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set('fontFamily', this.$('#font-family').val());
   },
 
+  onFontColor: function(evt) {
+    this.model.set('fontColor', this.$(evt.target).val());
+  },
+
   onWatermark: function() {
     this.model.set('watermarkSrc', this.$('#watermark').val());
     if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
+  },
+
+  onImageSize: function(e) {
+    var sizes = this.model.get('sizeOpts'),
+        size = _.findWhere(sizes, {label: e.currentTarget.value});
+
+    this.model.set({
+      width: size.width,
+      height: size.height
+    });
   },
 
   onScale: function() {
