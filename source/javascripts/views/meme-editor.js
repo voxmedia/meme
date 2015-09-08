@@ -143,6 +143,8 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onPreset: function() {
     var preset = this.$('#preset').val();
+    var m = this.model;
+
     switch(preset) {
 
       // Number Card
@@ -151,8 +153,8 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.$('#show-candidate').prop('checked', false);
         this.$('#candidate-section').hide();
 
-        this.$('#text-shadow').prop('checked', false);
         this.model.set('textShadow', false);
+        this.$('#text-shadow').prop('checked', false);
 
         this.model.set('overlayColor', '#004b98');
         this.$('#overlay').find('[value="#004b98"]').prop('checked', true);
@@ -199,6 +201,9 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('factCheckerVertical', 0.05);
         this.$('#fact-checker-vertical').val(0.05);
 
+        setTimeout(function() {
+          m.trigger('change', m);
+        }, 50);
         break;
 
       // Quote Card
@@ -207,8 +212,8 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.$('#show-candidate').prop('checked', false);
         this.$('#candidate-section').hide();
 
-        this.$('#text-shadow').prop('checked', false);
         this.model.set('textShadow', false);
+        this.$('#text-shadow').prop('checked', false);
 
         this.model.set('overlayColor', '#004b98');
         this.$('#overlay').find('[value="#004b98"]').prop('checked', true);
@@ -255,6 +260,9 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('factCheckerVertical', 0.05);
         this.$('#fact-checker-vertical').val(0.05);
 
+        setTimeout(function() {
+          m.trigger('change', m);
+        }, 50);
         break;
 
       // Default
@@ -263,11 +271,14 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.$('#show-candidate').prop('checked', true);
         this.$('#candidate-section').show();
 
-        this.$('#text-shadow').prop('checked', false);
         this.model.set('textShadow', false);
+        this.$('#text-shadow').prop('checked', false);
 
         this.model.set('overlayColor', '#000000');
         this.$('#overlay').find('[value="#000000"]').prop('checked', true);
+
+        this.model.set('candidate', '/images/candidates/joe_biden.png');
+        this.$('#candidate').val('/images/candidates/joe_biden.png');
 
         this.model.set('candidateSize', 400);
         this.$('#candidate-size').val(400);
@@ -319,6 +330,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
         this.model.set('factCheckerVertical', 0.05);
         this.$('#fact-checker-vertical').val(0.05);
+
+        setTimeout(function() {
+          m.trigger('change', m);
+        }, 50);
     }
   },
 
