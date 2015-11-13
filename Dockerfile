@@ -1,12 +1,31 @@
 FROM centos:7
 EXPOSE 4567
+ENV EXECJS_RUNTIME="RubyRacer"
+ENV BUNDLE_GEMFILE="Gemfile.local"
 WORKDIR /tmp/meme
-RUN yum -y install ruby ruby-devel.x86_64 gcc gcc-c++ make git && \
- gem install bundle json execjs therubyracer && \
- git clone https://github.com/voxmedia/meme.git /tmp/meme && \
- /usr/local/bin/bundle install && \
- sed -i '1s/^/require "therubyracer"\n/' /usr/local/share/gems/gems/execjs-2.2.0/lib/execjs/runtimes.rb && \
- yum -y remove ruby-devel.x86_64 gcc gcc-c++ make git && yum -y autoremove
+ADD Gemfile* /tmp/meme/
+RUN echo $'source "http://rubygems.org" \n\
+ gem "therubyracer", platforms: :ruby \n\
+ instance_eval(File.read(File.dirname(__FILE__) + "/Gemfile")) \n\
+ ' >> /tmp/meme/Gemfile.local
 
-CMD ["/usr/local/bin/bundle", "exec", "middleman"]
+RUN yum -y install \
+ gcc-c++ \
+ make \
+ ruby \
+ rubygem-bundler \
+ ruby-devel && \
+ bundle install && \
+ yum remove -y \
+ cpp \
+ gcc* \
+ glibc-devel \
+ glibc-headers \
+ kernel-headers \
+ libmpc \
+ libstdc++-devel \
+ mpfr \
+ make
 
+ADD . /tmp/meme
+CMD ["bundle", "exec", "middleman"]
