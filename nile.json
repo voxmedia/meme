@@ -20,7 +20,7 @@
   },
   "stages": [{
     "name": "prod",
-    "scale": 1,
+    "scale": 2,
     "domain": "socialcard.wpit.nile.works",
     "environment": {
       "NODE_ENV":"production",
