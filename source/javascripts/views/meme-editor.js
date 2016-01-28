@@ -24,6 +24,10 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#candidate').append(buildOptions(d.candidateOpts)).show();
     }
 
+    if (d.candidateNewOpts && d.candidateNewOpts.length) {
+      $('#candidate-new').append(buildOptions(d.candidateNewOpts)).show();
+    }
+
     if (d.factCheckerOpts && d.factCheckerOpts.length) {
       $('#fact-checker').append(buildOptions(d.factCheckerOpts)).show();
     }
@@ -35,6 +39,11 @@ MEME.MemeEditorView = Backbone.View.extend({
     // Build text alignment options:
     if (d.textAlignOpts && d.textAlignOpts.length) {
       $('#text-align').append(buildOptions(d.textAlignOpts)).show();
+    }
+
+    // Build font color options:
+    if (d.fontColorOpts && d.fontColorOpts.length) {
+      $('#font-color').append(buildOptions(d.fontColorOpts)).show();
     }
 
     // Build font size options:
@@ -69,14 +78,22 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   render: function() {
     var d = this.model.toJSON();
+    if(d.showCandidateNew) {
+      this.$('#show-candidate-new').prop('checked', true)
+      this.$('#candidate-section-new').show();
+    };
     if(d.showCandidate) {
       this.$('#show-candidate').prop('checked', true)
       this.$('#candidate-section').show();
+    };
+    if(d.showLogo) {
+      this.$('#show-logo').prop('checked', true)
     };
     if(d.showFactChecker) {
       this.$('#show-fact-checker').prop('checked', true)
       this.$('#fact-checker-section').show();
     };
+    this.$('#candidate-new').val(d.candidateNew);
     this.$('#candidate').val(d.candidate);
     this.$('#candidate-horizontal').val(d.candidateHorizontal);
     this.$('#candidate-vertical').val(d.candidateVertical);
@@ -87,6 +104,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
     this.$('#image-scale').val(d.imageScale);
+    this.$('#font-color').val(d.fontColor);
     this.$('#font-size').val(d.fontSize);
     this.$('#font-family').val(d.fontFamily);
     this.$('#text-align').val(d.textAlign);
@@ -123,7 +141,9 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #fact-checker-vertical': 'onFactCheckerVertical',
     'change #preset': 'onPreset',
     'change #candidate': 'onCandidate',
+    'change #candidate-new': 'onCandidateNew',
     'change #fact-checker': 'onFactChecker',
+    'change #font-color': 'onFontColor',
     'change #font-size': 'onFontSize',
     'change #bottom-text-font-size': 'onBottomTextFontSize',
     'change #font-family': 'onFontFamily',
@@ -133,6 +153,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #quotes': 'onQuotes',
     'change [name="overlay"]': 'onOverlayColor',
     'change #show-candidate': 'onShowCandidate',
+    'change #show-candidate-new': 'onShowCandidateNew',
+    'change #show-logo': 'onShowLogo',
     'change #show-fact-checker': 'onShowFactChecker',
     'click #image-remove': 'onImageRemove',
     'click .editor-section-title': 'toggleEditorSection',
@@ -150,8 +172,16 @@ MEME.MemeEditorView = Backbone.View.extend({
       // Number Card
       case 'number':
         this.model.set('showCandidate', false);
+        this.model.set('showCandidateNew', false);
         this.$('#show-candidate').prop('checked', false);
+        this.$('#show-candidate-new').prop('checked', false);
         this.$('#candidate-section').hide();
+        this.$('#candidate-section-new').hide();
+
+        this.model.set('showLogo', true);
+        this.$('#show-logo').prop('checked', true);
+
+        this.model.set('fontColor', 'white');
 
         this.model.set('textShadow', false);
         this.$('#text-shadow').prop('checked', false);
@@ -171,11 +201,11 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('fontFamily', 'PostoniStandard-Regular');
         this.$('#font-family').val('PostoniStandard-Regular');
 
-        this.model.set('fontSize', 50);
-        this.$('#font-size').val(50);
+        this.model.set('fontSize', 60);
+        this.$('#font-size').val(60);
 
-        this.model.set('leading', 1.75);
-        this.$('#leading').val(1.75);
+        this.model.set('leading', 1.65);
+        this.$('#leading').val(1.65);
 
         this.model.set('bottomText', '');
         this.$('#bottom-text').val('');
@@ -209,8 +239,16 @@ MEME.MemeEditorView = Backbone.View.extend({
       // Quote Card
       case 'quote':
         this.model.set('showCandidate', false);
+        this.model.set('showCandidateNew', false);
         this.$('#show-candidate').prop('checked', false);
+        this.$('#show-candidate-new').prop('checked', false);
         this.$('#candidate-section').hide();
+        this.$('#candidate-section-new').hide();
+
+        this.model.set('showLogo', true);
+        this.$('#show-logo').prop('checked', true);
+
+        this.model.set('fontColor', 'white');
 
         this.model.set('textShadow', false);
         this.$('#text-shadow').prop('checked', false);
@@ -230,11 +268,11 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('fontFamily', 'PostoniStandard-Regular');
         this.$('#font-family').val('PostoniStandard-Regular');
 
-        this.model.set('fontSize', 50);
-        this.$('#font-size').val(50);
+        this.model.set('fontSize', 60);
+        this.$('#font-size').val(60);
 
-        this.model.set('leading', 1.75);
-        this.$('#leading').val(1.75);
+        this.model.set('leading', 1.65);
+        this.$('#leading').val(1.65);
 
         this.model.set('bottomText', 'NAME');
         this.$('#bottom-text').val('NAME');
@@ -242,8 +280,8 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('bottomText2', ', ATTRIBUTION');
         this.$('#bottom-text-2').val(', ATTRIBUTION');
 
-        this.model.set('bottomTextVertical', 0.94);
-        this.$('#bottom-text-vertical').val(0.94);
+        this.model.set('bottomTextVertical', 0.92);
+        this.$('#bottom-text-vertical').val(0.92);
 
         this.model.set('bottomTextFontSize', 34);
         this.$('#bottom-text-font-size').val(34);
@@ -267,18 +305,23 @@ MEME.MemeEditorView = Backbone.View.extend({
 
       // Default
       default:
-        this.model.set('showCandidate', true);
-        this.$('#show-candidate').prop('checked', true);
-        this.$('#candidate-section').show();
+        this.model.set('showCandidate', false);
+        this.model.set('showCandidateNew', true);
+        this.$('#show-candidate').prop('checked', false);
+        this.$('#show-candidate-new').prop('checked', true);
+        this.$('#candidate-section').hide();
+        this.$('#candidate-section-new').show();
+
+        this.model.set('showLogo', false);
+        this.$('#show-logo').prop('checked', false);
+
+        this.model.set('fontColor', 'black');
 
         this.model.set('textShadow', false);
         this.$('#text-shadow').prop('checked', false);
 
-        this.model.set('overlayColor', '#000000');
-        this.$('#overlay').find('[value="#000000"]').prop('checked', true);
-
-        this.model.set('candidate', '/images/candidates/joe_biden.png');
-        this.$('#candidate').val('/images/candidates/joe_biden.png');
+        this.model.set('overlayColor', '#00b5bb');
+        this.$('#overlay').find('[value="#00b5bb"]').prop('checked', true);
 
         this.model.set('candidateSize', 400);
         this.$('#candidate-size').val(400);
@@ -295,17 +338,17 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('textAlign', 'left');
         this.$('#text-align').val('left');
 
-        this.model.set('verticalAlign', 0.325);
-        this.$('#vertical-align').val(0.325);
+        this.model.set('verticalAlign', 0.175);
+        this.$('#vertical-align').val(0.175);
 
         this.model.set('fontFamily', 'PostoniStandard-Regular');
         this.$('#font-family').val('PostoniStandard-Regular');
 
-        this.model.set('fontSize', 50);
-        this.$('#font-size').val(50);
+        this.model.set('fontSize', 60);
+        this.$('#font-size').val(60);
 
-        this.model.set('leading', 1.6);
-        this.$('#leading').val(1.6);
+        this.model.set('leading', 1.5);
+        this.$('#leading').val(1.5);
 
         this.model.set('bottomText', '');
         this.$('#bottom-text').val('');
@@ -313,8 +356,8 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('bottomText2', '');
         this.$('#bottom-text-2').val('');
 
-        this.model.set('bottomTextVertical', 1);
-        this.$('#bottom-text-vertical').val(1);
+        this.model.set('bottomTextVertical', 0.9);
+        this.$('#bottom-text-vertical').val(0.9);
 
         this.model.set('bottomTextFontSize', 34);
         this.$('#bottom-text-font-size').val(34);
@@ -348,6 +391,22 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set('showCandidate', checked);
   },
 
+  onShowCandidateNew: function() {
+    var checked = this.$('#show-candidate-new').prop('checked');
+    if(checked) {
+      this.$('#candidate-section-new').show();
+    }
+    else {
+      this.$('#candidate-section-new').hide();
+    }
+    this.model.set('showCandidateNew', checked);
+  },
+
+  onShowLogo: function() {
+    var checked = this.$('#show-logo').prop('checked');
+    this.model.set('showLogo', checked);
+  },
+
   onShowFactChecker: function() {
     var checked = this.$('#show-fact-checker').prop('checked');
     if(checked) {
@@ -361,6 +420,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onCandidate: function() {
     this.model.set('candidate', this.$('#candidate').val());
+  },
+
+  onCandidateNew: function() {
+    this.model.set('candidateNew', this.$('#candidate-new').val());
   },
 
   onCandidateSize: function() {
@@ -413,6 +476,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onFactCheckerVertical: function() {
     this.model.set('factCheckerVertical', this.$('#fact-checker-vertical').val());
+  },
+
+  onFontColor: function() {
+    this.model.set('fontColor', this.$('#font-color').val());
   },
 
   onFontSize: function() {

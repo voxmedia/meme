@@ -13,19 +13,40 @@
     </select>
 
     <div class="checkbox-group">
-      <input id="show-candidate" type="checkbox"> 
-      <label for="show-candidate">Show Candidate</label>
+      <input id="show-candidate-new" type="checkbox"> 
+      <label for="show-candidate-new">Show Candidate</label>
     </div>
 
-    <div class="checkbox-group text-shadow">
+    <div class="checkbox-group">
+      <input id="show-candidate" type="checkbox"> 
+      <label for="show-candidate">Show Candidate (Old)</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input id="show-logo" type="checkbox"> 
+      <label for="show-logo">Show Logo</label>
+    </div>
+
+    <!-- <div class="checkbox-group text-shadow">
       <input id="text-shadow" name="shadow" type="checkbox"> 
       <label for="text-shadow">Text Shadow</label>
+    </div> -->
+  </div>
+
+  <!-- Candidate -->
+  <div id="candidate-section-new">
+    <h2 class="editor-section-title opened">Candidate Settings</h2>
+    <div class="editor-section">
+      <h2>Candidate</h2>
+      <select class="candidate-new" id="candidate-new">
+        <option value="" disabled>Select candidate face</option>
+      </select>
     </div>
   </div>
 
   <!-- Candidate -->
   <div id="candidate-section">
-    <h2 class="editor-section-title opened">Candidate Settings</h2>
+    <h2 class="editor-section-title opened">Candidate Settings (Old)</h2>
     <div class="editor-section">
       <h2>Candidate</h2>
       <select class="candidate" id="candidate">
@@ -98,6 +119,11 @@
       <option value="" disabled>Select font</option>
     </select>
 
+    <h2>Font Color</h2>
+    <select class="font-color" id="font-color">
+      <option value="" disabled>Select font color</option>
+    </select>
+
     <h2>Font Size</h2>
     <select class="font-size" id="font-size">
       <option value="" disabled>Select font size</option>
@@ -133,7 +159,7 @@
       <option value="" disabled>Select font size</option>
     </select>
     <h2>Vertical Position</h2>
-    <input id="bottom-text-vertical" type="range" max="1" min="0.9" step=".01">
+    <input id="bottom-text-vertical" type="range" max="1" min="0.8" step=".01">
   </div>
 
   <!-- Number Text -->

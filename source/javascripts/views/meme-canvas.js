@@ -39,20 +39,32 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
 
+
+
+    // ********************************
+    // **** OFFSET FOR SPONSOR BAR ****
+    // ********************************
+    var offset = 0;
+
+
+
     // Candidate display
-    if(d.showCandidate) {
-      var showCandidate = true;
-      var widerText = false;
+    if(!d.showCandidate && !d.showCandidateNew) {
+      var widerText = true;
     }
     else {
-      var showCandidate = false;
-      var widerText = true;
+      var widerText = false;
     }
 
     // Reset canvas display:
     this.canvas.width = d.width;
     this.canvas.height = d.height;
     ctx.clearRect(0, 0, d.width, d.height);
+
+    function renderSponsor(ctx) {
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 640, 1280, 100);
+    }
 
     function renderBackground(ctx) {
       // Base height and width:
@@ -176,40 +188,42 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
 
       // Vertical alignment
-      y = d.height * d.verticalAlign;
+      y = (d.height-offset) * d.verticalAlign;
 
-      var words = d.headlineText.split(' ');
-      var line  = '';
-      var startingQuotePlaced = false;
 
-      for (var n = 0; n < words.length; n++) {
-        var testLine  = line + words[n] + ' ';
-        var metrics   = ctx.measureText( testLine );
-        var testWidth = metrics.width;
-
-        if (testWidth > maxWidth && n > 0) {
-          if(d.quotes && !startingQuotePlaced) {
-            ctx.fillText('“', x-26, y);
-            startingQuotePlaced = true;
-          }
-          ctx.fillText(convertQuotes(line), x, y);
-          line = words[n] + ' ';
-          y += Math.round(d.fontSize * d.leading);
-        } else {
-          line = testLine;
-        }
-      }
-
+      var paragraphs = d.headlineText.split('\n');
       if(d.quotes) {
-        line = line.trim() + '"';
-
-        if(!startingQuotePlaced) {
-          ctx.fillText('“', x-26, y);
-          startingQuotePlaced = true;
-        }
+        ctx.fillText('“', x-26, y);
       }
-      ctx.fillText(convertQuotes(line), x, y);
-      ctx.shadowColor = 'transparent';
+
+      for (var i = 0; i < paragraphs.length; i++) {
+
+        var words = paragraphs[i].split(' ');
+        var line  = '';
+        var startingQuotePlaced = false;
+
+        for (var n = 0; n < words.length; n++) {
+          var testLine  = line + words[n] + ' ';
+          var metrics   = ctx.measureText( testLine );
+          var testWidth = metrics.width;
+
+          if (testWidth > maxWidth && n > 0) {
+            ctx.fillText(convertQuotes(line), x, y);
+            line = words[n] + ' ';
+            y += Math.round(d.fontSize * d.leading);
+          } else {
+            line = testLine;
+          }
+        }
+
+        if(i == paragraphs.length-1 && d.quotes) {
+          line = line.trim() + '"';
+        }
+        ctx.fillText(convertQuotes(line), x, y);
+        ctx.shadowColor = 'transparent';
+
+        y += Math.round(d.fontSize * d.leading);
+      }
     }
 
     function renderCredit(ctx) {
@@ -235,12 +249,12 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
 
       // First text
-      ctx.fillText(d.bottomText, padding, d.bottomTextVertical*d.height-30);
+      ctx.fillText(d.bottomText, padding, d.bottomTextVertical*(d.height-offset)-30);
 
       // Second text
       var firstTextWidth = ctx.measureText(d.bottomText).width;
       ctx.font = 'normal '+d.bottomTextFontSize+'px "FranklinITCProThin"';
-      ctx.fillText(d.bottomText2, firstTextWidth+padding, d.bottomTextVertical*d.height-30);
+      ctx.fillText(d.bottomText2, firstTextWidth+padding, d.bottomTextVertical*(d.height-offset)-30);
       ctx.shadowColor = 'transparent';
     }
 
@@ -258,7 +272,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.shadowBlur = 5;
       }
 
-      ctx.fillText(d.numberText, padding, d.numberTextVertical*d.height+40);
+      ctx.fillText(d.numberText, padding, d.numberTextVertical*(d.height-offset)+40);
       ctx.shadowColor = 'transparent';
     }
 
@@ -285,7 +299,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
           ctx.shadowOffsetY = 1;
           ctx.shadowBlur = 3;
         }
-        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-40-tw, d.height-30-th, tw, th);
+        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-40-tw, (d.height-offset)-30-th, tw, th);
         ctx.globalAlpha = 1;
         ctx.shadowColor = 'transparent';
       }
@@ -296,7 +310,16 @@ MEME.MemeCanvasView = Backbone.View.extend({
       source.src = d.candidate;
       var h = d.candidateSize;
       source.onload = function(){
-        ctx.drawImage(source,d.candidateHorizontal*d.width,d.candidateVertical*d.height,d.candidateRatio*h,h);
+        ctx.drawImage(source,d.candidateHorizontal*d.width,d.candidateVertical*(d.height-offset),d.candidateRatio*h,h);
+        saveData();
+      }
+    }
+
+    function renderCandidateNew(ctx) {
+      var source = new Image();
+      source.src = d.candidateNew;
+      source.onload = function(){
+        ctx.drawImage(source,0,0);
         saveData();
       }
     }
@@ -310,7 +333,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
           source.src = '../../images/pinocchio.svg';
           source.onload = function(){
             for(var i=0; i<count; i++) {
-              ctx.drawImage(source,25+(150*i),d.factCheckerVertical*d.height-15,200,200);
+              ctx.drawImage(source,25+(150*i),d.factCheckerVertical*(d.height-offset)-15,200,200);
             }
             saveData();
           }
@@ -341,13 +364,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var data = '';
     renderBackground(ctx);
     renderOverlay(ctx);
+    // renderSponsor(ctx);
     renderHeadline(ctx);
     // renderCredit(ctx);
     renderBottomText(ctx);
     renderNumberText(ctx);
-    renderWatermark(ctx);
+    if(d.showLogo) { renderWatermark(ctx) };
     renderFactChecker(ctx);
-    if(showCandidate) { renderCandidate(ctx); }
+    if(d.showCandidate) { renderCandidate(ctx); }
+    if(d.showCandidateNew) { renderCandidateNew(ctx); }
     saveData();
 
     function saveData() {
@@ -362,25 +387,34 @@ MEME.MemeCanvasView = Backbone.View.extend({
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
 
     /* Smartquotes conversion
-       Copied from https://github.com/kellym/smartquotesjs/blob/master/src/smartquotes.js */
+       Copied from https://gist.github.com/karbassi/6216412#file-jquery-curlies-js-L5-L18 */
     function convertQuotes(str) {
       return str
-        .replace(/'''/g, '\u2034')                                                   // triple prime
-        .replace(/(\W|^)"(\S)/g, '$1\u201c$2')                                       // beginning "
-        .replace(/(\u201c[^"]*)"([^"]*$|[^\u201c"]*\u201c)/g, '$1\u201d$2')          // ending "
-        .replace(/([^0-9])"/g,'$1\u201d')                                            // remaining " at end of word
-        .replace(/''/g, '\u2033')                                                    // double prime
-        .replace(/(\W|^)'(\S)/g, '$1\u2018$2')                                       // beginning '
-        .replace(/([a-z])'([a-z])/ig, '$1\u2019$2')                                  // conjunction's possession
-        .replace(/((\u2018[^']*)|[a-z])'([^0-9]|$)/ig, '$1\u2019$3')                 // ending '
-        .replace(/(\u2018)([0-9]{2}[^\u2019]*)(\u2018([^0-9]|$)|$|\u2019[a-z])/ig, '\u2019$2$3')     // abbrev. years like '93
-        .replace(/(\B|^)\u2018(?=([^\u2019]*\u2019\b)*([^\u2019\u2018]*\W[\u2019\u2018]\b|[^\u2019\u2018]*$))/ig, '$1\u2019') // backwards apostrophe
-        .replace(/'/g, '\u2032');
+        /* opening singles */
+        .replace(/(^|[-\u2014\s(\["])'/g, "$1\u2018")
+
+        /* closing singles & apostrophes */
+        .replace(/'/g, "\u2019")
+
+        /* opening doubles */
+        .replace(/(^|[-\u2014/\[(\u2018\s])"/g, "$1\u201c")
+
+        /* closing doubles */
+        .replace(/"/g, "\u201d")
+
+        /* em-dashes */
+        .replace(/--/g, "\u2014");
     }
   },
 
   events: {
-    'mousedown canvas': 'onDrag'
+    'mousedown canvas': 'onDrag',
+    'click #refresh-canvas': 'refreshCanvas'
+  },
+
+  refreshCanvas: function(evt) {
+    evt.preventDefault();
+    this.render();
   },
 
   // Performs drag-and-drop on the background image placement:
