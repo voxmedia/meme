@@ -67,9 +67,15 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     // Build overlay color options:
     if (d.overlayColorOpts && d.overlayColorOpts.length) {
+      var defaultColors = ['#00b5bb', '#c7aa53', '#c3c7ce'];
       var overlayOpts = _.reduce(d.overlayColorOpts, function(memo, opt) {
         var color = opt.hasOwnProperty('value') ? opt.value : opt;
-        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
+        if(defaultColors.indexOf(color) > -1) {
+          return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
+        }
+        else {
+          return memo += '<li class="extra-color"><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
+        }      
       }, '');
 
       $('#overlay').show().find('ul').append(overlayOpts);
@@ -188,6 +194,7 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('textShadow', false);
         this.$('#text-shadow').prop('checked', false);
 
+        this.$('.extra-color').show();
         this.model.set('overlayColor', '#004b98');
         this.$('#overlay').find('[value="#004b98"]').prop('checked', true);
 
@@ -255,6 +262,7 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('textShadow', false);
         this.$('#text-shadow').prop('checked', false);
 
+        this.$('.extra-color').show();
         this.model.set('overlayColor', '#004b98');
         this.$('#overlay').find('[value="#004b98"]').prop('checked', true);
 
@@ -322,6 +330,7 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('textShadow', false);
         this.$('#text-shadow').prop('checked', false);
 
+        this.$('.extra-color').hide();
         this.model.set('overlayColor', '#00b5bb');
         this.$('#overlay').find('[value="#00b5bb"]').prop('checked', true);
 
@@ -337,8 +346,8 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('candidateVertical', 0.125);
         this.$('#candidate-vertical').val(0.125);
 
-        this.model.set('quotes', false);
-        this.$('#quotes').prop('checked', false);
+        this.model.set('quotes', true);
+        this.$('#quotes').prop('checked', true);
 
         this.model.set('textAlign', 'left');
         this.$('#text-align').val('left');

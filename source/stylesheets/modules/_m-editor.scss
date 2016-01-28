@@ -106,6 +106,10 @@ $m: '.m-editor';
     display: none;
   }
 
+  .extra-color {
+    display: none;
+  }
+
   #{$m}__overlay {
     display: none;
     margin-bottom: 1em;
