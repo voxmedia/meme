@@ -319,7 +319,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var source = new Image();
       source.src = d.candidateNew;
       source.onload = function(){
-        ctx.drawImage(source,0,0);
+        ctx.drawImage(source,d.candidateNewHorizontal*d.width,0);
         saveData();
       }
     }

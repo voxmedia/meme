@@ -96,6 +96,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#candidate-new').val(d.candidateNew);
     this.$('#candidate').val(d.candidate);
     this.$('#candidate-horizontal').val(d.candidateHorizontal);
+    this.$('#candidate-new-horizontal').val(d.candidateNewHorizontal);
     this.$('#candidate-vertical').val(d.candidateVertical);
     this.$('#candidate-ratio').val(d.candidateRatio);
     this.$('#fact-checker').val(d.factChecker);
@@ -125,6 +126,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   events: {
     'input #candidate-size': 'onCandidateSize',
     'input #candidate-horizontal': 'onCandidateHorizontal',
+    'input #candidate-new-horizontal': 'onCandidateNewHorizontal',
     'input #candidate-vertical': 'onCandidateVertical',
     'input #candidate-ratio': 'onCandidateRatio',
     'input #headline': 'onHeadline',
@@ -326,8 +328,11 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('candidateSize', 400);
         this.$('#candidate-size').val(400);
 
-        this.model.set('candidateHorizontal', 0.715);
-        this.$('#candidate-horizontal').val(0.715);
+        this.model.set('candidateHorizontal', 0.71);
+        this.$('#candidate-horizontal').val(0.71);
+
+        this.model.set('candidateNewHorizontal', 0);
+        this.$('#candidate-new-horizontal').val(0);
 
         this.model.set('candidateVertical', 0.125);
         this.$('#candidate-vertical').val(0.125);
@@ -432,6 +437,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onCandidateHorizontal: function() {
     this.model.set('candidateHorizontal', this.$('#candidate-horizontal').val());
+  },
+
+  onCandidateNewHorizontal: function() {
+    this.model.set('candidateNewHorizontal', this.$('#candidate-new-horizontal').val());
   },
 
   onCandidateVertical: function() {
