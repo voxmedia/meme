@@ -61,10 +61,20 @@ MEME.MemeCanvasView = Backbone.View.extend({
     this.canvas.height = d.height;
     ctx.clearRect(0, 0, d.width, d.height);
 
+
+
     function renderSponsor(ctx) {
       ctx.fillStyle = '#000';
-      ctx.fillRect(0, 640, 1280, 100);
+      ctx.fillRect(0, 630, 1280, 100);
+      var source = new Image();
+      source.src = d.sponsorImage;
+      source.onload = function(){
+        ctx.drawImage(source,779,649,64 * source.width / source.height,64);
+        saveData();
+      }
     }
+
+
 
     function renderBackground(ctx) {
       // Base height and width:
@@ -364,7 +374,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var data = '';
     renderBackground(ctx);
     renderOverlay(ctx);
-    // renderSponsor(ctx);
+    renderSponsor(ctx);
     renderHeadline(ctx);
     // renderCredit(ctx);
     renderBottomText(ctx);
