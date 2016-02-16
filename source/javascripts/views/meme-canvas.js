@@ -374,7 +374,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var data = '';
     renderBackground(ctx);
     renderOverlay(ctx);
-    renderSponsor(ctx);
+    // renderSponsor(ctx);
     renderHeadline(ctx);
     // renderCredit(ctx);
     renderBottomText(ctx);
