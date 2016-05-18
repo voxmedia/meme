@@ -56,6 +56,14 @@ MEME.MemeCanvasView = Backbone.View.extend({
       var widerText = false;
     }
 
+    // Olympics display
+    if(!d.showOlympics && !d.showOlympics) {
+      var widerText = true;
+    }
+    else {
+      var widerText = false;
+    }
+
     // Reset canvas display:
     this.canvas.width = d.width;
     this.canvas.height = d.height;
@@ -334,6 +342,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
     }
 
+    function renderOlympics(ctx) {
+      var source = new Image();
+      source.src = d.olympics;
+      source.onload = function(){
+        ctx.drawImage(source,d.candidateNewHorizontal*d.width,0);
+        saveData();
+      }
+    }
+
     function renderFactChecker(ctx) {
       if(d.factChecker) {
         var type = d.factChecker.charAt(1);
@@ -383,6 +400,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderFactChecker(ctx);
     if(d.showCandidate) { renderCandidate(ctx); }
     if(d.showCandidateNew) { renderCandidateNew(ctx); }
+    if(d.showOlympics) { renderCandidateNew(ctx); }
     saveData();
 
     function saveData() {

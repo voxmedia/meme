@@ -13,22 +13,27 @@
     </select>
 
     <div class="checkbox-group">
-      <input id="show-candidate-new" type="checkbox"> 
+      <input id="show-candidate-new" type="checkbox">
       <label for="show-candidate-new">Show Candidate</label>
     </div>
 
     <div class="checkbox-group">
-      <input id="show-candidate" type="checkbox"> 
+      <input id="show-olympics" type="checkbox">
+      <label for="show-olympics">Show Olympics Sport</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input id="show-candidate" type="checkbox">
       <label for="show-candidate">Show Candidate (Old)</label>
     </div>
 
     <div class="checkbox-group">
-      <input id="show-logo" type="checkbox"> 
+      <input id="show-logo" type="checkbox">
       <label for="show-logo">Show Logo</label>
     </div>
 
     <!-- <div class="checkbox-group text-shadow">
-      <input id="text-shadow" name="shadow" type="checkbox"> 
+      <input id="text-shadow" name="shadow" type="checkbox">
       <label for="text-shadow">Text Shadow</label>
     </div> -->
   </div>
@@ -43,6 +48,19 @@
       </select>
       <h2>Horizontal Position</h2>
       <input id="candidate-new-horizontal" type="range" max="0.2" min="0" step=".02">
+    </div>
+  </div>
+
+  <!-- Olympics -->
+  <div id="olympics-section">
+    <h2 class="editor-section-title opened">Olympics Settings</h2>
+    <div class="editor-section">
+      <h2>Sport</h2>
+      <select class="olympics" id="olympics">
+        <option value="" disabled>Select Olympics sport</option>
+      </select>
+      <h2>Horizontal Position</h2>
+      <input id="olympics-horizontal" type="range" max="0.2" min="0" step=".02">
     </div>
   </div>
 
@@ -96,7 +114,7 @@
   <a href="#" id="image-remove">Remove Image</a>
   <h2><label for="image-scale">Resize Image</label></h2>
   <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1"> -->
-  
+
   <!-- Text -->
   <h2 class="editor-section-title opened">Text Settings</h2>
   <div class="editor-section">
@@ -104,10 +122,10 @@
     <textarea id="headline" name="headline" type="text" value=""></textarea>
 
     <div class="checkbox-group">
-      <input id="quotes" type="checkbox"> 
+      <input id="quotes" type="checkbox">
       <label for="quotes">Include Quotes</label>
     </div>
-    
+
     <h2>Alignment</h2>
     <select class="text-align" id="text-align">
       <option value="" disabled>Select alignment</option>
