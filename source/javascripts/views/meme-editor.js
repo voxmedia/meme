@@ -114,6 +114,10 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$('#candidate-new-horizontal').val(d.candidateNewHorizontal);
     this.$('#candidate-vertical').val(d.candidateVertical);
     this.$('#candidate-ratio').val(d.candidateRatio);
+    this.$('#olympics-horizontal').val(d.olympicsHorizontal);
+    this.$('#olympics-new-horizontal').val(d.olympicsNewHorizontal);
+    this.$('#olympics-vertical').val(d.olympicsVertical);
+    this.$('#olympics-ratio').val(d.olympicsRatio);
     this.$('#fact-checker').val(d.factChecker);
     this.$('#fact-checker-vertical').val(d.factCheckerVertical);
     this.$('#headline').val(d.headlineText);
@@ -144,6 +148,11 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #candidate-new-horizontal': 'onCandidateNewHorizontal',
     'input #candidate-vertical': 'onCandidateVertical',
     'input #candidate-ratio': 'onCandidateRatio',
+    'input #candidate-size': 'onOlympicsSize',
+    'input #candidate-horizontal': 'onOlympicsHorizontal',
+    'input #candidate-new-horizontal': 'onOlympicsHorizontal',
+    'input #candidate-vertical': 'onOlympicsVertical',
+    'input #candidate-ratio': 'onOlympicsRatio',
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
@@ -159,7 +168,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'change #preset': 'onPreset',
     'change #candidate': 'onCandidate',
     'change #candidate-new': 'onCandidateNew',
-    'change #olympics': 'onOlympicsNew',
+    'change #olympics': 'onOlympics',
     'change #fact-checker': 'onFactChecker',
     'change #font-color': 'onFontColor',
     'change #font-size': 'onFontSize',
@@ -366,6 +375,12 @@ MEME.MemeEditorView = Backbone.View.extend({
         this.model.set('candidateVertical', 0.125);
         this.$('#candidate-vertical').val(0.125);
 
+        this.model.set('olympicsHorizontal', 0);
+        this.$('#olympics-horizontal').val(0);
+
+        this.model.set('olympicsVertical', 0.125);
+        this.$('#olympics-vertical').val(0.125);
+
         this.model.set('quotes', true);
         this.$('#quotes').prop('checked', true);
 
@@ -493,6 +508,22 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onCandidateRatio: function() {
     this.model.set('candidateRatio', this.$('#candidate-ratio').val());
+  },
+
+  onOlympicsSize: function() {
+    this.model.set('olympicsSize', this.$('#olympics-size').val());
+  },
+
+  onOlympicsHorizontal: function() {
+    this.model.set('olympicsHorizontal', this.$('#olympics-horizontal').val());
+  },
+
+  onOlympicsVertical: function() {
+    this.model.set('olympicsVertical', this.$('#olympics-vertical').val());
+  },
+
+  onOlympicsRatio: function() {
+    this.model.set('olympicsRatio', this.$('#olympics-ratio').val());
   },
 
   onCredit: function() {

@@ -39,7 +39,6 @@ var MEME_SETTINGS = {
     {text: 'Ted Cruz', value: '<%= image_path("candidates/ted_cruz.png") %>'}
   ],
   candidateVertical: 0.125,
-  candidateNew: '<%= image_path("candidates_new/BenCarson.png") %>',
   candidateNewOpts: [
     {text: 'None', value: ''},
     {text: 'Ben Carson', value: '<%= image_path("candidates_new/BenCarson.png") %>'},
@@ -58,8 +57,6 @@ var MEME_SETTINGS = {
     {text: 'Rick Santorum', value: '<%= image_path("candidates_new/RickSantorum.png") %>'},
     {text: 'Ted Cruz', value: '<%= image_path("candidates_new/TedCruz.png") %>'},
   ],
-
-  olympics: '<%= image_path("olympics/archery.png") %>',
   olympicsOpts: [
     {text: 'None', value: ''},
     {text: 'Archery', value: '<%= image_path("olympics/archery.png") %>'},
@@ -121,9 +118,11 @@ var MEME_SETTINGS = {
     {text: 'Winner', value: '<%= image_path("olympics/winner.png") %>'},
     {text: 'Wrestling', value: '<%= image_path("olympics/wrestling.png") %>'},
   ],
-
-
   candidateNewHorizontal: 0,
+  olympicsHorizontal: 0,
+  olympicsRatio: 0.75,
+  olympicsSize: 200,
+  olympicsVertical: .125,
   creditText: '',
   creditSize: 12,
   downloadName: 'social_card',
