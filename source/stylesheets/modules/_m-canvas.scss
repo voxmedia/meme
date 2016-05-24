@@ -1,8 +1,24 @@
 $m: '.m-canvas';
 
+.canvas-wrapper {
+  position: relative;
+  width: 66.67%;
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
+}
+
 #{$m} {
+  text-align: center;
   @media screen and (min-width: 700px) {
-    width: 70%;
+    position: fixed;
+    width: inherit;
+    max-width: 693px;    
+  }
+
+  @media screen and (max-width: 700px) {
+    margin-top: 50px;  
   }
 
   #{$m}__canvas {
@@ -13,7 +29,13 @@ $m: '.m-canvas';
     }
   }
 
-  #{$m}__download a {
+  #{$m}__refresh,
+  #{$m}__download {
+    width: 49%;
+    display: inline-block;
+  }
+
+  #{$m}__refresh a {
     background: $theme-color;
     border: none;
     border-radius: 5px;
@@ -23,10 +45,37 @@ $m: '.m-canvas';
     line-height: 50px;
     text-align: center;
     text-decoration: none;
-    @include transition (background-color ease-in-out 0.3s);
+    @include transition (background-color ease-in-out 0.1s);
 
     &:hover {
-      background: lighten($theme-color, 25);
+      background: lighten($theme-color, 5);
+    }
+
+    .fa-refresh {
+      position: relative;
+      padding-right: 3px;
+    }
+  }
+
+  #{$m}__download a {
+    background: #4D9E5C;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    @include transition (background-color ease-in-out 0.1s);
+
+    &:hover {
+      background: lighten(#4D9E5C, 5);
+    }
+
+    .fa-download {
+      position: relative;
+      padding-right: 3px;
     }
   }
 

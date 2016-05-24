@@ -1,40 +1,210 @@
 <form class="m-editor" id="meme-editor-view">
-  <div class="dropzone" id="dropzone">Drop Image Here</div>
-  
-  <h2><label for="image-scale">Resize image</label></h2>
-  <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
-  
-  <h2><label for="headline">Headline</label></h2>
-  <textarea id="headline" name="headline" type="text" value=""></textarea>
-  
-  <select class="text-align" id="text-align">
-    <option value="" disabled>Select alignment</option>
-  </select>
 
-  <select class="font-size" id="font-size">
-    <option value="" disabled>Select a font size</option>
-  </select>
+  <!-- Global -->
+  <h2 class="editor-section-title opened">Global Settings</h2>
+  <div class="editor-section">
 
-  <select class="font-family" id="font-family">
-    <option value="" disabled>Select a font</option>
-  </select>
+    <h2>Presets</h2>
+    <select class="preset" id="preset">
+      <option value="" disabled>Select preset</option>
+      <option value="default" selected>Default</option>
+      <option value="quote">Quote Card</option>
+      <option value="number">Number Card</option>
+    </select>
 
-  <div class="checkbox-group text-shadow">
-    <input id="text-shadow" name="shadow" type="checkbox"> 
-    <label for="text-shadow">Text Shadow</label>
+    <div class="checkbox-group">
+      <input id="show-candidate-new" type="checkbox">
+      <label for="show-candidate-new">Show Candidate</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input id="show-olympics" type="checkbox">
+      <label for="show-olympics">Show Olympics Sport</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input id="show-candidate" type="checkbox">
+      <label for="show-candidate">Show Candidate (Old)</label>
+    </div>
+
+    <div class="checkbox-group">
+      <input id="show-logo" type="checkbox">
+      <label for="show-logo">Show Logo</label>
+    </div>
+
+    <!-- <div class="checkbox-group text-shadow">
+      <input id="text-shadow" name="shadow" type="checkbox">
+      <label for="text-shadow">Text Shadow</label>
+    </div> -->
   </div>
 
-  <select class="watermark" id="watermark">
-    <option value="" disabled>Select a watermark</option>
-  </select>
+  <!-- Candidate -->
+  <div id="candidate-section-new">
+    <h2 class="editor-section-title opened">Candidate Settings</h2>
+    <div class="editor-section">
+      <h2>Candidate</h2>
+      <select class="candidate-new" id="candidate-new">
+        <option value="" disabled>Select candidate face</option>
+      </select>
+      <h2>Horizontal Position</h2>
+      <input id="candidate-new-horizontal" type="range" max="0.2" min="0" step=".02">
+    </div>
+  </div>
 
-  <h2><label for="credit">Credit</label></h2>
-  <input id="credit" name="credit" type="text" value="">
+  <!-- Olympics -->
+  <div id="olympics-section">
+    <h2 class="editor-section-title opened">Olympics Settings</h2>
+    <div class="editor-section">
+      <h2>Sport</h2>
+      <select class="olympics" id="olympics">
+        <option value="" disabled>Select Olympics sport</option>
+      </select>
+      <h2>Horizontal Position</h2>
+      <input id="olympics-horizontal" type="range" max="0.2" min="0" step=".02">
 
-  <div class="m-editor__overlay" id="overlay">
-    <h2>Overlay Color</h2>
+      <h2>Horizontal Position</h2>
+      <input id="olympics-horizontal" type="range" max="1.2" min="-1" step=".025">
+
+      <h2>Vertical Position</h2>
+      <input id="olympics-vertical" type="range" max="1.2" min="-1" step=".025">
+    </div>
+  </div>
+
+  <!-- Candidate -->
+  <div id="candidate-section">
+    <h2 class="editor-section-title opened">Candidate Settings (Old)</h2>
+    <div class="editor-section">
+      <h2>Candidate</h2>
+      <select class="candidate" id="candidate">
+        <option value="" disabled>Select candidate face</option>
+      </select>
+
+      <!-- <h2><label for="candidate-ratio">Image Width/Height Ratio</label></h2>
+      <input id="candidate-ratio" name="candidate-ratio" type="text" value="" /> -->
+
+      <h2>Image Size</h2>
+      <input id="candidate-size" type="range" max="600" min="200" step="10">
+
+      <h2>Horizontal Position</h2>
+      <input id="candidate-horizontal" type="range" max="1.2" min="-1" step=".025">
+
+      <h2>Vertical Position</h2>
+      <input id="candidate-vertical" type="range" max="1.2" min="-1" step=".025">
+    </div>
+  </div>
+
+  <!-- Overlay Color -->
+  <h2 class="editor-section-title opened">Background Settings</h2>
+  <div class="editor-section">
+    <div class="m-editor__overlay" id="overlay">
+      <h2>Color</h2>
+      <ul class="checkbox-group">
+        <!-- <li><label><input type="radio" name="overlay" value=""> None</label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-left-right"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-right-left"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-top-bottom"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-bottom-top"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-light-vertical"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-dark-vertical"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-light-horizontal"></label></li>
+        <li><label><input class="m-editor__swatch" type="radio" name="overlay" value="gradient-middle-dark-horizontal"></label></li> -->
+      </ul>
+    </div>
+
+    <!-- <h2>Opacity</h2>
+    <input id="overlay-opacity" type="range" max="1" min="0" step=".025"> -->
+  </div>
+
+  <!-- Background Image -->
+  <!-- <div class="dropzone" id="dropzone">Drag Image Here</div>
+  <a href="#" id="image-remove">Remove Image</a>
+  <h2><label for="image-scale">Resize Image</label></h2>
+  <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1"> -->
+
+  <!-- Text -->
+  <h2 class="editor-section-title opened">Text Settings</h2>
+  <div class="editor-section">
+    <h2><label for="headline">Text</label></h2>
+    <textarea id="headline" name="headline" type="text" value=""></textarea>
+
+    <div class="checkbox-group">
+      <input id="quotes" type="checkbox">
+      <label for="quotes">Include Quotes</label>
+    </div>
+
+    <h2>Alignment</h2>
+    <select class="text-align" id="text-align">
+      <option value="" disabled>Select alignment</option>
+    </select>
+
+    <h2>Vertical Position</h2>
+    <input id="vertical-align" type="range" max="0.85" min="0" step=".025">
+
+    <h2>Font</h2>
+    <select class="font-family" id="font-family">
+      <option value="" disabled>Select font</option>
+    </select>
+
+    <h2>Font Color</h2>
+    <select class="font-color" id="font-color">
+      <option value="" disabled>Select font color</option>
+    </select>
+
+    <h2>Font Size</h2>
+    <select class="font-size" id="font-size">
+      <option value="" disabled>Select font size</option>
+    </select>
+
+    <h2>Line Height</h2>
+    <input id="leading" type="range" max="2.5" min="1.5" step=".05">
+  </div>
+
+  <!-- Credit -->
+  <!-- <h2><label for="credit">Credit</label></h2>
+  <input id="credit" name="credit" type="text" value=""> -->
+
+  <!-- Score -->
+  <!-- <div class="m-editor__score" id="overlay">
+    <h2>Score</h2>
     <ul class="checkbox-group">
-      <li><label><input type="radio" name="overlay" value=""> None</label></li>
+      <li><label><input type="radio" name="score" value="" checked> None</label></li>
+      <li><label><input type="radio" name="score" value="up"> <i class="fa fa-thumbs-o-up"></i></label></li>
+      <li><label><input type="radio" name="score" value="down"> <i class="fa fa-thumbs-o-down"></i></label></li>
     </ul>
+  </div> -->
+
+  <!-- Bottom Text -->
+  <h2 class="editor-section-title opened">Bottom Text Settings</h2>
+  <div class="editor-section">
+    <h2><label for="bottom-text">Bottom Text (Bold)</label></h2>
+    <input id="bottom-text" name="bottom-text" type="text" value="" placeholder="Write your text here." />
+    <h2><label for="bottom-text-2">Bottom Text</label></h2>
+    <input id="bottom-text-2" name="bottom-text-2" type="text" value="" placeholder="Write your text here." />
+    <h2>Font Size</h2>
+    <select class="bottom-text-font-size" id="bottom-text-font-size">
+      <option value="" disabled>Select font size</option>
+    </select>
+    <h2>Vertical Position</h2>
+    <input id="bottom-text-vertical" type="range" max="1" min="0.8" step=".01">
+  </div>
+
+  <!-- Number Text -->
+  <h2 class="editor-section-title opened">Number Text Settings</h2>
+  <div class="editor-section">
+    <h2><label for="number-text">Number Text</label></h2>
+    <input id="number-text" name="number-text" type="text" value="" placeholder="Write your text here." />
+    <h2>Vertical Position</h2>
+    <input id="number-text-vertical" type="range" max="1.2" min="-0.5" step=".025">
+  </div>
+
+  <!-- Fact Checker -->
+  <h2 class="editor-section-title opened">Fact Checker Settings</h2>
+  <div class="editor-section">
+    <h2>Icons</h2>
+    <select class="fact-checker" id="fact-checker">
+      <option value="" disabled>Select fact checker icons</option>
+    </select>
+    <h2>Vertical Position</h2>
+    <input id="fact-checker-vertical" type="range" max="1.2" min="-0.5" step=".025">
   </div>
 </form>

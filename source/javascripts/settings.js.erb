@@ -1,62 +1,187 @@
 var MEME_SETTINGS = {
-  creditText: 'Source:', // Default "credits" text.
-  creditSize: 12, // Font size for credit text.
-  downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
-  fontColor: 'white', // Universal font color.
-
-  // Universal font family for texts:
-  // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
-  fontFamily: 'Helvetica Neue',
-  // Font family options: set to empty array to disable font selector.
-  // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['Arial', 'Helvetica Neue', 'Comic Sans MS'],
-  
-  // Font size of main headline:
-  fontSize: 24,
-  // Font size options: set to empty array to disable font-size selector.
+  bottomText: '',
+  bottomText2: '',
+  bottomTextFontSize: 34,
+  bottomTextFontSizeOpts: [
+    {text: 'Small', value: 28},
+    {text: 'Default', value: 34}
+  ],
+  bottomTextVertical: 0.9,
+  candidate: '<%= image_path("candidates/barack_obama.png") %>',
+  candidateHorizontal: 0.71,
+  candidateRatio: 0.75,
+  candidateSize: 400,
+  candidateOpts: [
+    {text: 'None', value: ''},
+    {text: 'Barack Obama', value: '<%= image_path("candidates/barack_obama.png") %>'},
+    {text: 'Ben Carson', value: '<%= image_path("candidates/ben_carson.png") %>'},
+    {text: 'Bernie Sanders', value: '<%= image_path("candidates/bernie_sanders.png") %>'},
+    {text: 'Bobby Jindal', value: '<%= image_path("candidates/bobby_jindal.png") %>'},
+    {text: 'Carly Fiorina', value: '<%= image_path("candidates/carly_fiorina.png") %>'},
+    {text: 'Chris Christie', value: '<%= image_path("candidates/chris_christie.png") %>'},
+    {text: 'Donald Trump', value: '<%= image_path("candidates/donald_trump.png") %>'},
+    {text: 'George Pataki', value: '<%= image_path("candidates/george_pataki.png") %>'},
+    {text: 'Hillary Clinton', value: '<%= image_path("candidates/hillary_clinton.png") %>'},
+    {text: 'Jeb Bush', value: '<%= image_path("candidates/jeb_bush.png") %>'},
+    {text: 'Jim Gilmore', value: '<%= image_path("candidates/jim_gilmore.png") %>'},
+    {text: 'Jim Webb', value: '<%= image_path("candidates/jim_webb.png") %>'},
+    {text: 'Joe Biden', value: '<%= image_path("candidates/joe_biden.png") %>'},
+    {text: 'John Kasich', value: '<%= image_path("candidates/john_kasich.png") %>'},
+    {text: 'Lincoln Chaffee', value: '<%= image_path("candidates/lincoln_chaffee.png") %>'},
+    {text: 'Lindsey Graham', value: '<%= image_path("candidates/lindsey_graham.png") %>'},
+    {text: 'Marco Rubio', value: '<%= image_path("candidates/marco_rubio.png") %>'},
+    {text: 'Martin O\'Malley', value: '<%= image_path("candidates/martin_omalley.png") %>'},
+    {text: 'Mike Huckabee', value: '<%= image_path("candidates/mike_huckabee.png") %>'},
+    {text: 'Rand Paul', value: '<%= image_path("candidates/rand_paul.png") %>'},
+    {text: 'Rick Perry', value: '<%= image_path("candidates/rick_perry.png") %>'},
+    {text: 'Rick Santorum', value: '<%= image_path("candidates/rick_santorum.png") %>'},
+    {text: 'Scott Walker', value: '<%= image_path("candidates/scott_walker.png") %>'},
+    {text: 'Ted Cruz', value: '<%= image_path("candidates/ted_cruz.png") %>'}
+  ],
+  candidateVertical: 0.125,
+  candidateNewOpts: [
+    {text: 'None', value: ''},
+    {text: 'Ben Carson', value: '<%= image_path("candidates_new/BenCarson.png") %>'},
+    {text: 'Bernie Sanders', value: '<%= image_path("candidates_new/BernieSanders.png") %>'},
+    {text: 'Carly Fiorina', value: '<%= image_path("candidates_new/CarlyFiorina.png") %>'},
+    {text: 'Chris Christie', value: '<%= image_path("candidates_new/ChrisChristie.png") %>'},
+    {text: 'Donald Trump', value: '<%= image_path("candidates_new/DonaldTrump.png") %>'},
+    {text: 'Hillary Clinton', value: '<%= image_path("candidates_new/HillaryClinton.png") %>'},
+    {text: 'Jeb Bush', value: '<%= image_path("candidates_new/JebBush.png") %>'},
+    {text: 'Jim Gilmore', value: '<%= image_path("candidates_new/JimGilmore.png") %>'},
+    {text: 'John Kasich', value: '<%= image_path("candidates_new/John Kasich.png") %>'},
+    {text: 'Marco Rubio', value: '<%= image_path("candidates_new/Marco Rubio.png") %>'},
+    {text: 'Martin O\'Malley', value: '<%= image_path("candidates_new/MartinOMalley.png") %>'},
+    {text: 'Mike Huckabee', value: '<%= image_path("candidates_new/MikeHuckabee.png") %>'},
+    {text: 'Rand Paul', value: '<%= image_path("candidates_new/RandPaul.png") %>'},
+    {text: 'Rick Santorum', value: '<%= image_path("candidates_new/RickSantorum.png") %>'},
+    {text: 'Ted Cruz', value: '<%= image_path("candidates_new/TedCruz.png") %>'},
+  ],
+  olympicsOpts: [
+    {text: 'None', value: ''},
+    {text: 'Archery', value: '<%= image_path("olympics/archery.png") %>'},
+    {text: 'Artistic Gymnastics', value: '<%= image_path("olympics/artistic_gymnastics.png") %>'},
+    {text: 'Badminton', value: '<%= image_path("olympics/badminton.png") %>'},
+    {text: 'Basketball 1', value: '<%= image_path("olympics/basketball_1.png") %>'},
+    {text: 'Basketball 2', value: '<%= image_path("olympics/basketball_2.png") %>'},
+    {text: 'Beach Volleyball', value: '<%= image_path("olympics/beachvolley.png") %>'},
+    {text: 'BMX', value: '<%= image_path("olympics/bmx.png") %>'},
+    {text: 'Boxing', value: '<%= image_path("olympics/boxing.png") %>'},
+    {text: 'Canoe Kayak Slalom', value: '<%= image_path("olympics/canoe_kayak_slalom.png") %>'},
+    {text: 'Canoe Kayak Sprint', value: '<%= image_path("olympics/canoe_kayak_sprint.png") %>'},
+    {text: 'Discus Throw', value: '<%= image_path("olympics/discus_throw.png") %>'},
+    {text: 'Diving', value: '<%= image_path("olympics/diving.png") %>'},
+    {text: 'Equestrian Dressage', value: '<%= image_path("olympics/equestrian_dressage.png") %>'},
+    {text: 'Equestrian Eventing', value: '<%= image_path("olympics/equestrian_eventing.png") %>'},
+    {text: 'Equestrian Jumping', value: '<%= image_path("olympics/equestrian_jumping.png") %>'},
+    {text: 'Fencing', value: '<%= image_path("olympics/fencing.png") %>'},
+    {text: 'Floor Exercises', value: '<%= image_path("olympics/floor_exercises.png") %>'},
+    {text: 'Golf', value: '<%= image_path("olympics/golf.png") %>'},
+    {text: 'Handball', value: '<%= image_path("olympics/handball.png") %>'},
+    {text: 'High Jump', value: '<%= image_path("olympics/high_jump.png") %>'},
+    {text: 'Hockey', value: '<%= image_path("olympics/hockey.png") %>'},
+    {text: 'Horizontal Bars', value: '<%= image_path("olympics/horizontal_bars.png") %>'},
+    {text: 'Hurdles', value: '<%= image_path("olympics/hurdles.png") %>'},
+    {text: 'Javelin', value: '<%= image_path("olympics/javelin.png") %>'},
+    {text: 'Judo', value: '<%= image_path("olympics/judo.png") %>'},
+    {text: 'Long Jump', value: '<%= image_path("olympics/long_jump.png") %>'},
+    {text: 'Marathon Swimming', value: '<%= image_path("olympics/marathon_swimming.png") %>'},
+    {text: 'Modern Pentathlon', value: '<%= image_path("olympics/modern_pentathlon.png") %>'},
+    {text: 'Mountain Bike', value: '<%= image_path("olympics/mountain_bike.png") %>'},
+    {text: 'Paralell Bars', value: '<%= image_path("olympics/paralel_bars.png") %>'},
+    {text: 'Podium', value: '<%= image_path("olympics/podium.png") %>'},
+    {text: 'Pole Vault', value: '<%= image_path("olympics/pole_vault.png") %>'},
+    {text: 'Pommel Horse', value: '<%= image_path("olympics/pommel_horse.png") %>'},
+    {text: 'Relays', value: '<%= image_path("olympics/relays.png") %>'},
+    {text: 'Rhythmic Gymnastics', value: '<%= image_path("olympics/rhythmic_gymnastics.png") %>'},
+    {text: 'Rings', value: '<%= image_path("olympics/rings.png") %>'},
+    {text: 'Road Cycling', value: '<%= image_path("olympics/road_cycling.png") %>'},
+    {text: 'Rowing', value: '<%= image_path("olympics/rowing.png") %>'},
+    {text: 'Rugby', value: '<%= image_path("olympics/rugby.png") %>'},
+    {text: 'Sailing', value: '<%= image_path("olympics/sailing.png") %>'},
+    {text: 'Shooting', value: '<%= image_path("olympics/shooting.png") %>'},
+    {text: 'Soccer', value: '<%= image_path("olympics/soccer.png") %>'},
+    {text: 'Swimming', value: '<%= image_path("olympics/swimming.png") %>'},
+    {text: 'Synchronized Swimming', value: '<%= image_path("olympics/synchronized_swimming.png") %>'},
+    {text: 'Table Tennis', value: '<%= image_path("olympics/table_tennis.png") %>'},
+    {text: 'Taekwondo', value: '<%= image_path("olympics/taekwondo.png") %>'},
+    {text: 'Tennis', value: '<%= image_path("olympics/tennis.png") %>'},
+    {text: 'Torch', value: '<%= image_path("olympics/torch.png") %>'},
+    {text: 'Track Cycling', value: '<%= image_path("olympics/track_cycling.png") %>'},
+    {text: 'Track', value: '<%= image_path("olympics/track.png") %>'},
+    {text: 'Trampoline', value: '<%= image_path("olympics/trampoline.png") %>'},
+    {text: 'Triathlon', value: '<%= image_path("olympics/triathlon.png") %>'},
+    {text: 'Uneven Bars', value: '<%= image_path("olympics/uneven_bars.png") %>'},
+    {text: 'Volleyball', value: '<%= image_path("olympics/volleyball.png") %>'},
+    {text: 'Waterpolo', value: '<%= image_path("olympics/waterpolo.png") %>'},
+    {text: 'Weightlifting', value: '<%= image_path("olympics/weighlifting.png") %>'},
+    {text: 'Winner', value: '<%= image_path("olympics/winner.png") %>'},
+    {text: 'Wrestling', value: '<%= image_path("olympics/wrestling.png") %>'},
+  ],
+  candidateNewHorizontal: 0,
+  olympicsHorizontal: 0,
+  olympicsRatio: 0.75,
+  olympicsSize: 200,
+  olympicsVertical: .125,
+  creditText: '',
+  creditSize: 12,
+  downloadName: 'social_card',
+  factChecker: '',
+  factCheckerOpts: [
+    {text: 'None', value: ''},
+    {text: '1 Pinocchio', value: '1p'},
+    {text: '2 Pinocchios', value: '2p'},
+    {text: '3 Pinocchios', value: '3p'},
+    {text: '4 Pinocchios', value: '4p'},
+    {text: '1 Gepetto', value: '1g'},
+    {text: '2 Gepettos', value: '2g'},
+    {text: '3 Gepettos', value: '3g'},
+    {text: '4 Gepettos', value: '4g'},
+  ],
+  factCheckerVertical: 0.05,
+  fontColor: 'black',
+  fontColorOpts: [
+    {text: 'Black', value: 'black'},
+    {text: 'White', value: 'white'}
+  ],
+  fontFamily: 'PostoniStandard-Regular',
+  fontFamilyOpts: ['FranklinITCProBold', 'PostoniStandard-Regular', 'PostoniStandard-Bold', 'PostoniStandard-Italic', 'PostoniStandard-Bold_Italic'],
+  fontSize: 60,
   fontSizeOpts: [
-    {text: 'Small text', value: 14},
-    {text: 'Medium text', value: 24},
-    {text: 'Large text', value: 36}
+    {text: 'Medium', value: 50},
+    {text: 'Large', value: 60},
+    {text: 'Very Large', value: 70}
   ],
-
-  headlineText: 'Write your own headline', // Default headline text.
-  height: 378, // Canvas rendering height.
-  imageScale: 1, // Background image scale.
-  imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
-  overlayAlpha: 0.5, // Opacity of image overlay.
-
-  // Image overlay color, or blank ('') for no overlay:
-  overlayColor: '#000',
-  // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#000', '#777', '#2980b9'],
-  paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
-  
-  // Text alignment: valid settings are "left", "center", and "right".
+  headlineText: 'Write your text here.',
+  height: 630,
+  imageScale: 1,
+  imageSrc: '',
+  leading: 1.5,
+  numberText: '',
+  numberTextVertical: 0.05,
+  overlayAlpha: 1.0,
+  overlayColor: '#00b5bb',
+  overlayColorOpts: ['#000000', '#FFFFFF','#ffc20e','#94B0Be', '#c4894f','#00b5bb', '#c7aa53'],
+  paddingRatio: 0.05,
+  quotes: true,
+  showCandidate: false,
+  showCandidateNew: true,
+  showOlympics: true,
+  showFactChecker: false,
+  showLogo: false,
+  sponsorImage: '<%= image_path("sponsor/netflix.png") %>',
   textAlign: 'left',
-  // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
-    {text: 'Align left', value: 'left'}, 
-    {text: 'Align center', value: 'center'},
-    {text: 'Align right', value: 'right'}
+    {text: 'Left', value: 'left'},
+    {text: 'Center', value: 'center'},
+    {text: 'Right', value: 'right'}
   ],
-
-  textShadow: false, // Text shadow toggle.
-  textShadowEdit: true, // Toggles text shadow control within the editor.
-  watermarkAlpha: 1, // Opacity of watermark image.
-  watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
-
-  // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
-  watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
-  
-  // Watermark image options: set to empty array to disable watermark picker.
-  // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
-  // Otherwise, just leave "data" attributes blank and allow images to load from your server.
-  watermarkOpts: [
-    {text: 'Vox', value: '<%= image_path("vox.png") %>', data: '<%= asset_data_uri("vox.png") %>'},
-    {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''}
-  ],
-
-  width: 755 // Canvas rendering width.
+  textShadow: false,
+  textShadowEdit: true,
+  verticalAlign: 0.175,
+  watermarkAlpha: 1,
+  watermarkMaxWidthRatio: 0.25,
+  watermarkSrc: '<%= image_path("wp_logo.png") %>',
+  watermarkOpts: [],
+  width: 1200
 };

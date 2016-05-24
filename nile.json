@@ -1,0 +1,36 @@
+{
+  "name": "socialcard",
+  "cluster": "alpine.nile.works",
+  "image": "quay.io/washpost/socialcard",
+  "port": 80,
+  "paths": ["/"],
+  "builds": [
+    {
+      "autodeploy": true,
+      "branch": "master",
+      "notify": "socialcard",
+      "tags": [
+        "1.0.0"
+      ],
+      "version": "1.0.0"
+    }
+  ],
+  "environment": {
+
+  },
+  "stages": [{
+    "name": "prod",
+    "scale": 2,
+    "domain": "socialcard.wpit.nile.works",
+    "environment": {
+      "NODE_ENV":"production",
+      "PRODUCTION_PORT": "80"
+    }
+  }],
+  "routes": [
+    {
+      "path": "/",
+      "external": false
+    }
+  ]
+}

@@ -39,10 +39,42 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
 
+
+
+    // ********************************
+    // **** OFFSET FOR SPONSOR BAR ****
+    // ********************************
+    var offset = 0;
+
+
+
+    // Candidate display
+    if(!d.showCandidate && !d.showCandidateNew && !d.showOlympics) {
+      var widerText = true;
+    }
+    else {
+      var widerText = false;
+    }
+
     // Reset canvas display:
     this.canvas.width = d.width;
     this.canvas.height = d.height;
     ctx.clearRect(0, 0, d.width, d.height);
+
+
+
+    function renderSponsor(ctx) {
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 630, 1280, 100);
+      var source = new Image();
+      source.src = d.sponsorImage;
+      source.onload = function(){
+        ctx.drawImage(source,779,649,64 * source.width / source.height,64);
+        saveData();
+      }
+    }
+
+
 
     function renderBackground(ctx) {
       // Base height and width:
@@ -65,7 +97,64 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.overlayColor) {
         ctx.save();
         ctx.globalAlpha = d.overlayAlpha;
-        ctx.fillStyle = d.overlayColor;
+
+        switch(d.overlayColor) {
+          case 'gradient-left-right':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-right-left':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-top-bottom':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+            case 'gradient-bottom-top':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-light-vertical':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(0.5,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-dark-vertical':
+            var grd=ctx.createLinearGradient(0,d.height,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(0.5,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-light-horizontal':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"black");
+            grd.addColorStop(0.5,"transparent");
+            grd.addColorStop(1,"black");
+            ctx.fillStyle=grd;
+            break;
+          case 'gradient-middle-dark-horizontal':
+            var grd=ctx.createLinearGradient(d.width,0,0,0);
+            grd.addColorStop(0,"transparent");
+            grd.addColorStop(0.5,"black");
+            grd.addColorStop(1,"transparent");
+            ctx.fillStyle=grd;
+            break;
+          default:
+            ctx.fillStyle = d.overlayColor;
+        }
+
         ctx.fillRect(0, 0, d.width, d.height);
         ctx.globalAlpha = 1;
         ctx.restore();
@@ -73,7 +162,12 @@ MEME.MemeCanvasView = Backbone.View.extend({
     }
 
     function renderHeadline(ctx) {
-      var maxWidth = Math.round(d.width * 0.75);
+      if(widerText) {
+        var maxWidth = Math.round(d.width * 0.925);
+      }
+      else {
+        var maxWidth = Math.round(d.width * 0.625);
+      }
       var x = padding;
       var y = padding;
 
@@ -83,46 +177,63 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
       // Text shadow:
       if (d.textShadow) {
-        ctx.shadowColor = "#666";
-        ctx.shadowOffsetX = -2;
+        ctx.shadowColor = "#333";
+        ctx.shadowOffsetX = 1;
         ctx.shadowOffsetY = 1;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 5;
       }
 
       // Text alignment:
       if (d.textAlign == 'center') {
         ctx.textAlign = 'center';
         x = d.width / 2;
-        y = d.height - d.height / 1.5;
-        maxWidth = d.width - d.width / 3;
+        maxWidth = Math.round(d.width * 0.925);
 
       } else if (d.textAlign == 'right' ) {
         ctx.textAlign = 'right';
-        x = d.width - padding;
+        x = d.width - padding + 20;
 
       } else {
         ctx.textAlign = 'left';
       }
 
-      var words = d.headlineText.split(' ');
-      var line  = '';
+      // Vertical alignment
+      y = (d.height-offset) * d.verticalAlign;
 
-      for (var n = 0; n < words.length; n++) {
-        var testLine  = line + words[n] + ' ';
-        var metrics   = ctx.measureText( testLine );
-        var testWidth = metrics.width;
 
-        if (testWidth > maxWidth && n > 0) {
-          ctx.fillText(line, x, y);
-          line = words[n] + ' ';
-          y += Math.round(d.fontSize * 1.5);
-        } else {
-          line = testLine;
-        }
+      var paragraphs = d.headlineText.split('\n');
+      if(d.quotes) {
+        ctx.fillText('“', x-26, y);
       }
 
-      ctx.fillText(line, x, y);
-      ctx.shadowColor = 'transparent';
+      for (var i = 0; i < paragraphs.length; i++) {
+
+        var words = paragraphs[i].split(' ');
+        var line  = '';
+        var startingQuotePlaced = false;
+
+        for (var n = 0; n < words.length; n++) {
+          var testLine  = line + words[n] + ' ';
+          var metrics   = ctx.measureText( testLine );
+          var testWidth = metrics.width;
+
+          if (testWidth > maxWidth && n > 0) {
+            ctx.fillText(convertQuotes(line), x, y);
+            line = words[n] + ' ';
+            y += Math.round(d.fontSize * d.leading);
+          } else {
+            line = testLine;
+          }
+        }
+
+        if(i == paragraphs.length-1 && d.quotes) {
+          line = line.trim() + '"';
+        }
+        ctx.fillText(convertQuotes(line), x, y);
+        ctx.shadowColor = 'transparent';
+
+        y += Math.round(d.fontSize * d.leading);
+      }
     }
 
     function renderCredit(ctx) {
@@ -131,6 +242,48 @@ MEME.MemeCanvasView = Backbone.View.extend({
       ctx.fillStyle = d.fontColor;
       ctx.font = 'normal '+ d.creditSize +'pt '+ d.fontFamily;
       ctx.fillText(d.creditText, padding, d.height - padding);
+    }
+
+    function renderBottomText(ctx) {
+      ctx.textBaseline = 'bottom';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = d.fontColor;
+      ctx.font = 'normal '+d.bottomTextFontSize+'px "FranklinITCProBold"';
+
+      if (d.textShadow) {
+        ctx.globalAlpha = d.watermarkAlpha;
+        ctx.shadowColor = "#333";
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowBlur = 3;
+      }
+
+      // First text
+      ctx.fillText(d.bottomText, padding, d.bottomTextVertical*(d.height-offset)-30);
+
+      // Second text
+      var firstTextWidth = ctx.measureText(d.bottomText).width;
+      ctx.font = 'normal '+d.bottomTextFontSize+'px "FranklinITCProThin"';
+      ctx.fillText(d.bottomText2, firstTextWidth+padding, d.bottomTextVertical*(d.height-offset)-30);
+      ctx.shadowColor = 'transparent';
+    }
+
+    function renderNumberText(ctx) {
+      ctx.textBaseline = 'top';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = d.fontColor;
+      ctx.font = 'normal 140px "PostoniStandard-Bold_Italic"';
+
+      if (d.textShadow) {
+        ctx.globalAlpha = d.watermarkAlpha;
+        ctx.shadowColor = "#333";
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowBlur = 5;
+      }
+
+      ctx.fillText(d.numberText, padding, d.numberTextVertical*(d.height-offset)+40);
+      ctx.shadowColor = 'transparent';
     }
 
     function renderWatermark(ctx) {
@@ -149,30 +302,139 @@ MEME.MemeCanvasView = Backbone.View.extend({
           tw = mw;
         }
 
-        ctx.globalAlpha = d.watermarkAlpha;
-        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-padding-tw, d.height-padding-th, tw, th);
+        if (d.textShadow) {
+          ctx.globalAlpha = d.watermarkAlpha;
+          ctx.shadowColor = "#333";
+          ctx.shadowOffsetX = 1;
+          ctx.shadowOffsetY = 1;
+          ctx.shadowBlur = 3;
+        }
+        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-40-tw, (d.height-offset)-30-th, tw, th);
         ctx.globalAlpha = 1;
+        ctx.shadowColor = 'transparent';
       }
     }
 
+    function renderCandidate(ctx) {
+      var source = new Image();
+      source.src = d.candidate;
+      var h = d.candidateSize;
+      source.onload = function(){
+        ctx.drawImage(source,d.candidateHorizontal*d.width,d.candidateVertical*(d.height-offset),d.candidateRatio*h,h);
+        saveData();
+      }
+    }
+
+    function renderCandidateNew(ctx) {
+      var source = new Image();
+      source.src = d.candidateNew;
+      source.onload = function(){
+        ctx.drawImage(source,d.candidateNewHorizontal*d.width,0);
+        saveData();
+      }
+    }
+
+    function renderOlympics(ctx) {
+      var source = new Image();
+      source.src = d.olympics;
+      source.onload = function(){
+        ctx.drawImage(source,d.olympicsHorizontal*d.width,0);
+        saveData();
+      }
+    }
+
+    function renderFactChecker(ctx) {
+      if(d.factChecker) {
+        var type = d.factChecker.charAt(1);
+        var count = d.factChecker.charAt(0);
+        if(type === 'p') {
+          var source = new Image();
+          source.src = '../../images/pinocchio.svg';
+          source.onload = function(){
+            for(var i=0; i<count; i++) {
+              ctx.drawImage(source,25+(150*i),d.factCheckerVertical*(d.height-offset)-15,200,200);
+            }
+            saveData();
+          }
+        }
+        else {
+          ctx.textBaseline = 'top';
+          ctx.textAlign = 'left';
+          ctx.fillStyle = d.fontColor;
+          ctx.font = 'normal 100px FontAwesome';
+          if (d.textShadow) {
+            ctx.globalAlpha = d.watermarkAlpha;
+            ctx.shadowColor = "#333";
+            ctx.shadowOffsetX = 1;
+            ctx.shadowOffsetY = 1;
+            ctx.shadowBlur = 5;
+          }
+          var str = '';
+          for(var i=0; i<count; i++) {
+            str += '\uf058 ';
+          }
+          ctx.fillText(str, 60, d.factCheckerVertical*d.height+55);
+          ctx.shadowColor = 'transparent';
+        }
+      }
+    }
+
+    var self = this;
+    var data = '';
     renderBackground(ctx);
     renderOverlay(ctx);
+    // renderSponsor(ctx);
     renderHeadline(ctx);
-    renderCredit(ctx);
-    renderWatermark(ctx);
+    // renderCredit(ctx);
+    renderBottomText(ctx);
+    renderNumberText(ctx);
+    if(d.showLogo) { renderWatermark(ctx) };
+    renderFactChecker(ctx);
+    if(d.showCandidate) { renderCandidate(ctx); }
+    if(d.showCandidateNew) { renderCandidateNew(ctx); }
+    if(d.showOlympics) { renderOlympics(ctx); }
+    saveData();
 
-    var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
-    this.$('#meme-download').attr({
-      'href': data,
-      'download': (d.downloadName || 'share') + '.png'
-    });
+    function saveData() {
+      data = self.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
+      self.$('#meme-download').attr({
+        'href': data,
+        'download': 'social_card [' + (new Date()).toString() + '].png'
+      });
+    }
 
     // Enable drag cursor while canvas has artwork:
     this.canvas.style.cursor = this.model.background.width ? 'move' : 'default';
+
+    /* Smartquotes conversion
+       Copied from https://gist.github.com/karbassi/6216412#file-jquery-curlies-js-L5-L18 */
+    function convertQuotes(str) {
+      return str
+        /* opening singles */
+        .replace(/(^|[-\u2014\s(\["])'/g, "$1\u2018")
+
+        /* closing singles & apostrophes */
+        .replace(/'/g, "\u2019")
+
+        /* opening doubles */
+        .replace(/(^|[-\u2014/\[(\u2018\s])"/g, "$1\u201c")
+
+        /* closing doubles */
+        .replace(/"/g, "\u201d")
+
+        /* em-dashes */
+        .replace(/--/g, "\u2014");
+    }
   },
 
   events: {
-    'mousedown canvas': 'onDrag'
+    'mousedown canvas': 'onDrag',
+    'click #refresh-canvas': 'refreshCanvas'
+  },
+
+  refreshCanvas: function(evt) {
+    evt.preventDefault();
+    this.render();
   },
 
   // Performs drag-and-drop on the background image placement:

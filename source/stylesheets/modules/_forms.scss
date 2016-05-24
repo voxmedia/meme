@@ -6,11 +6,19 @@ form {
   }
 
   select,
-  textarea,
   input[type="text"],
-  input[type="range"],
+  input[type="range"] {
+    margin-bottom: 1.25em;
+    width: 100%;
+  }
+
+  textarea {
+    margin-bottom: 0.25em;
+    width: 100%;
+  }
+
   .checkbox-group {
-    margin-bottom: 1.5em;
+    margin-bottom: 0.75em;
     width: 100%;
   }
 
@@ -22,12 +30,13 @@ form {
 
   textarea,
   input[type="text"] {
-    border: 1px solid #efefef;
+    border: 1px solid #ccc;
     outline: 0;
     padding: 6px 5px;
+    @include transition (box-shadow ease-in-out 0.1s);
 
     &:focus {
-      border: 1px solid lighten($theme-color, 40);
+      box-shadow: 0 0 2px lighten($theme-color, 15);
     }
   }
 
