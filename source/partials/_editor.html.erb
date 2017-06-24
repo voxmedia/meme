@@ -1,40 +1,61 @@
 <form class="m-editor" id="meme-editor-view">
-  <div class="dropzone" id="dropzone">Drop Image Here</div>
-  
-  <h2><label for="image-scale">Resize image</label></h2>
-  <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
-  
-  <h2><label for="headline">Headline</label></h2>
-  <textarea id="headline" name="headline" type="text" value=""></textarea>
-  
-  <select class="text-align" id="text-align">
-    <option value="" disabled>Select alignment</option>
-  </select>
+  <ul class="pane-toggle">
+      <li class="content-tab tab" data-pane="content-pane"><h2>Content</h2></li>
+      <li class="design-tab tab" data-pane="design-pane"><h2>Design</h2></li>
+  </ul>
 
-  <select class="font-size" id="font-size">
-    <option value="" disabled>Select a font size</option>
-  </select>
 
-  <select class="font-family" id="font-family">
-    <option value="" disabled>Select a font</option>
-  </select>
+  <div class="content-pane drawer">
+      <h2><label for="headline">Headline</label></h2>
+      <textarea id="headline" name="headline" type="text" value=""></textarea>
 
-  <div class="checkbox-group text-shadow">
-    <input id="text-shadow" name="shadow" type="checkbox"> 
-    <label for="text-shadow">Text Shadow</label>
+      <select class="text-align" id="text-align">
+        <option value="" disabled>Select alignment</option>
+      </select>
+
+      <select class="font-size" id="font-size">
+        <option value="" disabled>Select a font size</option>
+      </select>
+
+      <select class="font-family" id="font-family">
+        <option value="" disabled>Select a font</option>
+      </select>
+
+      <div class="checkbox-group text-shadow">
+        <input id="text-shadow" name="shadow" type="checkbox">
+        <label for="text-shadow">Text Shadow</label>
+      </div>
+
   </div>
 
-  <select class="watermark" id="watermark">
-    <option value="" disabled>Select a watermark</option>
-  </select>
+  <div class="design-pane drawer">
+    <div class="dropzone" id="dropzone">Drop Image Here</div>
 
-  <h2><label for="credit">Credit</label></h2>
-  <input id="credit" name="credit" type="text" value="">
+    <h2><label for="image-scale">Resize image</label></h2>
+    <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
 
-  <div class="m-editor__overlay" id="overlay">
-    <h2>Overlay Color</h2>
-    <ul class="checkbox-group">
-      <li><label><input type="radio" name="overlay" value=""> None</label></li>
-    </ul>
+    <select class="watermark" id="watermark">
+      <option value="" disabled>Select a watermark</option>
+    </select>
+
+    <h2><label for="credit">Credit</label></h2>
+    <input id="credit" name="credit" type="text" value="">
+
+    <h2><label for="overlay-alpha">Overlay Alpha</label></h2>
+    <input id="overlay-alpha" type="range" max="1" min=".01" step=".01" value="1">
+
+    <div class="m-editor__overlay" id="overlay">
+      <h2>Overlay Color</h2>
+      <ul class="checkbox-group">
+        <li><label><input type="radio" name="overlay" value=""> None</label></li>
+      </ul>
+    </div>
+
+    <div class="m-editor__backgroundcolor" id="background-color">
+      <h2>Background Color</h2>
+      <ul class="checkbox-group">
+        <li><label><input type="radio" name="background-color" value=""> None</label></li>
+      </ul>
+    </div>
   </div>
 </form>

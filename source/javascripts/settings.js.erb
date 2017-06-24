@@ -2,6 +2,11 @@ var MEME_SETTINGS = {
   creditText: '', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
+
+// Background color options (ezra building)
+  backgroundColor: null,
+  backgroundColorOpts: ["#FFF", "#292929", "#CCC", "#7AB8CF", "#FFF200"],
+
   fontColor: 'white', // Universal font color.
 
   // Universal font family for texts:
@@ -9,8 +14,8 @@ var MEME_SETTINGS = {
   fontFamily: 'Helvetica',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['Arial', 'Helvetica Neue', 'Montserrat'],
-  
+  fontFamilyOpts: ['Arial', 'Helvetica Neue'],
+
   // Font size of main headline:
   fontSize: 24,
   // Font size options: set to empty array to disable font-size selector.
@@ -31,12 +36,12 @@ var MEME_SETTINGS = {
   // Overlay color options: set to empty array to disable overlay options selector.
   overlayColorOpts: ['#000', '#777', '#2980b9'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
-  
+
   // Text alignment: valid settings are "left", "center", and "right".
   textAlign: 'left',
   // Text alignment options: set to empty array to disable alignment picker.
   textAlignOpts: [
-    {text: 'Align left', value: 'left'}, 
+    {text: 'Align left', value: 'left'},
     {text: 'Align center', value: 'center'},
     {text: 'Align right', value: 'right'}
   ],
@@ -49,7 +54,7 @@ var MEME_SETTINGS = {
   // Path to the watermark image source, or blank for no watermark:
   // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
   // watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
-  
+
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
