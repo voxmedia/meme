@@ -54,6 +54,26 @@ MEME.MemeEditorView = Backbone.View.extend({
       $("#font-family").append(buildOptions(d.fontFamilyOpts)).show();
     }
 
+    // Build font color options:
+    if (d.fontColorOpts && d.fontColorOpts.length) {
+      var fontOpts = _.reduce(
+        d.fontColorOpts,
+        function(memo, opt) {
+          var color = opt.hasOwnProperty("value") ? opt.value : opt;
+          return (memo +=
+            '<li><label><input class="m-editor__swatch" style="background-color:' +
+            color +
+            '" type="radio" name="font-color" value="' +
+            color +
+            '"></label></li>');
+        },
+        ""
+      );
+
+      $("#font-color").show().find("ul").append(fontOpts);
+    }
+
+
     // Build watermark options:
     if (d.watermarkOpts && d.watermarkOpts.length) {
       $("#watermark").append(buildOptions(d.watermarkOpts)).show();
@@ -106,6 +126,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$("#image-scale").val(d.imageScale);
     this.$("#font-size").val(d.fontSize);
     this.$("#font-family").val(d.fontFamily);
+    this.$("#font-color").val(d.fontColor);
     this.$("#text-align").val(d.textAlign);
     this.$("#text-shadow").prop("checked", d.textShadow);
     this.$("#overlay-alpha").val(d.overlayAlpha);
@@ -123,6 +144,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     "input #image-scale": "onScale",
     "change #font-size": "onFontSize",
     "change #font-family": "onFontFamily",
+    'change [name="font-color"]': "onFontColor",
     "change #watermark": "onWatermark",
     "change #text-align": "onTextAlign",
     "change #text-shadow": "onTextShadow",
@@ -156,6 +178,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onFontFamily: function() {
     this.model.set("fontFamily", this.$("#font-family").val());
+  },
+
+  onFontColor: function() {
+    this.model.set("fontColor", this.$("#font-color").val());
   },
 
   onWatermark: function() {

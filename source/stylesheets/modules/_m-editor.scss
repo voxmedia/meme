@@ -76,6 +76,34 @@ $m: '.m-editor';
     display: none;
   }
 
+  #{$m}__fontcolor {
+    //display: none;
+    margin-bottom:1.5em;
+
+    // Mini-clearfix:
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      label {
+        display: block;
+        float: left;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+
   #{$m}__overlay {
     display: none;
     margin-bottom:1.5em;
@@ -106,6 +134,7 @@ $m: '.m-editor';
 
   #{$m}__backgroundcolor {
     //display: none;
+    margin-bottom:1.5em;
 
     // Mini-clearfix:
     &:before,

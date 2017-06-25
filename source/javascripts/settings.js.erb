@@ -2,18 +2,21 @@ var MEME_SETTINGS = {
   creditText: 'Source:', // Default "credits" text.
   creditSize: 12, // Font size for credit text.
   downloadName: 'share', // The name of the downloaded image file (will have a ".png" extension added).
-  fontColor: 'white', // Universal font color.
 
   // Background color options (ezra building)
   backgroundColor: null,
-  backgroundColorOpts: ["#FFF", "#292929", "#CCC", "#7AB8CF", "#FFF200"],
+  backgroundColorOpts: ["#FFF", "#0094ff", "#003a70", "#f20009"],
 
   // Universal font family for texts:
   // Note that you'll need to included quoted font names as you would in CSS, ie: '"Knockout 28 B"'.
-  fontFamily: 'Helvetica Neue',
+  fontFamily: 'Montserrat',
   // Font family options: set to empty array to disable font selector.
   // These options may also be formatted as {text:'Knockout', value:'"Knockout 28 B"'}.
-  fontFamilyOpts: ['Arial', 'Helvetica Neue', 'Comic Sans MS'],
+  fontFamilyOpts: ['Montserrat','Arial', 'Helvetica Neue'],
+
+  // Font color
+  fontColor: "#000",
+  fontColorOpts: ["#FFF", "#000", "#0094ff", "#003a70", "#f20009"],
 
   // Font size of main headline:
   fontSize: 24,
@@ -51,7 +54,7 @@ var MEME_SETTINGS = {
   watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
+  // Alternatively, use to populate the watermark with base64 data, avoiding Cross-Origin issues.
   watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("walsh-white.png") %>',
 
   // Watermark image options: set to empty array to disable watermark picker.
