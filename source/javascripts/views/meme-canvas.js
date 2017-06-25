@@ -72,11 +72,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
       }
     }
 
-    // function renderBackground(t) {
-    //   l.backgroundColor && (t.fillStyle = l.backgroundColor, t.fillRect(0, 0, l.width, l.height))
-    // }
-
-    //ezra background
     function renderBackgroundColor(ctx) {
       if (d.backgroundColor) {
         ctx.save();
