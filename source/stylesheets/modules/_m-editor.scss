@@ -164,6 +164,7 @@ $m: '.m-editor';
     @include appearance(none);
     background-color: #000;
     border-radius: 3px;
+    border: 1px solid #d3d3d3;
     cursor: pointer;
     display: block;
     height: 100%;
@@ -171,12 +172,13 @@ $m: '.m-editor';
     margin-left: 1em;
     outline: none;
     text-align: center;
-    width: 30px;
+    width: 2em;
 
     &:checked:before {
       content: 'x';
-      color: white;
+      color: #d3d3d3;
       font-size: 18px;
+      line-height: 18px;
       vertical-align: center;
     }
   }
