@@ -34,7 +34,7 @@ var MEME_SETTINGS = {
   height: 378, // Canvas rendering height.
   imageScale: 1, // Background image scale.
   imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
-  overlayAlpha: 0.5, // Opacity of image overlay.
+  overlayAlpha: 0.25, // Opacity of image overlay.
 
   // Image overlay color, or blank ('') for no overlay:
   overlayColor: '#000',
@@ -64,8 +64,8 @@ var MEME_SETTINGS = {
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-      {text: 'Color Logo', value: '<%= image_path("walsh-cmyk.png") %>', data: ''}
-      {text: 'White Logo', value: '<%= image_path("walsh-white.png") %>', data: ''},
+    {text: 'White Logo', value: '<%= image_path("walsh-white.png") %>', data: ''},
+    {text: 'Color Logo', value: '<%= image_path("walsh-cmyk.png") %>', data: ''}
   ],
 
   width: 755 // Canvas rendering width.
