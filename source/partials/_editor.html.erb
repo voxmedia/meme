@@ -13,13 +13,15 @@
         <option value="" disabled>Select alignment</option>
       </select>
 
-      <select class="font-size" id="font-size">
-        <option value="" disabled>Select a font size</option>
-      </select>
-
       <select class="font-family" id="font-family">
         <option value="" disabled>Select a font</option>
       </select>
+
+      <h2><label for="font-size">Font Size</label></h2>
+      <input id="font-size" type="range" max="64" min="18" step=".1" value="24">
+
+      <!-- <h2><label for="letter-spacing">Leter Spacing</label></h2>
+      <input id="letter-spacing" type="range" max="4" min="0" step="1" value="0"> -->
 
       <div class="checkbox-group text-shadow">
         <input id="text-shadow" name="shadow" type="checkbox">
@@ -57,7 +59,7 @@
     <div class="m-editor__fontcolor" id="font-color">
       <h2>Font Color</h2>
       <ul class="checkbox-group">
-        <li><label><input type="radio" name="font-color" value=""> None</label></li>
+        <li><label><input type="radio" name="font-color" value="#000"> Default</label></li>
       </ul>
     </div>
 

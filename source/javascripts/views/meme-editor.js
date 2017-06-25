@@ -44,11 +44,6 @@ MEME.MemeEditorView = Backbone.View.extend({
       $("#text-align").append(buildOptions(d.textAlignOpts)).show();
     }
 
-    // Build font size options:
-    if (d.fontSizeOpts && d.fontSizeOpts.length) {
-      $("#font-size").append(buildOptions(d.fontSizeOpts)).show();
-    }
-
     // Build font family options:
     if (d.fontFamilyOpts && d.fontFamilyOpts.length) {
       $("#font-family").append(buildOptions(d.fontFamilyOpts)).show();
@@ -124,6 +119,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.$("#watermark").val(d.watermarkSrc);
     this.$("#image-scale").val(d.imageScale);
     this.$("#font-size").val(d.fontSize);
+    // this.$("#letter-spacing").val(d.letterSpacing);
     this.$("#font-family").val(d.fontFamily);
     this.$("#font-color")
       .find('[value="' + d.fontColor + '"]')
@@ -144,6 +140,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     "input #credit": "onCredit",
     "input #image-scale": "onScale",
     "change #font-size": "onFontSize",
+    // "change #letter-spacing": "onLetterSpacing",
     "change #font-family": "onFontFamily",
     'change [name="font-color"]': "onFontColor",
     "change #watermark": "onWatermark",
@@ -184,6 +181,10 @@ MEME.MemeEditorView = Backbone.View.extend({
   onFontColor: function(evt) {
     this.model.set("fontColor", this.$(evt.target).val())
   },
+
+  // onLetterSpacing: function() {
+  //   this.model.set("letterSpacing", this.$("#letter-spacing").val())
+  // },
 
   onWatermark: function() {
     this.model.set("watermarkSrc", this.$("#watermark").val());
