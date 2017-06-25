@@ -1,6 +1,7 @@
 $m: '.m-editor';
 
 #{$m} {
+
   margin-bottom: 30px;
 
   @media screen and (min-width: 700px) {
@@ -9,6 +10,32 @@ $m: '.m-editor';
     padding-left: 20px;
     width: 30%;
   }
+
+  .pane-toggle {
+    padding:0 !important;
+  }
+
+  .pane-toggle li {
+    width: calc(50% - 3px);
+    display: inline-block;
+    padding: 6px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  li.content-tab {
+    border-bottom: 2px solid rgba(76, 78, 77, 0.024);
+  }
+
+  li.design-tab {
+    border-bottom: 2px solid rgba(76, 78, 77, 0.2);
+  }
+
+  .content-pane {
+    display: none
+  }
+
 
   .dropzone {
     background-color: #fcfcfc;
@@ -44,12 +71,70 @@ $m: '.m-editor';
   .font-size,
   .font-family,
   .text-shadow,
+  .overlay-alpha,
   .watermark {
     display: none;
   }
 
+  #{$m}__fontcolor {
+    //display: none;
+    margin-bottom:1.5em;
+
+    // Mini-clearfix:
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      label {
+        display: block;
+        float: left;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+
   #{$m}__overlay {
     display: none;
+    margin-bottom:1.5em;
+
+    // Mini-clearfix:
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      label {
+        display: block;
+        float: left;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  #{$m}__backgroundcolor {
+    //display: none;
+    margin-bottom:1.5em;
 
     // Mini-clearfix:
     &:before,
@@ -79,6 +164,7 @@ $m: '.m-editor';
     @include appearance(none);
     background-color: #000;
     border-radius: 3px;
+    border: 1px solid #d3d3d3;
     cursor: pointer;
     display: block;
     height: 100%;
@@ -86,12 +172,13 @@ $m: '.m-editor';
     margin-left: 1em;
     outline: none;
     text-align: center;
-    width: 30px;
+    width: 2em;
 
     &:checked:before {
       content: 'x';
-      color: white;
+      color: #d3d3d3;
       font-size: 18px;
+      line-height: 18px;
       vertical-align: center;
     }
   }
