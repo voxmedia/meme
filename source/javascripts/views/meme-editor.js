@@ -181,8 +181,8 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set("fontFamily", this.$("#font-family").val());
   },
 
-  onFontColor: function() {
-    this.model.set("fontColor", this.$(evt.target).val());
+  onFontColor: function(evt) {
+    this.model.set("fontColor", this.$(evt.target).val())
   },
 
   onWatermark: function() {
