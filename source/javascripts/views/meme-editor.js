@@ -39,6 +39,25 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#font-family').append(buildOptions(d.fontFamilyOpts)).show();
     }
 
+    // Build font color options:
+    if (d.fontColorOpts && d.fontColorOpts.length) {
+      var fontOpts = _.reduce(
+        d.fontColorOpts,
+        function(memo, opt) {
+          var color = opt.hasOwnProperty("value") ? opt.value : opt;
+          return (memo +=
+            '<li><label><input class="m-editor__swatch" style="background-color:' +
+            color +
+            '" type="radio" name="font-color" value="' +
+            color +
+            '"></label></li>');
+        },
+        ""
+      );
+
+      $("#font-color").show().find("ul").append(fontOpts);
+    }
+
     // Build watermark options:
     if (d.watermarkOpts && d.watermarkOpts.length) {
       $('#watermark').append(buildOptions(d.watermarkOpts)).show();
@@ -55,17 +74,41 @@ MEME.MemeEditorView = Backbone.View.extend({
     }
   },
 
+  // Build background color options:
+  if (d.backgroundColorOpts && d.backgroundColorOpts.length) {
+    var backgroundOpts = _.reduce(
+      d.backgroundColorOpts,
+      function(memo, opt) {
+        var color = opt.hasOwnProperty("value") ? opt.value : opt;
+        return (memo +=
+          '<li><label><input class="m-editor__swatch" style="background-color:' +
+          color +
+          '" type="radio" name="background-color" value="' +
+          color +
+          '"></label></li>');
+      },
+      ""
+    );
+
+    $("#background-color").show().find("ul").append(backgroundOpts);
+  }
+},
+
   render: function() {
     var d = this.model.toJSON();
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
+    this.$("#watermark-alpha").val(d.watermarkAlpha);
     this.$('#image-scale').val(d.imageScale);
     this.$('#font-size').val(d.fontSize);
     this.$('#font-family').val(d.fontFamily);
+    this.$("#font-color").find('[value="' + d.fontColor + '"]').prop("checked", true);
+    this.$("#overlay-alpha").val(d.overlayAlpha);
     this.$('#text-align').val(d.textAlign);
     this.$('#text-shadow').prop('checked', d.textShadow);
     this.$('#overlay').find('[value="'+d.overlayColor+'"]').prop('checked', true);
+    this.$("#backgroundcolor").find('[value="' + d.backgroundColor + '"]').prop("checked", true);
   },
 
   events: {
@@ -74,13 +117,17 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #image-scale': 'onScale',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
-    'change #watermark': 'onWatermark',
-    'change #text-align': 'onTextAlign',
-    'change #text-shadow': 'onTextShadow',
-    'change [name="overlay"]': 'onOverlayColor',
-    'dragover #dropzone': 'onZoneOver',
-    'dragleave #dropzone': 'onZoneOut',
-    'drop #dropzone': 'onZoneDrop'
+    'change [name="font-color"]': "onFontColor",
+    "change #watermark": "onWatermark",
+    "change #watermark-alpha": "onWatermarkAlpha",
+    "change #text-align": "onTextAlign",
+    "change #text-shadow": "onTextShadow",
+    "change #overlay-alpha": "onOverlayAlpha",
+    'change [name="overlay"]': "onOverlayColor",
+    'change [name="background-color"]': "onBackgroundColor",
+    "dragover #dropzone": "onZoneOver",
+    "dragleave #dropzone": "onZoneOut",
+    "drop #dropzone": "onZoneDrop"
   },
 
   onCredit: function() {
@@ -107,17 +154,33 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.model.set('fontFamily', this.$('#font-family').val());
   },
 
+  onFontColor: function(evt) {
+    this.model.set("fontColor", this.$(evt.target).val());
+  },
+
   onWatermark: function() {
     this.model.set('watermarkSrc', this.$('#watermark').val());
     if (localStorage) localStorage.setItem('meme_watermark', this.$('#watermark').val());
+  },
+
+  onWatermarkAlpha: function() {
+    this.model.set("watermarkAlpha", this.$("#watermark-alpha").val());
   },
 
   onScale: function() {
     this.model.set('imageScale', this.$('#image-scale').val());
   },
 
+  onOverlayAlpha: function() {
+    this.model.set("overlayAlpha", this.$("#overlay-alpha").val());
+  },
+
   onOverlayColor: function(evt) {
     this.model.set('overlayColor', this.$(evt.target).val());
+  },
+
+  onBackgroundColor: function(evt) {
+    this.model.set("backgroundColor", this.$(evt.target).val());
   },
 
   getDataTransfer: function(evt) {

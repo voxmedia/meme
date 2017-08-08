@@ -28,6 +28,30 @@ body.noselect {
   margin: 0 auto;
 }
 
+.instructions {
+  background: #bebebe;
+  float: right;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 35px;
+  margin: 25px 0;
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  width: 140px;
+}
+
+.instructions a {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+
+.instructions:hover {
+    background-color:#2980b9;
+}
+
 .left { float: left; }
 .right { float: right; }
 
