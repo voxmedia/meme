@@ -8,6 +8,12 @@ MEME.MemeEditorView = Backbone.View.extend({
     this.buildForms();
     this.listenTo(this.model, 'change', this.render);
     this.render();
+    $(".tab").click(function() {
+      $("." + $(this).attr("data-pane")).css(
+        "display",
+        "block"
+      ), $(this).css("border-bottom", "2px solid rgba(76, 78, 77, .2)"), $(this).siblings().css("border-bottom", "2px solid rgba(76, 78, 77, .025)"), $("." + $(this).siblings().attr("data-pane")).css("display", "none");
+    });
   },
 
   // Builds all form options based on model option arrays:
@@ -15,9 +21,14 @@ MEME.MemeEditorView = Backbone.View.extend({
     var d = this.model.toJSON();
 
     function buildOptions(opts) {
-      return _.reduce(opts, function(memo, opt) {
-        return memo += ['<option value="', opt.hasOwnProperty('value') ? opt.value : opt, '">', opt.hasOwnProperty('text') ? opt.text : opt, '</option>'].join('');
-      }, '');
+      return _.reduce(
+        opts,
+        function(memo, opt) {
+          return (memo += [
+            '<option value="', opt.hasOwnProperty("value") ? opt.value : opt, '">', opt.hasOwnProperty("text") ? opt.text : opt,"</option>"].join(""));
+        },
+        ""
+      );
     }
 
     if (d.textShadowEdit) {
@@ -65,14 +76,22 @@ MEME.MemeEditorView = Backbone.View.extend({
 
     // Build overlay color options:
     if (d.overlayColorOpts && d.overlayColorOpts.length) {
-      var overlayOpts = _.reduce(d.overlayColorOpts, function(memo, opt) {
-        var color = opt.hasOwnProperty('value') ? opt.value : opt;
-        return memo += '<li><label><input class="m-editor__swatch" style="background-color:'+color+'" type="radio" name="overlay" value="'+color+'"></label></li>';
-      }, '');
+      var overlayOpts = _.reduce(
+        d.overlayColorOpts,
+        function(memo, opt) {
+          var color = opt.hasOwnProperty("value") ? opt.value : opt;
+          return (memo +=
+            '<li><label><input class="m-editor__swatch" style="background-color:' +
+            color +
+            '" type="radio" name="overlay" value="' +
+            color +
+            '"></label></li>');
+        },
+        ""
+      );
 
-      $('#overlay').show().find('ul').append(overlayOpts);
+      $("#overlay").show().find("ul").append(overlayOpts);
     }
-  },
 
   // Build background color options:
   if (d.backgroundColorOpts && d.backgroundColorOpts.length) {
