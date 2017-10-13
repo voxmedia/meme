@@ -39,6 +39,20 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
 
+    switch (d.aspectRatio) {
+      case "twitter":
+        d.width = 1024, d.height = 512;
+        break;
+      case "facebook":
+        d.width = 1200, d.height = 630;
+        break;
+      case "instagram":
+        d.width = 1080, d.height = 1080;
+        break;
+      case "pinterest":
+        d.width = 736, d.height = 1128
+    }
+
     // Reset canvas display:
     this.canvas.width = d.width;
     this.canvas.height = d.height;
@@ -58,6 +72,16 @@ MEME.MemeCanvasView = Backbone.View.extend({
         var cy = d.backgroundPosition.y || d.height / 2;
 
         ctx.drawImage(m.background, 0, 0, bw, bh, cx-(tw/2), cy-(th/2), tw, th);
+      }
+    }
+
+    function renderBackgroundColor(ctx) {
+      if (d.backgroundColor) {
+        ctx.save();
+        ctx.fillStyle = d.backgroundColor;
+        ctx.fillRect(0, 0, d.width, d.height);
+        ctx.globalAlpha = 1;
+        ctx.restore();
       }
     }
 
@@ -157,6 +181,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
 
     renderBackground(ctx);
     renderOverlay(ctx);
+    renderBackgroundColor(ctx);
     renderHeadline(ctx);
     renderCredit(ctx);
     renderWatermark(ctx);

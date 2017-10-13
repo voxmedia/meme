@@ -1,40 +1,72 @@
 <form class="m-editor" id="meme-editor-view">
-  <div class="dropzone" id="dropzone">Drop Image Here</div>
-  
-  <h2><label for="image-scale">Resize image</label></h2>
-  <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
-  
-  <h2><label for="headline">Headline</label></h2>
-  <textarea id="headline" name="headline" type="text" value=""></textarea>
-  
-  <select class="text-align" id="text-align">
-    <option value="" disabled>Select alignment</option>
-  </select>
+  <ul class="pane-toggle">
+      <li class="content-tab tab" data-pane="content-pane"><h2>Content</h2></li>
+      <li class="design-tab tab" data-pane="design-pane"><h2>Design</h2></li>
+  </ul>
 
-  <select class="font-size" id="font-size">
-    <option value="" disabled>Select a font size</option>
-  </select>
+  <div class="content-pane drawer">
+    <h2><label for="headline">Headline</label></h2>
+    <textarea id="headline" name="headline" type="text" value=""></textarea>
 
-  <select class="font-family" id="font-family">
-    <option value="" disabled>Select a font</option>
-  </select>
+    <select class="text-align" id="text-align">
+      <option value="" disabled>Select alignment</option>
+    </select>
 
-  <div class="checkbox-group text-shadow">
-    <input id="text-shadow" name="shadow" type="checkbox"> 
-    <label for="text-shadow">Text Shadow</label>
+    <select class="font-family" id="font-family">
+      <option value="" disabled>Select a font</option>
+    </select>
+
+    <h2><label for="font-size">Font Size</label></h2>
+    <input id="font-size" type="range" max="64" min="18" step=".1" value="24">
+
+    <div class="checkbox-group text-shadow">
+      <input id="text-shadow" name="shadow" type="checkbox">
+      <label for="text-shadow">Text Shadow</label>
+    </div>
+
+    <input id="credit" name="credit" type="text" value="">
   </div>
 
-  <select class="watermark" id="watermark">
-    <option value="" disabled>Select a watermark</option>
-  </select>
+  <div class="design-pane drawer">
+    <select class="aspect-ratio" id="aspect-ratio">
+      <option value="" disabled>Aspect ratio</option>
+    </select>
 
-  <h2><label for="credit">Credit</label></h2>
-  <input id="credit" name="credit" type="text" value="">
+    <div class="dropzone" id="dropzone">Drop Image Here</div>
 
-  <div class="m-editor__overlay" id="overlay">
-    <h2>Overlay Color</h2>
-    <ul class="checkbox-group">
-      <li><label><input type="radio" name="overlay" value=""> None</label></li>
-    </ul>
+    <h2><label for="image-scale">Resize image</label></h2>
+    <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
+
+    <h2><label for="overlay-alpha">Overlay Transparency</label></h2>
+    <input id="overlay-alpha" type="range" max="1" min=".01" step=".01" value="1">
+
+    <div class="m-editor__overlay" id="overlay">
+      <h2>Overlay Color</h2>
+      <ul class="checkbox-group">
+        <li><label><input type="radio" name="overlay" value=""> None</label></li>
+      </ul>
+    </div>
+
+    <div class="m-editor__backgroundcolor" id="background-color">
+      <h2>Background Color</h2>
+      <ul class="checkbox-group">
+        <li><label><input type="radio" name="background-color" value=""> None</label></li>
+      </ul>
+    </div>
+
+    <div class="m-editor__fontcolor" id="font-color">
+      <h2>Font Color</h2>
+      <ul class="checkbox-group">
+        <li><label><input type="radio" name="font-color" value="#000"> Default</label></li>
+      </ul>
+    </div>
+
+    <select class="watermark" id="watermark">
+      <option value="" disabled>Select a watermark</option>
+    </select>
+
+    <h2><label for="watermark-alpha">Watermark Transparency</label></h2>
+    <input id="watermark-alpha" type="range" max="1" min=".01" step=".01" value="1">
+
   </div>
 </form>
