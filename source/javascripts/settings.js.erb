@@ -18,7 +18,7 @@ var MEME_SETTINGS = {
   fontSize: 24,
 
   headlineText: 'Write your own headline', // Default headline text.
-  height: 378, // Canvas rendering height.
+  // height: 378, // Canvas rendering height.
   imageScale: 1, // Background image scale.
   imageSrc: '', // Default background image path. MUST reside on host domain, or use base64 data.
   overlayAlpha: 0.5, // Opacity of image overlay.
@@ -27,7 +27,7 @@ var MEME_SETTINGS = {
   overlayColor: '#000',
   // Overlay color options: set to empty array to disable overlay options selector.
   overlayColorOpts: ['#000', '#777', '#2980b9'],
-  paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
+  paddingRatio: 0.1, // Percentage of canvas width to use as edge padding.
 
   // Background color, or blank ('') for no overlay. Takes precedent over overlay.
   backgroundColor: '',
@@ -60,5 +60,12 @@ var MEME_SETTINGS = {
     {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''}
   ],
 
-  width: 755 // Canvas rendering width.
+  // width: 755 // Canvas rendering width.
+  aspectRatio: 'twitter',
+  aspectRatioOpts: [
+    {text: '2:1 (Twitter)', value: 'twitter'},
+    {text: '1:1 (Facebook or Instagram)', value: 'instagram'},
+    {text: 'Facebook', value: 'facebook'},
+    {text: 'Pinterest', value: 'pinterest'}
+  ]
 };

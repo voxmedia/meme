@@ -39,6 +39,20 @@ MEME.MemeCanvasView = Backbone.View.extend({
     var ctx = this.canvas.getContext('2d');
     var padding = Math.round(d.width * d.paddingRatio);
 
+    switch (d.aspectRatio) {
+      case "twitter":
+        d.width = 1024, d.height = 512;
+        break;
+      case "facebook":
+        d.width = 1200, d.height = 630;
+        break;
+      case "instagram":
+        d.width = 1080, d.height = 1080;
+        break;
+      case "pinterest":
+        d.width = 736, d.height = 1128
+    }
+
     // Reset canvas display:
     this.canvas.width = d.width;
     this.canvas.height = d.height;

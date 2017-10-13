@@ -30,6 +30,10 @@ MEME.MemeEditorView = Backbone.View.extend({
         ""
       );
     }
+    // Build font family options:
+    if (d.aspectRatioOpts && d.aspectRatioOpts.length) {
+      $('#aspect-ratio').append(buildOptions(d.aspectRatioOpts)).show();
+    }
 
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
@@ -117,6 +121,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     var d = this.model.toJSON();
     this.$('#headline').val(d.headlineText);
     this.$('#credit').val(d.creditText);
+    this.$('#aspect-ratio').val(d.aspectRatio);
     this.$('#watermark').val(d.watermarkSrc);
     this.$("#watermark-alpha").val(d.watermarkAlpha);
     this.$('#image-scale').val(d.imageScale);
@@ -134,6 +139,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
+    'change #aspect-ratio': 'onAspectRatio',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change [name="font-color"]': "onFontColor",
@@ -156,7 +162,9 @@ MEME.MemeEditorView = Backbone.View.extend({
   onHeadline: function() {
     this.model.set('headlineText', this.$('#headline').val());
   },
-
+  onAspectRatio: function() {
+    this.model.set("aspectRatio", this.$("#aspect-ratio").val())
+  },
   onTextAlign: function() {
     this.model.set('textAlign', this.$('#text-align').val());
   },
