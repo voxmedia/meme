@@ -29,7 +29,7 @@ var MEME_SETTINGS = {
   // Image overlay color, or blank ('') for no overlay:
   overlayColor: '#000',
   // Overlay color options: set to empty array to disable overlay options selector.
-  overlayColorOpts: ['#000', '#777', '#2980b9'],
+  overlayColorOpts: ['#000', '#777', '#2980b9', '#232D4B'],
   paddingRatio: 0.05, // Percentage of canvas width to use as edge padding.
   
   // Text alignment: valid settings are "left", "center", and "right".
@@ -55,7 +55,8 @@ var MEME_SETTINGS = {
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
     {text: 'Vox', value: '<%= image_path("vox.png") %>', data: '<%= asset_data_uri("vox.png") %>'},
-    {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''}
+    {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''},
+    {text: 'UVA', value: '<%= image_path("uva_primary_rgb_white.png") %>', data: ''}
   ],
 
   width: 755 // Canvas rendering width.
