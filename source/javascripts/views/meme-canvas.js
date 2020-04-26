@@ -93,8 +93,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
       if (d.textAlign == 'center') {
         ctx.textAlign = 'center';
         x = d.width / 2;
-        y = d.height - d.height / 1.5;
-        maxWidth = d.width - d.width / 3;
+        y = d.height - d.height / 1.25;
+        maxWidth = d.width / 1.2;
 
       } else if (d.textAlign == 'right' ) {
         ctx.textAlign = 'right';
@@ -115,7 +115,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
         if (testWidth > maxWidth && n > 0) {
           ctx.fillText(line, x, y);
           line = words[n] + ' ';
-          y += Math.round(d.fontSize * 1.5);
+          y += Math.round(d.fontSize * 1.25);
         } else {
           line = testLine;
         }
@@ -150,7 +150,8 @@ MEME.MemeCanvasView = Backbone.View.extend({
         }
 
         ctx.globalAlpha = d.watermarkAlpha;
-        ctx.drawImage(m.watermark, 0, 0, bw, bh, d.width-padding-tw, d.height-padding-th, tw, th);
+        // IMAGE POSITION IS SET HERE
+        ctx.drawImage(m.watermark, 0, 0, bw, bh, (d.width/2-tw/2), d.height-padding-th+125, tw, th);
         ctx.globalAlpha = 1;
       }
     }
