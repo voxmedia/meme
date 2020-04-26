@@ -76,7 +76,8 @@ $m: '.m-editor';
   }
 
   #{$m}__swatch {
-    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
     background-color: #000;
     border-radius: 3px;
     cursor: pointer;
