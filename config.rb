@@ -1,12 +1,7 @@
 # Reload the browser automatically whenever files change
 activate :livereload
 
-###
-# Compass
-###
-compass_config do |config|
-  config.output_style = :compressed
-end
+# activate :sprockets
 
 ###
 # Helpers
@@ -34,4 +29,5 @@ configure :build do
   activate :asset_hash
   activate :minify_javascript
   activate :minify_css
+  activate :autoprefixer
 end

@@ -47,14 +47,14 @@ var MEME_SETTINGS = {
   watermarkMaxWidthRatio: 0.25, // Maximum allowed width of watermark (percentage of total canvas width).
 
   // Path to the watermark image source, or blank for no watermark:
-  // Alternatively, use '<%= asset_data_uri("vox.png") %>' to populate the watermark with base64 data, avoiding Cross-Origin issues.
+  // Alternatively, use 'FIXME' to populate the watermark with base64 data, avoiding Cross-Origin issues.
   watermarkSrc: (localStorage && localStorage.getItem('meme_watermark')) || '<%= image_path("vox.png") %>',
   
   // Watermark image options: set to empty array to disable watermark picker.
   // NOTE: only populate the "data" attributes with base64 data when concerned about Cross-Origin requests...
   // Otherwise, just leave "data" attributes blank and allow images to load from your server.
   watermarkOpts: [
-    {text: 'Vox', value: '<%= image_path("vox.png") %>', data: '<%= asset_data_uri("vox.png") %>'},
+    {text: 'Vox', value: '<%= image_path("vox.png") %>', data: 'FIXME'},
     {text: 'The Verge', value: '<%= image_path("theverge.png") %>', data: ''}
   ],
 

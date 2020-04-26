@@ -4,7 +4,7 @@ $m: '.m-editor';
   margin-bottom: 30px;
 
   @media screen and (min-width: 700px) {
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     float: right;
     padding-left: 20px;
     width: 30%;
@@ -76,7 +76,7 @@ $m: '.m-editor';
   }
 
   #{$m}__swatch {
-    @include appearance(none);
+    appearance: none;
     background-color: #000;
     border-radius: 3px;
     cursor: pointer;

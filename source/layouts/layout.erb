@@ -9,7 +9,14 @@
       <%= partial "partials/editor" %>
       <%= partial "partials/canvas" %>
     </div>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'vendor/jquery' %>
+    <%= javascript_include_tag 'vendor/underscore' %>
+    <%= javascript_include_tag 'vendor/backbone' %>
+    <%= javascript_include_tag 'main' %>
+    <%= javascript_include_tag 'models/meme' %>
+    <%= javascript_include_tag 'views/meme-canvas' %>
+    <%= javascript_include_tag 'views/meme-editor' %>
+    <%= javascript_include_tag 'helpers/font-monitor' %>
     <%= javascript_include_tag 'settings' %>
   </body>
 </html>
