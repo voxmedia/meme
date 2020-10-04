@@ -7,14 +7,17 @@ Meme is a generator that Vox Media uses to create social sharing images. See wor
 ![screenshot](readme.png)
 
 ## What's new in version 2.0?
+*Refactored into a formal MV* application. 
 
-* Refactored into a formal MV* app.
-* Fixed bugs with rendering state and repeat drag-n-drop images.
-* Improved initial rendering with loaded web fonts.
-* Improved cross-origin options: both for base64 images and CORS.
-* Highly (and easily!) customizable editor and theme options.
-* Watermark selector.
+*Fixed bugs with delivering state and rehash drag-n-drop pictures. 
 
+*Improved beginning delivering with stacked web textual styles. 
+
+*Improved cross-source alternatives: both for base64 pictures and CORS. 
+
+*Exceptionally (and effectively!) adjustable proofreader and subject choices. 
+
+Watermark selector.
 ## Install
 
 * `git clone https://github.com/voxmedia/meme.git`
