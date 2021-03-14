@@ -7,8 +7,7 @@ gem "middleman"
 # Live-reloading plugin
 gem "middleman-livereload"
 
-# For faster file watcher updates on Windows:
-gem "wdm"
+gem "listen"
 
 # Windows does not come with time zone data
 gem "tzinfo-data"
