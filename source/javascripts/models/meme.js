@@ -5,6 +5,7 @@
 MEME.MemeModel = Backbone.Model.extend({
   defaults: {
     backgroundPosition: { x: null, y: null },
+    button: 'Przycisk',  
     creditText: 'Source:',
     creditSize: 12,
     downloadName: 'share',
@@ -63,6 +64,9 @@ MEME.MemeModel = Backbone.Model.extend({
 
   // Loads a file stream into an image object:
   loadFileForImage: function(file, image) {
+	console.log('loadFileForImage');
+    console.log(file);
+    console.log(image);
     var reader = new FileReader();
     reader.onload = function() { image.src = reader.result; };
     reader.readAsDataURL(file);

@@ -162,6 +162,7 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderWatermark(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
+    console.log('data ' + data);
     this.$('#meme-download').attr({
       'href': data,
       'download': (d.downloadName || 'share') + '.png'
@@ -172,13 +173,15 @@ MEME.MemeCanvasView = Backbone.View.extend({
   },
 
   events: {
-    'mousedown canvas': 'onDrag'
+    'mousedown canvas': 'onDrag',
+    'click #meme-upload': 'onClick',
+    'change #fileid': 'onClick'
   },
 
   // Performs drag-and-drop on the background image placement:
   onDrag: function(evt) {
     evt.preventDefault();
-
+    console.log('onDrag launch');
     // Return early if there is no background image:
     if (!this.model.hasBackground()) return;
 
@@ -208,5 +211,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
         $doc.off('mouseup.drag mousemove.drag');
         update(evt);
       });
+  },
+
+  onClick: function(evt) {
+    this.model.loadBackground(evt.target.files[0]);
   }
 });
