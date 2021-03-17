@@ -104,7 +104,9 @@ MEME.MemeCanvasView = Backbone.View.extend({
         ctx.textAlign = 'left';
       }
 
-      var words = d.headlineText.split(' ');
+      const displayText = getDisplayText(d.headlineText) || ''
+
+      var words = displayText.split(' ');
       var line  = '';
 
       for (var n = 0; n < words.length; n++) {
@@ -162,7 +164,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
     renderWatermark(ctx);
 
     var data = this.canvas.toDataURL(); //.replace('image/png', 'image/octet-stream');
-    console.log('data ' + data);
     this.$('#meme-download').attr({
       'href': data,
       'download': (d.downloadName || 'share') + '.png'
@@ -181,7 +182,6 @@ MEME.MemeCanvasView = Backbone.View.extend({
   // Performs drag-and-drop on the background image placement:
   onDrag: function(evt) {
     evt.preventDefault();
-    console.log('onDrag launch');
     // Return early if there is no background image:
     if (!this.model.hasBackground()) return;
 
@@ -217,3 +217,29 @@ MEME.MemeCanvasView = Backbone.View.extend({
     this.model.loadBackground(evt.target.files[0]);
   }
 });
+
+function getDisplayText(value) {
+  const rawValue = value.replaceAll(/[-_]/g,'')
+  if (rawValue.length === 8) {
+    const validDateString = value.split('-')
+    const [day, month, year] = validDateString
+
+    const startDate = new Date(year, month, day)
+    console.log(startDate)
+    const endDate = new Date()
+
+    const weeks = this.getWeeks(startDate.getTime(), endDate.getTime())
+    const ending = weeks === 1 ? 'tydzień' : weeks >= 2 && weeks < 5 ? 'tygodnie' : 'tygodni'
+
+    return `Mam ${weeks} ${ending}`
+  }
+
+  return 'Wpisz poprawną datę urodzenia'
+}
+
+function getWeeks(startDate, endDate) {
+  const week = 1000 * 60 * 60 * 24 * 7
+  const diff = Math.abs(endDate - startDate);
+
+  return Math.floor(diff / week);
+}

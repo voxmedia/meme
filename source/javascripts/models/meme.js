@@ -14,7 +14,7 @@ MEME.MemeModel = Backbone.Model.extend({
     fontFamilyOpts: ['Helvetica', 'Helvetica Neue', 'Comic Sans MS'],
     fontSize: 24,
     fontSizeOpts: [14, 24, 36],
-    headlineText: 'Write your own headline',
+    headlineText: '',
     height: 378,
     imageScale: 1,
     imageSrc: '',
@@ -31,6 +31,11 @@ MEME.MemeModel = Backbone.Model.extend({
     watermarkSrc: '',
     watermarkOpts: [],
     width: 755
+  },
+  validation: {
+    'headlineText': [{
+      pattern: '[0-9]'
+    }],
   },
 
   // Initialize with custom image members used for background and watermark:
@@ -64,9 +69,6 @@ MEME.MemeModel = Backbone.Model.extend({
 
   // Loads a file stream into an image object:
   loadFileForImage: function(file, image) {
-	console.log('loadFileForImage');
-    console.log(file);
-    console.log(image);
     var reader = new FileReader();
     reader.onload = function() { image.src = reader.result; };
     reader.readAsDataURL(file);

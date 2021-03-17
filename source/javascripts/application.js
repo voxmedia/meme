@@ -1,4 +1,5 @@
 //= require "vendor/jquery"
+//= require "vendor/jquery.inputmask"
 //= require "vendor/underscore"
 //= require "vendor/backbone"
 //= require "main"

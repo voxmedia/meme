@@ -4,8 +4,15 @@
   <h2><label for="image-scale">Resize image</label></h2>
   <input id="image-scale" type="range" max="4" min=".01" step=".01" value="1">
   
-  <h2><label for="headline">Headline</label></h2>
-  <input id="headline" name="headline" type="text" value="" placeholder="DD-MM-RRRR" pattern="\d{1,2}/\d{1,2}/\d{4}"></input>
+  <h2><label for="headline">Date of birth</label></h2>
+  <input
+    id="headline"
+    name="headline"
+    type="text"
+    value=""
+    placeholder="DD-MM-RRRR"
+    pattern="^[0-9]*$"
+  ></input>
   
   <select class="text-align" id="text-align">
     <option value="" disabled>Select alignment</option>

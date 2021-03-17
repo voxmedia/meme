@@ -20,6 +20,8 @@ MEME.MemeEditorView = Backbone.View.extend({
       }, '');
     }
 
+
+
     if (d.textShadowEdit) {
       $('#text-shadow').parent().show();
     }
@@ -58,6 +60,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   render: function() {
     var d = this.model.toJSON();
     this.$('#headline').val(d.headlineText);
+    this.$('#headline').inputmask("99-99-9999")
     this.$('#credit').val(d.creditText);
     this.$('#watermark').val(d.watermarkSrc);
     this.$('#image-scale').val(d.imageScale);
@@ -69,6 +72,7 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   events: {
+    'keydown #headline': 'validateHeadline',
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
@@ -85,6 +89,12 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onCredit: function() {
     this.model.set('creditText', this.$('#credit').val());
+  },
+
+  validateHeadline: function(event) {
+    if(isNaN(event.key)) {
+      event.preventDefault()
+    }
   },
 
   onHeadline: function() {
@@ -139,11 +149,6 @@ MEME.MemeEditorView = Backbone.View.extend({
   },
 
   onZoneDrop: function(evt) {
-	console.log('onZoneDrop');
-	console.log(evt);
-    var dataTransfer = this.getDataTransfer(evt);
-    console.log('onZoneDrop dataTransfer ');
-	console.log(dataTransfer);
     if (dataTransfer) {
       this.model.loadBackground(dataTransfer.files[0]);
       this.$('#dropzone').removeClass('pulse');
